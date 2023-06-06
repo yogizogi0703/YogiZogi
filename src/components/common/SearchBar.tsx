@@ -2,8 +2,10 @@ import { BiMap } from 'react-icons/bi';
 import { FcCalendar } from 'react-icons/fc';
 import { BsPeople } from 'react-icons/bs';
 import { BsSearch } from 'react-icons/bs';
+import { useState } from 'react';
 
 export const SearchBar = () => {
+  const [searchValue, setSearchValue] = useState('');
 
   return (
     <section className="flex border rounded-md w-2/3 mx-auto p-3">
@@ -14,6 +16,8 @@ export const SearchBar = () => {
             type="text"
             placeholder="keyword 또는 시설명을 입력하세요"
             className="input w-4/5 h-auto max-w-xs p-0 focus:outline-none"
+            value={searchValue}
+            onChange={(e) => setSearchValue(e.target.value)}
           />
           <BiMap className="w-6 h-6 cursor-pointer" />
         </div>
