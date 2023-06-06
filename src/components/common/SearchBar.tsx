@@ -10,23 +10,24 @@ import { GetGeoInfo } from '../../utils/getGeoInfo';
 import { getFormatedDate } from '../../utils/getFormatedDate';
 
 export const SearchBar = () => {
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState('');
   const [checkInDate, setCheckInDate] = useState(new Date());
   const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
   const [dateContent, setDateContent] = useState('');
   const [calendarState, setCalendarState] = useState(false);
   const [userGeoInfo, setGeoInfo] = useState([37.57, 126.9]);
+  const [people, setPeople] = useState(0);
 
-    // 사용자가 check-in/check-out date를 선택하면, date를 형식(yyyy-mm-dd)에 맞게 변경
-    useEffect(() => {
-        if (checkOutDate) {
-          setDateContent(() => {
-            const selectedCheckInDate = getFormatedDate(checkInDate);
-            const selectedCheckOutDate = getFormatedDate(checkOutDate);
-            return `From ${selectedCheckInDate} to ${selectedCheckOutDate}`;
-          });
-        }
-      }, [checkInDate, checkOutDate]);
+  // 사용자가 check-in/check-out date를 선택하면, date를 형식(yyyy-mm-dd)에 맞게 변경
+  useEffect(() => {
+    if (checkOutDate) {
+      setDateContent(() => {
+        const selectedCheckInDate = getFormatedDate(checkInDate);
+        const selectedCheckOutDate = getFormatedDate(checkOutDate);
+        return `From ${selectedCheckInDate} to ${selectedCheckOutDate}`;
+      });
+    }
+  }, [checkInDate, checkOutDate]);
 
   return (
     <section className="flex border rounded-md w-2/3 mx-auto p-3">
@@ -102,11 +103,20 @@ export const SearchBar = () => {
           <BsPeople /> Guests
         </div>
         <p className="flex items-center gap-1 text-sm text-center">
-          <button className="btn-square btn-secondary btn-xs rounded-lg ml-2">
+          <button
+            className="btn-square btn-secondary btn-xs rounded-lg ml-2"
+            onClick={() => {
+              if (people === 0) return;
+              setPeople(people - 1);
+            }}
+          >
             -
           </button>
-          0
-          <button className="btn-square btn-secondary btn-xs rounded-lg">
+          {people}
+          <button
+            className="btn-square btn-secondary btn-xs rounded-lg"
+            onClick={() => setPeople(people + 1)}
+          >
             +
           </button>
         </p>
