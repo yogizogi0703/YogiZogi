@@ -30,7 +30,7 @@ export const SearchBar = () => {
   }, [checkInDate, checkOutDate]);
 
   return (
-    <section className="flex border rounded-md w-2/3 mx-auto p-3">
+    <section className="flex border rounded-md max-w-5xl mx-auto p-3">
       <div className="w-2/5">
         <p className="font-medium">Destination</p>
         <div className="flex items-center">
@@ -102,7 +102,7 @@ export const SearchBar = () => {
         <div className="flex items-center gap-1 w-auto font-medium">
           <BsPeople /> Guests
         </div>
-        <p className="flex items-center gap-1 text-sm text-center">
+        <p className="flex items-center gap-2 text-sm text-center">
           <button
             className="btn-square btn-secondary btn-xs rounded-lg ml-2"
             onClick={() => {
