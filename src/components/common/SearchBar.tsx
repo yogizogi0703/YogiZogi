@@ -3,9 +3,11 @@ import { FcCalendar } from 'react-icons/fc';
 import { BsPeople } from 'react-icons/bs';
 import { BsSearch } from 'react-icons/bs';
 import { useState } from 'react';
+import { GetGeoInfo } from '../../utils/getGeoInfo';
 
 export const SearchBar = () => {
   const [searchValue, setSearchValue] = useState('');
+  const [userGeoInfo, setGeoInfo] = useState([37.57, 126.9]);
 
   return (
     <section className="flex border rounded-md w-2/3 mx-auto p-3">
@@ -19,7 +21,13 @@ export const SearchBar = () => {
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
           />
-          <BiMap className="w-6 h-6 cursor-pointer" />
+          <BiMap
+            className="w-6 h-6 cursor-pointer"
+            onClick={() => {
+              GetGeoInfo(setGeoInfo);
+              setSearchValue('현재 위치로 찾기');
+            }}
+          />
         </div>
       </div>
 
