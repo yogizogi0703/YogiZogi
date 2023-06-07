@@ -114,6 +114,7 @@ export const SearchBar = () => {
               if (people === 0) return;
               setPeople(people - 1);
             }}
+            disabled={people === 0}
           >
             -
           </button>
@@ -121,10 +122,9 @@ export const SearchBar = () => {
           <button
             className="btn btn-square btn-xs rounded-lg"
             onClick={() => {
-              if (people <= 100) {
-                setPeople(people + 1);
-              }
+              setPeople(people + 1);
             }}
+            disabled={people > 100}
           >
             +
           </button>
