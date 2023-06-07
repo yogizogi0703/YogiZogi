@@ -30,14 +30,14 @@ export const SearchBar = () => {
   }, [checkInDate, checkOutDate]);
 
   return (
-    <section className="flex items-center border rounded-md max-w-5xl mx-auto p-3 shadow-md">
-      <div className="w-1/2">
-        <p className="font-medium">Destination</p>
-        <div className="flex items-center">
+    <section className="flex w-fit flex-col items-center lg:w-[1000px] md:flex-row border rounded-md max-w-5xl mx-auto p-3 shadow-md">
+      <div className="flex gap-2 max-w-full md:block md:w-1/2">
+        <p className="font-medium w-12">Destination</p>
+        <div className="flex gap-1 md:flex items-center">
           <input
             type="text"
             placeholder="keyword 또는 시설명을 입력하세요"
-            className="input w-4/5 h-auto max-w-xs p-0 focus:outline-none"
+            className="input h-auto max-w-xs p-0 text-sm focus:outline-none"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
             onFocus={(e) => {
@@ -47,7 +47,7 @@ export const SearchBar = () => {
             }}
           />
           <BiMap
-            className="w-6 h-6 cursor-pointer"
+            className="w-4 h-4 md:w-6 md:h-6 cursor-pointer"
             onClick={() => {
               GetGeoInfo(setGeoInfo);
               setSearchValue('Find My Location');
@@ -55,8 +55,11 @@ export const SearchBar = () => {
           />
         </div>
       </div>
-      <div className="w-1/6 relative">
-        <div onClick={() => setCalendarState(!calendarState)}>
+      <div className="w-full md:w-1/6 relative">
+        <div
+          className="flex items-center gap-2 md:block"
+          onClick={() => setCalendarState(!calendarState)}
+        >
           <div className="flex gap-1 items-center font-medium cursor-pointer">
             <FcCalendar /> Date
           </div>
@@ -67,7 +70,7 @@ export const SearchBar = () => {
           </p>
         </div>
         <div
-          className={`flex gap-1 absolute top-14 p-3 rounded-lg bg-slate-300 ${
+          className={`flex gap-1 absolute left-14 md:top-14 p-3 rounded-lg bg-slate-300 ${
             calendarState ? 'block' : 'hidden'
           }`}
         >
@@ -103,7 +106,7 @@ export const SearchBar = () => {
           </div>
         </div>
       </div>
-      <div className="w-1/6">
+      <div className="flex gap-2 w-full md:block md:w-1/6">
         <div className="flex items-center gap-1 w-auto font-medium">
           <BsPeople /> Guests
         </div>
@@ -130,7 +133,7 @@ export const SearchBar = () => {
           </button>
         </p>
       </div>
-      <button className="w-1/6 btn text-xs ml-3">
+      <button className="btn btn-sm mt-5 text-xs md:w-1/6 md:ml-3 md:btn-md md:mt-0">
         <BsSearch />
         Search
       </button>
