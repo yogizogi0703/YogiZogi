@@ -30,7 +30,7 @@ export const SearchBar = () => {
   }, [checkInDate, checkOutDate]);
 
   return (
-    <section className="flex w-fit flex-col items-center lg:w-[1000px] md:flex-row border rounded-md max-w-5xl mx-auto p-3 shadow-md">
+    <section className="flex w-fit flex-col items-center lg:w-[1000px] md:flex-row border rounded-md max-w-5xl mx-auto p-3 shadow-md bg-white">
       <div className="flex gap-2 max-w-full md:block md:w-1/2">
         <p className="font-medium w-12">목적지</p>
         <div className="flex gap-1 md:flex items-center">
@@ -106,8 +106,8 @@ export const SearchBar = () => {
           </div>
         </div>
       </div>
-      <div className="flex gap-2 w-full md:block md:w-1/6">
-        <div className="flex items-center gap-1 w-auto font-medium">
+      <div className="flex gap-2 w-full md:ml-4 md:block md:w-1/6">
+        <div className="flex items-center gap-1 w-auto font-medium ">
           <BsPeople /> 인원
         </div>
         <p className="flex items-center gap-2 text-sm text-center">
