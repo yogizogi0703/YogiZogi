@@ -40,8 +40,8 @@ export const SearchBar = () => {
             className="input w-4/5 h-auto max-w-xs p-0 focus:outline-none"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
-       onFocus={(e) => {
-              if (e.target.value === '현재 위치로 찾기') {
+            onFocus={(e) => {
+              if (e.target.value === 'Find My Location') {
                 setSearchValue('');
               }
             }}
@@ -50,7 +50,7 @@ export const SearchBar = () => {
             className="w-6 h-6 cursor-pointer"
             onClick={() => {
               GetGeoInfo(setGeoInfo);
-              setSearchValue('현재 위치로 찾기');
+              setSearchValue('Find My Location');
             }}
           />
         </div>
