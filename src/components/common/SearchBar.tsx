@@ -40,6 +40,11 @@ export const SearchBar = () => {
             className="input w-4/5 h-auto max-w-xs p-0 focus:outline-none"
             value={searchValue}
             onChange={(e) => setSearchValue(e.target.value)}
+       onFocus={(e) => {
+              if (e.target.value === '현재 위치로 찾기') {
+                setSearchValue('');
+              }
+            }}
           />
           <BiMap
             className="w-6 h-6 cursor-pointer"
