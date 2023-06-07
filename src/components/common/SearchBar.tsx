@@ -120,7 +120,11 @@ export const SearchBar = () => {
           {people}
           <button
             className="btn btn-square btn-xs rounded-lg"
-            onClick={() => setPeople(people + 1)}
+            onClick={() => {
+              if (people <= 100) {
+                setPeople(people + 1);
+              }
+            }}
           >
             +
           </button>
