@@ -8,6 +8,7 @@ import ReservationConfirm from './views/ReservationConfirm';
 import SearchResult from './views/SearchResult';
 import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
+import PageNotFound from './views/PageNotFound';
 import { useEffect } from 'react';
 import { mswTest } from './mocks/mswTestForBrowser';
 
@@ -18,9 +19,9 @@ function App() {
   return (
     <BrowserRouter>
       <Nav />
-      <main>
+      <main className="pt-20">
         <Routes>
-          <Route path="/*" element={<Main />} />
+          <Route path="/" element={<Main />} />
           <Route path="/sign-in" element={<SignIn />} />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/searchResult" element={<SearchResult />} />
@@ -30,6 +31,7 @@ function App() {
           />
           <Route path="/reservationConfirm" element={<ReservationConfirm />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </main>
       <Footer />
