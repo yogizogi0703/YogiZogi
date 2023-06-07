@@ -24,7 +24,7 @@ export const SearchBar = () => {
       setDateContent(() => {
         const selectedCheckInDate = getFormatedDate(checkInDate);
         const selectedCheckOutDate = getFormatedDate(checkOutDate);
-        return `From ${selectedCheckInDate} to ${selectedCheckOutDate}`;
+        return `${selectedCheckInDate} ~ ${selectedCheckOutDate}`;
       });
     }
   }, [checkInDate, checkOutDate]);
