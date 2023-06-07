@@ -30,8 +30,8 @@ export const SearchBar = () => {
   }, [checkInDate, checkOutDate]);
 
   return (
-    <section className="flex border rounded-md max-w-5xl mx-auto p-3 shadow-md">
-      <div className="w-2/5">
+    <section className="flex items-center border rounded-md max-w-5xl mx-auto p-3 shadow-md">
+      <div className="w-1/2">
         <p className="font-medium">Destination</p>
         <div className="flex items-center">
           <input
@@ -55,23 +55,23 @@ export const SearchBar = () => {
           />
         </div>
       </div>
-      <div className="w-1/3 relative">
+      <div className="w-1/6 relative">
         <div onClick={() => setCalendarState(!calendarState)}>
           <div className="flex gap-1 items-center font-medium cursor-pointer">
             <FcCalendar /> Date
           </div>
-          <p className="text-sm cursor-pointer">
+          <p className="flex text-sm cursor-pointer w-28">
             {checkInDate && checkOutDate && !calendarState
               ? dateContent
               : 'Add Dates'}
           </p>
         </div>
         <div
-          className={`flex gap-1 absolute left-1 p-3 rounded-lg bg-cyan-100 ${
+          className={`flex gap-1 absolute top-14 p-3 rounded-lg bg-slate-300 ${
             calendarState ? 'block' : 'hidden'
           }`}
         >
-          <div>
+          <div className="font-semibold">
             Check In
             <DatePicker
               locale={ko}
@@ -85,7 +85,7 @@ export const SearchBar = () => {
               }}
             />
           </div>
-          <div>
+          <div className="font-semibold">
             Check Out
             <DatePicker
               locale={ko}
@@ -109,7 +109,7 @@ export const SearchBar = () => {
         </div>
         <p className="flex items-center gap-2 text-sm text-center">
           <button
-            className="btn btn-square btn-xs rounded-lg ml-2"
+            className="btn btn-square btn-xs rounded-lg"
             onClick={() => {
               if (people === 0) return;
               setPeople(people - 1);
@@ -130,7 +130,7 @@ export const SearchBar = () => {
           </button>
         </p>
       </div>
-      <button className="btn btn-xs sm:btn-sm md:btn-md lg:btn-md">
+      <button className="w-1/6 btn text-xs ml-3">
         <BsSearch />
         Search
       </button>
