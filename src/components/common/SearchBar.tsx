@@ -163,9 +163,9 @@ export const SearchBar = () => {
           </p>
         </div>
         <div className="flex justify-end items-center w-auto sm:w-1/4">
-          <button className="btn font-semibold md:w-full">
+          <button className="btn font-semibold lg:w-full">
             <BsSearch />
-            <span className="hidden md:block text-lg">검색</span>
+            <span className="hidden lg:block text-lg">검색</span>
           </button>
         </div>
       </div>
