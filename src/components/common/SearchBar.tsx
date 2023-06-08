@@ -9,25 +9,45 @@ import { ko } from 'date-fns/esm/locale';
 import { GetGeoInfo } from '../../utils/getGeoInfo';
 import { getFormatedDate } from '../../utils/getFormatedDate';
 
+export interface SearchProps {
+  searchValue: string;
+  checkInDate: Date;
+  checkOutDate: Date;
+  people: number;
+  userGeoInfo: number[];
+}
+
 export const SearchBar = () => {
-  const [searchValue, setSearchValue] = useState('');
-  const [checkInDate, setCheckInDate] = useState(new Date());
-  const [checkOutDate, setCheckOutDate] = useState<Date | null>(null);
+  const [search, setSearch] = useState<SearchProps>({
+    searchValue: '',
+    checkInDate: new Date(),
+    checkOutDate: new Date(),
+    people: 0,
+    userGeoInfo: [37.57, 126.9]
+  });
+
   const [dateContent, setDateContent] = useState('');
   const [calendarState, setCalendarState] = useState(false);
-  const [userGeoInfo, setGeoInfo] = useState([37.57, 126.9]);
-  const [people, setPeople] = useState(0);
 
   // 사용자가 check-in/check-out date를 선택하면, date를 형식(yyyy-mm-dd)에 맞게 변경
   useEffect(() => {
-    if (checkOutDate) {
+    if (
+      search.checkOutDate.toString().slice(0, 15) !==
+      new Date().toString().slice(0, 15)
+    ) {
       setDateContent(() => {
-        const selectedCheckInDate = getFormatedDate(checkInDate);
-        const selectedCheckOutDate = getFormatedDate(checkOutDate);
+        const selectedCheckInDate = getFormatedDate(search.checkInDate);
+        const selectedCheckOutDate = getFormatedDate(search.checkOutDate);
         return `${selectedCheckInDate} ~ ${selectedCheckOutDate}`;
       });
     }
-  }, [checkInDate, checkOutDate]);
+  }, [search.checkInDate, search.checkOutDate]);
+
+  const handleSearchState = (property: PropertyKey, value: any) => {
+    setSearch((prev) => {
+      return { ...prev, [property]: value };
+    });
+  };
 
   return (
     <section className="flex w-fit flex-col items-center lg:w-[1000px] md:flex-row border rounded-md max-w-5xl mx-auto p-3 shadow-md bg-white">
@@ -38,19 +58,22 @@ export const SearchBar = () => {
             type="text"
             placeholder="키워드 또는 시설명을 입력하세요"
             className="input h-auto max-w-xs p-0 text-sm focus:outline-none"
-            value={searchValue}
-            onChange={(e) => setSearchValue(e.target.value)}
+            value={search.searchValue}
+            onChange={(e) => {
+              const newKeyword = e.target.value;
+              handleSearchState('searchValue', newKeyword);
+            }}
             onFocus={(e) => {
               if (e.target.value === '현재 위치에서 찾기') {
-                setSearchValue('');
+                handleSearchState('searchValue', '');
               }
             }}
           />
           <BiMap
             className="w-4 h-4 md:w-6 md:h-6 cursor-pointer"
             onClick={() => {
-              GetGeoInfo(setGeoInfo);
-              setSearchValue('현재 위치에서 찾기');
+              GetGeoInfo(setSearch);
+              handleSearchState('searchValue', '현재 위치에서 찾기');
             }}
           />
         </div>
@@ -64,7 +87,7 @@ export const SearchBar = () => {
             <FcCalendar /> Date
           </div>
           <p className="flex text-sm cursor-pointer w-28">
-            {checkInDate && checkOutDate && !calendarState
+            {dateContent !== '' && !calendarState
               ? dateContent
               : '날짜 선택하기'}
           </p>
@@ -80,11 +103,12 @@ export const SearchBar = () => {
               locale={ko}
               inline
               minDate={new Date()}
-              selected={checkInDate}
+              selected={search.checkInDate}
               closeOnScroll={true}
               onChange={(date: Date) => {
-                if (checkOutDate) setCheckOutDate(null);
-                setCheckInDate(date);
+                if (search.checkOutDate)
+                  handleSearchState('checkOutDate', new Date());
+                handleSearchState('checkInDate', date);
               }}
             />
           </div>
@@ -93,13 +117,16 @@ export const SearchBar = () => {
             <DatePicker
               locale={ko}
               inline
-              minDate={new Date(checkInDate.getTime() + 86400000)}
-              selected={checkOutDate}
+              minDate={new Date(search.checkInDate.getTime() + 86400000)}
+              selected={search.checkOutDate}
               closeOnScroll={true}
               onChange={(date: Date) => {
-                if (!checkInDate || checkInDate.getTime() >= date.getTime())
+                if (
+                  !search.checkInDate ||
+                  search.checkInDate.getTime() >= date.getTime()
+                )
                   return;
-                setCheckOutDate(date);
+                handleSearchState('checkOutDate', date);
                 setCalendarState(!calendarState);
               }}
             />
@@ -114,20 +141,22 @@ export const SearchBar = () => {
           <button
             className="btn btn-square btn-xs rounded-lg"
             onClick={() => {
-              if (people === 0) return;
-              setPeople(people - 1);
+              if (search.people === 0) return;
+              const peopleNum = search.people - 1;
+              handleSearchState('people', peopleNum);
             }}
-            disabled={people === 0}
+            disabled={search.people === 0}
           >
             -
           </button>
-          {people}
+          {search.people}
           <button
             className="btn btn-square btn-xs rounded-lg"
             onClick={() => {
-              setPeople(people + 1);
+              const peopleNum = search.people + 1;
+              handleSearchState('people', peopleNum);
             }}
-            disabled={people > 100}
+            disabled={search.people > 100}
           >
             +
           </button>
