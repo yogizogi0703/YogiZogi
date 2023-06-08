@@ -3,7 +3,7 @@ import { SearchBar } from '../components/common/SearchBar';
 const Main = () => {
   return (
     <div
-      className="bg-no-repeat"
+      className="bg-no-repeat bg-cover"
       style={{ backgroundImage: 'url(/assets/images/main.png)' }}
     >
       <div className="h-[calc(100vh-112px)] max-w-[1024px] m-auto flex flex-col justify-center">
