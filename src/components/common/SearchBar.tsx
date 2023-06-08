@@ -84,7 +84,7 @@ export const SearchBar = () => {
           onClick={() => setCalendarState(!calendarState)}
         >
           <div className="flex gap-1 items-center font-medium text-xs md:text-base cursor-pointer">
-            <FcCalendar /> Date
+            <FcCalendar /> 기간
           </div>
           <p className="flex text-xs md:text-base cursor-pointer w-28 text-slate-500">
             {dateContent !== '' && !calendarState
