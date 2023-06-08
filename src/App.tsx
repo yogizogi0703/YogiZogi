@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import AccommodationDetail from './views/AccomodationDetail';
+import AccommodationDetail from './views/AccommodationDetail';
 import Main from './views/Main';
 import Payment from './views/Payment';
 import ReservationConfirm from './views/ReservationConfirm';
