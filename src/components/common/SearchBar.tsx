@@ -50,14 +50,14 @@ export const SearchBar = () => {
   };
 
   return (
-    <section className="flex w-fit flex-col items-center lg:w-[1000px] md:flex-row border rounded-md max-w-5xl mx-auto p-3 shadow-md bg-white">
+    <section className="flex min-w-[300px] w-fit flex-col items-center lg:w-[1000px] md:flex-row border rounded-md max-w-5xl mx-auto p-3 shadow-md bg-white">
       <div className="flex gap-2 max-w-full md:block md:w-1/2">
-        <p className="font-medium w-12">목적지</p>
+        <p className="font-medium text-xs md:text-base min-w-fit">목적지</p>
         <div className="flex gap-1 md:flex items-center">
           <input
             type="text"
             placeholder="키워드 또는 시설명을 입력하세요"
-            className="input h-auto max-w-xs p-0 text-sm focus:outline-none"
+            className="input w-11/12 md:w-auto h-auto p-0 text-xs md:text-base focus:outline-none"
             value={search.searchValue}
             onChange={(e) => {
               const newKeyword = e.target.value;
@@ -83,21 +83,21 @@ export const SearchBar = () => {
           className="flex items-center gap-2 md:block"
           onClick={() => setCalendarState(!calendarState)}
         >
-          <div className="flex gap-1 items-center font-medium cursor-pointer">
+          <div className="flex gap-1 items-center font-medium text-xs md:text-base cursor-pointer">
             <FcCalendar /> Date
           </div>
-          <p className="flex text-sm cursor-pointer w-28">
+          <p className="flex text-xs md:text-base cursor-pointer w-28 text-slate-500">
             {dateContent !== '' && !calendarState
               ? dateContent
               : '날짜 선택하기'}
           </p>
         </div>
         <div
-          className={`flex gap-1 absolute left-14 md:top-14 p-3 rounded-lg bg-slate-300 ${
+          className={`flex gap-1 absolute flex-col lg:flex-row md:left-0 md:top-14 p-3 rounded-lg bg-slate-300 ${
             calendarState ? 'block' : 'hidden'
           }`}
         >
-          <div className="font-semibold">
+          <div className="font-medium text-xs md:text-base">
             체크인
             <DatePicker
               locale={ko}
@@ -112,7 +112,7 @@ export const SearchBar = () => {
               }}
             />
           </div>
-          <div className="font-semibold">
+          <div className="font-medium text-xs md:text-base">
             체크아웃
             <DatePicker
               locale={ko}
@@ -134,12 +134,12 @@ export const SearchBar = () => {
         </div>
       </div>
       <div className="flex gap-2 w-full md:ml-4 md:block md:w-1/6">
-        <div className="flex items-center gap-1 w-auto font-medium ">
+        <div className="flex items-center gap-1 w-auto font-medium text-xs md:text-base">
           <BsPeople /> 인원
         </div>
-        <p className="flex items-center gap-2 text-sm text-center">
+        <p className="flex items-center gap-2 text-xs text-center">
           <button
-            className="btn btn-square btn-xs rounded-lg"
+            className="btn btn-square w-4 h-4 min-h-[1rem] md:btn-xs rounded-lg"
             onClick={() => {
               if (search.people === 0) return;
               const peopleNum = search.people - 1;
@@ -151,7 +151,7 @@ export const SearchBar = () => {
           </button>
           {search.people}
           <button
-            className="btn btn-square btn-xs rounded-lg"
+            className="btn btn-square w-4 h-4 min-h-[1rem] min-h-4 md:btn-xs rounded-lg"
             onClick={() => {
               const peopleNum = search.people + 1;
               handleSearchState('people', peopleNum);
