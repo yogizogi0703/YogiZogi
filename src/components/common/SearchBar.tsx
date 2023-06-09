@@ -50,9 +50,9 @@ export const SearchBar = () => {
   };
 
   return (
-    <section className="flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg">
+    <section className="flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
       <div className="w-full md:w-1/2 flex flex-col gap-1">
-        <p className="font-semibold">목적지</p>
+        <p className="font-semibold text-lg">목적지</p>
         <div className="flex items-center justify-between gap-1 shrink bg-slate-200 rounded-md p-1">
           <input
             type="text"
@@ -80,7 +80,7 @@ export const SearchBar = () => {
       </div>
       <div className='w-full md:w-1/2 flex  justify-between'>
         <div className="relative flex flex-col gap-2 w-1/2 sm:w-1/2">
-          <div className="flex items-center font-semibold gap-1">
+          <div className="flex items-center font-semibold text-lg gap-1">
             <FcCalendar />
             <span>기간</span>
           </div>
@@ -93,7 +93,7 @@ export const SearchBar = () => {
               : '날짜 선택하기'}
           </p>
           <div
-            className={`p-3 rounded-lg bg-slate-300 absolute flex gap-1 top-14 ${
+            className={`p-3 rounded-lg bg-slate-300 absolute flex flex-col lg:flex-row gap-1 top-14 ${
               calendarState ? 'block' : 'hidden'
             }`}
           >
@@ -134,7 +134,7 @@ export const SearchBar = () => {
           </div>
         </div>
         <div className="flex flex-col gap-2 sm:w-1/4">
-          <div className="flex items-center font-semibold gap-1 ">
+          <div className="flex items-center font-semibold gap-1 text-lg">
             <BsPeople /> 인원
           </div>
           <p className="flex gap-3 items-center">
@@ -165,7 +165,7 @@ export const SearchBar = () => {
         <div className="flex justify-end items-center w-auto sm:w-1/4">
           <button className="btn font-semibold md:w-full">
             <BsSearch />
-            <span className="hidden md:block">검색</span>
+            <span className="hidden md:block text-lg">검색</span>
           </button>
         </div>
       </div>
