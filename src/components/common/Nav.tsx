@@ -1,16 +1,13 @@
+import useSignIn from '../../hooks/useSignIn';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Nav = () => {
-  const [isLogin, setIsLogin] = useState<boolean>(true);
+  const { authUser, handleLogOut } = useSignIn();
   const [isShow, isSetShow] = useState<boolean>(false);
 
   const handleShowSearchBar = () => {
     isSetShow((isShow) => !isShow);
-  };
-
-  const handleLogOut = () => {
-    setIsLogin((isLogin) => !isLogin);
   };
 
   return (
@@ -44,7 +41,7 @@ const Nav = () => {
               />
             </svg>
           </button>
-          {isLogin ? (
+          {authUser.isLoggedIn ? (
             <div className="dropdown dropdown-end dropdown-hover">
               <label tabIndex={0} className="btn btn-square btn-ghost m-1">
                 <svg
@@ -75,7 +72,7 @@ const Nav = () => {
               </ul>
             </div>
           ) : (
-            <Link to={'/sign-in'} className="btn btn-error text-white">
+            <Link to={'/signIn'} className="btn btn-error text-white">
               로그인
             </Link>
           )}
