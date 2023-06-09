@@ -14,10 +14,10 @@ const Nav = () => {
   };
 
   return (
-    <div className="fixed flex-col navbar bg-base-100 w-full drop-shadow-md z-50">
+    <nav className="fixed flex-col navbar bg-base-100 w-full drop-shadow-md p-0 z-50">
       <div
-        className="m-auto h-16 w-full"
-        style={{ maxWidth: '1294px', minWidth: '375px' }}
+        className="m-auto h-12 w-full max-w-5xl px-2"
+        style={{ minWidth: '375px' }}
       >
         <div className="flex-1 pl-4">
           <Link to={'/'} className="cursor-pointer text-xl font-bold">
@@ -64,7 +64,7 @@ const Nav = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 text-xl"
+                className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md"
               >
                 <li>
                   <Link to={'/reservationConfirm'}>예약확인</Link>
@@ -90,7 +90,7 @@ const Nav = () => {
           />
         </div>
       )}
-    </div>
+    </nav>
   );
 };
 
