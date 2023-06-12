@@ -63,7 +63,7 @@ const useSignUp = () => {
     }
     if (res.status === 201) {
       alert('회원가입완료');
-      navigate('/FE/signIn');
+      navigate('/signIn');
     }
   };
 
