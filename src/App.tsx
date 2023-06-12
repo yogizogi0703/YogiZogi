@@ -10,21 +10,22 @@ import PageNotFound from './views/PageNotFound';
 import Layout from './components/common/Layout';
 
 function App() {
+  const baseURL = 'FE'
   return (
     <BrowserRouter>
       <Layout>
         <Routes>
-          <Route path="/" element={<Main />} />
-          <Route path="/signIn" element={<SignIn />} />
-          <Route path="/signUp" element={<SignUp />} />
-          <Route path="/searchResult" element={<SearchResult />} />
+          <Route path={`/${baseURL}`} element={<Main />} />
+          <Route path={`/${baseURL}/signIn`} element={<SignIn />} />
+          <Route path={`/${baseURL}/signUp`} element={<SignUp />} />
+          <Route path={`/${baseURL}/searchResult`} element={<SearchResult />} />
           <Route
-            path="/accommodationDetail"
+            path={`/${baseURL}/accommodationDetail`}
             element={<AccommodationDetail />}
           />
-          <Route path="/reservationConfirm" element={<ReservationConfirm />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path={`/${baseURL}/reservationConfirm`} element={<ReservationConfirm />} />
+          <Route path={`/${baseURL}/payment`} element={<Payment />} />
+          <Route path={`/${baseURL}/*`} element={<PageNotFound />} />
         </Routes>
       </Layout>
     </BrowserRouter>

@@ -49,7 +49,7 @@ const useSignIn = () => {
       const token = res.data.X_Auth_Token;
       localStorage.setItem(AUTH_TOKEN_KEY, token);
       setAuthUser({ token, isLoggedIn: true });
-      navigate('/');
+      navigate('/FE');
     }
   };
 
