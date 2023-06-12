@@ -53,7 +53,7 @@ const AccommodationDetail = () => {
                 {data.address}
               </span>
               <div className="flex items-center gap-1">
-                평점 :{/* < RatingStars({data.rate}) /> */}
+                평점 :<RatingStars rate={data.rate} />
               </div>
             </div>
             <div>
