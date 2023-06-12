@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
 import AccommodationDetail from './views/AccommodationDetail';
 import Main from './views/Main';
 import Payment from './views/Payment';
@@ -11,7 +11,7 @@ import Layout from './components/common/Layout';
 
 function App() {
   return (
-    <BrowserRouter basename='/FE'>
+    <HashRouter>
       <Layout>
         <Routes>
           <Route path='/' element={<Main />} />
@@ -27,7 +27,7 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </Layout>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
