@@ -57,7 +57,7 @@ export const SearchBar = () => {
           <input
             type="text"
             placeholder="검색어 입력하세요"
-            className="min-w-fit max-w-full lg:w-full h-auto p-0 input focus:outline-none bg-inherit"
+            className="w-full lg:w-full h-auto p-0 input focus:outline-none bg-inherit"
             value={search.searchValue}
             onChange={(e) => {
               const newKeyword = e.target.value;
