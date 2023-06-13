@@ -159,9 +159,9 @@ const AccommodationDetail = () => {
                 투숙 기간 :{' '}
                 <span className="text-slate-500 font-medium">1/1 ~ 2/1</span>
               </p>
-              <p className="flex items-center gap-2 font-semibold">
-                평점 : <span className="text-slate-500"><RatingStars rate={9} /></span>
-              </p>
+              <div className="flex items-center gap-2 font-semibold">
+                평점 : <div className="text-slate-500"><RatingStars rate={9} /></div>
+              </div>
             </div>
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione
