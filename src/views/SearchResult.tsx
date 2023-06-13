@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import AccommodationPreview from '../components/searchResult/AccommodationPreview';
-// import Range from '../components/searchResult/Range';
+import Range from '../components/searchResult/Range';
 
 const MIN_PRICE = 1;
 const MAX_PRICE = 30;
+const RANGE_WIDTH = 248;
+const STEPS = 30;
 
 const data = {
   categoryId: 1,
@@ -79,6 +81,18 @@ const SearchResult = () => {
     setViewType((viewType) => !viewType);
   };
 
+  const handleRangeValueChange = (min: number, max: number) => {
+    console.log('hi');
+    console.log(min, max);
+    for (const value of [min, max]) {
+      if (value < MIN_PRICE || value > MAX_PRICE || isNaN(value)) return;
+    }
+    console.log('hello');
+
+    setMinRangeValue(min);
+    setMaxRangeValue(max);
+  };
+
   const handleSelectCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.id as CategoryTypes;
 
@@ -125,8 +139,8 @@ const SearchResult = () => {
             );
           })}
         </section>
-        {/* divider */}
-        <section className="md:flex md:gap-12 lg:gap-4 items-center mt-2 md:mb-0 lg:mt-0">
+        <div className="hidden lg:block h-12 w-0.5 bg-gray-200"></div>
+        <section className="md:flex md:justify-between lg:justify-end lg:gap-4 items-center mt-2 md:mb-0 lg:mt-0 max-w-3xl">
           <section className="flex flex-wrap md:flex-nowrap gap-2 items-center mt-7 mb-7 md:mt-0 md:mb-0">
             {sortingFactors.map((factor) => {
               return (
@@ -149,7 +163,7 @@ const SearchResult = () => {
               );
             })}
           </section>
-          <section className="w-60">
+          <section style={{ width: `${248}px` }}>
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <p className="text-sm font-bold">가격 범위</p>
@@ -159,7 +173,11 @@ const SearchResult = () => {
                 적용
               </button>
             </div>
-            {/* <Range width={240} steps={30} /> */}
+            <Range
+              width={RANGE_WIDTH}
+              steps={STEPS}
+              onRangeValueChange={handleRangeValueChange}
+            />
             <div className="text-xs font-bold text-gray-400 flex justify-between">
               <p>{`${MIN_PRICE}만원`}</p>
               <p>{`${MAX_PRICE}만원`}</p>
