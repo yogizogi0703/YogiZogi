@@ -30,7 +30,6 @@ export const SearchBar = () => {
   const [calendarState, setCalendarState] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
 
-  // 사용자가 check-in/check-out date를 선택하면, date를 형식(yyyy-mm-dd)에 맞게 변경
   useEffect(() => {
     if (
       search.checkOutDate.toString().slice(0, 15) !==
@@ -113,7 +112,7 @@ export const SearchBar = () => {
               calendarState ? 'block' : 'hidden'
             }`}
           >
-            <div className="">
+            <div>
               체크인
               <DatePicker
                 locale={ko}
@@ -128,7 +127,7 @@ export const SearchBar = () => {
                 }}
               />
             </div>
-            <div className="">
+            <div>
               체크아웃
               <DatePicker
                 locale={ko}
