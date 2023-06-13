@@ -114,9 +114,10 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
     <div className="slider h-10 relative" style={{ width: `${width}px` }}>
       <div className="track w-full h-2 bg-gray-100 rounded absolute top-4 left-0"></div>
       <div className="sliderRange absolute z-[2] w-full top-4 bg-emerald-400 h-2"></div>
-      {thumbList.map((thumb) => {
+      {thumbList.map((thumb, index) => {
         return (
           <div
+            key={`thumb-${index}`}
             className="thumb absolute top-2 h-6 border-emerald-400 border-4 bg-white rounded-lg z-[3] cursor-pointer"
             style={{ width: `${THUMB_WIDTH}px`, left: `${thumb.left}px` }}
             onMouseDown={handleMouseDown}
