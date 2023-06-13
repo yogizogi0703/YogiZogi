@@ -8,6 +8,7 @@ import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
 import PageNotFound from './views/PageNotFound';
 import Layout from './components/common/Layout';
+import MapTest from './views/MapTest';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           />
           <Route path="/reservationConfirm" element={<ReservationConfirm />} />
           <Route path="/payment" element={<Payment />} />
+          <Route path="/map" element={<MapTest />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Layout>
