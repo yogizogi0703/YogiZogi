@@ -13,16 +13,19 @@ const RatingStars = ({ rate }: IRatingStars) => {
     <div className="flex items-center gap-1">
       <div className="relative">
         <div className="flex">
-          {Array.from({ length: 5 }, () => null).map(() => (
-            <AiFillStar className="text-gray-300" />
+          {Array.from({ length: 5 }, () => null).map((_, index) => (
+            <AiFillStar key={`star-${index}`} className="text-gray-300" />
           ))}
         </div>
         <div
           className="absolute left-0 top-0 z-10 flex overflow-hidden"
           style={{ width: `${starFill}%` }}
         >
-          {Array.from({ length: 5 }, () => null).map(() => (
-            <AiFillStar className="text-yellow-300 flex-none" />
+          {Array.from({ length: 5 }, () => null).map((_, index) => (
+            <AiFillStar
+              key={`star-paint-${index}`}
+              className="text-yellow-300 flex-none"
+            />
           ))}
         </div>
       </div>
