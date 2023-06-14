@@ -1,6 +1,6 @@
 import React from 'react';
 import { CustomOverlayMap, Map, MapMarker } from 'react-kakao-maps-sdk';
-import FacilityMarker from './FacilityMarker';
+import FacilityMarker from './marker/FacilityMarker';
 
 const DynamicMap = () => {
   return (
