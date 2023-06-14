@@ -82,12 +82,9 @@ const SearchResult = () => {
   };
 
   const handleRangeValueChange = (min: number, max: number) => {
-    console.log('hi');
-    console.log(min, max);
     for (const value of [min, max]) {
       if (value < MIN_PRICE || value > MAX_PRICE || isNaN(value)) return;
     }
-    console.log('hello');
 
     setMinRangeValue(min);
     setMaxRangeValue(max);
