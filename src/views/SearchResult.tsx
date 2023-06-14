@@ -108,6 +108,14 @@ const SearchResult = () => {
     }
   };
 
+  const renderCurrentPriceRange = () => {
+    if (maxRangeValue === MAX_PRICE) {
+      return `${minRangeValue}만원 이상`;
+    }
+
+    return `${minRangeValue}만원 ~ ${maxRangeValue}만원`;
+  };
+
   return (
     <div
       className="max-w-5xl mx-auto px-4 py-8 bg-white"
@@ -164,7 +172,9 @@ const SearchResult = () => {
             <div className="flex justify-between items-center">
               <div className="flex items-center gap-2">
                 <p className="text-sm font-bold">가격 범위</p>
-                <p className="text-xs font-bold text-red-500">{`${minRangeValue}만원 ~ ${maxRangeValue}만원`}</p>
+                <p className="text-xs font-bold text-red-500">
+                  {renderCurrentPriceRange()}
+                </p>
               </div>
               <button className="text-xs btn btn-ghost bg-white drop-shadow btn-sm min-h-full h-6">
                 적용
