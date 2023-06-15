@@ -12,8 +12,6 @@ interface LocalMapProps {
 const LocalMap = ({ position, type }: LocalMapProps) => {
   const { localData } = useLocalMap(position);
 
-  console.log(type);
-
   useEffect(() => {
     console.log(localData);
   }, [localData]);

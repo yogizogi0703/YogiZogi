@@ -1,8 +1,19 @@
 import React from 'react';
 
-const FacilityDetailMarker = () => {
+interface FacilityDetailMarkerProps {
+  info: {};
+  handleOnClick: () => void;
+}
+
+const FacilityDetailMarker = ({
+  info,
+  handleOnClick
+}: FacilityDetailMarkerProps) => {
   return (
-    <div className="cursor-pointer absolute bottom-full mb-2 w-72 h-72 rounded-2xl drop-shadow-md bg-white">
+    <div
+      className="cursor-pointer absolute bottom-full mb-2 w-72 h-72 rounded-2xl drop-shadow-md bg-white"
+      onClick={handleOnClick}
+    >
       <div className="w-72 h-72 rounded-2xl overflow-hidden">
         <img
           className="w-full h-full object-cover"

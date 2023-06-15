@@ -5,8 +5,8 @@ import React from 'react';
 const MapTest = () => {
   return (
     <div>
-      {/* <MapView /> */}
-      <LocalMapView />
+      <MapView />
+      {/* <LocalMapView /> */}
     </div>
   );
 };
