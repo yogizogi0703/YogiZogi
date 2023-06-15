@@ -1,6 +1,6 @@
 import { rest } from 'msw';
-import { mockData as accommodationData } from './api/data/accommodationData';
-import { mockData as reviewData } from './api/data/reviewData';
+import { accommodationData } from './api/data/accommodationData';
+import { reviewData } from './api/data/reviewData';
 
 let reviewIdCount = 100;
 

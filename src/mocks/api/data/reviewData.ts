@@ -1,4 +1,4 @@
-export const mockData = [
+export const reviewData = [
   {
     id: 20,
     userId: 16,

@@ -1,4 +1,4 @@
-export const mockData = [
+export const accommodationData = [
   {
     id: 1,
     accommodationName: 'ABC 호텔',
