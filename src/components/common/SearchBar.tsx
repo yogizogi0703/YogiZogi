@@ -8,6 +8,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import { GetGeoInfo } from '../../utils/getGeoInfo';
 import { getFormatedDate } from '../../utils/getFormatedDate';
+import './SearchBar.css';
 
 export interface SearchProps {
   searchValue: string;
