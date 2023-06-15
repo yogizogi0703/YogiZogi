@@ -17,9 +17,9 @@ function App() {
           <Route path="/" element={<Main />} />
           <Route path="/signIn" element={<SignIn />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path={`/searchResult/:search`} element={<SearchResult />} />
+          <Route path="/searchResult" element={<SearchResult />} />
           <Route
-            path={`/accommodationDetail/:detail`}
+            path="/accommodationDetail"
             element={<AccommodationDetail />}
           />
           <Route path="/reservationConfirm" element={<ReservationConfirm />} />
