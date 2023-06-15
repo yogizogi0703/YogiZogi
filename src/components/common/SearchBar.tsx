@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import { GetGeoInfo } from '../../utils/getGeoInfo';
-import { getFormatedDate } from '../../utils/getFormatedDate';
+import { getMonthDayFormat } from '../../utils/handleDate';
 import './SearchBar.css';
 
 export interface SearchProps {
@@ -37,8 +37,8 @@ export const SearchBar = () => {
       new Date().toString().slice(0, 15)
     ) {
       setDateContent(() => {
-        const selectedCheckInDate = getFormatedDate(search.checkInDate);
-        const selectedCheckOutDate = getFormatedDate(search.checkOutDate);
+        const selectedCheckInDate = getMonthDayFormat(search.checkInDate);
+        const selectedCheckOutDate = getMonthDayFormat(search.checkOutDate);
         return `${selectedCheckInDate} ~ ${selectedCheckOutDate}`;
       });
     }
