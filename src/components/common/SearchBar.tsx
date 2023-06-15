@@ -65,7 +65,7 @@ export const SearchBar = () => {
   }, []);
 
   return (
-    <section className="flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
+    <section className="relative flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
       <div className="w-full md:w-1/2 flex flex-col gap-1">
         <p className="font-semibold text-lg">목적지</p>
         <div className="flex items-center justify-between gap-1 shrink bg-slate-200 rounded-md p-1">
@@ -94,7 +94,7 @@ export const SearchBar = () => {
         </div>
       </div>
       <div className="w-full md:w-1/2 flex  justify-between">
-        <div className="relative flex flex-col gap-2 w-1/2 sm:w-1/2">
+        <div className="flex flex-col gap-2 w-1/2 sm:w-1/2">
           <div className="flex items-center font-semibold text-lg gap-1">
             <FcCalendar />
             <span>기간</span>
@@ -109,7 +109,7 @@ export const SearchBar = () => {
           </p>
           <div
             ref={calendarRef}
-            className={`p-3 rounded-lg bg-slate-300 absolute flex flex-col lg:flex-row gap-1 top-14 ${
+            className={`flex p-2 md:p-3 rounded-lg bg-stone-200 absolute gap-3 top-32 sm:top-20 sm:right-0 ${
               calendarState ? 'block' : 'hidden'
             }`}
           >
