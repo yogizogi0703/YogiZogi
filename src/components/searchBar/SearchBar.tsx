@@ -53,8 +53,11 @@ export const SearchBar = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e:MouseEvent) => {
-      if (calendarRef.current && !calendarRef.current.contains(e.target as Node)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(e.target as Node)
+      ) {
         setCalendarState(false);
       }
     };
