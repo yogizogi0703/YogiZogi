@@ -20,8 +20,6 @@ export interface LocalPlaceProps {
   y: number;
 }
 
-const KAKAO_REST_KEY = 'bf715237136ba5b4f1da9b658e2ed3ab';
-
 export const fetchLocalAPI = async (
   position: PositionProps,
   category: string
@@ -30,7 +28,7 @@ export const fetchLocalAPI = async (
     url: 'https://dapi.kakao.com/v2/local/search/category.json',
     method: 'get',
     headers: {
-      Authorization: `KakaoAK ${KAKAO_REST_KEY}`
+      Authorization: `KakaoAK ${import.meta.env.VITE_KAKAO_REST_KEY}`
     },
     params: {
       x: position.lng,

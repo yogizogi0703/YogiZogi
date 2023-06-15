@@ -9,7 +9,7 @@ const LocalMapView = () => {
 
   return (
     <KakaoMapScriptLoader>
-      <LocalMap position={position} type="mini" />
+      <LocalMap position={position} type="full" />
     </KakaoMapScriptLoader>
   );
 };
