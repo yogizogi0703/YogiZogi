@@ -70,25 +70,29 @@ export const SearchBar = () => {
   }, []);
 
   const handleSearch = () => {
-    const checkIn = getDateFormat(search.checkInDate);
-    const checkOut = getDateFormat(search.checkOutDate);
-    const [lat, lon] = search.userGeoInfo;
-
     if (
-      search.people === 0 &&
-      search.searchValue.length === 0 &&
+      search.people === 0 ||
+      search.searchValue.length === 0 ||
       search.checkOutDate === search.checkInDate
     )
       return;
+    else {
+      const [lat, lon] = search.userGeoInfo;
+      const params = new URLSearchParams();
+      
+      params.append('checkin', getDateFormat(search.checkInDate));
+      params.append('checkout', getDateFormat(search.checkOutDate));
+      params.append('people', search.people.toString());
 
-    if (search.searchValue === '현재 위치에서 찾기') {
-      navigate(
-        `/accommodation/search?startdate=${checkIn}&enddate=${checkOut}&people=${search.people}&lat=${lat}&lng=${lon}`
-      );
-    } else {
-      navigate(
-        `/accommodation/search?keyword=${search.searchValue}&startdate=${checkIn}&enddate=${checkOut}&people=${search.people}`
-      );
+      if (search.searchValue === '현재 위치에서 찾기') {
+        params.append('lat', lat.toString());
+        params.append('lon', lon.toString());
+      } else {
+        params.append('keyword', search.searchValue);
+      }
+
+      const queryString = params.toString();
+      navigate(`/searchResult?${queryString}`);
     }
   };
 
