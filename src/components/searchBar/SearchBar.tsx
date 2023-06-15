@@ -83,11 +83,11 @@ export const SearchBar = () => {
 
     if (search.searchValue === '현재 위치에서 찾기') {
       navigate(
-        `/api/accommodation/search?startdate=${checkIn}&enddate=${checkOut}&people=${search.people}&lat=${lat}&lng=${lon}`
+        `/accommodation/search?startdate=${checkIn}&enddate=${checkOut}&people=${search.people}&lat=${lat}&lng=${lon}`
       );
     } else {
       navigate(
-        `/api/accommodation/search?keyword=${search.searchValue}&startdate=${checkIn}&enddate=${checkOut}&people=${search.people}`
+        `/accommodation/search?keyword=${search.searchValue}&startdate=${checkIn}&enddate=${checkOut}&people=${search.people}`
       );
     }
   };
