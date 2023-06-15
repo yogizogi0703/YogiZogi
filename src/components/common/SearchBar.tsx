@@ -7,8 +7,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import { GetGeoInfo } from '../../utils/getGeoInfo';
-import { getMonthDayFormat } from '../../utils/handleDate';
+import { getDateFormat, getMonthDayFormat } from '../../utils/handleDate';
 import './SearchBar.css';
+import { useNavigate } from 'react-router-dom';
 
 export interface SearchProps {
   searchValue: string;
@@ -30,6 +31,7 @@ export const SearchBar = () => {
   const [dateContent, setDateContent] = useState('');
   const [calendarState, setCalendarState] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (
@@ -63,6 +65,29 @@ export const SearchBar = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
+
+  const handleSearch = () => {
+    const checkIn = getDateFormat(search.checkInDate);
+    const checkOut = getDateFormat(search.checkOutDate);
+    const [lat, lon] = search.userGeoInfo;
+
+    if (
+      search.people === 0 &&
+      search.searchValue.length === 0 &&
+      search.checkOutDate === search.checkInDate
+    )
+      return;
+
+    if (search.searchValue === '현재 위치에서 찾기') {
+      navigate(
+        `/api/accommodation/search?startdate=${checkIn}&enddate=${checkOut}&people=${search.people}&lat=${lat}&lng=${lon}`
+      );
+    } else {
+      navigate(
+        `/api/accommodation/search?keyword=${search.searchValue}&startdate=${checkIn}&enddate=${checkOut}&people=${search.people}`
+      );
+    }
+  };
 
   return (
     <section className="relative flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
@@ -181,7 +206,10 @@ export const SearchBar = () => {
           </p>
         </div>
         <div className="flex justify-end items-center w-auto sm:w-1/4">
-          <button className="btn font-semibold lg:w-full">
+          <button
+            className="btn font-semibold lg:w-full"
+            onClick={handleSearch}
+          >
             <BsSearch />
             <span className="hidden lg:block text-lg">검색</span>
           </button>
