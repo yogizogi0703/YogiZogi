@@ -49,10 +49,6 @@
     top: 3px !important;
   }
 
-  .react-datepicker__navigation--next {
-    right: -10px !important;
-  }
-
   .react-datepicker__navigation-icon--next {
     left: -4px;
   }
