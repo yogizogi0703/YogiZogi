@@ -109,12 +109,12 @@ export const SearchBar = () => {
           </p>
           <div
             ref={calendarRef}
-            className={`flex p-2 md:p-3 rounded-lg bg-stone-200 absolute gap-3 top-32 sm:top-20 sm:right-0 ${
+            className={`flex px-2 md:p-3 rounded-lg bg-stone-200 absolute gap-3 top-32 sm:top-20 sm:right-0 ${
               calendarState ? 'block' : 'hidden'
             }`}
           >
             <div>
-              체크인
+              <span className="text-xs font-semibold md:text-base">체크인</span>
               <DatePicker
                 locale={ko}
                 inline
@@ -129,7 +129,9 @@ export const SearchBar = () => {
               />
             </div>
             <div>
-              체크아웃
+              <span className="text-xs font-semibold md:text-base">
+                체크아웃
+              </span>
               <DatePicker
                 locale={ko}
                 inline
