@@ -7,7 +7,9 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { ko } from 'date-fns/esm/locale';
 import { GetGeoInfo } from '../../utils/getGeoInfo';
-import { getFormatedDate } from '../../utils/getFormatedDate';
+import { getDateFormat, getMonthDayFormat } from '../../utils/handleDate';
+import './SearchBar.css';
+import { useNavigate } from 'react-router-dom';
 
 export interface SearchProps {
   searchValue: string;
@@ -29,6 +31,7 @@ export const SearchBar = () => {
   const [dateContent, setDateContent] = useState('');
   const [calendarState, setCalendarState] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (
@@ -36,8 +39,8 @@ export const SearchBar = () => {
       new Date().toString().slice(0, 15)
     ) {
       setDateContent(() => {
-        const selectedCheckInDate = getFormatedDate(search.checkInDate);
-        const selectedCheckOutDate = getFormatedDate(search.checkOutDate);
+        const selectedCheckInDate = getMonthDayFormat(search.checkInDate);
+        const selectedCheckOutDate = getMonthDayFormat(search.checkOutDate);
         return `${selectedCheckInDate} ~ ${selectedCheckOutDate}`;
       });
     }
@@ -50,8 +53,11 @@ export const SearchBar = () => {
   };
 
   useEffect(() => {
-    const handleClickOutside = (e:MouseEvent) => {
-      if (calendarRef.current && !calendarRef.current.contains(e.target as Node)) {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (
+        calendarRef.current &&
+        !calendarRef.current.contains(e.target as Node)
+      ) {
         setCalendarState(false);
       }
     };
@@ -63,8 +69,35 @@ export const SearchBar = () => {
     };
   }, []);
 
+  const handleSearch = () => {
+    if (
+      search.people === 0 ||
+      search.searchValue.length === 0 ||
+      search.checkOutDate === search.checkInDate
+    )
+      return;
+    else {
+      const [lat, lon] = search.userGeoInfo;
+      const params = new URLSearchParams();
+      
+      params.append('checkindate', getDateFormat(search.checkInDate));
+      params.append('checkoutdate', getDateFormat(search.checkOutDate));
+      params.append('people', search.people.toString());
+
+      if (search.searchValue === '현재 위치에서 찾기') {
+        params.append('lat', lat.toString());
+        params.append('lon', lon.toString());
+      } else {
+        params.append('keyword', search.searchValue);
+      }
+
+      const queryString = params.toString();
+      navigate(`/searchResult?${queryString}`);
+    }
+  };
+
   return (
-    <section className="flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
+    <section className="relative flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
       <div className="w-full md:w-1/2 flex flex-col gap-1">
         <p className="font-semibold text-lg">목적지</p>
         <div className="flex items-center justify-between gap-1 shrink bg-slate-200 rounded-md p-1">
@@ -93,7 +126,7 @@ export const SearchBar = () => {
         </div>
       </div>
       <div className="w-full md:w-1/2 flex  justify-between">
-        <div className="relative flex flex-col gap-2 w-1/2 sm:w-1/2">
+        <div className="flex flex-col gap-2 w-1/2 sm:w-1/2">
           <div className="flex items-center font-semibold text-lg gap-1">
             <FcCalendar />
             <span>기간</span>
@@ -108,12 +141,12 @@ export const SearchBar = () => {
           </p>
           <div
             ref={calendarRef}
-            className={`p-3 rounded-lg bg-slate-300 absolute flex flex-col lg:flex-row gap-1 top-14 ${
+            className={`flex px-2 md:p-3 rounded-lg bg-stone-200 absolute gap-3 top-32 sm:top-20 sm:right-0 ${
               calendarState ? 'block' : 'hidden'
             }`}
           >
             <div>
-              체크인
+              <span className="text-xs font-semibold md:text-base">체크인</span>
               <DatePicker
                 locale={ko}
                 inline
@@ -128,7 +161,9 @@ export const SearchBar = () => {
               />
             </div>
             <div>
-              체크아웃
+              <span className="text-xs font-semibold md:text-base">
+                체크아웃
+              </span>
               <DatePicker
                 locale={ko}
                 inline
@@ -178,7 +213,10 @@ export const SearchBar = () => {
           </p>
         </div>
         <div className="flex justify-end items-center w-auto sm:w-1/4">
-          <button className="btn font-semibold lg:w-full">
+          <button
+            className="btn font-semibold lg:w-full"
+            onClick={handleSearch}
+          >
             <BsSearch />
             <span className="hidden lg:block text-lg">검색</span>
           </button>

@@ -14,17 +14,17 @@ function App() {
     <HashRouter>
       <Layout>
         <Routes>
-          <Route path='/' element={<Main />} />
-          <Route path='/signIn' element={<SignIn />} />
-          <Route path='/signUp' element={<SignUp />} />
-          <Route path='/searchResult' element={<SearchResult />} />
+          <Route path="/" element={<Main />} />
+          <Route path="/signIn" element={<SignIn />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/searchResult" element={<SearchResult />} />
           <Route
-            path='/accommodationDetail'
+            path="/accommodationDetail/:id"
             element={<AccommodationDetail />}
           />
-          <Route path='/reservationConfirm' element={<ReservationConfirm />} />
-          <Route path='/payment' element={<Payment />} />
-          <Route path='*' element={<PageNotFound />} />
+          <Route path="/reservationConfirm" element={<ReservationConfirm />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Layout>
     </HashRouter>
