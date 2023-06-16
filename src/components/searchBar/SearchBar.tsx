@@ -80,8 +80,8 @@ export const SearchBar = () => {
       const [lat, lon] = search.userGeoInfo;
       const params = new URLSearchParams();
       
-      params.append('checkin', getDateFormat(search.checkInDate));
-      params.append('checkout', getDateFormat(search.checkOutDate));
+      params.append('checkindate', getDateFormat(search.checkInDate));
+      params.append('checkoutdate', getDateFormat(search.checkOutDate));
       params.append('people', search.people.toString());
 
       if (search.searchValue === '현재 위치에서 찾기') {
