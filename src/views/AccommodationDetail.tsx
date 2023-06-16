@@ -129,7 +129,7 @@ const AccommodationDetail = () => {
                   {addCommasToPrice(data.price)}원
                 </p>
                 <button className="btn btn-secondary btn-xs md:btn-md text-white">
-                  결제하기
+                  예약하기
                 </button>
               </div>
             </div>
