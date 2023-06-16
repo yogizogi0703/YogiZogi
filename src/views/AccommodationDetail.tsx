@@ -1,5 +1,7 @@
+import { addCommasToPrice } from '../helpers';
 import RatingStars from '../components/searchResult/RatingStars';
 import { BiMap } from 'react-icons/bi';
+
 const AccommodationDetail = () => {
   const data = {
     categoryId: 1,
@@ -8,7 +10,7 @@ const AccommodationDetail = () => {
     rate: 9,
     accomodationImage: 'http://via.placeholder.com/640x480',
     address: '서울특별시 중구 을지로 30',
-    price: 80000,
+    price: 99999999,
     lat: 37.565773,
     lon: 126.981414
   };
@@ -123,11 +125,11 @@ const AccommodationDetail = () => {
               </div>
               <div className="divider divider-horizontal mx-2" />
               <div className="flex flex-col gap-3 w-1/4 md:w-1/4 my-auto items-center justify-end">
-                <p className="w-fit md:text-xl font-semibold md:mb-5 ">
-                  {data.price}원
+                <p className="w-fit text-xs sm:text-base lg:text-xl font-semibold md:mb-5 ">
+                  {addCommasToPrice(data.price)}원
                 </p>
                 <button className="btn btn-secondary btn-xs md:btn-md text-white">
-                  결제하기
+                  예약하기
                 </button>
               </div>
             </div>
