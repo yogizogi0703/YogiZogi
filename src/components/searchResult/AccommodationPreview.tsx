@@ -24,7 +24,7 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { name, rate, accommodationImage, address, price } = data;
 
   return (
-    <article className="card bg-base-100 shadow-xl" style={{ width: '324px' }}>
+    <article className="card bg-base-100 shadow-xl mb-2">
       <figure
         className="h-60 bg-cover bg-center"
         style={{ backgroundImage: `url('${accommodationImage}')` }}

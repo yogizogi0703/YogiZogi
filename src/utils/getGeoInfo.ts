@@ -1,4 +1,4 @@
-import { SearchProps } from 'components/common/SearchBar';
+import { SearchProps } from 'components/searchBar/SearchBar';
 
 export const GetGeoInfo = (
   setSearch: React.Dispatch<React.SetStateAction<SearchProps>>
