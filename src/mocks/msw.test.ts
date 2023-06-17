@@ -106,7 +106,7 @@ describe('MSW Fetch Test: ', () => {
       address: '서울 중구 쌍림동 155-1',
       location: '강남구 역삼동',
       lat: 37.50252991,
-      lnt: 127.0382753,
+      lon: 127.0382753,
       info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
       pictureUrlList: [
         '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
