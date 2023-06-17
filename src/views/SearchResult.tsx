@@ -177,6 +177,12 @@ const SearchResult = () => {
 
   useEffect(() => {
     const init = async () => {
+      if (!searchParams.current.keyword) {
+        searchParams.current.sort = Sort.DISTANCE;
+        searchParams.current.direction = Direction.ASC;
+
+        setSelectedSortingFactor(Sort.DISTANCE);
+      }
       await handleDetailedSearch();
     };
     init();
