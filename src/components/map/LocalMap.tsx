@@ -1,27 +1,24 @@
 import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk';
-import { PositionProps } from '../../api/map';
-import { useLocalMap } from '../../hooks/useLocalMap';
-import { useEffect } from 'react';
+import { LocalPlaceProps, PositionProps } from '../../api/map';
 import Marker from './marker/Marker';
 
 interface LocalMapProps {
   position: PositionProps;
   type: 'mini' | 'full';
+  localData: LocalPlaceProps[];
 }
 
-const LocalMap = ({ position, type }: LocalMapProps) => {
-  const { localData } = useLocalMap(position);
-
-  useEffect(() => {
-    console.log(localData);
-  }, [localData]);
-
+const LocalMap = ({ position, type, localData }: LocalMapProps) => {
   return (
-    <div
-      className="mx-auto max-w-5xl"
-      style={{ height: 'calc(100vh - 112px)' }}
-    >
-      <Map center={position} style={{ width: '100%', height: '100%' }}>
+    <div className="mx-auto max-w-5xl w-full h-full">
+      <Map
+        center={position}
+        level={3}
+        isPanto={true}
+        style={{ width: '100%', height: '100%' }}
+        disableDoubleClickZoom={type === 'mini' || false}
+        draggable={type === 'full' || false}
+      >
         <CustomOverlayMap position={position}>
           <Marker type={'home'} />
         </CustomOverlayMap>
@@ -31,7 +28,7 @@ const LocalMap = ({ position, type }: LocalMapProps) => {
               key={item.id}
               position={{ lat: item.y, lng: item.x }}
             >
-              <Marker type={item.category_group_code} />
+              <Marker type={item.category_group_code} title={item.place_name} />
             </CustomOverlayMap>
           ))}
       </Map>

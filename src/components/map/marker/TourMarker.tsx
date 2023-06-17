@@ -1,6 +1,6 @@
 const TourMarker = () => {
   return (
-    <div className="cursor-pointer p-3 rounded-full text-white bg-teal-400 drop-shadow-md">
+    <div className="cursor-pointer flex items-center justify-center w-10 h-10 rounded-full text-white bg-teal-400 drop-shadow-md">
       <svg
         fill="#fff"
         width="20px"

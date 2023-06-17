@@ -1,15 +1,15 @@
 const StationMarker = () => {
   return (
-    <div className="cursor-pointer p-3 rounded-full text-white bg-red-400 drop-shadow-md">
+    <div className="cursor-pointer flex items-center justify-center w-10 h-10 rounded-full text-white bg-neutral-600 drop-shadow-md">
       <svg
-        fill="#000000"
-        height="800px"
-        width="800px"
+        fill="currentColor"
+        height="24px"
+        width="24px"
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 470 470"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        enable-background="new 0 0 470 470"
+        enableBackground="new 0 0 470 470"
       >
         <g>
           <path d="m170,50.021h120c4.143,0 7.5-3.358 7.5-7.5s-3.357-7.5-7.5-7.5h-120c-4.142,0-7.5,3.358-7.5,7.5s3.358,7.5 7.5,7.5z" />

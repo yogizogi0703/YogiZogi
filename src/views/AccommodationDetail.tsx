@@ -1,6 +1,7 @@
 import { addCommasToPrice } from '../helpers';
 import RatingStars from '../components/searchResult/RatingStars';
 import { BiMap } from 'react-icons/bi';
+import LocalMapView from '../components/map/LocalMapView';
 
 const AccommodationDetail = () => {
   const data = {
@@ -75,24 +76,12 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          <article className="flex md:flex-col gap-2 sm:gap-5 w-md text-xs sm:text-sm md:text-base">
-            <figure className="w-32 md:w-64">
-              <img src="http://via.placeholder.com/256x256" />
-            </figure>
-            <div className="flex flex-col gap-3 justify-center">
-              <p>
-                <BiMap className="inline-flex items-center h-5 w-5 pb-1" />
-                {data.address}
-              </p>
-              <p className="font-semibold">
-                교통편: <br className="md:hidden" />
-                <span className="font-normal">
-                  용산역 5분 거리로 바로 앞 4호선 신용산역 전철역이 가까워 이동
-                  편리
-                </span>
-              </p>
-            </div>
-          </article>
+          {/* 지도 */}
+          <LocalMapView
+            address={data.address}
+            position={{ lat: data.lat, lng: data.lon }}
+          />
+          {/*  */}
         </div>
         <div className="divider my-0" />
         <div>
@@ -140,15 +129,17 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
           <div className="flex items-center text-xl md:text-3xl text-center">
             <div className="my-5 w-1/3 p-2">
-              <span className="font-semibold text-red-500">{data.rate}</span>{' '}
-              / 10 점
+              <span className="font-semibold text-red-500">{data.rate}</span> /
+              10 점
             </div>
             <div className="divider divider-horizontal mx-1" />
             <div className="w-2/3 text-center">
               <p className="mb-3 font-semibold">
                 {rateAdj[Math.trunc(data.rate) - 1]}
               </p>
-              <p className="text-xs md:text-lg">총 8개의 확인된 리뷰가 있습니다.</p>
+              <p className="text-xs md:text-lg">
+                총 8개의 확인된 리뷰가 있습니다.
+              </p>
             </div>
           </div>
         </div>
@@ -162,7 +153,10 @@ const AccommodationDetail = () => {
                 <span className="text-slate-500 font-medium">1/1 ~ 2/1</span>
               </p>
               <div className="flex items-center gap-2 font-semibold">
-                평점 : <div className="text-slate-500"><RatingStars rate={9} /></div>
+                평점 :{' '}
+                <div className="text-slate-500">
+                  <RatingStars rate={9} />
+                </div>
               </div>
             </div>
             <p>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import AccommodationPreview from '../components/searchResult/AccommodationPreview';
 import Range from '../components/searchResult/Range';
+import MapView from '../components/map/MapView';
 
 const MIN_PRICE = 1;
 const MAX_PRICE = 30;
@@ -204,7 +205,9 @@ const SearchResult = () => {
         </div>
         <hr className="mt-2 mb-8" />
         {viewType ? (
-          <div className="text-center">"여기에서 지도로 보기"</div>
+          <div className="text-center">
+            <MapView />
+          </div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             <AccommodationPreview data={data} />
