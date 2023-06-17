@@ -1,6 +1,7 @@
 import { rest } from 'msw';
 import { accommodationData } from './api/data/accommodationData';
 import { reviewData } from './api/data/reviewData';
+import { Category } from '../components/searchResult/constants';
 
 let reviewIdCount = 100;
 
@@ -140,38 +141,80 @@ export const handlers = [
     );
   }),
 
-  // 숙소 상세
-  rest.get('/api/accommodation/:accommodationId', (req, res, ctx) => {
-    const { accommodationId } = req.params;
+  // 숙소 검색
+  rest.get('/api/accommodation/search', (req, res, ctx) => {
+    const keyword = req.url.searchParams.get('keyword');
+    const sort = req.url.searchParams.get('sort');
+    const direction = req.url.searchParams.get('direction');
+    const minprice = req.url.searchParams.get('minprice');
+    const maxprice = req.url.searchParams.get('maxprice');
+    const category = req.url.searchParams.get('category');
+    const lat = req.url.searchParams.get('lat');
+    const lon = req.url.searchParams.get('lon');
+    const page = parseInt(req.url.searchParams.get('page') || '0');
+    const pageSize = parseInt(req.url.searchParams.get('pageSize') || '0');
 
-    const data = accommodationData.find(
-      (accommodation) => accommodation.id === Number(accommodationId)
-    );
-
-    if (!data) {
-      return res(
-        ctx.status(403),
-        ctx.json({
-          code: 'ACCOMMODATION_NOT_FOUND',
-          status: 'BAD_REQUEST',
-          msg: '존재하지 않는 숙소입니다.',
-          data: null
-        })
-      );
+    if (keyword === null || !sort || !direction) {
+      console.log('뭔가 값이 안들어와.');
+      return;
     }
 
-    const {
-      id,
-      accommodationName,
-      category,
-      address,
-      location,
-      lat,
-      lnt,
-      info,
-      pictureUrlList,
-      room
-    } = data;
+    const startIndex = pageSize * (page - 1);
+    const endIndex = startIndex + pageSize;
+
+    const calcDistance = (latD: number, lonD: number) => {
+      return Math.sqrt(
+        Math.pow(Number(lat) - latD, 2) + Math.pow(Number(lon) - lonD, 2)
+      );
+    };
+
+    const filteredData = accommodationData
+      .filter(
+        (data) =>
+          data.accommodationName.includes(keyword) ||
+          data.address.includes(keyword)
+      )
+      .sort((d1, d2) => {
+        if (sort === 'price') {
+          if (direction === 'asc') {
+            return d1.price - d2.price;
+          }
+
+          return d2.price - d1.price;
+        }
+
+        if (sort === 'distance') {
+          return calcDistance(d1.lat, d1.lon) - calcDistance(d2.lat, d2.lon);
+        }
+
+        return d2.rate - d1.rate;
+      })
+      .filter((data) => {
+        if (!minprice) return true;
+
+        return Number(minprice) <= data.price;
+      })
+      .filter((data) => {
+        if (!maxprice) return true;
+
+        return data.price <= Number(maxprice);
+      })
+      .filter((data) => {
+        if (category === Category.HOTEL) {
+          return data.category === 1;
+        }
+
+        if (category === Category.MOTEL) {
+          return data.category === 2;
+        }
+
+        if (category === Category.PENSION) {
+          return data.category === 3;
+        }
+
+        return true;
+      })
+      .slice(startIndex, endIndex);
 
     return res(
       ctx.status(200),
@@ -179,23 +222,38 @@ export const handlers = [
         code: 'RESPONSE_SUCCESS',
         status: 'OK',
         msg: 'SUCCESS',
-        data: [
-          {
-            msg: '성공적으로 작업을 수행 했습니다.'
+        data: {
+          msg: '성공적으로 작업을 수행 했습니다.'
+        },
+        content: filteredData,
+        pageable: {
+          sort: {
+            empty: false,
+            sorted: true,
+            unsorted: false
           },
-          {
-            id,
-            accommodationName,
-            category,
-            address,
-            location,
-            lat,
-            lnt,
-            info,
-            pictureUrlList,
-            room
-          }
-        ]
+          offset: 0,
+          pageNumber: page,
+          pageSize: pageSize,
+          paged: true,
+          unpaged: false
+        },
+        totalElements: filteredData.length,
+        totalPages: Math.ceil(filteredData.length / pageSize),
+        last: true,
+        size: pageSize,
+        number: 0,
+        sort: {
+          empty: false,
+          sorted: true,
+          unsorted: false
+        },
+        numberOfElements:
+          endIndex <= filteredData.length
+            ? pageSize
+            : filteredData.length - endIndex,
+        first: true,
+        empty: false
       })
     );
   }),
@@ -301,25 +359,42 @@ export const handlers = [
 
   // 숙소 리뷰 삭제: 구현 미정
 
-  // 숙소 검색
+  // 숙소 상세
   rest.get('/api/accommodation/:accommodationId', (req, res, ctx) => {
-    // 검색 조건에 따른 필터링 로직은 추후 구현
-    const keyword = req.url.searchParams.get('keyword');
-    const startdate = req.url.searchParams.get('startdate');
-    const enddate = req.url.searchParams.get('enddate');
-    const people = req.url.searchParams.get('people');
-    const sort = req.url.searchParams.get('sort');
-    const direction = req.url.searchParams.get('direction');
-    const minprice = req.url.searchParams.get('minprice');
-    const maxprice = req.url.searchParams.get('maxprice');
-    const category = req.url.searchParams.get('category');
-    const lat = req.url.searchParams.get('lat');
-    const lnt = req.url.searchParams.get('lnt');
-    const page = parseInt(req.url.searchParams.get('page') || '0');
-    const pageSize = parseInt(req.url.searchParams.get('pageSize') || '0');
+    const { accommodationId } = req.params;
 
-    const startIndex = pageSize * (page - 1);
-    const endIndex = startIndex + pageSize;
+    const checkindate = req.url.searchParams.get('checkindate');
+    const checkoutdate = req.url.searchParams.get('checkoutdate');
+    const people = req.url.searchParams.get('people');
+
+    const data = accommodationData.find(
+      (accommodation) => accommodation.id === Number(accommodationId)
+    );
+
+    if (!data) {
+      return res(
+        ctx.status(403),
+        ctx.json({
+          code: 'ACCOMMODATION_NOT_FOUND',
+          status: 'BAD_REQUEST',
+          msg: '존재하지 않는 숙소입니다.',
+          data: null
+        })
+      );
+    }
+
+    const {
+      id,
+      accommodationName,
+      category,
+      address,
+      location,
+      lat,
+      lon,
+      info,
+      pictureUrlList,
+      room
+    } = data;
 
     return res(
       ctx.status(200),
@@ -327,38 +402,23 @@ export const handlers = [
         code: 'RESPONSE_SUCCESS',
         status: 'OK',
         msg: 'SUCCESS',
-        data: {
-          msg: '성공적으로 작업을 수행 했습니다.'
-        },
-        content: accommodationData,
-        pageable: {
-          sort: {
-            empty: false,
-            sorted: true,
-            unsorted: false
+        data: [
+          {
+            msg: '성공적으로 작업을 수행 했습니다.'
           },
-          offset: 0,
-          pageNumber: page,
-          pageSize: pageSize,
-          paged: true,
-          unpaged: false
-        },
-        totalElements: reviewData.length,
-        totalPages: Math.ceil(reviewData.length / pageSize),
-        last: true,
-        size: pageSize,
-        number: 0,
-        sort: {
-          empty: false,
-          sorted: true,
-          unsorted: false
-        },
-        numberOfElements:
-          endIndex <= reviewData.length
-            ? pageSize
-            : reviewData.length - endIndex,
-        first: true,
-        empty: false
+          {
+            id,
+            accommodationName,
+            category,
+            address,
+            location,
+            lat,
+            lon,
+            info,
+            pictureUrlList,
+            room
+          }
+        ]
       })
     );
   })
