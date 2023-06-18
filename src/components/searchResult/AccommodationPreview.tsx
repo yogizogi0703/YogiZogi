@@ -1,5 +1,5 @@
 import { FiMapPin } from 'react-icons/fi';
-import RatingStars from './RatingStars';
+import RatingStars from '../common/RatingStars';
 import { ISearchResultContent } from 'api/search';
 
 interface IAccommodationPreview {
