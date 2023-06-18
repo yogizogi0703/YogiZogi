@@ -27,6 +27,7 @@ import {
   ISearchResultContent,
   getDetailedSearchResult
 } from '../api/search';
+import { getDateFormat } from 'utils/handleDate';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] =
@@ -48,13 +49,6 @@ const SearchResult = () => {
   const initialParams = new URLSearchParams(location.search);
 
   const [totalElements, setTotalElements] = useState<number>(0);
-
-  const getDateFormat = (date: Date) => {
-    const year = date.getFullYear();
-    const month = (date.getMonth() + 1).toString().padStart(2, '0');
-    const day = date.getDate().toString().padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
 
   const getTodayString = () => {
     return getDateFormat(new Date());
