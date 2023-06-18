@@ -27,17 +27,7 @@ import {
   ISearchResultContent,
   getDetailedSearchResult
 } from '../api/search';
-import { getDateFormat } from '../utils/handleDate';
-
-const getTodayString = () => {
-  return getDateFormat(new Date());
-};
-
-const getTomorrowString = () => {
-  const tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  return getDateFormat(tomorrow);
-};
+import { getTodayString, getTomorrowString } from '../utils/handleDate';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] =
