@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import AccommodationPreview from '../components/searchResult/AccommodationPreview';
 import Range from '../components/searchResult/Range';
@@ -29,6 +29,16 @@ import {
 } from '../api/search';
 import { getDateFormat } from '../utils/handleDate';
 
+const getTodayString = () => {
+  return getDateFormat(new Date());
+};
+
+const getTomorrowString = () => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return getDateFormat(tomorrow);
+};
+
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] =
     useState<ISearchResultContent[]>();
@@ -50,16 +60,6 @@ const SearchResult = () => {
 
   const [totalElements, setTotalElements] = useState<number>(0);
 
-  const getTodayString = () => {
-    return getDateFormat(new Date());
-  };
-
-  const getTomorrowString = () => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    return getDateFormat(tomorrow);
-  };
-
   const searchParams = useRef<ISearchParams>({
     keyword: initialParams.get('keyword') || '',
     checkindate: initialParams.get('checkindate') || getTodayString(),
@@ -75,7 +75,7 @@ const SearchResult = () => {
     page: 1
   });
 
-  const getParams = () => {
+  const getParams = useCallback(() => {
     return {
       keyword: searchParams.current.keyword,
       checkindate: searchParams.current.checkindate,
@@ -90,84 +90,100 @@ const SearchResult = () => {
       category: searchParams.current.category,
       page: searchParams.current.page
     };
-  };
+  }, [searchParams]);
 
-  const handleViewToggle = () => {
+  const handleViewToggle = useCallback(() => {
     setViewType((viewType) => !viewType);
-  };
+  }, [viewType]);
 
-  const handleRangeValueChange = (min: number, max: number) => {
-    for (const value of [min, max]) {
-      if (value < MIN_PRICE || value > MAX_PRICE || isNaN(value)) return;
-    }
-
-    setMinRangeValue(min);
-    setMaxRangeValue(max);
-
-    let minValue: string | null = String(min * 10000);
-    let maxValue: string | null = String(max * 10000);
-
-    if (min === 1) minValue = null;
-    if (max === 30) maxValue = null;
-
-    searchParams.current.minprice = minValue;
-    searchParams.current.maxprice = maxValue;
-  };
-
-  const handleSelectCategory = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.id as CategoryTypes;
-
-    if (categoryList.includes(value)) {
-      setSelctedCategory(value);
-      searchParams.current.category = value;
-    }
-  };
-
-  const handleSelectSortingFactor = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
-    const value = e.target.id as SortingFactorTypes;
-
-    if (sortingFactorList.includes(value)) {
-      if (value === Sort.RATE) {
-        searchParams.current.sort = value;
-        searchParams.current.direction = 'desc';
+  const handleRangeValueChange = useCallback(
+    (min: number, max: number) => {
+      for (const value of [min, max]) {
+        if (value < MIN_PRICE || value > MAX_PRICE || isNaN(value)) return;
       }
 
-      if (value === Sort.DISTANCE) {
-        searchParams.current.sort = value;
-        searchParams.current.direction = 'asc';
+      setMinRangeValue(min);
+      setMaxRangeValue(max);
+
+      let minValue: string | null = String(min * 10000);
+      let maxValue: string | null = String(max * 10000);
+
+      if (min === 1) minValue = null;
+      if (max === 30) maxValue = null;
+
+      searchParams.current.minprice = minValue;
+      searchParams.current.maxprice = maxValue;
+    },
+    [
+      minRangeValue,
+      maxRangeValue,
+      searchParams.current.minprice,
+      searchParams.current.maxprice
+    ]
+  );
+
+  const handleSelectCategory = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.id as CategoryTypes;
+
+      if (categoryList.includes(value)) {
+        setSelctedCategory(value);
+        searchParams.current.category = value;
       }
+    },
+    [selectedCategory, searchParams.current.category]
+  );
 
-      if (value === Sort.HIGHPRICE) {
-        searchParams.current.sort = 'price';
-        searchParams.current.direction = 'desc';
+  const handleSelectSortingFactor = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const value = e.target.id as SortingFactorTypes;
+
+      if (sortingFactorList.includes(value)) {
+        if (value === Sort.RATE) {
+          searchParams.current.sort = value;
+          searchParams.current.direction = 'desc';
+        }
+
+        if (value === Sort.DISTANCE) {
+          searchParams.current.sort = value;
+          searchParams.current.direction = 'asc';
+        }
+
+        if (value === Sort.HIGHPRICE) {
+          searchParams.current.sort = 'price';
+          searchParams.current.direction = 'desc';
+        }
+
+        if (value === Sort.LOWPRICE) {
+          searchParams.current.sort = 'price';
+          searchParams.current.direction = 'asc';
+        }
+
+        setSelectedSortingFactor(value);
       }
+    },
+    [
+      searchParams.current.sort,
+      searchParams.current.direction,
+      selectedSortingFactor
+    ]
+  );
 
-      if (value === Sort.LOWPRICE) {
-        searchParams.current.sort = 'price';
-        searchParams.current.direction = 'asc';
-      }
-
-      setSelectedSortingFactor(value);
-    }
-  };
-
-  const renderCurrentPriceRange = () => {
+  const renderCurrentPriceRange = useCallback(() => {
     if (maxRangeValue === MAX_PRICE) {
       return `${minRangeValue}만원 이상`;
     }
 
     return `${minRangeValue}만원 ~ ${maxRangeValue}만원`;
-  };
+  }, [minRangeValue, maxRangeValue]);
 
-  const handleDetailedSearch = async () => {
+  const handleDetailedSearch = useCallback(async () => {
     const params = getParams();
     const result = await getDetailedSearchResult(params);
 
     setAccommodationList(result.content);
     setTotalElements(result.totalElements);
-  };
+  }, [searchParams]);
 
   useEffect(() => {
     const init = async () => {
