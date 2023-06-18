@@ -1,33 +1,22 @@
 import { FiMapPin } from 'react-icons/fi';
-import RatingStars from './RatingStars';
-
-interface IAccommodation {
-  categoryId: number;
-  accomodationId: number;
-  name: string;
-  rate: number;
-  accommodationImage: string;
-  address: string;
-  price: number;
-  lat: number;
-  lon: number;
-}
+import RatingStars from '../common/RatingStars';
+import { ISearchResultContent } from 'api/search';
 
 interface IAccommodationPreview {
-  data: IAccommodation;
+  data: ISearchResultContent;
 }
 
 const formatPrice = (num: number) =>
   new Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(num);
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
-  const { name, rate, accommodationImage, address, price } = data;
+  const { accommodationName, rate, pictureUrlList, address, price } = data;
 
   return (
     <article className="card bg-base-100 shadow-xl mb-2">
       <figure
         className="h-60 bg-cover bg-center"
-        style={{ backgroundImage: `url('${accommodationImage}')` }}
+        style={{ backgroundImage: `url('${pictureUrlList[0]}')` }}
       ></figure>
       <div className="card-body grid grid-cols-5 grid-rows-3 py-2 px-4">
         <div className="row-start-1 row-end-3 col-start-1 col-end-4">
@@ -39,7 +28,7 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
               WebkitBoxOrient: 'vertical'
             }}
           >
-            {name}
+            {accommodationName}
           </p>
         </div>
         <p className="row-start-1 row-end-3 col-start-4 col-end-6 text-lg font-bold flex items-center justify-end">
