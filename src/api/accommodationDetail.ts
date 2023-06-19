@@ -28,3 +28,34 @@ export interface IAccommodationDetailResponse {
   pictureUrlList: string[];
   room: IRoomResponse[];
 }
+
+export const AccommodationDetailInitData = {
+  accommodationName: '',
+  address: '',
+  category: 0,
+  id: 0,
+  info: '',
+  lat: 0,
+  lon: 0,
+  location: '',
+  pictureUrlList: [''],
+  room: [
+    {
+      id: 0,
+      roomName: '',
+      checkInTime: 0,
+      checkOutTime: 0,
+      defaultPeople: 0,
+      maxPeople: 0,
+      pictureUrlList: [''],
+      price: [
+        {
+          date: '',
+          id: 0,
+          price: 0,
+          roomCnt: 0
+        }
+      ]
+    }
+  ]
+};
