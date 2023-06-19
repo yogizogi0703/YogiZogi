@@ -65,7 +65,7 @@ const AccommodationDetail = () => {
                 {data.address}
               </span>
               <div className="flex items-center gap-1">
-                평점 :<RatingStars rate={data.rate} />
+                평점 :<RatingStars rate={Number(accommodationRate)} />
               </div>
             </div>
             <div className="text-xs sm:text-sm md:text-base">
@@ -150,7 +150,7 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
           <div className="flex items-center text-xl md:text-3xl text-center">
             <div className="my-5 w-1/3 p-2">
-              <span className="font-semibold text-red-500">{data.rate}</span> /
+              <span className="font-semibold text-red-500">{accommodationRate}</span> /
               10 점
             </div>
             <div className="divider divider-horizontal mx-1" />
