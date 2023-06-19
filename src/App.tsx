@@ -7,7 +7,7 @@ import SignUp from './views/SignUp';
 import PageNotFound from './views/PageNotFound';
 import Layout from './components/common/Layout';
 import { HashRouter, Route, Routes } from 'react-router-dom';
-import AccommodationDetail from 'views/AccommodationDetail';
+import AccommodationDetail from './views/AccommodationDetail';
 
 function App() {
   return (
