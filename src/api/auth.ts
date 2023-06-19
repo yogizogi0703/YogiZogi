@@ -16,7 +16,7 @@ export interface SignUpFormDataProps extends SignInFormDataProps {
 export const fetchSignIn = async (data: SignInFormDataProps) => {
   const res = await axios({
     method: 'post',
-    url: '/login',
+    url: '/api/user/login',
     headers: {
       'Content-Type': 'application/json'
     },
@@ -29,7 +29,7 @@ export const fetchSignIn = async (data: SignInFormDataProps) => {
 export const fetchSignUp = async (data: SignUpFormDataProps) => {
   const res = await axios({
     method: 'post',
-    url: '/signup',
+    url: '/api/user/sign-up',
     headers: {
       'Content-Type': 'application/json'
     },
