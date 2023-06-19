@@ -4,7 +4,12 @@ import { BiMap } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
 import { AxiosResponse } from 'axios';
-import { AccommodationDetailInitData, IAccommodationDetailResponse, IReview, IReviewResponse } from '../api/accommodationDetail';
+import {
+  AccommodationDetailInitData,
+  IAccommodationDetailResponse,
+  IReview,
+  IReviewResponse
+} from '../api/accommodationDetail';
 import { Modal } from '../components/accommodationDetail/Modal';
 
 const AccommodationDetail = () => {
@@ -76,6 +81,8 @@ const AccommodationDetail = () => {
       if (!reviewArr[page - 1]) getReview(page);
     })();
   }, [page]);
+
+  console.log(reviewArr)
 
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
@@ -220,26 +227,40 @@ const AccommodationDetail = () => {
         </div>
         <div className="divider" />
         <div>
-          <div className="flex flex-col gap-3 p-3 border rounded-lg text-xs md:text-base">
-            <p className="font-semibold">name</p>
-            <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-base font-medium">
-              <p className="font-semibold">
-                투숙 기간 :{' '}
-                <span className="text-slate-500 font-medium">1/1 ~ 2/1</span>
-              </p>
-              <div className="flex items-center gap-2 font-semibold">
-                평점 :{' '}
-                <div className="text-slate-500">
-                  <RatingStars rate={9} />
+          {reviewArr &&
+            reviewArr.length > 0 &&
+            reviewArr[page - 1] &&
+            Object.values(reviewArr[page - 1]).map((el, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col gap-3 p-3 border rounded-lg mb-5 text-xs md:text-base"
+                >
+                  <p className="font-semibold">{el.userId}</p>
+                  <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-base font-medium">
+                    <div className="flex items-center gap-2 font-semibold">
+                      평점 : <RatingStars rate={el.rating} />
+                    </div>
+                  </div>
+                  <p> {el.description}</p>
                 </div>
-              </div>
-            </div>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione
-              molestiae, maiores perferendis non possimus, dolorum repellendus
-              quam consequatur maxime obcaecati distinctio magni ab qui nam, id
-              rem eligendi deserunt nemo?
-            </p>
+              );
+            })}
+          <div className="flex justify-center">
+            {new Array(reviewRes.totalPages + 1).fill(0, 1, 5).map((_, idx) => {
+              return (
+                <div key={idx} className="join">
+                  <input
+                    aria-label={idx.toString()}
+                    className="join-item btn btn-square btn-sm mr-1"
+                    type="radio"
+                    name="options"
+                    checked={page === idx}
+                    onChange={() => setPage(idx)}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
