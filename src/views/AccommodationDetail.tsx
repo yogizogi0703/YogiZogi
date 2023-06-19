@@ -1,5 +1,5 @@
 import { addCommasToPrice } from '../helpers';
-import RatingStars from '../components/searchResult/RatingStars';
+import RatingStars from '../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
 
 const AccommodationDetail = () => {
@@ -140,15 +140,17 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
           <div className="flex items-center text-xl md:text-3xl text-center">
             <div className="my-5 w-1/3 p-2">
-              <span className="font-semibold text-red-500">{data.rate}</span>{' '}
-              / 10 점
+              <span className="font-semibold text-red-500">{data.rate}</span> /
+              10 점
             </div>
             <div className="divider divider-horizontal mx-1" />
             <div className="w-2/3 text-center">
               <p className="mb-3 font-semibold">
                 {rateAdj[Math.trunc(data.rate) - 1]}
               </p>
-              <p className="text-xs md:text-lg">총 8개의 확인된 리뷰가 있습니다.</p>
+              <p className="text-xs md:text-lg">
+                총 8개의 확인된 리뷰가 있습니다.
+              </p>
             </div>
           </div>
         </div>
@@ -162,7 +164,10 @@ const AccommodationDetail = () => {
                 <span className="text-slate-500 font-medium">1/1 ~ 2/1</span>
               </p>
               <div className="flex items-center gap-2 font-semibold">
-                평점 : <div className="text-slate-500"><RatingStars rate={9} /></div>
+                평점 :{' '}
+                <div className="text-slate-500">
+                  <RatingStars rate={9} />
+                </div>
               </div>
             </div>
             <p>

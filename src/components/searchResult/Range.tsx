@@ -1,3 +1,5 @@
+import { useCallback } from 'react';
+
 interface IRange {
   readonly width: number;
   readonly steps: number;
@@ -17,7 +19,7 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
     }
   ];
 
-  const getDOMs = () => {
+  const getDOMs = useCallback(() => {
     const slider: HTMLElement | null = document.querySelector('.slider');
 
     const sliderRange: HTMLElement | null =
@@ -30,9 +32,9 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
       document.querySelectorAll('.thumb');
 
     return { slider, sliderRange, targetThumb, thumbs };
-  };
+  }, []);
 
-  const handleRangeValueChange = (min: number, max: number) => {
+  const handleRangeValueChange = useCallback((min: number, max: number) => {
     const { slider, sliderRange } = getDOMs();
 
     if (!slider || !sliderRange) return;
@@ -44,9 +46,9 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
     const currentMaxPrice = max / STEP_WIDTH + 1;
 
     onRangeValueChange(currentMinPrice, currentMaxPrice);
-  };
+  }, []);
 
-  const handleMouseMove = (e: MouseEvent) => {
+  const handleMouseMove = useCallback((e: MouseEvent) => {
     const { slider, targetThumb, thumbs } = getDOMs();
 
     if (!slider || !targetThumb) return;
@@ -79,9 +81,9 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
 
       handleRangeValueChange(min, max);
     }
-  };
+  }, []);
 
-  const handleMouseUp = () => {
+  const handleMouseUp = useCallback(() => {
     document.removeEventListener('mousemove', handleMouseMove);
     document.removeEventListener('mouseup', handleMouseUp);
 
@@ -90,9 +92,9 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
     if (!slider || !targetThumb) return;
 
     targetThumb.classList.remove('thumbMoving');
-  };
+  }, []);
 
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseDown = useCallback((e: React.MouseEvent<HTMLDivElement>) => {
     e.preventDefault();
 
     const { slider } = getDOMs();
@@ -108,11 +110,11 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
     targetThumb.ondragstart = () => {
       return false;
     };
-  };
+  }, []);
 
   return (
     <div className="slider h-10 relative" style={{ width: `${width}px` }}>
-      <div className="track w-full h-2 bg-gray-100 rounded absolute top-4 left-0"></div>
+      <div className="track w-full h-2 bg-gray-300 rounded absolute top-4 left-0"></div>
       <div className="sliderRange absolute z-[2] w-full top-4 bg-emerald-400 h-2"></div>
       {thumbList.map((thumb, index) => {
         return (
