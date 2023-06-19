@@ -156,7 +156,7 @@ describe('MSW Fetch Test: ', () => {
       },
       {
         id: 19,
-        customerId: 17,
+        userId: 17,
         sellerId: null,
         accommodationId: 1,
         rating: 8,
@@ -164,7 +164,7 @@ describe('MSW Fetch Test: ', () => {
       },
       {
         id: 18,
-        customerId: 18,
+        userId: 18,
         sellerId: null,
         accommodationId: 1,
         rating: 7,
@@ -174,7 +174,7 @@ describe('MSW Fetch Test: ', () => {
 
     const {
       data: { content }
-    } = await axios('/api/accommodation/1/review?page=1&pageSize=3');
+    } = await axios('/api/accommodation/1/review?page=1&pagesize=3');
 
     expectTypeOf(content).toBeArray();
     for (let i = 0; i < result.length; i++) {
