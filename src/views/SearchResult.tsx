@@ -28,6 +28,7 @@ import {
   getDetailedSearchResult
 } from '../api/search';
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
+import MapView from '../components/map/MapView';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] =
