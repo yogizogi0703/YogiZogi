@@ -180,12 +180,12 @@ const AccommodationDetail = () => {
                       <h3 className="text-base md:text-xl font-semibold md:mb-1">
                         {el.roomName}
                       </h3>
-                      <p className="flex gap-1 whitespace-pre-line">
-                        체크인: {el.checkInTime}시 <br />
-                        체크아웃: {el.checkOutTime}시 <br />
-                        기본인원: {el.defaultPeople}명 <br />
-                        최대인원: {el.maxPeople}명
-                      </p>
+                      <div className="flex flex-col gap-2">
+                        <p><span className='font-semibold'>체크인: </span>{el.checkInTime}시</p>
+                        <p><span className='font-semibold'>체크아웃</span>: {el.checkOutTime}시</p>
+                        <p><span className='font-semibold'>기본인원</span>: {el.defaultPeople}명</p>
+                        <p><span className='font-semibold'>최대인원</span>: {el.maxPeople}명</p>
+                      </div>
                     </div>
                   </div>
                   <div className="divider divider-horizontal mx-2" />
