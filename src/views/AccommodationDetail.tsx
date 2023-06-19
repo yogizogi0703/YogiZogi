@@ -144,40 +144,40 @@ console.log(accommodationData)
           <h2 className="text-lg md:text-2xl font-semibold mb-4">
             객실안내 및 예약
           </h2>
-          <div className="flex flex-col md:flex-row gap-3">
-            <figure className="mx-auto w-2/3 md:w-1/3">
-              <img src={data.accomodationImage} />
-            </figure>
-            <div className="flex flex-row md:w-2/3">
-              <div className="flex flex-col gap-3 w-3/4 md:w-3/4">
-                <h3 className="text-base md:text-xl font-semibold md:mb-1">
-                  Room Name
-                </h3>
-                <p className="text-xs md:text-base mb-1">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Perspiciatis unde vel a exercitationem vero veniam, ad
-                  veritatis beatae sunt delectus nobis sequi temporibus deleniti
-                  alias fugit maxime autem esse vitae?
-                </p>
-                <div className="flex gap-1">
-                  <span className="badge badge-outline badge-sm md:badge-md">
-                    최소인원 1
-                  </span>
-                  <span className="badge badge-outline badge-sm md:badge-md">
-                    최대인원 2
-                  </span>
+          <div className="flex flex-col gap-3">
+            {accommodationData.room.map((el, idx) => {
+              return (
+                <div className="flex gap-3" key={idx}>
+                  <figure className="mx-auto w-1/3 md:w-1/3">
+                    <img src={el.pictureUrlList[0]} />
+                  </figure>
+                  <div className="flex flex-row w-1/3">
+                    <div className="flex flex-col gap-3 w-3/4 md:w-3/4">
+                      <h3 className="text-base md:text-xl font-semibold md:mb-1">
+                        {el.roomName}
+                      </h3>
+                      <p className="flex gap-1 whitespace-pre-line">
+                        체크인: {el.checkInTime}시 <br />
+                        체크아웃: {el.checkOutTime}시 <br />
+                        기본인원: {el.defaultPeople}명 <br />
+                        최대인원: {el.maxPeople}명
+                      </p>
+                    </div>
+                  </div>
+                  <div className="divider divider-horizontal mx-2" />
+                  <div className="flex flex-col gap-3 w-1/4 md:w-1/4 my-auto items-center justify-end">
+                    {el.price.map((el, idx) => {
+                      return (
+                        <button key={idx} className="flex btn bg-red-500 hover:bg-red-600 text-white">
+                          <p>{el.date}</p>
+                          <p>{addCommasToPrice(el.price)}원</p>
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-              <div className="divider divider-horizontal mx-2" />
-              <div className="flex flex-col gap-3 w-1/4 md:w-1/4 my-auto items-center justify-end">
-                <p className="w-fit text-xs sm:text-base lg:text-xl font-semibold md:mb-5 ">
-                  {addCommasToPrice(data.price)}원
-                </p>
-                <button className="btn btn-secondary btn-xs md:btn-md text-white">
-                  예약하기
-                </button>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
         <div className="divider" />
