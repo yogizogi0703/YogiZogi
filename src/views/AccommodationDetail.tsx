@@ -4,24 +4,19 @@ import { BiMap } from 'react-icons/bi';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
 import { AxiosResponse } from 'axios';
-import {
-  AccommodationDetailInitData,
-  IAccommodationDetailResponse
-} from '../api/accommodationDetail';
+import { AccommodationDetailInitData, IAccommodationDetailResponse, IReview, IReviewResponse } from '../api/accommodationDetail';
 import { Modal } from '../components/accommodationDetail/Modal';
 
 const AccommodationDetail = () => {
-  const data = {
-    categoryId: 1,
-    accomodationId: 1,
-    name: '롯데호텔 서울',
-    rate: 9,
-    accomodationImage: 'http://via.placeholder.com/640x480',
-    address: '서울특별시 중구 을지로 30',
-    price: 99999999,
-    lat: 37.565773,
-    lon: 126.981414
-  };
+  const [accommodationData, setAccommodationData] =
+    useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
+  const [page, setPage] = useState(1);
+  const [reviewRes, setReviewRes] = useState<IReviewResponse>({
+    content: [],
+    totalElement: 0,
+    totalPages: 0
+  });
+  const [reviewArr, setReviewArr] = useState<IReview[]>([]);
 
   const rateAdj = [
     'Terrible',
@@ -35,9 +30,6 @@ const AccommodationDetail = () => {
     'Outstanding',
     'Perfect'
   ];
-  const [accommodationData, setAccommodationData] =
-    useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
-  const [imgList, setImgList] = useState<string[]>(new Array(5).fill(''));
 
   const accommodationId =
     window.location.hash.match(/\/accommodation\/(\d+)/) || '';
@@ -48,6 +40,24 @@ const AccommodationDetail = () => {
   );
   const accommodationRate = urlParams.get('rate');
 
+  const getReview = async (page: number) => {
+    const reviewRes: AxiosResponse<any, any> | undefined = await fetchData.get(
+      `/accommodation/${id}/review?page=${page}&pagesize=5`
+    );
+    if (reviewRes && reviewRes.data) {
+      setReviewRes({
+        content: reviewRes.data.content,
+        totalElement: reviewRes.data.totalElements,
+        totalPages: reviewRes.data.totalPages
+      });
+      setReviewArr((prev) => {
+        const newReviewArr: IReview[] = [...prev];
+        newReviewArr[page - 1] = reviewRes.data.content;
+        return newReviewArr;
+      });
+    }
+  };
+
   useEffect(() => {
     (async () => {
       const result: AxiosResponse<any, any> | undefined = await fetchData.get(
@@ -57,9 +67,16 @@ const AccommodationDetail = () => {
       if (result) {
         setAccommodationData(result.data.data[1]);
       }
+      getReview(1);
     })();
   }, []);
-console.log(accommodationData)
+
+  useEffect(() => {
+    (async () => {
+      if (!reviewArr[page - 1]) getReview(page);
+    })();
+  }, [page]);
+
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
@@ -193,7 +210,7 @@ console.log(accommodationData)
             <div className="divider divider-horizontal mx-1" />
             <div className="w-2/3 text-center">
               <p className="mb-3 font-semibold">
-                {rateAdj[Math.trunc(data.rate) - 1]}
+                {rateAdj[Math.trunc(Number(accommodationRate)) - 1]}
               </p>
               <p className="text-xs md:text-lg">
                 총 8개의 확인된 리뷰가 있습니다.
