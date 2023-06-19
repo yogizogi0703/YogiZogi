@@ -15,3 +15,13 @@ export const getDateFormat = (date: Date) => {
   const day = date.getDate().toString().padStart(2, '0');
   return `${year}-${month}-${day}`;
 };
+
+export const getTodayString = () => {
+  return getDateFormat(new Date());
+};
+
+export const getTomorrowString = () => {
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  return getDateFormat(tomorrow);
+};

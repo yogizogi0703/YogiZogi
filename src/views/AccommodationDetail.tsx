@@ -1,5 +1,5 @@
 import { addCommasToPrice } from '../helpers';
-import RatingStars from '../components/searchResult/RatingStars';
+import RatingStars from '../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
 import LocalMapView from '../components/map/LocalMapView';
 
