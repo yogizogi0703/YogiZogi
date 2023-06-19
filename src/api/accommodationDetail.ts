@@ -59,3 +59,17 @@ export const AccommodationDetailInitData = {
     }
   ]
 };
+
+export interface IReview {
+  accommodationId: number;
+  description: string;
+  id: number;
+  rating: number;
+  userId: number;
+}
+
+export interface IReviewResponse {
+  content: IReview[];
+  totalElement: number;
+  totalPages: number;
+}
