@@ -58,7 +58,7 @@ interface ISearchResultResponse {
   };
 }
 
-export const SEARCH_RESULT_PAGE_SIZE = 12;
+export const SEARCH_RESULT_PAGE_SIZE = 3;
 
 const SEARCH_URL = '/accommodation/search?';
 
