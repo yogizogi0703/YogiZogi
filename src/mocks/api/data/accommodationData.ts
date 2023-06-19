@@ -489,7 +489,7 @@ export const accommodationData = [
       },
       {
         id: 2,
-        name: 'Deluxe',
+        roomName: 'Deluxe',
         checkInTime: 15,
         checkOutTime: 13,
         defaultPeople: 2,
