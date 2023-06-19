@@ -1,19 +1,18 @@
 export interface IRoomResponse {
   id: number;
-  roomName: '';
+  roomName: string;
   checkInTime: number;
   checkOutTime: number;
   defaultPeople: number;
   maxPeople: number;
   pictureUrlList: string[];
-  price: [
+  price: 
     {
       date: string;
       id: number;
       price: number;
       roomCnt: number;
-    }
-  ];
+    }[]
 }
 
 export interface IAccommodationDetailResponse {
