@@ -1,6 +1,14 @@
 import { addCommasToPrice } from '../helpers';
 import RatingStars from '../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
+import { useEffect, useState } from 'react';
+import { fetchData } from '../api';
+import { AxiosResponse } from 'axios';
+import {
+  AccommodationDetailInitData,
+  IAccommodationDetailResponse
+} from '../api/accommodationDetail';
+import { Modal } from '../components/accommodationDetail/Modal';
 
 const AccommodationDetail = () => {
   const data = {
@@ -14,6 +22,7 @@ const AccommodationDetail = () => {
     lat: 37.565773,
     lon: 126.981414
   };
+
   const rateAdj = [
     'Terrible',
     'Poor',
@@ -26,6 +35,9 @@ const AccommodationDetail = () => {
     'Outstanding',
     'Perfect'
   ];
+  const [accommodationData, setAccommodationData] =
+    useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
+  const [imgList, setImgList] = useState<string[]>(new Array(5).fill(''));
 
   const accommodationId =
     window.location.hash.match(/\/accommodation\/(\d+)/) || '';
@@ -36,33 +48,74 @@ const AccommodationDetail = () => {
   );
   const accommodationRate = urlParams.get('rate');
 
+  useEffect(() => {
+    (async () => {
+      const result: AxiosResponse<any, any> | undefined = await fetchData.get(
+        `/accommodation/${id}`
+      );
+
+      if (result) {
+        setAccommodationData(result.data.data[1]);
+      }
+    })();
+  }, []);
+console.log(accommodationData)
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
-        <figure className="col-span-2 row-span-2">
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
+        {accommodationData.pictureUrlList.slice(0, 5).map((el, idx) => {
+          if (idx === 0)
+            return (
+              <label
+                key={idx}
+                htmlFor="reservationModal"
+                className="col-span-2 row-span-2 cursor-pointer"
+              >
+                <figure>
+                  <img
+                    src={el}
+                    alt={`${accommodationData.accommodationName}-image-${idx}`}
+                    className="w-full h-full object-cover"
+                  />
+                </figure>
+              </label>
+            );
+          else {
+            if (el.length > 0) {
+              return (
+                <label key={idx} htmlFor="reservationModal">
+                  <figure>
+                    <img
+                      src={el}
+                      alt={`${accommodationData.accommodationName}-image-${idx}`}
+                      className="w-full h-full object-cover cursor-pointer"
+                    />
+                  </figure>
+                </label>
+              );
+            } else {
+              return (
+                <figure key={idx}>
+                  <div className="flex items-center justify-center w-full h-full object-cover bg-gray-300">
+                    No Image
+                  </div>
+                </figure>
+              );
+            }
+          }
+        })}
+        <Modal imgList={accommodationData.pictureUrlList} />
       </div>
       <section className="flex flex-col gap-5 md:gap-10">
         <div className="flex gap-5 flex-col md:flex-row">
           <div className="flex flex-col gap-5">
-            <h1 className="text-2xl md:text-4xl font-bold">{data.name}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold">
+              {accommodationData.accommodationName}
+            </h1>
             <div className="flex items-center gap-5 text-xs sm:text-sm md:text-base">
               <span className="flex items-center gap-2">
                 <BiMap />
-                {data.address}
+                {accommodationData.address}
               </span>
               <div className="flex items-center gap-1">
                 평점 :<RatingStars rate={Number(accommodationRate)} />
@@ -85,24 +138,6 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          <article className="flex md:flex-col gap-2 sm:gap-5 w-md text-xs sm:text-sm md:text-base">
-            <figure className="w-32 md:w-64">
-              <img src="http://via.placeholder.com/256x256" />
-            </figure>
-            <div className="flex flex-col gap-3 justify-center">
-              <p>
-                <BiMap className="inline-flex items-center h-5 w-5 pb-1" />
-                {data.address}
-              </p>
-              <p className="font-semibold">
-                교통편: <br className="md:hidden" />
-                <span className="font-normal">
-                  용산역 5분 거리로 바로 앞 4호선 신용산역 전철역이 가까워 이동
-                  편리
-                </span>
-              </p>
-            </div>
-          </article>
         </div>
         <div className="divider my-0" />
         <div>
@@ -150,8 +185,10 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
           <div className="flex items-center text-xl md:text-3xl text-center">
             <div className="my-5 w-1/3 p-2">
-              <span className="font-semibold text-red-500">{accommodationRate}</span> /
-              10 점
+              <span className="font-semibold text-red-500">
+                {accommodationRate}
+              </span>{' '}
+              / 10 점
             </div>
             <div className="divider divider-horizontal mx-1" />
             <div className="w-2/3 text-center">
