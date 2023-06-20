@@ -13,11 +13,17 @@ const useAuth = () => {
 
   const handleLogout = () => {
     localStorage.removeItem(AUTH_TOKEN_KEY);
-    setAuthUser({ ...authUser, isLoggedIn: false, token: '' });
+    setAuthUser({ user: {}, isLoggedIn: false, token: '' });
   };
 
   useEffect(() => {
     console.log(authUser);
+    if (authUser.user.jti) {
+      if (!authUser.expiration) {
+        handleLogout();
+        location.href = '/';
+      }
+    }
   }, [authUser]);
 
   return { authUser, successLogin, handleLogout };

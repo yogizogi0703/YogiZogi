@@ -44,10 +44,14 @@ const useSignIn = () => {
       return;
     }
 
-    if (res.status === 200) {
-      const token = res.data.X_Auth_Token;
+    if (res.status === 'OK') {
+      console.log(res);
+      const token = res.data['X-AUTH-TOKEN'];
       successLogin(token);
       navigate('/');
+    } else {
+      alert(res.data.msg);
+      console.error(res.data.code);
     }
   };
 

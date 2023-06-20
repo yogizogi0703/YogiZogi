@@ -9,7 +9,7 @@ export const authLoginState = selector({
     if (value.token) {
       const payload = decoderToken(value.token);
       if (payload) {
-        return { ...value, user: payload.auth, expiration: payload.expiration };
+        return { ...value, user: payload.user, expiration: payload.expiration };
       }
     }
 

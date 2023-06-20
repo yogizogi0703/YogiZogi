@@ -2,18 +2,20 @@ import { atom } from 'recoil';
 
 export const AUTH_TOKEN_KEY = 'authToken';
 
+interface UserProps {
+  jti?: number;
+  iss?: string;
+  sub?: string;
+}
 interface AuthUserProps {
-  id: number;
-  email: string;
-  nickname: string;
+  user: UserProps;
   token: string;
   isLoggedIn: boolean;
+  expiration?: boolean;
 }
 
 const initialize: AuthUserProps = {
-  id: 0,
-  email: '',
-  nickname: '',
+  user: {},
   token: localStorage.getItem(AUTH_TOKEN_KEY) || '',
   isLoggedIn: !!localStorage.getItem(AUTH_TOKEN_KEY)
 };
