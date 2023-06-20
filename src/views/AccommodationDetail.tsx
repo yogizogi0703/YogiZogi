@@ -77,7 +77,7 @@ const AccommodationDetail = () => {
   };
 
   const getTotalPriceArr = () => {
-    let totalPriceArr: number[] = []
+    let totalPriceArr: number[] = [];
     accommodationData.room.map((el) => {
       let totalPrice = 0;
       el.price.forEach((item) => {
@@ -85,9 +85,9 @@ const AccommodationDetail = () => {
       });
       totalPriceArr.push(totalPrice);
     });
-    setTotalPrices(totalPriceArr)
-  }; 
-  
+    setTotalPrices(totalPriceArr);
+  };
+
   useEffect(() => {
     (async () => {
       const result: AxiosResponse<any, any> | undefined = await fetchData.get(
@@ -205,12 +205,13 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          {/* 지도 */}
           <LocalMapView
-            address={data.address}
-            position={{ lat: data.lat, lng: data.lon }}
+            address={accommodationData.address}
+            position={{
+              lat: accommodationData.lat,
+              lng: accommodationData.lon
+            }}
           />
-          {/*  */}
         </div>
         <div className="divider my-0" />
         <div>
@@ -224,7 +225,7 @@ const AccommodationDetail = () => {
                   <label
                     key={idx}
                     htmlFor="reservationModal"
-                    className='flex'
+                    className="flex"
                     onClick={() =>
                       setModalProps({
                         imgList: el.pictureUrlList,
@@ -266,7 +267,9 @@ const AccommodationDetail = () => {
                   <div className="divider divider-horizontal" />
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
-                      <div className='font-semibold text-lg'>{addCommasToPrice(totalPrices[idx])}원</div>
+                      <div className="font-semibold text-lg">
+                        {addCommasToPrice(totalPrices[idx])}원
+                      </div>
                       <label
                         htmlFor="confirmModal"
                         className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
@@ -310,7 +313,7 @@ const AccommodationDetail = () => {
           </div>
         </div>
         <div className="divider" />
-        <div className='h-[600px] max-h-[1500px]'>
+        <div>
           {reviewArr &&
             reviewArr.length > 0 &&
             reviewArr[page - 1] &&
