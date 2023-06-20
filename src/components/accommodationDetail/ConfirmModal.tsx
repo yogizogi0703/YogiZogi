@@ -1,4 +1,5 @@
 import { IPrice, IRoomResponse } from 'api/accommodationDetail';
+import { useNavigate } from 'react-router-dom';
 
 interface IConfirmModal {
   roomImg: string;
@@ -17,6 +18,13 @@ export const ConfirmModal = ({
   checkOutDate,
   people
 }: IConfirmModal) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(
+      `/payment/book?accommodation=${roomInfo.roomName}checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&price=${price}`,
+      { state: { roomImg: roomImg, roomInfo: roomInfo } }
+    );
+  };
   return (
     <>
       <input type="checkbox" id="confirmModal" className="modal-toggle" />
@@ -52,6 +60,7 @@ export const ConfirmModal = ({
           <div className="flex justify-end">
             <button
               className="btn btn-primary modal-action mt-0 w-fit text-white"
+              onClick={handleClick}
             >
               {price}원 예약하기
             </button>
