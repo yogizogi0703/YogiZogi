@@ -11,6 +11,7 @@ import {
   IReviewResponse
 } from '../api/accommodationDetail';
 import { CarouselModal } from '../components/accommodationDetail/carouselModal';
+import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 
 interface IModalProps {
   imgList: string[];
@@ -236,42 +237,47 @@ const AccommodationDetail = () => {
                       />
                     </figure>
                   </label>
-                  <div className="flex flex-row">
-                    <div className="flex flex-col gap-3 ml-4">
-                      <h3 className="text-base md:text-xl font-semibold md:mb-1">
-                        {el.roomName}
-                      </h3>
-                      <div className="flex flex-wrap gap-2">
-                        <p>
-                          <span className="font-semibold">체크인: </span>
-                          {el.checkInTime}시
-                        </p>
-                        <p>
-                          <span className="font-semibold">체크아웃</span>:{' '}
-                          {el.checkOutTime}시
-                        </p>
-                        <p>
-                          <span className="font-semibold">기본인원</span>:{' '}
-                          {el.defaultPeople}명
-                        </p>
-                        <p>
-                          <span className="font-semibold">최대인원</span>:{' '}
-                          {el.maxPeople}명
-                        </p>
-                      </div>
-                      <div className="flex flex-wrap gap-3 my-auto items-center justify-end">
-                        {el.price.map((el, idx) => {
-                          return (
-                            <button
-                              key={idx}
-                              className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
-                            >
-                              <p>{el.date}</p>
-                              <p>{addCommasToPrice(el.price)}원</p>
-                            </button>
-                          );
-                        })}
-                      </div>
+                  <div className="ml-2 w-1/3">
+                    <h3 className="text-base md:text-xl font-semibold md:mb-1">
+                      {el.roomName}
+                    </h3>
+                    <div className="flex flex-col gap-2">
+                      <p>
+                        <span className="font-semibold">체크인: </span>
+                        {el.checkInTime}시
+                      </p>
+                      <p>
+                        <span className="font-semibold">체크아웃</span>:{' '}
+                        {el.checkOutTime}시
+                      </p>
+                      <p>
+                        <span className="font-semibold">기본인원</span>:{' '}
+                        {el.defaultPeople}명
+                      </p>
+                      <p>
+                        <span className="font-semibold">최대인원</span>:{' '}
+                        {el.maxPeople}명
+                      </p>
+                    </div>
+                  </div>
+                  <div className="divider divider-horizontal" />
+                  <div className="flex flex-row w-1/3 justify-center">
+                    <div className="flex flex-col gap-3 my-auto items-center">
+                      <div className='font-semibold text-lg'>{addCommasToPrice(totalPrices[idx])}원</div>
+                      <label
+                        htmlFor="confirmModal"
+                        className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        예약하기
+                      </label>
+                      <ConfirmModal
+                        roomImg={el.pictureUrlList[0]}
+                        roomInfo={accommodationData.room[idx]}
+                        price={totalPrices[idx]}
+                        checkInDate={checkInDate}
+                        checkOutDate={checkOutDate}
+                        people={people}
+                      />
                     </div>
                   </div>
                 </div>
