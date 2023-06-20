@@ -12,6 +12,11 @@ import {
 } from '../api/accommodationDetail';
 import { CarouselModal } from '../components/accommodationDetail/carouselModal';
 
+interface IModalProps {
+  imgList: string[];
+  alt: string;
+  selectedImg: number;
+}
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
     useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
@@ -22,11 +27,7 @@ const AccommodationDetail = () => {
     totalPages: 0
   });
   const [reviewArr, setReviewArr] = useState<IReview[]>([]);
-  const [modalProps, setModalProps] = useState<{
-    imgList: string[];
-    alt: string;
-    selectedImg: number;
-  }>({
+  const [modalProps, setModalProps] = useState<IModalProps>({
     imgList: [],
     alt: '',
     selectedImg: 0
@@ -91,9 +92,7 @@ const AccommodationDetail = () => {
     })();
   }, [page]);
 
-  console.log(reviewArr)
-
-
+  console.log(reviewArr);
 
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
@@ -198,7 +197,7 @@ const AccommodationDetail = () => {
           <div className="flex flex-col gap-3">
             {accommodationData.room.map((el, idx) => {
               return (
-                <div  className="flex gap-3">
+                <div className="flex gap-3">
                   <label
                     key={idx}
                     htmlFor="reservationModal"
@@ -321,7 +320,11 @@ const AccommodationDetail = () => {
           </div>
         </div>
       </section>
-      <CarouselModal imgList={modalProps.imgList} alt={modalProps.alt} selectedImg={modalProps.selectedImg} />
+      <CarouselModal
+        imgList={modalProps.imgList}
+        alt={modalProps.alt}
+        selectedImg={modalProps.selectedImg}
+      />
     </div>
   );
 };
