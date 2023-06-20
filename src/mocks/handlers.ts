@@ -155,7 +155,6 @@ export const handlers = [
     const pageSize = parseInt(req.url.searchParams.get('pageSize') || '0');
 
     if (keyword === null || !sort || !direction) {
-      console.log('뭔가 값이 안들어와.');
       return;
     }
 
@@ -213,8 +212,9 @@ export const handlers = [
         }
 
         return true;
-      })
-      .slice(startIndex, endIndex);
+      });
+
+    const pagedData = filteredData.slice(startIndex, endIndex);
 
     return res(
       ctx.status(200),
@@ -225,7 +225,7 @@ export const handlers = [
         data: {
           msg: '성공적으로 작업을 수행 했습니다.'
         },
-        content: filteredData,
+        content: pagedData,
         pageable: {
           sort: {
             empty: false,
@@ -239,7 +239,7 @@ export const handlers = [
           unpaged: false
         },
         totalElements: filteredData.length,
-        totalPages: Math.ceil(filteredData.length / pageSize),
+        totalPages: Math.ceil(accommodationData.length / pageSize),
         last: true,
         size: pageSize,
         number: 0,
@@ -249,9 +249,9 @@ export const handlers = [
           unsorted: false
         },
         numberOfElements:
-          endIndex <= filteredData.length
+          endIndex <= accommodationData.length
             ? pageSize
-            : filteredData.length - endIndex,
+            : accommodationData.length - endIndex,
         first: true,
         empty: false
       })
