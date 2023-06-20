@@ -29,7 +29,7 @@ import {
 } from '../api/search';
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
-import MapView from 'components/map/MapView';
+import MapView from '../components/map/MapView';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] = useState<
