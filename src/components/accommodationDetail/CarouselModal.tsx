@@ -2,13 +2,13 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './CarouselModal.css';
 
-interface ModalProps {
+export interface IModalProps {
   imgList: string[];
   alt: string;
   selectedImg: number
 }
 
-export const CarouselModal: React.FC<ModalProps> = ({ imgList, alt, selectedImg }) => {
+export const CarouselModal: React.FC<IModalProps> = ({ imgList, alt, selectedImg }) => {
   return (
     <>
       <input type="checkbox" id="reservationModal" className="modal-toggle" />

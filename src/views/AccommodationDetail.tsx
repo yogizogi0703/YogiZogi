@@ -10,14 +10,9 @@ import {
   IReview,
   IReviewResponse
 } from '../api/accommodationDetail';
-import { CarouselModal } from '../components/accommodationDetail/carouselModal';
+import { CarouselModal, IModalProps } from '../components/accommodationDetail/CarouselModal';
 import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 
-interface IModalProps {
-  imgList: string[];
-  alt: string;
-  selectedImg: number;
-}
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
     useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
