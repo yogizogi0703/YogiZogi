@@ -1,0 +1,22 @@
+.control-dots, .dot {
+  display: none !important;
+}
+
+.control-arrow {
+  border-radius: 50%;
+  width: 2rem;
+  height: 2rem;
+  position: absolute;
+  top: calc(50% - .5rem) !important;
+  background-color: gray !important;
+}
+
+.control-arrow:before {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+}
+
+.control-prev {
+  left: 2rem;
+}
