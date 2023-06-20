@@ -284,7 +284,7 @@ const SearchResult = () => {
         <hr className="mt-2 mb-8" />
         {viewType ? (
           <div className="text-center">
-            <MapView />
+            <MapView accommodationList={accommodationList} />
           </div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">

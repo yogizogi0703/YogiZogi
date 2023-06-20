@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk';
 import FacilityMarker from './marker/FacilityMarker';
 import { PositionProps } from 'api/map';
+import { ISearchResultContent } from '../../api/search';
 
-const DynamicMap = () => {
+interface DynamicMapProps {
+  data: ISearchResultContent[];
+}
+
+const DynamicMap = ({ data }: DynamicMapProps) => {
   const [center, setCenter] = useState<PositionProps>({
     lat: 33.5563,
     lng: 126.79581
   });
+  const [isMapLoad, setIsMapLoad] = useState<boolean>(false);
   const [activeMarker, setActiveMarker] = useState<number>(0);
 
   const handleOnClickMove = (position: PositionProps, id: number) => {
@@ -19,6 +25,14 @@ const DynamicMap = () => {
     setActiveMarker(0);
   };
 
+  const mapBounds = useCallback(() => {
+    const bounds = new kakao.maps.LatLngBounds();
+    data.forEach((item) => {
+      bounds.extend(new kakao.maps.LatLng(item.lat, item.lon));
+    });
+    return bounds;
+  }, [data]);
+
   return (
     <div
       className="mx-auto max-w-5xl"
@@ -28,48 +42,30 @@ const DynamicMap = () => {
         center={center}
         style={{ width: '100%', height: '100%' }}
         isPanto={true}
+        onCreate={(map) => {
+          if (!isMapLoad) {
+            const bounds = mapBounds();
+            setTimeout(() => {
+              map.setBounds(bounds);
+            }, 10);
+            setIsMapLoad(true);
+          }
+        }}
         onClick={handleCloseInfo}
       >
-        <CustomOverlayMap
-          position={{
-            lat: 33.5554,
-            lng: 126.79582
-          }}
-          clickable={true}
-        >
-          <FacilityMarker
-            info={{
-              id: 1,
-              price: 1000000,
-              position: {
-                lat: 33.5554,
-                lng: 126.79582
-              }
-            }}
-            isActive={activeMarker === 1}
-            handleOnClickMove={handleOnClickMove}
-          />
-        </CustomOverlayMap>
-        <CustomOverlayMap
-          position={{
-            lat: 33.5558,
-            lng: 126.78584
-          }}
-          clickable={true}
-        >
-          <FacilityMarker
-            info={{
-              id: 2,
-              price: 800000,
-              position: {
-                lat: 33.5558,
-                lng: 126.78584
-              }
-            }}
-            isActive={activeMarker === 2}
-            handleOnClickMove={handleOnClickMove}
-          />
-        </CustomOverlayMap>
+        {data.map((item) => (
+          <CustomOverlayMap
+            position={{ lat: item.lat, lng: item.lon }}
+            clickable={true}
+            key={item.id}
+          >
+            <FacilityMarker
+              info={item}
+              isActive={activeMarker === item.id}
+              handleOnClickMove={handleOnClickMove}
+            />
+          </CustomOverlayMap>
+        ))}
       </Map>
     </div>
   );
