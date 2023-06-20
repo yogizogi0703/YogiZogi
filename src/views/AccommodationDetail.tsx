@@ -194,7 +194,7 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">
             객실안내 및 예약
           </h2>
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-5">
             {accommodationData.room.map((el, idx) => {
               return (
                 <div className="flex gap-3">
@@ -216,12 +216,12 @@ const AccommodationDetail = () => {
                       />
                     </figure>
                   </label>
-                  <div className="flex flex-row w-1/3">
+                  <div className="flex flex-row">
                     <div className="flex flex-col gap-3 ml-4">
                       <h3 className="text-base md:text-xl font-semibold md:mb-1">
                         {el.roomName}
                       </h3>
-                      <div className="flex flex-col gap-2">
+                      <div className="flex flex-wrap gap-2">
                         <p>
                           <span className="font-semibold">체크인: </span>
                           {el.checkInTime}시
@@ -239,21 +239,20 @@ const AccommodationDetail = () => {
                           {el.maxPeople}명
                         </p>
                       </div>
+                      <div className="flex flex-wrap gap-3 my-auto items-center justify-end">
+                        {el.price.map((el, idx) => {
+                          return (
+                            <button
+                              key={idx}
+                              className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
+                            >
+                              <p>{el.date}</p>
+                              <p>{addCommasToPrice(el.price)}원</p>
+                            </button>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                  <div className="divider divider-horizontal mx-2" />
-                  <div className="flex flex-col gap-3 w-1/4 md:w-1/4 my-auto items-center justify-end">
-                    {el.price.map((el, idx) => {
-                      return (
-                        <button
-                          key={idx}
-                          className="flex btn bg-red-500 hover:bg-red-600 text-white"
-                        >
-                          <p>{el.date}</p>
-                          <p>{addCommasToPrice(el.price)}원</p>
-                        </button>
-                      );
-                    })}
                   </div>
                 </div>
               );
