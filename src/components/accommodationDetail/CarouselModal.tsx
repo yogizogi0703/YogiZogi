@@ -14,7 +14,7 @@ export const CarouselModal: React.FC<ModalProps> = ({ imgList, alt, selectedImg 
       <input type="checkbox" id="reservationModal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box w-11/12 max-w-4xl">
-          <Carousel selectedItem={selectedImg}>
+          <Carousel selectedItem={selectedImg} showThumbs={imgList.length === 1 ? false : true}>
             {imgList.map((el, idx) => {
               return (
                 <figure key={idx}>
