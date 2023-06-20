@@ -29,6 +29,7 @@ import {
 } from '../api/search';
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import MapView from 'components/map/MapView';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] = useState<
@@ -365,7 +366,9 @@ const SearchResult = () => {
         {!isLoading && !totalElements && isDataEnd ? (
           <p className="text-center p-4">검색 결과가 없습니다.</p>
         ) : viewType ? (
-          <div className="text-center">"여기에서 지도로 보기"</div>
+          <div>
+            <MapView />
+          </div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {
