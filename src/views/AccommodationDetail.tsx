@@ -1,6 +1,7 @@
 import { addCommasToPrice } from '../helpers';
 import RatingStars from '../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
+import LocalMapView from '../components/map/LocalMapView';
 
 const AccommodationDetail = () => {
   const data = {
@@ -75,24 +76,12 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          <article className="flex md:flex-col gap-2 sm:gap-5 w-md text-xs sm:text-sm md:text-base">
-            <figure className="w-32 md:w-64">
-              <img src="http://via.placeholder.com/256x256" />
-            </figure>
-            <div className="flex flex-col gap-3 justify-center">
-              <p>
-                <BiMap className="inline-flex items-center h-5 w-5 pb-1" />
-                {data.address}
-              </p>
-              <p className="font-semibold">
-                교통편: <br className="md:hidden" />
-                <span className="font-normal">
-                  용산역 5분 거리로 바로 앞 4호선 신용산역 전철역이 가까워 이동
-                  편리
-                </span>
-              </p>
-            </div>
-          </article>
+          {/* 지도 */}
+          <LocalMapView
+            address={data.address}
+            position={{ lat: data.lat, lng: data.lon }}
+          />
+          {/*  */}
         </div>
         <div className="divider my-0" />
         <div>
