@@ -10,7 +10,7 @@ import {
   IReview,
   IReviewResponse
 } from '../api/accommodationDetail';
-import { Modal } from '../components/accommodationDetail/Modal';
+import { CarouselModal } from '../components/accommodationDetail/carouselModal';
 
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
@@ -22,6 +22,13 @@ const AccommodationDetail = () => {
     totalPages: 0
   });
   const [reviewArr, setReviewArr] = useState<IReview[]>([]);
+  const [modalProps, setModalProps] = useState<{
+    imgList: string[];
+    alt: string;
+  }>({
+    imgList: [],
+    alt: '',
+  });
 
   const rateAdj = [
     'Terrible',
@@ -94,6 +101,12 @@ const AccommodationDetail = () => {
                 key={idx}
                 htmlFor="reservationModal"
                 className="col-span-2 row-span-2 cursor-pointer"
+                onClick={() =>
+                  setModalProps({
+                    imgList: accommodationData.pictureUrlList,
+                    alt: 'accommodation total image',
+                  })
+                }
               >
                 <figure>
                   <img
@@ -107,7 +120,16 @@ const AccommodationDetail = () => {
           else {
             if (el.length > 0) {
               return (
-                <label key={idx} htmlFor="reservationModal">
+                <label
+                  key={idx}
+                  htmlFor="reservationModal"
+                  onClick={() =>
+                    setModalProps({
+                      imgList: accommodationData.pictureUrlList,
+                      alt: 'accommodation total image',
+                    })
+                  }
+                >
                   <figure>
                     <img
                       src={el}
@@ -128,7 +150,6 @@ const AccommodationDetail = () => {
             }
           }
         })}
-        <Modal imgList={accommodationData.pictureUrlList} />
       </div>
       <section className="flex flex-col gap-5 md:gap-10">
         <div className="flex gap-5 flex-col md:flex-row">
@@ -171,20 +192,46 @@ const AccommodationDetail = () => {
           <div className="flex flex-col gap-3">
             {accommodationData.room.map((el, idx) => {
               return (
-                <div className="flex gap-3" key={idx}>
-                  <figure className="mx-auto w-1/3 md:w-1/3">
-                    <img src={el.pictureUrlList[0]} />
-                  </figure>
+                <div  className="flex gap-3">
+                  <label
+                    key={idx}
+                    htmlFor="reservationModal"
+                    onClick={() =>
+                      setModalProps({
+                        imgList: el.pictureUrlList,
+                        alt: 'accommodation detail image',
+                      })
+                    }
+                  >
+                    <figure className="mx-auto">
+                      <img
+                        src={el.pictureUrlList[0]}
+                        alt={`${accommodationData.accommodationName}-${el.roomName} image`}
+                      />
+                    </figure>
+                  </label>
                   <div className="flex flex-row w-1/3">
-                    <div className="flex flex-col gap-3 w-3/4 md:w-3/4">
+                    <div className="flex flex-col gap-3 ml-4">
                       <h3 className="text-base md:text-xl font-semibold md:mb-1">
                         {el.roomName}
                       </h3>
                       <div className="flex flex-col gap-2">
-                        <p><span className='font-semibold'>체크인: </span>{el.checkInTime}시</p>
-                        <p><span className='font-semibold'>체크아웃</span>: {el.checkOutTime}시</p>
-                        <p><span className='font-semibold'>기본인원</span>: {el.defaultPeople}명</p>
-                        <p><span className='font-semibold'>최대인원</span>: {el.maxPeople}명</p>
+                        <p>
+                          <span className="font-semibold">체크인: </span>
+                          {el.checkInTime}시
+                        </p>
+                        <p>
+                          <span className="font-semibold">체크아웃</span>:{' '}
+                          {el.checkOutTime}시
+                        </p>
+                        <p>
+                          <span className="font-semibold">기본인원</span>:{' '}
+                          {el.defaultPeople}명
+                        </p>
+                        <p>
+                          <span className="font-semibold">최대인원</span>:{' '}
+                          {el.maxPeople}명
+                        </p>
                       </div>
                     </div>
                   </div>
@@ -264,6 +311,7 @@ const AccommodationDetail = () => {
           </div>
         </div>
       </section>
+      <CarouselModal imgList={modalProps.imgList} alt={modalProps.alt} />
     </div>
   );
 };
