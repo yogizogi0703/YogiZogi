@@ -25,9 +25,11 @@ const AccommodationDetail = () => {
   const [modalProps, setModalProps] = useState<{
     imgList: string[];
     alt: string;
+    selectedImg: number;
   }>({
     imgList: [],
     alt: '',
+    selectedImg: 0
   });
 
   const rateAdj = [
@@ -91,6 +93,8 @@ const AccommodationDetail = () => {
 
   console.log(reviewArr)
 
+
+
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
@@ -105,6 +109,7 @@ const AccommodationDetail = () => {
                   setModalProps({
                     imgList: accommodationData.pictureUrlList,
                     alt: 'accommodation total image',
+                    selectedImg: idx
                   })
                 }
               >
@@ -127,6 +132,7 @@ const AccommodationDetail = () => {
                     setModalProps({
                       imgList: accommodationData.pictureUrlList,
                       alt: 'accommodation total image',
+                      selectedImg: idx
                     })
                   }
                 >
@@ -200,6 +206,7 @@ const AccommodationDetail = () => {
                       setModalProps({
                         imgList: el.pictureUrlList,
                         alt: 'accommodation detail image',
+                        selectedImg: idx
                       })
                     }
                   >
@@ -239,7 +246,10 @@ const AccommodationDetail = () => {
                   <div className="flex flex-col gap-3 w-1/4 md:w-1/4 my-auto items-center justify-end">
                     {el.price.map((el, idx) => {
                       return (
-                        <button key={idx} className="flex btn bg-red-500 hover:bg-red-600 text-white">
+                        <button
+                          key={idx}
+                          className="flex btn bg-red-500 hover:bg-red-600 text-white"
+                        >
                           <p>{el.date}</p>
                           <p>{addCommasToPrice(el.price)}원</p>
                         </button>
@@ -311,7 +321,7 @@ const AccommodationDetail = () => {
           </div>
         </div>
       </section>
-      <CarouselModal imgList={modalProps.imgList} alt={modalProps.alt} />
+      <CarouselModal imgList={modalProps.imgList} alt={modalProps.alt} selectedImg={modalProps.selectedImg} />
     </div>
   );
 };
