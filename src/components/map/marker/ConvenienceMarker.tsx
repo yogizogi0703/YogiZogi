@@ -1,6 +1,6 @@
 const ConvenienceMarker = () => {
   return (
-    <div className="cursor-pointer p-2 rounded-full text-white bg-blue-500 drop-shadow-md">
+    <div className="cursor-pointer p-2 h-10 w-10 rounded-full text-white bg-blue-500 drop-shadow-md">
       <svg
         fill="#fff"
         width="24px"

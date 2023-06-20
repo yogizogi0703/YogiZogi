@@ -28,6 +28,7 @@ import {
   getDetailedSearchResult
 } from '../api/search';
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
+import MapView from '../components/map/MapView';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] =
@@ -282,7 +283,9 @@ const SearchResult = () => {
         </div>
         <hr className="mt-2 mb-8" />
         {viewType ? (
-          <div className="text-center">"여기에서 지도로 보기"</div>
+          <div className="text-center">
+            <MapView />
+          </div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {

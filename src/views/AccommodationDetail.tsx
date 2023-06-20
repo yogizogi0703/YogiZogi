@@ -1,6 +1,7 @@
 import { addCommasToPrice } from '../helpers';
 import RatingStars from '../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
+import LocalMapView from '../components/map/LocalMapView';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
 import { AxiosResponse } from 'axios';
@@ -204,6 +205,12 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
+          {/* 지도 */}
+          <LocalMapView
+            address={data.address}
+            position={{ lat: data.lat, lng: data.lon }}
+          />
+          {/*  */}
         </div>
         <div className="divider my-0" />
         <div>
