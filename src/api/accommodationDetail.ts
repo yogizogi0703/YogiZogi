@@ -1,3 +1,10 @@
+export interface IPrice {
+  date: string;
+  id: number;
+  price: number;
+  roomCnt: number;
+}
+
 export interface IRoomResponse {
   id: number;
   roomName: string;
@@ -6,13 +13,7 @@ export interface IRoomResponse {
   defaultPeople: number;
   maxPeople: number;
   pictureUrlList: string[];
-  price: 
-    {
-      date: string;
-      id: number;
-      price: number;
-      roomCnt: number;
-    }[]
+  price: IPrice[]
 }
 
 export interface IAccommodationDetailResponse {
