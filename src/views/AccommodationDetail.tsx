@@ -32,6 +32,7 @@ const AccommodationDetail = () => {
     alt: '',
     selectedImg: 0
   });
+  const [totalPrices, setTotalPrices] = useState<number[]>([]);
 
   const rateAdj = [
     'Terrible',
@@ -78,6 +79,18 @@ const AccommodationDetail = () => {
     }
   };
 
+  const getTotalPriceArr = () => {
+    let totalPriceArr: number[] = []
+    accommodationData.room.map((el) => {
+      let totalPrice = 0;
+      el.price.forEach((item) => {
+        totalPrice += item.price;
+      });
+      totalPriceArr.push(totalPrice);
+    });
+    setTotalPrices(totalPriceArr)
+  }; 
+  
   useEffect(() => {
     (async () => {
       const result: AxiosResponse<any, any> | undefined = await fetchData.get(
@@ -89,7 +102,11 @@ const AccommodationDetail = () => {
       }
       getReview(1);
     })();
-  }, []);
+  }, [id]);
+
+  useEffect(() => {
+    getTotalPriceArr();
+  }, [accommodationData]);
 
   useEffect(() => {
     (async () => {
