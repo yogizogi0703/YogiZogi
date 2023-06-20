@@ -303,7 +303,7 @@ const AccommodationDetail = () => {
           </div>
         </div>
         <div className="divider" />
-        <div>
+        <div className='h-[600px] max-h-[1500px]'>
           {reviewArr &&
             reviewArr.length > 0 &&
             reviewArr[page - 1] &&
