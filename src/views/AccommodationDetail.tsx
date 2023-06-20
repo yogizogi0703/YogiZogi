@@ -297,7 +297,7 @@ const AccommodationDetail = () => {
                 {rateAdj[Math.trunc(Number(accommodationRate)) - 1]}
               </p>
               <p className="text-xs md:text-lg">
-                총 8개의 확인된 리뷰가 있습니다.
+                총 {reviewRes.totalElement}개의 확인된 리뷰가 있습니다.
               </p>
             </div>
           </div>
