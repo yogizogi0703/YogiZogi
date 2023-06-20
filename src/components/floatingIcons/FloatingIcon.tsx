@@ -1,6 +1,6 @@
 import { BsChat } from 'react-icons/bs';
 import { BiShoppingBag } from 'react-icons/bi';
-import { ComparisonBox } from './ComparisonBox';
+// import { ComparisonBox } from './ComparisonBox';
 import { useState } from 'react';
 
 export const FloatingIcon = () => {
@@ -22,7 +22,7 @@ export const FloatingIcon = () => {
       >
         <BiShoppingBag className="md:w-6 md:h-6" />
       </div>
-      <ComparisonBox display={comparisonState} />
+      {/* <ComparisonBox display={comparisonState} / >*/}
     </div>
   );
 };
