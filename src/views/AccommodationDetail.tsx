@@ -53,7 +53,12 @@ const AccommodationDetail = () => {
   const urlParams = new URLSearchParams(
     '?' + window.location.hash.split('?')[1]
   );
-  const accommodationRate = urlParams.get('rate');
+  const {
+    checkindate: checkInDate,
+    checkoutdate: checkOutDate,
+    people,
+    rate: accommodationRate
+  } = Object.fromEntries(urlParams.entries());
 
   const getReview = async (page: number) => {
     const reviewRes: AxiosResponse<any, any> | undefined = await fetchData.get(
