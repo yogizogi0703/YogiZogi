@@ -27,7 +27,7 @@ const FacilityMarker = ({
   };
 
   const handleDetailMove = (id: number) => {
-    navigate('/accommodationDetail');
+    navigate(`/accommodationDetai/${id}`);
   };
 
   useEffect(() => {
