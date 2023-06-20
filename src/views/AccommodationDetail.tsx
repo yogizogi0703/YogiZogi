@@ -114,8 +114,6 @@ const AccommodationDetail = () => {
     })();
   }, [page]);
 
-  console.log(reviewArr);
-
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
