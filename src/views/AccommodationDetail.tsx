@@ -210,13 +210,14 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">
             객실안내 및 예약
           </h2>
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
             {accommodationData.room.map((el, idx) => {
               return (
-                <div key={idx} className="flex gap-3">
+                <div key={idx} className="flex flex-col sm:flex-row gap-3">
                   <label
                     key={idx}
                     htmlFor="reservationModal"
+                    className='flex'
                     onClick={() =>
                       setModalProps({
                         imgList: el.pictureUrlList,
@@ -232,11 +233,11 @@ const AccommodationDetail = () => {
                       />
                     </figure>
                   </label>
-                  <div className="ml-2 w-1/3">
+                  <div className="flex flex-col flex-wrap justify-center ml-2 sm:w-1/3">
                     <h3 className="text-base md:text-xl font-semibold md:mb-1">
                       {el.roomName}
                     </h3>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex sm:flex-col gap-2">
                       <p>
                         <span className="font-semibold">체크인: </span>
                         {el.checkInTime}시
@@ -256,8 +257,8 @@ const AccommodationDetail = () => {
                     </div>
                   </div>
                   <div className="divider divider-horizontal" />
-                  <div className="flex flex-row w-1/3 justify-center">
-                    <div className="flex flex-col gap-3 my-auto items-center">
+                  <div className="flex flex-row sm:w-1/3 justify-center">
+                    <div className="flex sm:flex-col gap-3 my-auto items-center">
                       <div className='font-semibold text-lg'>{addCommasToPrice(totalPrices[idx])}원</div>
                       <label
                         htmlFor="confirmModal"
