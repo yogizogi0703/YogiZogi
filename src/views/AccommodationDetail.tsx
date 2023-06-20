@@ -217,7 +217,7 @@ const AccommodationDetail = () => {
           <div className="flex flex-col gap-5">
             {accommodationData.room.map((el, idx) => {
               return (
-                <div className="flex gap-3">
+                <div key={idx} className="flex gap-3">
                   <label
                     key={idx}
                     htmlFor="reservationModal"
