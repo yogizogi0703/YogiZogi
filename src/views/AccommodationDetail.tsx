@@ -2,19 +2,35 @@ import { addCommasToPrice } from '../helpers';
 import RatingStars from '../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
 import LocalMapView from '../components/map/LocalMapView';
+import { useEffect, useState } from 'react';
+import { fetchData } from '../api';
+import { AxiosResponse } from 'axios';
+import {
+  AccommodationDetailInitData,
+  IAccommodationDetailResponse,
+  IReview,
+  IReviewResponse
+} from '../api/accommodationDetail';
+import { CarouselModal, IModalProps } from '../components/accommodationDetail/CarouselModal';
+import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 
 const AccommodationDetail = () => {
-  const data = {
-    categoryId: 1,
-    accomodationId: 1,
-    name: '롯데호텔 서울',
-    rate: 9,
-    accomodationImage: 'http://via.placeholder.com/640x480',
-    address: '서울특별시 중구 을지로 30',
-    price: 99999999,
-    lat: 37.565773,
-    lon: 126.981414
-  };
+  const [accommodationData, setAccommodationData] =
+    useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
+  const [page, setPage] = useState(1);
+  const [reviewRes, setReviewRes] = useState<IReviewResponse>({
+    content: [],
+    totalElement: 0,
+    totalPages: 0
+  });
+  const [reviewArr, setReviewArr] = useState<IReview[]>([]);
+  const [modalProps, setModalProps] = useState<IModalProps>({
+    imgList: [],
+    alt: '',
+    selectedImg: 0
+  });
+  const [totalPrices, setTotalPrices] = useState<number[]>([]);
+
   const rateAdj = [
     'Terrible',
     'Poor',
@@ -27,36 +43,149 @@ const AccommodationDetail = () => {
     'Outstanding',
     'Perfect'
   ];
+
+  const accommodationId =
+    window.location.hash.match(/\/accommodation\/(\d+)/) || '';
+  const id = accommodationId[1];
+
+  const urlParams = new URLSearchParams(
+    '?' + window.location.hash.split('?')[1]
+  );
+  const {
+    checkindate: checkInDate,
+    checkoutdate: checkOutDate,
+    people,
+    rate: accommodationRate
+  } = Object.fromEntries(urlParams.entries());
+
+  const getReview = async (page: number) => {
+    const reviewRes: AxiosResponse<any, any> | undefined = await fetchData.get(
+      `/accommodation/${id}/review?page=${page}&pagesize=5`
+    );
+    if (reviewRes && reviewRes.data) {
+      setReviewRes({
+        content: reviewRes.data.content,
+        totalElement: reviewRes.data.totalElements,
+        totalPages: reviewRes.data.totalPages
+      });
+      setReviewArr((prev) => {
+        const newReviewArr: IReview[] = [...prev];
+        newReviewArr[page - 1] = reviewRes.data.content;
+        return newReviewArr;
+      });
+    }
+  };
+
+  const getTotalPriceArr = () => {
+    let totalPriceArr: number[] = [];
+    accommodationData.room.map((el) => {
+      let totalPrice = 0;
+      el.price.forEach((item) => {
+        totalPrice += item.price;
+      });
+      totalPriceArr.push(totalPrice);
+    });
+    setTotalPrices(totalPriceArr);
+  };
+
+  useEffect(() => {
+    (async () => {
+      const result: AxiosResponse<any, any> | undefined = await fetchData.get(
+        `/accommodation/${id}`
+      );
+
+      if (result) {
+        setAccommodationData(result.data.data[1]);
+      }
+      getReview(1);
+    })();
+  }, [id]);
+
+  useEffect(() => {
+    getTotalPriceArr();
+  }, [accommodationData]);
+
+  useEffect(() => {
+    (async () => {
+      if (!reviewArr[page - 1]) getReview(page);
+    })();
+  }, [page]);
+
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
-        <figure className="col-span-2 row-span-2">
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
-        <figure>
-          <img src="http://via.placeholder.com/640x480" />
-        </figure>
+        {accommodationData.pictureUrlList.slice(0, 5).map((el, idx) => {
+          if (idx === 0)
+            return (
+              <label
+                key={idx}
+                htmlFor="reservationModal"
+                className="col-span-2 row-span-2 cursor-pointer"
+                onClick={() =>
+                  setModalProps({
+                    imgList: accommodationData.pictureUrlList,
+                    alt: 'accommodation total image',
+                    selectedImg: idx
+                  })
+                }
+              >
+                <figure>
+                  <img
+                    src={el}
+                    alt={`${accommodationData.accommodationName}-image-${idx}`}
+                    className="w-full h-full object-cover"
+                  />
+                </figure>
+              </label>
+            );
+          else {
+            if (el.length > 0) {
+              return (
+                <label
+                  key={idx}
+                  htmlFor="reservationModal"
+                  onClick={() =>
+                    setModalProps({
+                      imgList: accommodationData.pictureUrlList,
+                      alt: 'accommodation total image',
+                      selectedImg: idx
+                    })
+                  }
+                >
+                  <figure>
+                    <img
+                      src={el}
+                      alt={`${accommodationData.accommodationName}-image-${idx}`}
+                      className="w-full h-full object-cover cursor-pointer"
+                    />
+                  </figure>
+                </label>
+              );
+            } else {
+              return (
+                <figure key={idx}>
+                  <div className="flex items-center justify-center w-full h-full object-cover bg-gray-300">
+                    No Image
+                  </div>
+                </figure>
+              );
+            }
+          }
+        })}
       </div>
       <section className="flex flex-col gap-5 md:gap-10">
         <div className="flex gap-5 flex-col md:flex-row">
           <div className="flex flex-col gap-5">
-            <h1 className="text-2xl md:text-4xl font-bold">{data.name}</h1>
+            <h1 className="text-2xl md:text-4xl font-bold">
+              {accommodationData.accommodationName}
+            </h1>
             <div className="flex items-center gap-5 text-xs sm:text-sm md:text-base">
               <span className="flex items-center gap-2">
                 <BiMap />
-                {data.address}
+                {accommodationData.address}
               </span>
               <div className="flex items-center gap-1">
-                평점 :<RatingStars rate={data.rate} />
+                평점 :<RatingStars rate={Number(accommodationRate)} />
               </div>
             </div>
             <div className="text-xs sm:text-sm md:text-base">
@@ -76,52 +205,90 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          {/* 지도 */}
           <LocalMapView
-            address={data.address}
-            position={{ lat: data.lat, lng: data.lon }}
+            address={accommodationData.address}
+            position={{
+              lat: accommodationData.lat,
+              lng: accommodationData.lon
+            }}
           />
-          {/*  */}
         </div>
         <div className="divider my-0" />
         <div>
           <h2 className="text-lg md:text-2xl font-semibold mb-4">
             객실안내 및 예약
           </h2>
-          <div className="flex flex-col md:flex-row gap-3">
-            <figure className="mx-auto w-2/3 md:w-1/3">
-              <img src={data.accomodationImage} />
-            </figure>
-            <div className="flex flex-row md:w-2/3">
-              <div className="flex flex-col gap-3 w-3/4 md:w-3/4">
-                <h3 className="text-base md:text-xl font-semibold md:mb-1">
-                  Room Name
-                </h3>
-                <p className="text-xs md:text-base mb-1">
-                  Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                  Perspiciatis unde vel a exercitationem vero veniam, ad
-                  veritatis beatae sunt delectus nobis sequi temporibus deleniti
-                  alias fugit maxime autem esse vitae?
-                </p>
-                <div className="flex gap-1">
-                  <span className="badge badge-outline badge-sm md:badge-md">
-                    최소인원 1
-                  </span>
-                  <span className="badge badge-outline badge-sm md:badge-md">
-                    최대인원 2
-                  </span>
+          <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
+            {accommodationData.room.map((el, idx) => {
+              return (
+                <div key={idx} className="flex flex-col sm:flex-row gap-3">
+                  <label
+                    key={idx}
+                    htmlFor="reservationModal"
+                    className="flex"
+                    onClick={() =>
+                      setModalProps({
+                        imgList: el.pictureUrlList,
+                        alt: 'accommodation detail image',
+                        selectedImg: idx
+                      })
+                    }
+                  >
+                    <figure className="mx-auto">
+                      <img
+                        src={el.pictureUrlList[0]}
+                        alt={`${accommodationData.accommodationName}-${el.roomName} image`}
+                      />
+                    </figure>
+                  </label>
+                  <div className="flex flex-col flex-wrap justify-center ml-2 sm:w-1/3">
+                    <h3 className="text-base md:text-xl font-semibold md:mb-1">
+                      {el.roomName}
+                    </h3>
+                    <div className="flex sm:flex-col gap-2">
+                      <p>
+                        <span className="font-semibold">체크인: </span>
+                        {el.checkInTime}시
+                      </p>
+                      <p>
+                        <span className="font-semibold">체크아웃</span>:{' '}
+                        {el.checkOutTime}시
+                      </p>
+                      <p>
+                        <span className="font-semibold">기본인원</span>:{' '}
+                        {el.defaultPeople}명
+                      </p>
+                      <p>
+                        <span className="font-semibold">최대인원</span>:{' '}
+                        {el.maxPeople}명
+                      </p>
+                    </div>
+                  </div>
+                  <div className="divider divider-horizontal" />
+                  <div className="flex flex-row sm:w-1/3 justify-center">
+                    <div className="flex sm:flex-col gap-3 my-auto items-center">
+                      <div className="font-semibold text-lg">
+                        {addCommasToPrice(totalPrices[idx])}원
+                      </div>
+                      <label
+                        htmlFor="confirmModal"
+                        className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
+                      >
+                        예약하기
+                      </label>
+                      <ConfirmModal
+                        roomImg={el.pictureUrlList[0]}
+                        roomInfo={accommodationData.room[idx]}
+                        price={totalPrices[idx]}
+                        checkInDate={checkInDate}
+                        checkOutDate={checkOutDate}
+                        people={people}
+                      />
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="divider divider-horizontal mx-2" />
-              <div className="flex flex-col gap-3 w-1/4 md:w-1/4 my-auto items-center justify-end">
-                <p className="w-fit text-xs sm:text-base lg:text-xl font-semibold md:mb-5 ">
-                  {addCommasToPrice(data.price)}원
-                </p>
-                <button className="btn btn-secondary btn-xs md:btn-md text-white">
-                  예약하기
-                </button>
-              </div>
-            </div>
+              );
+            })}
           </div>
         </div>
         <div className="divider" />
@@ -129,45 +296,66 @@ const AccommodationDetail = () => {
           <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
           <div className="flex items-center text-xl md:text-3xl text-center">
             <div className="my-5 w-1/3 p-2">
-              <span className="font-semibold text-red-500">{data.rate}</span> /
-              10 점
+              <span className="font-semibold text-red-500">
+                {accommodationRate}
+              </span>{' '}
+              / 10 점
             </div>
             <div className="divider divider-horizontal mx-1" />
             <div className="w-2/3 text-center">
               <p className="mb-3 font-semibold">
-                {rateAdj[Math.trunc(data.rate) - 1]}
+                {rateAdj[Math.trunc(Number(accommodationRate)) - 1]}
               </p>
               <p className="text-xs md:text-lg">
-                총 8개의 확인된 리뷰가 있습니다.
+                총 {reviewRes.totalElement}개의 확인된 리뷰가 있습니다.
               </p>
             </div>
           </div>
         </div>
         <div className="divider" />
         <div>
-          <div className="flex flex-col gap-3 p-3 border rounded-lg text-xs md:text-base">
-            <p className="font-semibold">name</p>
-            <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-base font-medium">
-              <p className="font-semibold">
-                투숙 기간 :{' '}
-                <span className="text-slate-500 font-medium">1/1 ~ 2/1</span>
-              </p>
-              <div className="flex items-center gap-2 font-semibold">
-                평점 :{' '}
-                <div className="text-slate-500">
-                  <RatingStars rate={9} />
+          {reviewArr &&
+            reviewArr.length > 0 &&
+            reviewArr[page - 1] &&
+            Object.values(reviewArr[page - 1]).map((el, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="flex flex-col gap-3 p-3 border rounded-lg mb-5 text-xs md:text-base"
+                >
+                  <p className="font-semibold">{el.userId}</p>
+                  <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-base font-medium">
+                    <div className="flex items-center gap-2 font-semibold">
+                      평점 : <RatingStars rate={el.rating} />
+                    </div>
+                  </div>
+                  <p> {el.description}</p>
                 </div>
-              </div>
-            </div>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ratione
-              molestiae, maiores perferendis non possimus, dolorum repellendus
-              quam consequatur maxime obcaecati distinctio magni ab qui nam, id
-              rem eligendi deserunt nemo?
-            </p>
+              );
+            })}
+          <div className="flex justify-center">
+            {new Array(reviewRes.totalPages + 1).fill(0, 1, 5).map((_, idx) => {
+              return (
+                <div key={idx} className="join">
+                  <input
+                    aria-label={idx.toString()}
+                    className="join-item btn btn-square btn-sm mr-1"
+                    type="radio"
+                    name="options"
+                    checked={page === idx}
+                    onChange={() => setPage(idx)}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
+      <CarouselModal
+        imgList={modalProps.imgList}
+        alt={modalProps.alt}
+        selectedImg={modalProps.selectedImg}
+      />
     </div>
   );
 };
