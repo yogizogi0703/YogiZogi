@@ -23,7 +23,7 @@ function App() {
             element={<AccommodationDetail />}
           />
           <Route path="/reservationConfirm" element={<ReservationConfirm />} />
-          <Route path="/payment/:book" element={<Payment />} />
+          <Route path="/payment" element={<Payment />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Layout>
