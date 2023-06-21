@@ -8,7 +8,7 @@ export const reviewData = [
   },
   {
     id: 19,
-    customerId: 17,
+    userId: 17,
     sellerId: null,
     accommodationId: 1,
     rating: 8,
@@ -16,7 +16,7 @@ export const reviewData = [
   },
   {
     id: 18,
-    customerId: 18,
+    userId: 18,
     sellerId: null,
     accommodationId: 1,
     rating: 7,
@@ -24,7 +24,7 @@ export const reviewData = [
   },
   {
     id: 17,
-    customerId: 19,
+    userId: 19,
     sellerId: null,
     accommodationId: 1,
     rating: 9,
@@ -32,7 +32,7 @@ export const reviewData = [
   },
   {
     id: 16,
-    customerId: 20,
+    userId: 20,
     sellerId: null,
     accommodationId: 1,
     rating: 3,
@@ -47,7 +47,7 @@ export const reviewData = [
   },
   {
     id: 14,
-    customerId: 12,
+    userId: 12,
     sellerId: null,
     accommodationId: 1,
     rating: 8,
@@ -55,7 +55,7 @@ export const reviewData = [
   },
   {
     id: 13,
-    customerId: 13,
+    userId: 13,
     sellerId: null,
     accommodationId: 1,
     rating: 7,
@@ -63,7 +63,7 @@ export const reviewData = [
   },
   {
     id: 12,
-    customerId: 14,
+    userId: 14,
     sellerId: null,
     accommodationId: 1,
     rating: 9,
@@ -71,7 +71,7 @@ export const reviewData = [
   },
   {
     id: 11,
-    customerId: 15,
+    userId: 15,
     sellerId: null,
     accommodationId: 1,
     rating: 3,
@@ -86,7 +86,7 @@ export const reviewData = [
   },
   {
     id: 9,
-    customerId: 7,
+    userId: 7,
     sellerId: null,
     accommodationId: 1,
     rating: 8,
@@ -94,7 +94,7 @@ export const reviewData = [
   },
   {
     id: 8,
-    customerId: 8,
+    userId: 8,
     sellerId: null,
     accommodationId: 1,
     rating: 7,
@@ -102,7 +102,7 @@ export const reviewData = [
   },
   {
     id: 7,
-    customerId: 9,
+    userId: 9,
     sellerId: null,
     accommodationId: 1,
     rating: 9,
@@ -110,7 +110,7 @@ export const reviewData = [
   },
   {
     id: 6,
-    customerId: 10,
+    userId: 10,
     sellerId: null,
     accommodationId: 1,
     rating: 3,
@@ -125,7 +125,7 @@ export const reviewData = [
   },
   {
     id: 4,
-    customerId: 2,
+    userId: 2,
     sellerId: null,
     accommodationId: 1,
     rating: 8,
@@ -133,7 +133,7 @@ export const reviewData = [
   },
   {
     id: 3,
-    customerId: 3,
+    userId: 3,
     sellerId: null,
     accommodationId: 1,
     rating: 7,
@@ -141,7 +141,7 @@ export const reviewData = [
   },
   {
     id: 2,
-    customerId: 4,
+    userId: 4,
     sellerId: null,
     accommodationId: 1,
     rating: 9,
@@ -149,7 +149,7 @@ export const reviewData = [
   },
   {
     id: 1,
-    customerId: 5,
+    userId: 5,
     sellerId: null,
     accommodationId: 1,
     rating: 3,

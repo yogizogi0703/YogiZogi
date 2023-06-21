@@ -1,5 +1,3 @@
-import { BrowserRouter, HashRouter, Route, Routes } from 'react-router-dom';
-import AccommodationDetail from './views/AccommodationDetail';
 import Main from './views/Main';
 import Payment from './views/Payment';
 import ReservationConfirm from './views/ReservationConfirm';
@@ -8,6 +6,8 @@ import SignIn from './views/SignIn';
 import SignUp from './views/SignUp';
 import PageNotFound from './views/PageNotFound';
 import Layout from './components/common/Layout';
+import { HashRouter, Route, Routes } from 'react-router-dom';
+import AccommodationDetail from './views/AccommodationDetail';
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/searchResult" element={<SearchResult />} />
           <Route
-            path="/accommodationDetail/:id"
+            path="/accommodation/:id"
             element={<AccommodationDetail />}
           />
           <Route path="/reservationConfirm" element={<ReservationConfirm />} />

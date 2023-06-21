@@ -308,7 +308,7 @@ export const handlers = [
   // 숙소 리뷰 목록 확인
   rest.get('/api/accommodation/:accommodationId/review', (req, res, ctx) => {
     const page = parseInt(req.url.searchParams.get('page') || '0');
-    const pageSize = parseInt(req.url.searchParams.get('pageSize') || '0');
+    const pageSize = parseInt(req.url.searchParams.get('pagesize') || '0');
 
     const startIndex = pageSize * (page - 1);
     const endIndex = startIndex + pageSize;
