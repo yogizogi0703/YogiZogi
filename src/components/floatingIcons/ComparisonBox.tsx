@@ -51,7 +51,7 @@ export const ComparisonBox = ({ display }: {display: boolean}) => {
           </div>
         );
       })}
-      <div className='flex justify-end'>
+      <div className='flex justify-end mb-1 w-full h-full items-end'>
         <button className="btn btn-sm bg-white">비교하기</button>
       </div>
     </article>
