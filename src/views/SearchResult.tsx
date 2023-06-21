@@ -28,10 +28,15 @@ import {
   getDetailedSearchResult
 } from '../api/search';
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
+import MapView from '../components/map/MapView';
 
 const SearchResult = () => {
-  const [accommodationList, setAccommodationList] =
-    useState<ISearchResultContent[]>();
+  const [accommodationList, setAccommodationList] = useState<
+    ISearchResultContent[]
+  >([]);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [viewType, setViewType] = useState<boolean>(View.LIST);
 
@@ -50,6 +55,8 @@ const SearchResult = () => {
 
   const [totalElements, setTotalElements] = useState<number>(0);
 
+  const [isDataEnd, setIsDataEnd] = useState(false);
+
   const searchParams = useRef<ISearchParams>({
     keyword: initialParams.get('keyword') || '',
     checkindate: initialParams.get('checkindate') || getTodayString(),
@@ -63,6 +70,18 @@ const SearchResult = () => {
     maxprice: null,
     category: null,
     page: 1
+  });
+
+  const observerTarget = useRef<HTMLDivElement>(null);
+
+  const [observe, unobserve] = useIntersectionObserver(async () => {
+    setIsLoading(true);
+
+    setTimeout(async () => {
+      await handleDetailedSearch();
+      searchParams.current.page++;
+      setIsLoading(false);
+    }, 1000);
   });
 
   const getParams = useCallback(() => {
@@ -167,13 +186,50 @@ const SearchResult = () => {
     return `${minRangeValue}만원 ~ ${maxRangeValue}만원`;
   }, [minRangeValue, maxRangeValue]);
 
+  const startObserving = useCallback(() => {
+    if (observerTarget.current !== null) {
+      observerTarget.current.classList.remove('hidden');
+      observe(observerTarget.current);
+    }
+  }, [observerTarget]);
+
+  const stopObserving = useCallback(() => {
+    if (observerTarget.current !== null) {
+      unobserve(observerTarget.current);
+    }
+  }, [observerTarget]);
+
+  const checkDataEnd = useCallback(
+    (prev: number, cur: number, total: number) => {
+      if (prev + cur === total) {
+        setIsDataEnd(true);
+      }
+    },
+    []
+  );
+
   const handleDetailedSearch = useCallback(async () => {
     const params = getParams();
-    const result = await getDetailedSearchResult(params);
+    const { totalElements: newTotalElements, content } =
+      await getDetailedSearchResult(params);
 
-    setAccommodationList(result.content);
-    setTotalElements(result.totalElements);
-  }, [searchParams]);
+    setAccommodationList((prev) => {
+      checkDataEnd(prev.length, content.length, newTotalElements);
+      return [...prev, ...content];
+    });
+
+    if (totalElements === 0) {
+      setTotalElements(newTotalElements);
+    }
+  }, []);
+
+  const handleSearchButtonClick = useCallback(async () => {
+    setAccommodationList([]);
+    setTotalElements(0);
+    searchParams.current.page = 1;
+
+    startObserving();
+  }, []);
 
   useEffect(() => {
     const init = async () => {
@@ -183,10 +239,28 @@ const SearchResult = () => {
 
         setSelectedSortingFactor(Sort.DISTANCE);
       }
-      await handleDetailedSearch();
+      startObserving();
     };
     init();
   }, []);
+
+  useEffect(() => {
+    if (observerTarget.current === null) {
+      return;
+    }
+
+    if (isLoading) {
+      stopObserving();
+      return;
+    }
+
+    if (!isDataEnd) {
+      startObserving();
+      return;
+    }
+
+    observerTarget.current.classList.add('hidden');
+  }, [isLoading]);
 
   return (
     <div
@@ -264,7 +338,7 @@ const SearchResult = () => {
           <button
             type="button"
             className="btn bg-red-500 text-white drop-shadow btn-sm h-10 w-24 hover:bg-red-600"
-            onClick={handleDetailedSearch}
+            onClick={handleSearchButtonClick}
           >
             검색하기
           </button>
@@ -272,7 +346,15 @@ const SearchResult = () => {
       </section>
       <section className="mt-10">
         <div className="flex justify-between items-center">
-          <h3 className="font-bold text-lg">{`${totalElements}개의 검색 결과`}</h3>
+          <h3 className="font-bold text-lg">
+            {isLoading ? (
+              <span className="loading loading-dots loading-md"></span>
+            ) : !totalElements && !isDataEnd ? (
+              <span className="loading loading-dots loading-md"></span>
+            ) : (
+              `${totalElements}개의 검색 결과`
+            )}
+          </h3>
           <button
             className="btn btn-ghost bg-white drop-shadow text-xs px-8 h-10 min-h-full"
             onClick={handleViewToggle}
@@ -281,15 +363,19 @@ const SearchResult = () => {
           </button>
         </div>
         <hr className="mt-2 mb-8" />
-        {viewType ? (
-          <div className="text-center">"여기에서 지도로 보기"</div>
+        {!isLoading && !totalElements && isDataEnd ? (
+          <p className="text-center p-4">검색 결과가 없습니다.</p>
+        ) : viewType ? (
+          <div>
+            <MapView />
+          </div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {
               return (
                 <Link
                   key={String(accommodation.id) + String(new Date())}
-                  to={`/accommodation/${accommodation.id}?&checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}`}
+                  to={`/accommodation/${accommodation.id}?&checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}&rate=${accommodation.rate}`}
                 >
                   <AccommodationPreview data={accommodation} />
                 </Link>
@@ -298,6 +384,12 @@ const SearchResult = () => {
           </div>
         )}
       </section>
+      <div
+        ref={observerTarget}
+        className="w-full h-24 flex justify-center items-center hidden"
+      >
+        <span className="loading loading-spinner loading-lg"></span>
+      </div>
     </div>
   );
 };
