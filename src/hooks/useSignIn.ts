@@ -66,7 +66,8 @@ const useSignIn = () => {
   };
 
   const handleKakaoSignIn = () => {
-    location.href = '/';
+    location.href =
+      '/FE#/auth/callback?token=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3YnMwOTZAZGF1bS5uZXRfMjgyMTI2NzgwMSIsImlzcyI6Ii7sgq3soJwuIzI4MjEyNjc4MDEiLCJqdGkiOiIxNiIsImlhdCI6MTY4NzI2MDY1MiwiZXhwIjoxNjg3MzQ3MDUyfQ.m8O-2imqlYu6UJ-lny4MdncvLka8R5r0U2soq23G3qo';
   };
 
   useEffect(() => {

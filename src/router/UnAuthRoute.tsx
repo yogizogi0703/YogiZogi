@@ -2,7 +2,7 @@ import useAuth from '../hooks/useAuth';
 import React from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 
-const ProtectedRoute = () => {
+const UnAuthRoute = () => {
   const { authUser } = useAuth();
 
   if (authUser.isLoggedIn) {
@@ -16,4 +16,4 @@ const ProtectedRoute = () => {
   );
 };
 
-export default ProtectedRoute;
+export default UnAuthRoute;

@@ -9,7 +9,7 @@ import SignUp from './views/SignUp';
 import PageNotFound from './views/PageNotFound';
 import Layout from './components/common/Layout';
 import AuthCallback from './components/common/AuthCallback';
-import ProtectedRoute from './router/ProtectedRoute';
+import UnAuthRoute from './router/UnAuthRoute';
 import AuthRoute from './router/AuthRoute';
 
 function App() {
@@ -18,7 +18,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route element={<ProtectedRoute />}>
+          <Route element={<UnAuthRoute />}>
             <Route path="/signIn" element={<SignIn />} />
             <Route path="/signUp" element={<SignUp />} />
             <Route path="/auth/callback" element={<AuthCallback />} />
