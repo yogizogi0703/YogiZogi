@@ -2,9 +2,13 @@ import { useRecoilValue } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { AlertModal } from '../../components/common/AlertModal';
 
 export const ComparisonBox = ({ display }: { display: boolean }) => {
   const selectedAcc = useRecoilValue(selectedAccommodation);
+  const [modalState, setModalState] = useState(false);
+
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(
     '?' + window.location.hash.split('?')[1]
@@ -19,6 +23,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
     const [, month, day] = date.split('-');
     return `${month}/${day}`;
   };
+
+  const handleComparison = () => {
+    if(selectedAcc.length < 2) setModalState(true) 
+  }
 
   return (
     <article
@@ -60,9 +68,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           </div>
         );
       })}
-      <div className="flex justify-end w-full h-full items-end">
+      <div onClick={handleComparison} className="flex justify-end w-full h-full items-end">
         <button className="btn btn-xs bg-white">비교하기</button>
       </div>
+      <AlertModal content='2개의 상품을 담아주세요!' modalState={modalState} handleModal={setModalState}/>
     </article>
   );
 };
