@@ -30,6 +30,7 @@ import {
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import MapView from '../components/map/MapView';
+import { FloatingIcon } from '../components/floatingIcons/FloatingIcon';
 
 const SearchResult = () => {
   const [accommodationList, setAccommodationList] = useState<
@@ -390,6 +391,7 @@ const SearchResult = () => {
       >
         <span className="loading loading-spinner loading-lg"></span>
       </div>
+      <FloatingIcon />
     </div>
   );
 };
