@@ -25,17 +25,16 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
   };
 
   const handleComparison = () => {
-    if(selectedAcc.length < 2) setModalState(true) 
-  }
-
-  const deleteSelectedAcc = ( idx: number) => {
-    const newItems = selectedAcc.filter((_, i) => i !== idx)
-    setSelectedAcc(newItems)
-  }
+    if (selectedAcc.length < 2) setModalState(true);
+  };
+  const deleteSelectedAcc = (idx: number) => {
+    const newItems = selectedAcc.filter((_, i) => i !== idx);
+    setSelectedAcc(newItems);
+  };
 
   return (
     <article
-      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-16 md:right-20 w-48 sm:w-64 h-40 sm:h-52 ${
+      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-16 md:right-20 w-56 sm:w-72 h-40 sm:h-52 ${
         display ? 'block' : 'hidden'
       }`}
     >
@@ -73,7 +72,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                 </p>
                 <p>{addCommasToPrice(el.price)}원</p>
               </div>
-              <button onClick={() => deleteSelectedAcc(idx)} className="badge badge-neutral badge-sm w-3 text-white">
+              <button
+                onClick={() => deleteSelectedAcc(idx)}
+                className="badge badge-neutral badge-sm w-3 text-white"
+              >
                 ✕
               </button>
             </div>
