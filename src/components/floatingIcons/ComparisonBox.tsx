@@ -27,6 +27,11 @@ export const ComparisonBox = ({ display }: {display: boolean}) => {
         display ? 'block' : 'hidden'
       }`}
     >
+      {selectedAcc.length === 0 && (
+        <div className="flex items-center justify-center w-full h-2/3 text-sm bg-white rounded-xl">
+          상품을 담아주세요
+        </div>
+      )}
       {selectedAcc.map((el, idx) => {
         return (
           <div
