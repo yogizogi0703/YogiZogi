@@ -1,4 +1,4 @@
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
@@ -6,7 +6,7 @@ import { useState } from 'react';
 import { AlertModal } from '../../components/common/AlertModal';
 
 export const ComparisonBox = ({ display }: { display: boolean }) => {
-  const selectedAcc = useRecoilValue(selectedAccommodation);
+  const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
   const [modalState, setModalState] = useState(false);
 
   const navigate = useNavigate();
@@ -26,6 +26,11 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
 
   const handleComparison = () => {
     if(selectedAcc.length < 2) setModalState(true) 
+  }
+
+  const deleteSelectedAcc = ( idx: number) => {
+    const newItems = selectedAcc.filter((_, i) => i !== idx)
+    setSelectedAcc(newItems)
   }
 
   return (
@@ -68,6 +73,9 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                 </p>
                 <p>{addCommasToPrice(el.price)}원</p>
               </div>
+              <button onClick={() => deleteSelectedAcc(idx)} className="badge badge-neutral badge-sm w-3 text-white">
+                ✕
+              </button>
             </div>
           );
         })}
