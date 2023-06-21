@@ -12,7 +12,12 @@ export const ComparisonBox = ({ display }: {display: boolean}) => {
       checkoutdate: checkOutDate,
       people: people
   } = Object.fromEntries(urlParams.entries());
- 
+
+  const convertDateFormat = (date: string) => {
+    const [, month, day] = date.split('-');
+    return `${month}/${day}`;
+  };
+  
   return (
     <article
       className={`flex flex-col justify-between gap-2 py-2 px-2 absolute w-60 h-52 bottom-0 right-16 rounded-xl bg-[#3abff8] ${
@@ -38,8 +43,8 @@ export const ComparisonBox = ({ display }: {display: boolean}) => {
             <div className="w-1/2">
               <p className="truncate font-semibold">{el.accommodationName}</p>
               <p>
-                {checkInDate} ~{' '}
-                {checkOutDate}
+                {convertDateFormat(checkInDate)} ~{' '}
+                {convertDateFormat(checkOutDate)}
               </p>
               <p>{addCommasToPrice(el.price)}원</p>
             </div>
