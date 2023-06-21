@@ -30,48 +30,57 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
 
   return (
     <article
-      className={`flex flex-col justify-between gap-2 py-2 px-2 absolute w-60 h-52 bottom-0 right-16 rounded-xl bg-[#3abff8] ${
+      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-20 w-72 h-52 ${
         display ? 'block' : 'hidden'
       }`}
     >
-      {selectedAcc.length === 0 && (
-        <div className="flex items-center justify-center w-full h-2/3 text-sm bg-white rounded-xl">
-          상품을 담아주세요
-        </div>
-      )}
-      {selectedAcc.map((el, idx) => {
-        return (
-          <div key={idx} className="flex gap-1 rounded-lg bg-white">
-            <figure
-              className="w-1/2 rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
-              data-tip="자세히보기"
-              onClick={() =>
-                navigate(
-                  `/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`
-                )
-              }
-            >
-              <img
-                src={el.pictureUrlList[0]}
-                alt={`${el.accommodationName} image`}
-                className="rounded-s-lg h-full"
-              />
-            </figure>
-            <div className="w-1/2">
-              <p className="truncate font-semibold">{el.accommodationName}</p>
-              <p>
-                {convertDateFormat(checkInDate)} ~{' '}
-                {convertDateFormat(checkOutDate)}
-              </p>
-              <p>{addCommasToPrice(el.price)}원</p>
-            </div>
+      <div className="chat-bubble chat-bubble-info flex flex-col justify-between w-full h-full">
+        {selectedAcc.length === 0 && (
+          <div className="flex items-center justify-center w-full h-1/3 text-sm bg-white rounded-xl">
+            상품을 담아주세요
           </div>
-        );
-      })}
-      <div onClick={handleComparison} className="flex justify-end w-full h-full items-end">
-        <button className="btn btn-xs bg-white">비교하기</button>
+        )}
+        {selectedAcc.map((el, idx) => {
+          return (
+            <div key={idx} className="flex gap-1 rounded-lg bg-white">
+              <figure
+                className="w-1/2 rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
+                data-tip="자세히보기"
+                onClick={() =>
+                  navigate(
+                    `/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`
+                  )
+                }
+              >
+                <img
+                  src={el.pictureUrlList[0]}
+                  alt={`${el.accommodationName} image`}
+                  className="rounded-s-lg h-full"
+                />
+              </figure>
+              <div className="w-1/2">
+                <p className="truncate font-semibold">{el.accommodationName}</p>
+                <p>
+                  {convertDateFormat(checkInDate)} ~{' '}
+                  {convertDateFormat(checkOutDate)}
+                </p>
+                <p>{addCommasToPrice(el.price)}원</p>
+              </div>
+            </div>
+          );
+        })}
+        <div
+          onClick={handleComparison}
+          className="flex justify-end items-end"
+        >
+          <button className="btn btn-xs bg-white">비교하기</button>
+        </div>
       </div>
-      <AlertModal content='2개의 상품을 담아주세요!' modalState={modalState} handleModal={setModalState}/>
+      <AlertModal
+        content="2개의 상품을 담아주세요!"
+        modalState={modalState}
+        handleModal={setModalState}
+      />
     </article>
   );
 };
