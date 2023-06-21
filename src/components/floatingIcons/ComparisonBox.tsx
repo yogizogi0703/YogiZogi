@@ -30,7 +30,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
 
   return (
     <article
-      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-20 w-72 h-52 ${
+      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-16 md:right-20 w-48 sm:w-64 h-40 sm:h-52 ${
         display ? 'block' : 'hidden'
       }`}
     >
@@ -58,8 +58,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                   className="rounded-s-lg h-full"
                 />
               </figure>
-              <div className="w-1/2">
-                <p className="truncate font-semibold">{el.accommodationName}</p>
+              <div className="w-1/2 text-[10px] md:text-sm">
+                <p className="truncate font-semibold text-sm sm:text-base">
+                  {el.accommodationName}
+                </p>
                 <p>
                   {convertDateFormat(checkInDate)} ~{' '}
                   {convertDateFormat(checkOutDate)}
@@ -69,11 +71,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
             </div>
           );
         })}
-        <div
-          onClick={handleComparison}
-          className="flex justify-end items-end"
-        >
-          <button className="btn btn-xs bg-white">비교하기</button>
+        <div onClick={handleComparison} className="flex justify-end items-end">
+          <button className="btn btn-xs bg-white text-[10px] sm:text-base">
+            비교하기
+          </button>
         </div>
       </div>
       <AlertModal
