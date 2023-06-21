@@ -18,16 +18,9 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
         className="h-60 bg-cover bg-center"
         style={{ backgroundImage: `url('${pictureUrlList[0]}')` }}
       ></figure>
-      <div className="card-body grid grid-cols-5 grid-rows-3 py-2 px-4">
-        <div className="row-start-1 row-end-3 col-start-1 col-end-4">
-          <p
-            className="card-title text-ellipsis overflow-hidden break-words text-lg"
-            style={{
-              display: '-webkit-box',
-              WebkitLineClamp: 2,
-              WebkitBoxOrient: 'vertical'
-            }}
-          >
+      <div className="card-body grid gap-0 grid-cols-5 grid-rows-3 py-2 px-4 items-center">
+        <div className="row-start-1 row-end-2 col-start-1 col-end-6">
+          <p className="card-title block text-lg truncate">
             {accommodationName}
           </p>
         </div>
