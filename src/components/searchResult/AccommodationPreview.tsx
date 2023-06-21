@@ -1,6 +1,7 @@
 import { FiMapPin } from 'react-icons/fi';
 import RatingStars from '../common/RatingStars';
 import { ISearchResultContent } from 'api/search';
+import { BiShoppingBag } from 'react-icons/bi';
 
 interface IAccommodationPreview {
   data: ISearchResultContent;
@@ -24,9 +25,12 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
             {accommodationName}
           </p>
         </div>
-        <p className="row-start-1 row-end-3 col-start-4 col-end-6 text-lg font-bold flex items-center justify-end">
-          {`${formatPrice(price)}원`}
-        </p>
+        <div className="flex items-center gap-2 row-start-2 row-end-3 col-start-1 col-end-6 text-lg font-bold text-right">
+          <p>{`${formatPrice(price)}원`}</p>
+          <button className="btn btn-sm btn-circle btn-success">
+            <BiShoppingBag className="w-5 h-5" />
+          </button>
+        </div>
         <div className="flex items-center gap-2 text-sm row-start-3 row-end-4 col-start-1 col-end-4">
           <FiMapPin className="text-emerald-400 text-2xl" />
           <p className="truncate">{address}</p>
