@@ -4,10 +4,12 @@ import { addCommasToPrice } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertModal } from '../../components/common/AlertModal';
+import { ComparisonModal } from './ComparisonModal';
 
 export const ComparisonBox = ({ display }: { display: boolean }) => {
   const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
-  const [modalState, setModalState] = useState(false);
+  const [alertModalState, setAlertModalState] = useState(false);
+  const [comparisonModalState, setComparisonModalState] = useState(false);
 
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(
@@ -25,7 +27,8 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
   };
 
   const handleComparison = () => {
-    if (selectedAcc.length < 2) setModalState(true);
+    if (selectedAcc.length < 2) setAlertModalState(true);
+    else setComparisonModalState(true)
   };
   const deleteSelectedAcc = (idx: number) => {
     const newItems = selectedAcc.filter((_, i) => i !== idx);
@@ -87,10 +90,11 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           </button>
         </div>
       </div>
+      <ComparisonModal modalState={comparisonModalState} handleModal={setComparisonModalState}/>
       <AlertModal
         content="2개의 상품을 담아주세요!"
-        modalState={modalState}
-        handleModal={setModalState}
+        modalState={ alertModalState}
+        handleModal={setAlertModalState}
       />
     </article>
   );
