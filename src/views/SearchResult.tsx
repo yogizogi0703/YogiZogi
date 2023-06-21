@@ -386,7 +386,7 @@ const SearchResult = () => {
       </section>
       <div
         ref={observerTarget}
-        className="w-full h-24 flex justify-center items-center hidden"
+        className="w-full h-24 hidden text-center"
       >
         <span className="loading loading-spinner loading-lg"></span>
       </div>
