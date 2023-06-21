@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { error } from 'console';
 
 export interface SignInFormDataProps {
   [key: string]: string;
@@ -23,7 +22,7 @@ export const fetchSignIn = async (data: SignInFormDataProps) => {
     data: data
   }).catch((error) => console.log(error));
 
-  return res;
+  return res?.data;
 };
 
 export const fetchSignUp = async (data: SignUpFormDataProps) => {
@@ -36,5 +35,5 @@ export const fetchSignUp = async (data: SignUpFormDataProps) => {
     data: data
   }).catch((error) => console.log(error));
 
-  return res;
+  return res?.data;
 };
