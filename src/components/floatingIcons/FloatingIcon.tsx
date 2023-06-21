@@ -8,7 +8,7 @@ export const FloatingIcon = () => {
   const [comparisonState, setComparisonChatState] = useState(false);
 
   return (
-    <div className="fixed bottom-[5%] flex flex-col gap-1 md:gap-5 right-1 sm:right-5 md:right-10">
+    <div className="fixed bottom-[5%] flex flex-col gap-1 md:gap-5 right-1 sm:right-5 md:right-10 z-20">
       <div
         onClick={() => setChatState(!chatState)}
         className="btn btn-warning md:w-16 md:h-16 rounded-[50%]"
