@@ -1,9 +1,12 @@
 import { useRecoilValue } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../helpers';
+import { useNavigate } from 'react-router-dom';
+
 
 export const ComparisonBox = ({ display }: {display: boolean}) => {
   const selectedAcc = useRecoilValue(selectedAccommodation);
+  const navigate = useNavigate();
   const urlParams = new URLSearchParams(
     '?' + window.location.hash.split('?')[1]
     );
@@ -33,6 +36,11 @@ export const ComparisonBox = ({ display }: {display: boolean}) => {
             <figure
               className="w-1/2 rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
               data-tip="자세히보기"
+              onClick={() =>
+                navigate(
+                  `/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`
+                )
+              }
             >
               <img
                 src={el.pictureUrlList[0]}
