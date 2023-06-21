@@ -405,7 +405,7 @@ const SearchResult = () => {
         <span className="loading loading-spinner loading-lg"></span>
       </div>
       <FloatingIcon />
-      <AlertModal content="최대 2개까지 담을 수 있습니다." modalState={modalState} handleModal={setModalState} />
+      <AlertModal content="최대 2개의 상품만 담을 수 있습니다." modalState={modalState} handleModal={setModalState} />
     </div>
   );
 };
