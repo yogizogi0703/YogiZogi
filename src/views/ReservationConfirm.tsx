@@ -12,8 +12,18 @@ import { TermFilterTypes } from '../components/reservationConfirm/types';
 import ReservationInfoCard from '../components/reservationConfirm/ReservationInfoCard';
 import { IReservationInfo, getReservationList } from '../api/reservationList';
 import { getYearAgo } from '../components/reservationConfirm/utils';
+import useAuth from '../hooks/useAuth';
+import { useNavigate } from 'react-router-dom';
 
 const ReservationConfirm = () => {
+  const { authUser } = useAuth();
+  const navigate = useNavigate();
+
+  if (!authUser.isLoggedIn) {
+    navigate('/');
+    return;
+  }
+
   const [startDate, setStartDate] = useState<Date>(DEFAULT_START_DATE);
   const [endDate, setEndDate] = useState<Date>(DEFAULT_END_DATE);
 
