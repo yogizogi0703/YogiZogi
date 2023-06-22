@@ -2,6 +2,8 @@ import { FiMapPin } from 'react-icons/fi';
 import RatingStars from '../common/RatingStars';
 import { ISearchResultContent } from 'api/search';
 import { BiShoppingBag } from 'react-icons/bi';
+import { useRecoilState } from 'recoil';
+import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 
 interface IAccommodationPreview {
   data: ISearchResultContent;
@@ -12,6 +14,14 @@ const formatPrice = (num: number) =>
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { accommodationName, rate, pictureUrlList, address, price } = data;
+  const [, setComparisonItems] = useRecoilState(selectedAccommodation);
+
+  const addComparisonCart = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setComparisonItems((prev) => [...prev, data]);
+  };
 
   return (
     <article className="card bg-base-100 shadow-xl mb-2">
@@ -21,13 +31,21 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
       ></figure>
       <div className="card-body grid gap-0 grid-cols-5 grid-rows-3 py-2 px-4 items-center">
         <div className="row-start-1 row-end-2 col-start-1 col-end-6">
+          <p className="card-title block text-lg truncate"></p>
+        </div>
+      </div>
+      <div className="card-body grid gap-0 grid-cols-5 grid-rows-3 py-2 px-4 items-center">
+        <div className="row-start-1 row-end-2 col-start-1 col-end-6">
           <p className="card-title block text-lg truncate">
             {accommodationName}
           </p>
         </div>
         <div className="flex items-center gap-2 row-start-2 row-end-3 col-start-1 col-end-6 text-lg font-bold text-right">
           <p>{`${formatPrice(price)}원`}</p>
-          <button className="btn btn-sm btn-circle btn-success">
+          <button
+            onClick={(e) => addComparisonCart(e)}
+            className="btn btn-sm btn-circle btn-success"
+          >
             <BiShoppingBag className="w-5 h-5" />
           </button>
         </div>
