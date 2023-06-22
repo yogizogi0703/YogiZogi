@@ -25,7 +25,7 @@ export const termFilters = [
   {
     value: Term.YEAR,
     text: '최근 1년',
-    startDate: getYearAgo()
+    startDate: getYearAgo(new Date())
   },
   {
     value: Term.HALFYEAR,
@@ -44,5 +44,5 @@ export const termFilters = [
   }
 ];
 
-export const DEFAULT_START_DATE = getYearAgo();
+export const DEFAULT_START_DATE = getYearAgo(new Date());
 export const DEFAULT_END_DATE = new Date();

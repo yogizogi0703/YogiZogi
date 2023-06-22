@@ -10,6 +10,7 @@ import {
 import { TermFilterTypes } from '../components/reservationConfirm/types';
 import ReservationInfoCard from '../components/reservationConfirm/ReservationInfoCard';
 import { IReservationInfo, getReservationList } from '../api/reservationList';
+import { getYearAgo } from '../components/reservationConfirm/utils';
 
 const ReservationConfirm = () => {
   const [startDate, setStartDate] = useState<Date>(DEFAULT_START_DATE);
@@ -18,6 +19,10 @@ const ReservationConfirm = () => {
   const [termFilterValue, setTermFilterValue] = useState<TermFilterTypes>(
     Term.YEAR
   );
+
+  const [totalReservationList, setTotalReservationList] = useState<
+    IReservationInfo[]
+  >([]);
 
   const [reservationList, setReservationList] = useState<IReservationInfo[]>(
     []
@@ -31,6 +36,21 @@ const ReservationConfirm = () => {
     },
     []
   );
+
+  const filterByDateTerm = useCallback(() => {
+    const filtered = Array.from(totalReservationList).filter((info) => {
+      const biggerThanMin =
+        startDate.getTime() <= new Date(info.startDate).getTime() &&
+        new Date(info.startDate).getTime() <= endDate.getTime();
+      const smallerThanMax =
+        startDate.getTime() <= new Date(info.endDate).getTime() &&
+        new Date(info.endDate).getTime() <= endDate.getTime();
+
+      return biggerThanMin || smallerThanMax;
+    });
+
+    setReservationList(filtered);
+  }, [startDate, endDate]);
 
   const handleStartDateChange = useCallback(
     (date: Date) => {
@@ -51,10 +71,22 @@ const ReservationConfirm = () => {
   useEffect(() => {
     const init = async () => {
       const content = await getReservationList();
-      setReservationList(content);
+
+      if (!content.length) return;
+
+      setTotalReservationList(() => {
+        const lastEndDate = new Date(content[0].startDate);
+        setEndDate(lastEndDate);
+        setStartDate(getYearAgo(new Date(lastEndDate)));
+        return content;
+      });
     };
     init();
   }, []);
+
+  useEffect(() => {
+    filterByDateTerm();
+  }, [totalReservationList]);
 
   return (
     <div className="w-full" style={{ minWidth: '375px' }}>
@@ -92,7 +124,12 @@ const ReservationConfirm = () => {
               onStartDateChange={handleStartDateChange}
               onEndDateChange={handleEndDateChange}
             />
-            <button className="btn btn-active btn-neutral ml-4">적용</button>
+            <button
+              className="btn btn-active btn-neutral ml-4"
+              onClick={filterByDateTerm}
+            >
+              적용
+            </button>
           </div>
         </section>
         <div className="w-full h-px bg-gray-200 my-6"></div>

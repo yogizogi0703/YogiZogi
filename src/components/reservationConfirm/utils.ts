@@ -1,5 +1,4 @@
-export const getYearAgo = () => {
-  const date = new Date();
+export const getYearAgo = (date: Date) => {
   date.setDate(date.getDate() - 364);
   return date;
 };
