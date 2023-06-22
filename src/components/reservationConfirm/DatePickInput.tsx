@@ -55,7 +55,9 @@ const DatePickInput = ({
       </button>
       <div
         ref={calendarRef}
-        className={`absolute right-0 top-14${isCalendarOpen ? '' : ' hidden'}`}
+        className={`absolute left-0 top-14 z-[5]${
+          isCalendarOpen ? '' : ' hidden'
+        }`}
       >
         <DatePicker
           locale={ko}
