@@ -46,3 +46,5 @@ export const termFilters = [
 
 export const DEFAULT_START_DATE = getYearAgo(new Date());
 export const DEFAULT_END_DATE = new Date();
+
+export const RESERVATION_LIST_PAGE_SIZE = 20;

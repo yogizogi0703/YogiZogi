@@ -1,9 +1,10 @@
 import 'react-datepicker/dist/react-datepicker.css';
-import { useCallback, useState, useEffect } from 'react';
+import { useCallback, useState, useEffect, useMemo } from 'react';
 import ReservationDatePicker from '../components/reservationConfirm/ReservationDatePicker';
 import {
   DEFAULT_END_DATE,
   DEFAULT_START_DATE,
+  RESERVATION_LIST_PAGE_SIZE,
   Term,
   termFilters
 } from '../components/reservationConfirm/constants';
@@ -17,7 +18,7 @@ const ReservationConfirm = () => {
   const [endDate, setEndDate] = useState<Date>(DEFAULT_END_DATE);
 
   const [termFilterValue, setTermFilterValue] = useState<TermFilterTypes>(
-    Term.YEAR
+    Term.SPECIFIED
   );
 
   const [totalReservationList, setTotalReservationList] = useState<
@@ -27,6 +28,29 @@ const ReservationConfirm = () => {
   const [reservationList, setReservationList] = useState<IReservationInfo[]>(
     []
   );
+
+  const [page, setPage] = useState<number>(1);
+
+  const totalPages = useMemo(() => {
+    return Math.ceil(reservationList.length / RESERVATION_LIST_PAGE_SIZE);
+  }, [reservationList]);
+
+  const pageStartIndex = useMemo(() => {
+    return (page - 1) * RESERVATION_LIST_PAGE_SIZE;
+  }, [page]);
+
+  const pageEndIndex = useMemo(() => {
+    return pageStartIndex + RESERVATION_LIST_PAGE_SIZE;
+  }, [page]);
+
+  const getListOfRenderingPage = useCallback(() => {
+    return reservationList.slice(pageStartIndex, pageEndIndex);
+  }, [reservationList, page]);
+
+  const handlePageButtonClick = useCallback((pageIndex: number) => {
+    setPage(pageIndex);
+    scrollTo(0, 0);
+  }, []);
 
   const handleFilterButtonClick = useCallback(
     (value: TermFilterTypes, startDate: Date) => {
@@ -50,6 +74,7 @@ const ReservationConfirm = () => {
     });
 
     setReservationList(filtered);
+    setPage(1);
   }, [startDate, endDate]);
 
   const handleStartDateChange = useCallback(
@@ -134,7 +159,7 @@ const ReservationConfirm = () => {
         </section>
         <div className="w-full h-px bg-gray-200 my-6"></div>
         <section className="w-full flex flex-col gap-4">
-          {reservationList.map((reservationInfo) => {
+          {getListOfRenderingPage().map((reservationInfo) => {
             return (
               <ReservationInfoCard
                 key={`reservation-${reservationInfo.id}`}
@@ -143,6 +168,22 @@ const ReservationConfirm = () => {
             );
           })}
         </section>
+        <div className="join flex justify-center mt-8">
+          {Array.from({ length: totalPages }, (_, index) => index + 1).map(
+            (pageIndex) => {
+              return (
+                <input
+                  className="join-item btn btn-square"
+                  type="radio"
+                  name="pages"
+                  aria-label={`${pageIndex}`}
+                  checked={pageIndex === page}
+                  onClick={() => handlePageButtonClick(pageIndex)}
+                />
+              );
+            }
+          )}
+        </div>
       </div>
     </div>
   );
