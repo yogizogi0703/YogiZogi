@@ -24,8 +24,8 @@ const Payment = () => {
   }
 
   return (
-    <div className="mx-auto h-[calc(100vh-112px)] max-md:h-[calc(100vh-144px)] min-w-[375px] min-h-[600px] max-w-5xl">
-      <div className="flex items-center gap-3 pt-3 h-20">
+    <div className="mx-auto min-h-[calc(100vh-112px)] max-md:min-h-[calc(100vh-144px)] min-w-[375px] max-w-5xl pt-3 pb-20">
+      <div className="flex items-center gap-3 h-20 pl-6">
         <button className="w-6 h-6" onClick={handleGoBack}>
           <svg
             width="24"
@@ -43,12 +43,12 @@ const Payment = () => {
             />
           </svg>
         </button>
-        <div className="text-2xl font-semibold">예약 요청</div>
+        <div className="text-2xl max-md:text-xl font-semibold">예약 요청</div>
       </div>
       <div className="divider m-0"></div>
 
-      <section className="flex gap-8 pt-10">
-        <article className="p-7 w-3/5 h-fit bg-white rounded-lg drop-shadow-md">
+      <section className="flex gap-8 pt-10 px-5 max-md:flex-col-reverse">
+        <article className="p-7 w-3/5 max-md:w-full h-fit bg-white rounded-lg drop-shadow-md">
           <div className="flex flex-col gap-4">
             <ReservationLabel
               title="체크인"
@@ -101,12 +101,16 @@ const Payment = () => {
           </div>
         </article>
 
-        <article className="flex-1 p-4 h-fit bg-white rounded-lg drop-shadow-md">
-          <div className=" max-w-[346px] max-h-[205px] overflow-hidden rounded-md">
-            <img src={roomInfoRef.current.roomImg} alt="방 이미지" />
+        <article className="flex-1 max-md:flex max-sm:flex-col max-md:gap-4 max-sm:gap-0 p-4 h-fit bg-white rounded-lg drop-shadow-md">
+          <div className="sm:max-w-[346px] sm:max-h-[205px] overflow-hidden rounded-md">
+            <img
+              src={roomInfoRef.current.roomImg}
+              className="w-full"
+              alt="방 이미지"
+            />
           </div>
           <div className="flex flex-col gap-1 pt-6">
-            <h1 className=" text-lg font-semibold">
+            <h1 className="text-lg font-semibold overflow-hidden">
               {accommodationInfoRef.current.accommodationName}
             </h1>
             <div className="flex items-center gap-1">
