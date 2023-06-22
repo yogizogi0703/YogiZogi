@@ -71,7 +71,7 @@ export const ComparisonModal = ({
                         className="w-full h-full rounded-lg"
                       />
                     </figure>
-                    <p className="truncate block font-semibold">
+                    <p className="truncate block font-semibold mr-1">
                       {el.accommodationName}
                     </p>
                     <p className="flex justify-center gap-1 bg-gray-300">
