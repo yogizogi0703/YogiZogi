@@ -1,5 +1,5 @@
 import 'react-datepicker/dist/react-datepicker.css';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import ReservationDatePicker from '../components/reservationConfirm/ReservationDatePicker';
 import {
   DEFAULT_END_DATE,
@@ -9,19 +9,7 @@ import {
 } from '../components/reservationConfirm/constants';
 import { TermFilterTypes } from '../components/reservationConfirm/types';
 import ReservationInfoCard from '../components/reservationConfirm/ReservationInfoCard';
-
-const data = {
-  bookName: '홍길동',
-  accommodationId: 1,
-  picUrl:
-    '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-  accommodationName: 'ABC 호텔 그랑시티자이 어쩌구 도시',
-  startDate: '2023-06-01',
-  endDate: '2023-06-04',
-  price: 140000,
-  rate: 8.6,
-  reviewRegistered: true
-};
+import { IReservationInfo, getReservationList } from '../api/reservationList';
 
 const ReservationConfirm = () => {
   const [startDate, setStartDate] = useState<Date>(DEFAULT_START_DATE);
@@ -31,11 +19,18 @@ const ReservationConfirm = () => {
     Term.YEAR
   );
 
-  const handleFilterButtonClick = (value: TermFilterTypes, startDate: Date) => {
-    setTermFilterValue(value);
-    setStartDate(startDate);
-    setEndDate(new Date());
-  };
+  const [reservationList, setReservationList] = useState<IReservationInfo[]>(
+    []
+  );
+
+  const handleFilterButtonClick = useCallback(
+    (value: TermFilterTypes, startDate: Date) => {
+      setTermFilterValue(value);
+      setStartDate(startDate);
+      setEndDate(new Date());
+    },
+    []
+  );
 
   const handleStartDateChange = useCallback(
     (date: Date) => {
@@ -52,6 +47,14 @@ const ReservationConfirm = () => {
     },
     [endDate]
   );
+
+  useEffect(() => {
+    const init = async () => {
+      const content = await getReservationList();
+      setReservationList(content);
+    };
+    init();
+  }, []);
 
   return (
     <div className="w-full" style={{ minWidth: '375px' }}>
@@ -94,10 +97,14 @@ const ReservationConfirm = () => {
         </section>
         <div className="w-full h-px bg-gray-200 my-6"></div>
         <section className="w-full flex flex-col gap-4">
-          <ReservationInfoCard data={data} />
-          <ReservationInfoCard data={data} />
-          <ReservationInfoCard data={data} />
-          <ReservationInfoCard data={data} />
+          {reservationList.map((reservationInfo) => {
+            return (
+              <ReservationInfoCard
+                key={`reservation-${reservationInfo.id}`}
+                data={reservationInfo}
+              />
+            );
+          })}
         </section>
       </div>
     </div>
