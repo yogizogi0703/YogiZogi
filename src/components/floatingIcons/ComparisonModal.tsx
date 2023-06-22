@@ -111,7 +111,7 @@ export const ComparisonModal = ({
           </div>
           <div className="modal-action">
             <label
-              htmlFor="my_modal_6"
+              htmlFor="alertModal"
               className="btn"
               onClick={() => handleModal(false)}
             >
@@ -122,7 +122,6 @@ export const ComparisonModal = ({
         <label
           className="modal-backdrop"
           htmlFor="alertModal"
-          onClick={() => handleModal(false)}
         >
           Close
         </label>
