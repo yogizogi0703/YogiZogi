@@ -28,7 +28,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
 
   const handleComparison = () => {
     if (selectedAcc.length < 2) setAlertModalState(true);
-    else setComparisonModalState(true)
+    else setComparisonModalState(true);
   };
   const deleteSelectedAcc = (idx: number) => {
     const newItems = selectedAcc.filter((_, i) => i !== idx);
@@ -49,7 +49,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
         )}
         {selectedAcc.map((el, idx) => {
           return (
-            <div key={idx} className="flex justify-between gap-1 rounded-lg bg-white">
+            <div
+              key={idx}
+              className="flex justify-between gap-1 rounded-lg bg-white"
+            >
               <figure
                 className="w-5/12 object-cover rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
                 data-tip="자세히보기"
@@ -90,10 +93,13 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           </button>
         </div>
       </div>
-      <ComparisonModal modalState={comparisonModalState} handleModal={setComparisonModalState}/>
+      <ComparisonModal
+        modalState={comparisonModalState}
+        handleModal={setComparisonModalState}
+      />
       <AlertModal
         content="2개의 상품을 담아주세요!"
-        modalState={ alertModalState}
+        modalState={alertModalState}
         handleModal={setAlertModalState}
       />
     </article>

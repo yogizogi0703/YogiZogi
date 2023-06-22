@@ -58,7 +58,10 @@ export const ComparisonModal = ({
               </div>
               {selectedAcc.map((el, idx) => {
                 return (
-                  <div key={idx} className="flex flex-col gap-y-1 text-center w-2/5 text-xs md:text-base">
+                  <div
+                    key={idx}
+                    className="flex flex-col gap-y-1 text-center w-2/5 text-xs md:text-base"
+                  >
                     <figure className="h-32 object-cover mx-1">
                       <img
                         src={el.pictureUrlList[0]}
@@ -68,7 +71,9 @@ export const ComparisonModal = ({
                     <p className="truncate block font-semibold">
                       {el.accommodationName}
                     </p>
-                    <p className='bg-gray-300'>{addCommasToPrice(el.price)}원</p>
+                    <p className="bg-gray-300">
+                      {addCommasToPrice(el.price)}원
+                    </p>
                     <div className="flex items-center justify-center h-4 md:h-6 ">
                       <RatingStars rate={el.rate} />
                     </div>
@@ -78,7 +83,8 @@ export const ComparisonModal = ({
                       to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
                     >
                       <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1 text-xs md:text-base">
-                        <span className='hidden sm:block'>상세페이지 </span>바로가기
+                        <span className="hidden sm:block">상세페이지 </span>
+                        바로가기
                       </button>
                     </Link>
                   </div>
