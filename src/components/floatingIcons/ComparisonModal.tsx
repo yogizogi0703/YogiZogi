@@ -42,9 +42,9 @@ export const ComparisonModal = ({
               한 눈에 비교하기
             </h2>
             <div className="flex">
-              <div className="flex flex-col text-center font-semibold gap-y-1">
+              <div className="flex flex-col text-center font-semibold gap-y-1 text-xs md:text-base">
                 <p className="w-1/5 h-32"></p>
-                <p className="h-6"></p>
+                <p className="h-4 md:h-6"></p>
                 {criteria.map((el, idx) => {
                   return (
                     <p
@@ -58,7 +58,7 @@ export const ComparisonModal = ({
               </div>
               {selectedAcc.map((el, idx) => {
                 return (
-                  <div key={idx} className="flex flex-col gap-y-1 text-center w-2/5">
+                  <div key={idx} className="flex flex-col gap-y-1 text-center w-2/5 text-xs md:text-base">
                     <figure className="h-32 object-cover mx-1">
                       <img
                         src={el.pictureUrlList[0]}
@@ -69,16 +69,16 @@ export const ComparisonModal = ({
                       {el.accommodationName}
                     </p>
                     <p className='bg-gray-300'>{addCommasToPrice(el.price)}원</p>
-                    <p className="flex items-center justify-center h-6 ">
+                    <div className="flex items-center justify-center h-4 md:h-6 ">
                       <RatingStars rate={el.rate} />
-                    </p>
-                    <p className="bg-gray-300">{el.address}</p>
+                    </div>
+                    <p className="bg-gray-300 truncate">{el.address}</p>
                     <p>편의시설</p>
                     <Link
                       to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
                     >
-                      <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1">
-                        상세페이지 바로가기
+                      <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1 text-xs md:text-base">
+                        <span className='hidden sm:block'>상세페이지 </span>바로가기
                       </button>
                     </Link>
                   </div>
