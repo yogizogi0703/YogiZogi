@@ -49,9 +49,9 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
         )}
         {selectedAcc.map((el, idx) => {
           return (
-            <div key={idx} className="flex gap-1 rounded-lg bg-white">
+            <div key={idx} className="flex justify-between gap-1 rounded-lg bg-white">
               <figure
-                className="w-1/2 rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
+                className="w-5/12 object-cover rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
                 data-tip="자세히보기"
                 onClick={() =>
                   navigate(
@@ -62,10 +62,10 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                 <img
                   src={el.pictureUrlList[0]}
                   alt={`${el.accommodationName} image`}
-                  className="rounded-s-lg h-full"
+                  className="rounded-s-lg h-full w-full"
                 />
               </figure>
-              <div className="w-1/2 text-[10px] md:text-sm">
+              <div className="w-5/12 text-[10px] md:text-sm">
                 <p className="truncate font-semibold text-sm sm:text-base">
                   {el.accommodationName}
                 </p>
