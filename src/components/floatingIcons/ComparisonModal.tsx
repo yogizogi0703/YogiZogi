@@ -110,13 +110,12 @@ export const ComparisonModal = ({
             </div>
           </div>
           <div className="modal-action">
-            <label
-              htmlFor="alertModal"
+            <button
               className="btn"
               onClick={() => handleModal(false)}
             >
               닫기
-            </label>
+            </button>
           </div>
         </div>
         <label
