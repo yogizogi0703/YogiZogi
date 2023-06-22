@@ -16,6 +16,9 @@ export const ComparisonModal = ({
   const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
   const criteria = ['가격', '평점', '위치', '편의시설'];
 
+  const minPrice = Math.min(...selectedAcc.map((el) => el.price));
+  const highRate = Math.max(...selectedAcc.map((el) => el.rate));
+
   const urlParams = new URLSearchParams(
     '?' + window.location.hash.split('?')[1]
   );
@@ -71,11 +74,25 @@ export const ComparisonModal = ({
                     <p className="truncate block font-semibold">
                       {el.accommodationName}
                     </p>
-                    <p className="bg-gray-300">
+                    <p className="flex justify-center gap-1 bg-gray-300">
                       {addCommasToPrice(el.price)}원
+                      {el.price === minPrice && (
+                        <img
+                          src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
+                          alt="heart mark"
+                          className="w-4 md:h-5 md:pt-1"
+                        />
+                      )}
                     </p>
-                    <div className="flex items-center justify-center h-4 md:h-6 ">
+                    <div className="flex items-center justify-center gap-1 h-4 md:h-6 ">
                       <RatingStars rate={el.rate} />
+                      {el.rate === highRate && (
+                        <img
+                          src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
+                          alt="heart mark"
+                          className="w-4 h-5 py-[2px]"
+                        />
+                      )}
                     </div>
                     <p className="bg-gray-300 truncate">{el.address}</p>
                     <p>편의시설</p>
