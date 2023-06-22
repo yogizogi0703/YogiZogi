@@ -5,10 +5,23 @@ import {
   DEFAULT_END_DATE,
   DEFAULT_START_DATE,
   Term,
-  termFilterList,
   termFilters
 } from '../components/reservationConfirm/constants';
 import { TermFilterTypes } from '../components/reservationConfirm/types';
+import ReservationInfoCard from '../components/reservationConfirm/ReservationInfoCard';
+
+const data = {
+  bookName: '홍길동',
+  accommodationId: 1,
+  picUrl:
+    '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+  accommodationName: 'ABC 호텔 그랑시티자이 어쩌구 도시',
+  startDate: '2023-06-01',
+  endDate: '2023-06-04',
+  price: 140000,
+  rate: 8.6,
+  reviewRegistered: true
+};
 
 const ReservationConfirm = () => {
   const [startDate, setStartDate] = useState<Date>(DEFAULT_START_DATE);
@@ -80,6 +93,12 @@ const ReservationConfirm = () => {
           </div>
         </section>
         <div className="w-full h-px bg-gray-200 my-6"></div>
+        <section className="w-full flex flex-col gap-4">
+          <ReservationInfoCard data={data} />
+          <ReservationInfoCard data={data} />
+          <ReservationInfoCard data={data} />
+          <ReservationInfoCard data={data} />
+        </section>
       </div>
     </div>
   );
