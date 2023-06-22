@@ -34,6 +34,9 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
       <div className="card-body grid gap-0 grid-cols-5 grid-rows-3 py-2 px-4 items-center">
         <div className="row-start-1 row-end-2 col-start-1 col-end-6">
           <p className="card-title block text-lg truncate">
+      <div className="card-body grid gap-0 grid-cols-5 grid-rows-3 py-2 px-4 items-center">
+        <div className="row-start-1 row-end-2 col-start-1 col-end-6">
+          <p className="card-title block text-lg truncate">
             {accommodationName}
           </p>
         </div>

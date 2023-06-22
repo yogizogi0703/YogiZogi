@@ -32,34 +32,8 @@ export const handlers = [
         status: 'OK',
         msg: 'SUCCESS',
         data: {
-          token: {
-            'X-AUTH-TOKEN':
-              'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOaWJvSGlhSWZQNzk3eFI3OE9hdFVnPT0iLCJqdGkiOiI0UnR5UnJrejMvcnNMeEt0MmJTT2p3PT0iLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE2ODYyMjQ5MTgsImV4cCI6MTY4NjMxMTMxOH0.iTUxHD8GTdSb9SQWkOnD6CLzhtLBfTOZXxfKyTxJXJ8',
-            email,
-            nickname: 'nickname'
-          }
-        }
-      })
-    );
-  }),
-
-  // 카카오 로그인
-  rest.post('/api/user/kakao-login', async (req, res, ctx) => {
-    const { email } = await req.json();
-
-    return res(
-      ctx.status(200),
-      ctx.json({
-        code: 'RESPONSE_SUCCESS',
-        status: 'OK',
-        msg: 'SUCCESS',
-        data: {
-          token: {
-            'X-AUTH-TOKEN':
-              'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOaWJvSGlhSWZQNzk3eFI3OE9hdFVnPT0iLCJqdGkiOiI0UnR5UnJrejMvcnNMeEt0MmJTT2p3PT0iLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE2ODYyMjQ5MTgsImV4cCI6MTY4NjMxMTMxOH0.iTUxHD8GTdSb9SQWkOnD6CLzhtLBfTOZXxfKyTxJXJ8',
-            email,
-            nickname: 'nickname'
-          }
+          'X-AUTH-TOKEN':
+            'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3YnMwOTZAZGF1bS5uZXRfMjgyMTI2NzgwMSIsImlzcyI6Ii7sgq3soJwuIzI4MjEyNjc4MDEiLCJqdGkiOiIxNiIsImlhdCI6MTY4NzI2MDY1MiwiZXhwIjoxNjg3MzQ3MDUyfQ.m8O-2imqlYu6UJ-lny4MdncvLka8R5r0U2soq23G3qo'
         }
       })
     );
