@@ -14,7 +14,7 @@ export const ComparisonModal = ({
   handleModal
 }: IComparisonModal) => {
   const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
-  const criteria = ['숙소명', '평점', '가격', '위치', '편의시설'];
+  const criteria = ['가격', '평점', '위치', '편의시설'];
 
   const urlParams = new URLSearchParams(
     '?' + window.location.hash.split('?')[1]
@@ -42,8 +42,9 @@ export const ComparisonModal = ({
               한 눈에 비교하기
             </h2>
             <div className="flex">
-              <div className="flex flex-col gap-y-2 text-center font-semibold">
+              <div className="flex flex-col text-center font-semibold gap-y-1">
                 <p className="w-1/5 h-32"></p>
+                <p className="h-6"></p>
                 {criteria.map((el, idx) => {
                   return (
                     <p
@@ -57,36 +58,29 @@ export const ComparisonModal = ({
               </div>
               {selectedAcc.map((el, idx) => {
                 return (
-                  <div
-                    key={idx}
-                    className="flex flex-col gap-y-2 text-center w-2/5"
-                  >
+                  <div key={idx} className="flex flex-col gap-y-1 text-center w-2/5">
                     <figure className="h-32 object-cover mx-1">
                       <img
                         src={el.pictureUrlList[0]}
                         className="w-full h-full rounded-lg"
                       />
                     </figure>
-                    <div
-                      className="tooltip tooltip-bottom z-30 cursor-pointer"
-                      data-tip="상세페이지 바로가기"
-                    >
-                      <Link
-                        to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
-                      >
-                        <p className="truncate block bg-gray-300 font-semibold">
-                          {el.accommodationName}
-                        </p>
-                      </Link>
-                    </div>
-                    <p className="flex items-center justify-center h-6">
+                    <p className="truncate block font-semibold">
+                      {el.accommodationName}
+                    </p>
+                    <p className='bg-gray-300'>{addCommasToPrice(el.price)}원</p>
+                    <p className="flex items-center justify-center h-6 ">
                       <RatingStars rate={el.rate} />
                     </p>
-                    <p className="bg-gray-300">
-                      {addCommasToPrice(el.price)}원
-                    </p>
-                    <p>{el.address}</p>
-                    <p className="bg-gray-300">편의시설</p>
+                    <p className="bg-gray-300">{el.address}</p>
+                    <p>편의시설</p>
+                    <Link
+                      to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
+                    >
+                      <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1">
+                        상세페이지 바로가기
+                      </button>
+                    </Link>
                   </div>
                 );
               })}
