@@ -111,7 +111,7 @@ export const ComparisonModal = ({
           </div>
           <div className="modal-action">
             <button
-              className="btn"
+              className="btn btn-outline btn-sm text-sm"
               onClick={() => handleModal(false)}
             >
               닫기
