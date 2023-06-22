@@ -2,6 +2,7 @@ import { useRecoilState } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../helpers';
 import RatingStars from '../../components/common/RatingStars';
+import { Link } from 'react-router-dom';
 
 interface IComparisonModal {
   modalState: boolean;
@@ -14,6 +15,16 @@ export const ComparisonModal = ({
 }: IComparisonModal) => {
   const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
   const criteria = ['숙소명', '평점', '가격', '위치', '편의시설'];
+
+  const urlParams = new URLSearchParams(
+    '?' + window.location.hash.split('?')[1]
+  );
+
+  const {
+    checkindate: checkInDate,
+    checkoutdate: checkOutDate,
+    people: people
+  } = Object.fromEntries(urlParams.entries());
 
   return (
     <>
@@ -60,9 +71,13 @@ export const ComparisonModal = ({
                       className="tooltip tooltip-bottom z-30 cursor-pointer"
                       data-tip="상세페이지 바로가기"
                     >
-                      <p className="truncate block bg-gray-300 font-semibold">
-                        {el.accommodationName}
-                      </p>
+                      <Link
+                        to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
+                      >
+                        <p className="truncate block bg-gray-300 font-semibold">
+                          {el.accommodationName}
+                        </p>
+                      </Link>
                     </div>
                     <p className="flex items-center justify-center h-6">
                       <RatingStars rate={el.rate} />
