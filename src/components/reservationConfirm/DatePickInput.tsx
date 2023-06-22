@@ -45,7 +45,7 @@ const DatePickInput = ({
   }, []);
 
   return (
-    <div className="w-1/3 md:w-32 lg:w-36 relative">
+    <div className="w-32 lg:w-36 relative">
       <button
         className="btn btn-ghost bg-white border border-gray-300 text-xs flex justify-end items-center px-2 hover:border-gray-400 w-full"
         onClick={handleInputClick}
