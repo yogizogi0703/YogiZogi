@@ -1,13 +1,11 @@
 import { FiMapPin } from 'react-icons/fi';
 import RatingStars from '../common/RatingStars';
 import { ISearchResultContent } from 'api/search';
+import { formatPrice } from '../../utils/formatPrice';
 
 interface IAccommodationPreview {
   data: ISearchResultContent;
 }
-
-const formatPrice = (num: number) =>
-  new Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(num);
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { accommodationName, rate, pictureUrlList, address, price } = data;
