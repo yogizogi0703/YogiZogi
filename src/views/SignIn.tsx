@@ -7,16 +7,10 @@ const SignIn = () => {
   const {
     signInData,
     isDisabled,
-    authUser,
     handleChangeInput,
     handleSubmitSignIn,
     handleKakaoSignIn
   } = useSignIn();
-
-  if (authUser.isLoggedIn) {
-    location.href = '/';
-    return <></>;
-  }
 
   return (
     <SignLayout>

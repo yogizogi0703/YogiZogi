@@ -61,9 +61,12 @@ const useSignUp = () => {
       alert('문제가 발생했습니다.');
       return;
     }
-    if (res.status === 201) {
-      alert('회원가입완료');
+    if (res.status === 'OK') {
+      alert(res.data.msg);
       navigate('/signIn');
+    } else {
+      alert(res.msg);
+      console.error(res.code);
     }
   };
 

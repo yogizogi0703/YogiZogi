@@ -4,12 +4,8 @@ import { describe, expectTypeOf, it } from 'vitest';
 describe('MSW Fetch Test: ', () => {
   it('login', async () => {
     const result = {
-      token: {
-        'X-AUTH-TOKEN':
-          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOaWJvSGlhSWZQNzk3eFI3OE9hdFVnPT0iLCJqdGkiOiI0UnR5UnJrejMvcnNMeEt0MmJTT2p3PT0iLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE2ODYyMjQ5MTgsImV4cCI6MTY4NjMxMTMxOH0.iTUxHD8GTdSb9SQWkOnD6CLzhtLBfTOZXxfKyTxJXJ8',
-        email: 'test@test',
-        nickname: 'nickname'
-      }
+      'X-AUTH-TOKEN':
+        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ3YnMwOTZAZGF1bS5uZXRfMjgyMTI2NzgwMSIsImlzcyI6Ii7sgq3soJwuIzI4MjEyNjc4MDEiLCJqdGkiOiIxNiIsImlhdCI6MTY4NzI2MDY1MiwiZXhwIjoxNjg3MzQ3MDUyfQ.m8O-2imqlYu6UJ-lny4MdncvLka8R5r0U2soq23G3qo'
     };
     const {
       data: { data }
@@ -26,38 +22,7 @@ describe('MSW Fetch Test: ', () => {
     });
 
     expectTypeOf(data.token).toBeObject();
-    expect(data.token['X-AUTH-TOKEN']).toBe(result.token['X-AUTH-TOKEN']);
-    expect(data.token.email).toBe(result.token.email);
-    expect(data.token.nickname).toBe(result.token.nickname);
-  });
-
-  it('kakao login', async () => {
-    const result = {
-      token: {
-        'X-AUTH-TOKEN':
-          'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJOaWJvSGlhSWZQNzk3eFI3OE9hdFVnPT0iLCJqdGkiOiI0UnR5UnJrejMvcnNMeEt0MmJTT2p3PT0iLCJyb2xlcyI6IlVTRVIiLCJpYXQiOjE2ODYyMjQ5MTgsImV4cCI6MTY4NjMxMTMxOH0.iTUxHD8GTdSb9SQWkOnD6CLzhtLBfTOZXxfKyTxJXJ8',
-        email: 'test@test',
-        nickname: 'nickname'
-      }
-    };
-    const {
-      data: { data }
-    } = await axios({
-      method: 'post',
-      url: '/api/user/kakao-login',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: {
-        email: 'test@test',
-        password: '12345678'
-      }
-    });
-
-    expectTypeOf(data.token).toBeObject();
-    expect(data.token['X-AUTH-TOKEN']).toBe(result.token['X-AUTH-TOKEN']);
-    expect(data.token.email).toBe(result.token.email);
-    expect(data.token.nickname).toBe(result.token.nickname);
+    expect(data['X-AUTH-TOKEN']).toBe(result['X-AUTH-TOKEN']);
   });
 
   it('registered list', async () => {

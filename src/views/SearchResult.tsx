@@ -30,8 +30,15 @@ import {
 import { getTodayString, getTomorrowString } from '../utils/handleDate';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import MapView from '../components/map/MapView';
+import { FloatingIcon } from '../components/floatingIcons/FloatingIcon';
+import { AlertModal } from '../components/common/AlertModal';
+import { useRecoilState } from 'recoil';
+import { selectedAccommodation } from '../store/atom/comparisonAtom';
 
 const SearchResult = () => {
+  const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
+  const [modalState, setModalState] = useState(false);
+
   const [accommodationList, setAccommodationList] = useState<
     ISearchResultContent[]
   >([]);
@@ -262,6 +269,13 @@ const SearchResult = () => {
     observerTarget.current.classList.add('hidden');
   }, [isLoading]);
 
+  useEffect(() => {
+    if (selectedAcc.length > 2) {
+      setSelectedAcc(selectedAcc.slice(0, 2));
+      setModalState(true);
+    }
+  }, [selectedAcc]);
+
   return (
     <div
       className="max-w-5xl mx-auto px-4 py-8 bg-white"
@@ -386,10 +400,12 @@ const SearchResult = () => {
       </section>
       <div
         ref={observerTarget}
-        className="w-full h-24 flex justify-center items-center hidden"
+        className="w-full h-24 hidden text-center"
       >
         <span className="loading loading-spinner loading-lg"></span>
       </div>
+      <FloatingIcon />
+      <AlertModal content="최대 2개의 상품만 담을 수 있습니다." modalState={modalState} handleModal={setModalState} />
     </div>
   );
 };
