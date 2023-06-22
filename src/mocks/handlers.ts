@@ -80,9 +80,6 @@ export const handlers = [
 
   // 예약 목록 확인
   rest.get('/api/user/:userId/mybook', (req, res, ctx) => {
-    const page = parseInt(req.url.searchParams.get('page') || '0');
-    const pageSize = parseInt(req.url.searchParams.get('pageSize') || '0');
-
     return res(
       ctx.status(200),
       ctx.json({
@@ -94,49 +91,48 @@ export const handlers = [
         },
         content: [
           {
+            id: 7,
+            userId: 3,
+            accommodationId: 1,
+            bookName: '홍길동',
+            accommodationName: 'ACB 호텔',
+            picUrl:
+              'https://image.goodchoice.kr/resize_1000X500x0/affiliate/2020/03/24/5e799e9748723.jpg',
+            startDate: '2023-06-13',
+            endDate: '2023-06-15',
+            price: 180000,
+            rate: 8.7,
+            reviewRegistered: true
+          },
+          {
             id: 5,
             userId: 3,
+            accommodationId: 1,
+            bookName: '홍길동',
             accommodationName: 'ABC 호텔',
+            picUrl:
+              'https://image.goodchoice.kr/resize_1000X500x0/affiliate/2020/03/24/5e799e9748723.jpg',
             startDate: '2023-06-01',
             endDate: '2023-06-02',
             price: 100000,
+            rate: 8.6,
             reviewRegistered: false
           },
           {
             id: 3,
             userId: 3,
-            accommodationName: 'BAC 모텔',
-            startDate: '2023-06-03',
-            endDate: '2023-06-04',
-            price: 40000,
-            reviewRegistered: true
+            accommodationId: 1,
+            bookName: '홍길동',
+            accommodationName: 'BAC 호텔',
+            picUrl:
+              'https://image.goodchoice.kr/resize_1000X500x0/affiliate/2020/03/24/5e799e9748723.jpg',
+            startDate: '2023-07-01',
+            endDate: '2023-07-04',
+            price: 20000,
+            rate: 9.3,
+            reviewRegistered: false
           }
-        ],
-        pageable: {
-          sort: {
-            empty: false,
-            sorted: true,
-            unsorted: false
-          },
-          offset: 0,
-          pageNumber: page,
-          pageSize,
-          paged: true,
-          unpaged: false
-        },
-        totalElements: reviewData.length,
-        totalPages: Math.ceil(reviewData.length / pageSize),
-        last: true,
-        size: pageSize,
-        number: 0,
-        sort: {
-          empty: false,
-          sorted: true,
-          unsorted: false
-        },
-        numberOfElements: 2,
-        first: true,
-        empty: false
+        ]
       })
     );
   }),
