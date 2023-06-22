@@ -277,12 +277,20 @@ const AccommodationDetail = () => {
                         예약하기
                       </label>
                       <ConfirmModal
-                        roomImg={el.pictureUrlList[0]}
-                        roomInfo={accommodationData.room[idx]}
-                        price={totalPrices[idx]}
-                        checkInDate={checkInDate}
-                        checkOutDate={checkOutDate}
-                        people={people}
+                        data={{
+                          accommodationName:
+                            accommodationData.accommodationName,
+                          accommodationId: accommodationData.id,
+                          address: accommodationData.address,
+                          rate: accommodationRate,
+                          roomId: el.id,
+                          roomName: el.roomName,
+                          roomImg: el.pictureUrlList[0],
+                          price: totalPrices[idx],
+                          checkInDate: checkInDate,
+                          checkOutDate: checkOutDate,
+                          people: people
+                        }}
                       />
                     </div>
                   </div>
