@@ -51,7 +51,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           return (
             <div
               key={idx}
-              className="flex justify-between gap-1 rounded-lg bg-white"
+              className="flex justify-between gap-1 h-12 sm:h-16 rounded-lg bg-white"
             >
               <figure
                 className="w-5/12 object-cover rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
