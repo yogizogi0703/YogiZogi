@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import RatingSetStar from './RatingSetStar';
 import useAuth from '../../hooks/useAuth';
 import { IRateFactor } from './types';
@@ -25,21 +25,29 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleModalClose = () => {
+  const handleModalClose = useCallback(() => {
+    if (isLoading) return;
+
     setReviewText('');
     setRating(initialRating);
     onClose();
-  };
+  }, []);
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setReviewText(e.currentTarget.value);
-  };
+  const handleTextChange = useCallback(
+    (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      setReviewText(e.currentTarget.value);
+    },
+    []
+  );
 
-  const handleRateChange = (factor: IRateFactor, value: number) => {
-    setRating({ ...rating, [factor.id]: value });
-  };
+  const handleRateChange = useCallback(
+    (factor: IRateFactor, value: number) => {
+      setRating({ ...rating, [factor.id]: value });
+    },
+    [rating]
+  );
 
-  const handleSubmit = async () => {
+  const handleSubmit = useCallback(async () => {
     const description = reviewText.trim();
 
     if (description === '') {
@@ -59,6 +67,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
 
     // if (!authUser.isLoggedIn || !authUser.user.email) {
     //   setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
+    // return;
     // }
 
     setErrorMessage('');
@@ -87,12 +96,12 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       return;
     }
 
-    alert(`리뷰 등록에 실패하였습니다: ${msg}`);
+    alert(`리뷰 등록 실패: ${msg}`);
     location.reload();
-  };
+  }, [reviewText, rating, authUser]);
 
   return (
-    <div className="p-12 h-[36rem]">
+    <div className="p-12 h-[37rem] md:h-[36rem]">
       <div
         className="absolute top-0 right-0 w-8 h-8 flex justify-center items-center bg-red-500 cursor-pointer text-white"
         onClick={handleModalClose}

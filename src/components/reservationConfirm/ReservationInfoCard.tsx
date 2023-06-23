@@ -7,6 +7,7 @@ import { ModalText } from './constants';
 
 const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
   const {
+    id,
     accommodationId,
     bookName,
     picUrl,
@@ -61,6 +62,7 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
               disabled={false}
               text={ModalText.CANCEL}
               accommodationId={accommodationId}
+              bookId={id}
             />
           ) : reviewRegistered ? (
             <ModalTriggerButton

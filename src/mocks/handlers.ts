@@ -52,6 +52,20 @@ export const handlers = [
     );
   }),
 
+  rest.delete('/api/user/:userId/mybook/:bookId', (req, res, ctx) => {
+    return res(
+      ctx.status(201),
+      ctx.json({
+        code: 'RESPONSE_SUCCESS',
+        status: 'OK',
+        msg: 'SUCCESS',
+        data: {
+          msg: '성공적으로 작업을 수행 했습니다.'
+        }
+      })
+    );
+  }),
+
   // 예약 목록 확인
   rest.get('/api/user/:userId/mybook', (req, res, ctx) => {
     return res(

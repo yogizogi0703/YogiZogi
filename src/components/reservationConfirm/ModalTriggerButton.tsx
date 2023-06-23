@@ -9,12 +9,14 @@ interface IModalTriggerButton {
   disabled: boolean;
   text: ModalTextTypes;
   accommodationId: number;
+  bookId?: number;
 }
 
 const ModalTriggerButton = ({
   disabled,
   text,
-  accommodationId
+  accommodationId,
+  bookId
 }: IModalTriggerButton) => {
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -43,7 +45,7 @@ const ModalTriggerButton = ({
       >
         <div className="absolute bg-white w-[80%] md:w-[40rem] rounded z-20 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           {text === ModalText.CANCEL ? (
-            <CancelModal />
+            <CancelModal bookId={bookId} onClose={closeModal} />
           ) : text === ModalText.REVIEW ? (
             <ReviewModal
               accommodationId={accommodationId}

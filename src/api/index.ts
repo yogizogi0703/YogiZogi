@@ -30,5 +30,19 @@ export const fetchData = {
         `POST:// fetchData Error : TIME(${new Date()}) ERRROR(${error})`
       );
     }
+  },
+
+  delete: async (url: string) => {
+    try {
+      const res = await axios({
+        method: 'delete',
+        url: `${BASE_URL}${url}`
+      });
+      return res;
+    } catch (error) {
+      console.error(
+        `DELETE:// fetchData Error : TIME(${new Date()}) ERRROR(${error})`
+      );
+    }
   }
 };
