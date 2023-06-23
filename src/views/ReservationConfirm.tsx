@@ -183,12 +183,13 @@ const ReservationConfirm = () => {
             (pageIndex) => {
               return (
                 <input
+                  key={`pageButton-${pageIndex}`}
                   className="join-item btn btn-square"
                   type="radio"
                   name="pages"
                   aria-label={`${pageIndex}`}
                   checked={pageIndex === page}
-                  onClick={() => handlePageButtonClick(pageIndex)}
+                  onChange={() => handlePageButtonClick(pageIndex)}
                 />
               );
             }
