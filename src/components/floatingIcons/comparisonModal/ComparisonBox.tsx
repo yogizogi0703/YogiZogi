@@ -1,9 +1,9 @@
 import { useRecoilState } from 'recoil';
-import { selectedAccommodation } from '../../store/atom/comparisonAtom';
-import { addCommasToPrice } from '../../helpers';
+import { selectedAccommodation } from '../../../store/atom/comparisonAtom';
+import { addCommasToPrice } from '../../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { AlertModal } from '../../components/common/AlertModal';
+import { AlertModal } from '../../common/AlertModal';
 import { ComparisonModal } from './ComparisonModal';
 
 export const ComparisonBox = ({ display }: { display: boolean }) => {
