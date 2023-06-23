@@ -1,4 +1,4 @@
-import Input, { InputProps } from './Input';
+import Input, { InputProps } from '../common/Input';
 
 interface InputBoxProps extends InputProps {
   title: string;
