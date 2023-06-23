@@ -8,6 +8,7 @@ import {
   ratingFactorsInfo
 } from './constants';
 import { AiOutlineClose } from 'react-icons/ai';
+import { registerReview } from '../../api/registerReview';
 
 interface IReviewModal {
   accommodationId: number;
@@ -16,6 +17,8 @@ interface IReviewModal {
 
 const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
   const { authUser } = useAuth();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   const [reviewText, setReviewText] = useState('');
   const [rating, setRating] = useState(initialRating);
@@ -60,11 +63,9 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
 
     setErrorMessage('');
 
-    const averageRate = (
-      rating.service +
-      rating.price +
-      rating.facilities / 3
-    ).toFixed(2);
+    const averageRate = Number(
+      (rating.service + rating.price + rating.facilities / 3).toFixed(1)
+    );
 
     const requestBody = {
       description,
@@ -73,58 +74,88 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       email: 'test@test.com'
       //   email: authUser.user.email
     };
+
+    setIsLoading(true);
+
+    const {
+      data: { status, msg }
+    } = await registerReview(requestBody);
+
+    if (status === 'OK') {
+      alert('리뷰를 성공적으로 등록했습니다.');
+      location.reload();
+      return;
+    }
+
+    alert(`리뷰 등록에 실패하였습니다: ${msg}`);
+    location.reload();
   };
 
   return (
-    <div className="p-12 pb-8">
+    <div className="p-12 h-[36rem]">
       <div
         className="absolute top-0 right-0 w-8 h-8 flex justify-center items-center bg-red-500 cursor-pointer text-white"
         onClick={handleModalClose}
       >
         <AiOutlineClose />
       </div>
-      <h6 className="text-center font-bold text-lg">숙소 리뷰 남기기</h6>
 
-      <div className="mt-8">
-        <p className="mb-2 text-sm">숙소는 어땠나요? 경험을 공유해주세요.</p>
-        <textarea
-          name="reivewText"
-          id="reviewText"
-          placeholder="내용을 입력해주세요..."
-          className="resize-none bg-gray-200 w-full h-36 rounded p-4"
-          value={reviewText}
-          onChange={handleTextChange}
-          required
-          maxLength={MAX_REVIEW_LENGTH}
-        ></textarea>
-      </div>
+      {!isLoading ? (
+        <div>
+          <h6 className="text-center font-bold text-lg">숙소 리뷰 남기기</h6>
 
-      <div className="mt-8 text-sm">
-        <p className="mb-4">별점으로 평가해주세요.</p>
-        <div className="flex flex-col gap-2 text-xs">
-          {ratingFactorsInfo.map((factor) => {
-            return (
-              <div key={factor.id} className="flex">
-                <p className="w-20">{factor.text}</p>
-                <RatingSetStar
-                  rating={rating[factor.id]}
-                  onChange={(value: number) => handleRateChange(factor, value)}
-                />
-              </div>
-            );
-          })}
+          <div className="mt-8">
+            <p className="mb-2 text-sm">
+              숙소는 어땠나요? 경험을 공유해주세요.
+            </p>
+            <textarea
+              name="reivewText"
+              id="reviewText"
+              placeholder="내용을 입력해주세요..."
+              className="resize-none bg-gray-200 w-full h-36 rounded p-4"
+              value={reviewText}
+              onChange={handleTextChange}
+              required
+              maxLength={MAX_REVIEW_LENGTH}
+            ></textarea>
+          </div>
+
+          <div className="mt-8 text-sm">
+            <p className="mb-4">별점으로 평가해주세요.</p>
+            <div className="flex flex-col gap-2 text-xs">
+              {ratingFactorsInfo.map((factor) => {
+                return (
+                  <div key={factor.id} className="flex">
+                    <p className="w-20">{factor.text}</p>
+                    <RatingSetStar
+                      rating={rating[factor.id]}
+                      onChange={(value: number) =>
+                        handleRateChange(factor, value)
+                      }
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <div className="mt-12 flex flex-col justify-center items-center">
+            <p className="text-sm font-bold text-red-500 mb-4">
+              {errorMessage}
+            </p>
+            <button
+              className="btn bg-red-500 hover:bg-red-600 text-white w-32"
+              onClick={handleSubmit}
+            >
+              등록
+            </button>
+          </div>
         </div>
-      </div>
-
-      <div className="mt-12 flex flex-col justify-center items-center">
-        <p className="text-sm font-bold text-red-500 mb-4">{errorMessage}</p>
-        <button
-          className="btn bg-red-500 hover:bg-red-600 text-white w-32"
-          onClick={handleSubmit}
-        >
-          등록
-        </button>
-      </div>
+      ) : (
+        <div className="flex justify-center items-center h-full">
+          <span className="loading loading-spinner loading-lg"></span>
+        </div>
+      )}
     </div>
   );
 };
