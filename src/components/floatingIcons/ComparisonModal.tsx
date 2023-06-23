@@ -33,7 +33,7 @@ export const ComparisonModal = ({
     <>
       <input
         type="checkbox"
-        id="alertModal"
+        id="comparisonModal"
         className="modal-toggle"
         checked={modalState}
         onChange={() => handleModal(!modalState)}
@@ -120,7 +120,7 @@ export const ComparisonModal = ({
         </div>
         <label
           className="modal-backdrop"
-          htmlFor="alertModal"
+          htmlFor="comparisonModal"
         >
           Close
         </label>
