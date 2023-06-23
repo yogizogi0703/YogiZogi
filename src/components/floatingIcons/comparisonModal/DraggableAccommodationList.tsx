@@ -58,7 +58,7 @@ export const DraggableAccommodationList = () => {
                     style={{
                       ...provided.draggableProps.style,
                       top: snapshot.isDragging ? '4.3rem' : '3rem',
-                      left: '7.2rem'
+                      left: idx === 0 ? '7.2rem' : '21.6rem'
                     }}
                   >
                     <div
