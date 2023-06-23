@@ -97,13 +97,28 @@ export const ComparisonModal = ({
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               ref={provided.innerRef}
-                              style={{...provided.draggableProps.style, top: snapshot.isDragging ? '4.3rem' : '3rem', left: '7.2rem'}}
+                              className={`w-1/2 rounded-lg ${
+                                snapshot.isDragging ? 'bg-orange-100' : ''
+                              }`}
+                              style={{
+                                ...provided.draggableProps.style,
+                                top: snapshot.isDragging ? '4.3rem' : '3rem',
+                                left: '7.2rem'
+                              }}
                             >
                               <div
                                 key={idx}
                                 className="flex flex-col gap-y-1 text-center w-full text-xs md:text-base"
                               >
-                                <figure className="h-32 object-cover mx-1 opa">
+                                <figure className="relative h-32 object-cover mx-1">
+                                  <div
+                                    className={`absolute top-[-10px] left-24 badge badge-neutral ${
+                                      snapshot.isDragging ? 'block' : 'hidden'
+                                    }`}
+                                  >
+                                    {' '}
+                                    · · ·
+                                  </div>
                                   <img
                                     src={el.pictureUrlList[0]}
                                     className="w-full h-full rounded-lg"
