@@ -1,7 +1,7 @@
 import { BsChat } from 'react-icons/bs';
 import { BiShoppingBag } from 'react-icons/bi';
 import { useState } from 'react';
-import { ComparisonBox } from './comparisonModal/ComparisonBox';
+import { ComparisonBox } from './comparison/ComparisonBox';
 import { useRecoilValue } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 

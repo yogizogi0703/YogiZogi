@@ -11,7 +11,10 @@ import {
   IReview,
   IReviewResponse
 } from '../api/accommodationDetail';
-import { CarouselModal, IModalProps } from '../components/accommodationDetail/CarouselModal';
+import {
+  CarouselModal,
+  IModalProps
+} from '../components/accommodationDetail/CarouselModal';
 import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 
 const AccommodationDetail = () => {
@@ -205,13 +208,15 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          <LocalMapView
-            address={accommodationData.address}
-            position={{
-              lat: accommodationData.lat,
-              lng: accommodationData.lon
-            }}
-          />
+          {accommodationData.id !== 0 && (
+            <LocalMapView
+              address={accommodationData.address}
+              position={{
+                lat: accommodationData.lat,
+                lng: accommodationData.lon
+              }}
+            />
+          )}
         </div>
         <div className="divider my-0" />
         <div>
@@ -277,12 +282,20 @@ const AccommodationDetail = () => {
                         예약하기
                       </label>
                       <ConfirmModal
-                        roomImg={el.pictureUrlList[0]}
-                        roomInfo={accommodationData.room[idx]}
-                        price={totalPrices[idx]}
-                        checkInDate={checkInDate}
-                        checkOutDate={checkOutDate}
-                        people={people}
+                        data={{
+                          accommodationName:
+                            accommodationData.accommodationName,
+                          accommodationId: accommodationData.id,
+                          address: accommodationData.address,
+                          rate: accommodationRate,
+                          roomId: el.id,
+                          roomName: el.roomName,
+                          roomImg: el.pictureUrlList[0],
+                          price: totalPrices[idx],
+                          checkInDate: checkInDate,
+                          checkOutDate: checkOutDate,
+                          people: people
+                        }}
                       />
                     </div>
                   </div>
