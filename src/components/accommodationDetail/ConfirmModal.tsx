@@ -24,6 +24,8 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
       `/payment?accommodation=${data.accommodationName}checkindate=${data.checkInDate}&checkoutdate=${data.checkOutDate}&people=${data.people}&price=${data.price}`,
       {
         state: {
+          accommodationId: data.accommodationId,
+          roomId: data.roomId,
           roomName: data.roomName,
           roomImg: data.roomImg,
           address: data.address,
