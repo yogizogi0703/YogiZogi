@@ -48,7 +48,7 @@ export const useReservation = () => {
 
   const getReservationFormdata = (): ReservationAddProps => {
     return {
-      roomId: 0,
+      roomId: Number(roomInfoRef.current.roomId),
       checkInDate: String(accommodationInfoRef.current.checkInDate),
       checkOutDate: String(accommodationInfoRef.current.checkOutDate),
       people: Number(accommodationInfoRef.current.people),
@@ -62,8 +62,9 @@ export const useReservation = () => {
       alert('예약자명을 입력해주세요.');
       return;
     }
+    const accommodationId = Number(roomInfoRef.current.accommodationId);
     const data = getReservationFormdata();
-    const res = await fetchReservation(0, data);
+    const res = await fetchReservation(accommodationId, data);
 
     if (!res) {
       alert('문제가 발생했습니다.');
