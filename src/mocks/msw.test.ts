@@ -28,22 +28,46 @@ describe('MSW Fetch Test: ', () => {
   it('registered list', async () => {
     const result = [
       {
+        id: 7,
+        userId: 3,
+        accommodationId: 1,
+        bookName: '홍길동',
+        accommodationName: 'ACB 호텔',
+        picUrl:
+          'https://image.goodchoice.kr/resize_1000X500x0/affiliate/2020/03/24/5e799e9748723.jpg',
+        startDate: '2023-06-13',
+        endDate: '2023-06-15',
+        price: 180000,
+        rate: 8.7,
+        reviewRegistered: true
+      },
+      {
         id: 5,
         userId: 3,
+        accommodationId: 1,
+        bookName: '홍길동',
         accommodationName: 'ABC 호텔',
+        picUrl:
+          'https://image.goodchoice.kr/resize_1000X500x0/affiliate/2020/03/24/5e799e9748723.jpg',
         startDate: '2023-06-01',
         endDate: '2023-06-02',
         price: 100000,
+        rate: 8.6,
         reviewRegistered: false
       },
       {
         id: 3,
         userId: 3,
-        accommodationName: 'BAC 모텔',
-        startDate: '2023-06-03',
-        endDate: '2023-06-04',
-        price: 40000,
-        reviewRegistered: true
+        accommodationId: 1,
+        bookName: '홍길동',
+        accommodationName: 'BAC 호텔',
+        picUrl:
+          'https://image.goodchoice.kr/resize_1000X500x0/affiliate/2020/03/24/5e799e9748723.jpg',
+        startDate: '2023-07-01',
+        endDate: '2023-07-04',
+        price: 20000,
+        rate: 9.3,
+        reviewRegistered: false
       }
     ];
 
@@ -53,13 +77,7 @@ describe('MSW Fetch Test: ', () => {
 
     expectTypeOf(content).toBeArray();
     for (let i = 0; i < result.length; i++) {
-      expect(content[i].id).toBe(result[i].id);
-      expect(content[i].userId).toBe(result[i].userId);
-      expect(content[i].accommodationName).toBe(result[i].accommodationName);
-      expect(content[i].startDate).toBe(result[i].startDate);
-      expect(content[i].endDate).toBe(result[i].endDate);
-      expect(content[i].price).toBe(result[i].price);
-      expect(content[i].reviewRegistered).toBe(result[i].reviewRegistered);
+      expect(content[i]).toEqual(result[i]);
     }
   });
 
