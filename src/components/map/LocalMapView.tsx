@@ -31,11 +31,9 @@ const LocalMapView = ({ address, position }: LocalMapViewProp) => {
         </div>
 
         {localCategory.map((item) => (
-          <p key={item.title} className="font-semibold line-clamp-2">
-            {item.title} :
-            <span className="font-normal">
-              숙소 5분 거리로 {item.title}이 있어 편리
-            </span>
+          <p key={item.title} className="font-normal line-clamp-2">
+            <span className="font-semibold">{item.title}: </span>
+            숙소 5분 거리로 {item.title}이 있어 편리
           </p>
         ))}
       </div>

@@ -9,7 +9,6 @@ export interface SignInFormDataProps {
 export interface SignUpFormDataProps extends SignInFormDataProps {
   nickname: string;
   passwordCheck: string;
-  phone: string;
 }
 
 export const fetchSignIn = async (data: SignInFormDataProps) => {

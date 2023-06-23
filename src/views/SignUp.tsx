@@ -52,14 +52,6 @@ const SignUp = () => {
             value={signUpData.passwordCheck}
             handleChange={handleChangeInput}
           />
-          <InputBox
-            title="휴대폰 번호"
-            name="phone"
-            type="tel"
-            placeholder="휴대폰 번호를 입력해주세요."
-            value={signUpData.phone}
-            handleChange={handleChangeInput}
-          />
         </div>
         <div className="flex flex-col pt-8">
           {isDisabled ? (

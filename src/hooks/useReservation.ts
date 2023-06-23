@@ -28,8 +28,8 @@ export const useReservation = () => {
     const checked = target.checked;
     if (checked) {
       setReservationData({
-        name: String(authUser.user.iss),
-        email: String(authUser.user.sub)
+        name: String(authUser.user.nickname),
+        email: String(authUser.user.email)
       });
     } else {
       setReservationData({ name: '', email: '' });

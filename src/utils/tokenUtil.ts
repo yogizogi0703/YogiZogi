@@ -5,17 +5,17 @@ export const decoderToken = (token: string) => {
     const decodedToken: JwtPayload = jwtDecode(token);
     // 유효 시간 확인
     const currentTime = Date.now() / 1000;
-    if (decodedToken.exp) {
-      if (decodedToken.exp < currentTime) {
-        alert('토큰이 만료되었습니다.');
-        return { user: {}, expiration: false };
-      }
-    }
+    // if (decodedToken.exp) {
+    //   if (decodedToken.exp < currentTime) {
+    //     alert('토큰이 만료되었습니다.');
+    //     return { user: {}, expiration: false };
+    //   }
+    // }
     return {
       user: {
-        jti: Number(decodedToken.jti),
-        iss: decodedToken.iss,
-        sub: decodedToken.sub
+        id: Number(decodedToken.jti),
+        nickname: decodedToken.iss,
+        email: decodedToken.sub
       },
       expiration: true,
       isLoggedIn: true

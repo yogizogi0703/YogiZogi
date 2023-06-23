@@ -10,28 +10,15 @@ const useSignUp = () => {
     email: '',
     nickname: '',
     password: '',
-    passwordCheck: '',
-    phone: ''
+    passwordCheck: ''
   });
-
-  const autoHyphen = (value: string) => {
-    return value
-      .replace(/[^0-9]/g, '')
-      .replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, '$1-$2-$3')
-      .replace(/(\-{1,2})$/g, '');
-  };
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     const name = target.name;
     const value = target.value;
 
-    if (name === 'phone') {
-      const phone = autoHyphen(value);
-      setSignUpData((signUpData) => ({ ...signUpData, phone: phone }));
-    } else {
-      setSignUpData((signUpData) => ({ ...signUpData, [name]: value }));
-    }
+    setSignUpData((signUpData) => ({ ...signUpData, [name]: value }));
   };
 
   const handleSubmitSignUp = async () => {
@@ -49,10 +36,6 @@ const useSignUp = () => {
     }
     if (signUpData.password !== signUpData.passwordCheck) {
       alert('비밀번호가 일치하지 않습니다.');
-      return;
-    }
-    if (signUpData.phone.length !== 13) {
-      alert('휴대폰 번호를 확인해주세요');
       return;
     }
 
