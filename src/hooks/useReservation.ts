@@ -4,7 +4,6 @@ import useAuth from './useAuth';
 
 interface ReservationProps {
   name: string;
-  email: string;
 }
 
 export const useReservation = () => {
@@ -16,11 +15,11 @@ export const useReservation = () => {
     accommodationName: params.get('accommodation'),
     checkInDate: params.get('checkindate'),
     checkOutDate: params.get('checkoutdate'),
-    price: params.get('price')
+    price: params.get('price'),
+    people: params.get('people')
   });
   const [reservationData, setReservationData] = useState<ReservationProps>({
-    name: '',
-    email: ''
+    name: ''
   });
 
   const handleChangeChecked = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -28,11 +27,10 @@ export const useReservation = () => {
     const checked = target.checked;
     if (checked) {
       setReservationData({
-        name: String(authUser.user.iss),
-        email: String(authUser.user.sub)
+        name: String(authUser.user.iss)
       });
     } else {
-      setReservationData({ name: '', email: '' });
+      setReservationData({ name: '' });
     }
   };
 
@@ -46,11 +44,25 @@ export const useReservation = () => {
     }));
   };
 
+  const handleReservationSubmit = () => {
+    const data = {
+      roomId: 0,
+      checkInDate: accommodationInfoRef.current.checkInDate,
+      checkOutDate: accommodationInfoRef.current.checkOutDate,
+      people: accommodationInfoRef.current.people,
+      payAmount: accommodationInfoRef.current.price,
+      bookName: reservationData.name
+    };
+
+    console.log(data);
+  };
+
   return {
     roomInfoRef,
     accommodationInfoRef,
     reservationData,
     handleChangeInput,
-    handleChangeChecked
+    handleChangeChecked,
+    handleReservationSubmit
   };
 };

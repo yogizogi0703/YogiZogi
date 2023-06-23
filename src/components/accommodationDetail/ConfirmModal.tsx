@@ -21,7 +21,7 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(
-      `/payment?accommodation=${data.accommodationName}checkindate=${data.checkInDate}&checkoutdate=${data.checkOutDate}&people=${data.people}&price=${data.price}`,
+      `/payment?accommodation=${data.accommodationName}&checkindate=${data.checkInDate}&checkoutdate=${data.checkOutDate}&people=${data.people}&price=${data.price}`,
       {
         state: {
           roomName: data.roomName,

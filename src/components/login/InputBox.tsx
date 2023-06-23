@@ -15,7 +15,7 @@ const InputBox = ({
   return (
     <div className="form-control">
       <label className="label">
-        <span className="label-text text-gray-500 max-md:text-white">
+        <span className="label-text text-gray-500 max-md:text-inherit">
           {title}
         </span>
       </label>
