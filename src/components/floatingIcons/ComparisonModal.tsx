@@ -92,11 +92,12 @@ export const ComparisonModal = ({
                           index={idx}
                           key={el.id}
                         >
-                          {(provided) => (
+                          {(provided, snapshot) => (
                             <div
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               ref={provided.innerRef}
+                              style={{...provided.draggableProps.style, top: snapshot.isDragging ? '4.3rem' : '3rem', left: '7.2rem'}}
                             >
                               <div
                                 key={idx}
