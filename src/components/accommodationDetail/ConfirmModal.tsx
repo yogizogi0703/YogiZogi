@@ -1,4 +1,3 @@
-import { IPrice, IRoomResponse } from 'api/accommodationDetail';
 import { useNavigate } from 'react-router-dom';
 
 interface IConfirmModal {
