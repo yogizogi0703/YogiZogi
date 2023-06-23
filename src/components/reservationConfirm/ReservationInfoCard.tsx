@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { formatPrice } from '../../utils/formatPrice';
 import { IReservationInfoCard } from './types';
 import { getTodayString, getTomorrowString } from '../../utils/handleDate';
+import { addCommasToPrice } from '../../helpers';
 
 const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
   const {
@@ -44,7 +44,7 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
           </p>
           <p>
             <span className="font-bold">결제금액:&nbsp;</span>
-            <span>{`${formatPrice(price)}원`}</span>
+            <span>{`${addCommasToPrice(price)}원`}</span>
           </p>
         </div>
         <div className="flex justify-end gap-2 mt-2">
