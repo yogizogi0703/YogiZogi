@@ -40,7 +40,6 @@ export const ComparisonModal = ({
 
     const items = Array.from(selectedAcc);
     const [reorderedItem] = items.splice(result.source.index, 1);
-    console.log(reorderedItem);
     items.splice(result.destination.index, 0, reorderedItem);
 
     setSelectedAcc(items);
@@ -56,14 +55,14 @@ export const ComparisonModal = ({
         onChange={() => handleModal(!modalState)}
       />
       <div className="modal">
-        <div className="modal-box overflow-hidden">
+        <div className="modal-box w-[600px] max-w-[900px] overflow-hidden">
           <div>
             <h2 className="mb-3 text-2xl font-semibold text-center">
               한 눈에 비교하기
             </h2>
-            <div className="flex">
-              <div className="flex flex-col text-center font-semibold gap-y-1 text-xs md:text-base">
-                <p className="w-1/5 h-32"></p>
+            <div className="flex w-full">
+              <div className="flex flex-col w-1/5 text-center font-semibold gap-y-1 text-xs md:text-base">
+                <p className="h-32"></p>
                 <p className="h-4 md:h-6"></p>
                 {criteria.map((el, idx) => {
                   return (
