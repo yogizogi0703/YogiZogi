@@ -81,7 +81,7 @@ export const ComparisonModal = ({
                   direction="horizontal"
                 >
                   {(provided) => (
-                    <div
+                    <ul
                       ref={provided.innerRef}
                       {...provided.droppableProps}
                       className="flex gap-y-1 text-center w-full text-xs md:text-base"
@@ -93,11 +93,11 @@ export const ComparisonModal = ({
                           key={el.id}
                         >
                           {(provided, snapshot) => (
-                            <div
+                            <li
                               {...provided.draggableProps}
                               {...provided.dragHandleProps}
                               ref={provided.innerRef}
-                              className={`w-1/2 rounded-lg ${
+                              className={`w-1/2 rounded-lg list-none ${
                                 snapshot.isDragging ? 'bg-orange-100' : ''
                               }`}
                               style={{
@@ -162,12 +162,12 @@ export const ComparisonModal = ({
                                   </button>
                                 </Link>
                               </div>
-                            </div>
+                            </li>
                           )}
                         </Draggable>
                       ))}
                       {provided.placeholder}
-                    </div>
+                    </ul>
                   )}
                 </Droppable>
               </DragDropContext>
