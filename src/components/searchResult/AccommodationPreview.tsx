@@ -4,6 +4,8 @@ import { ISearchResultContent } from 'api/search';
 import { BiShoppingBag } from 'react-icons/bi';
 import { useRecoilState } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
+import { useState } from 'react';
+import { AlertModal } from '../../components/common/AlertModal';
 
 interface IAccommodationPreview {
   data: ISearchResultContent;
@@ -14,13 +16,16 @@ const formatPrice = (num: number) =>
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { accommodationName, rate, pictureUrlList, address, price } = data;
-  const [, setComparisonItems] = useRecoilState(selectedAccommodation);
+  const [comparisonItems, setComparisonItems] = useRecoilState(selectedAccommodation);
+  const [alertModalState, setAlertModalState] = useState(false);
 
   const addComparisonCart = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    setComparisonItems((prev) => [...prev, data]);
+    
+    if(comparisonItems.some(el => el.accommodationName === data.accommodationName)) setAlertModalState(true)
+    else setComparisonItems((prev) => [...prev, data]);
   };
 
   return (
@@ -57,6 +62,11 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
           <RatingStars rate={rate} />
         </div>
       </div>
+      <AlertModal
+        content="이미 담긴 상품입니다."
+        modalState={alertModalState}
+        handleModal={setAlertModalState}
+      />
     </article>
   );
 };
