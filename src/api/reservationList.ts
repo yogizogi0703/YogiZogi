@@ -19,9 +19,9 @@ interface IReservationListResponse {
   };
 }
 
-const RESERVATION_LIST_URL = `/user/${1}/mybook`;
+export const getReservationList = async (userId: number) => {
+  const RESERVATION_LIST_URL = `/user/${userId}/mybook`;
 
-export const getReservationList = async () => {
   const res = await fetchData.get<IReservationListResponse>(
     RESERVATION_LIST_URL
   );
