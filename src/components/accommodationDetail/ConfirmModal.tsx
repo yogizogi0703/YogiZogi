@@ -1,3 +1,4 @@
+import { addCommasToPrice } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 
 interface IConfirmModal {
@@ -71,7 +72,7 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
               className="btn btn-primary modal-action mt-0 w-fit text-white btn-sm text-xs md:btn-md md:text-base"
               onClick={handleClick}
             >
-              {data.price}원 예약하기
+              {addCommasToPrice(data.price)}원 예약하기
             </button>
           </div>
         </div>
