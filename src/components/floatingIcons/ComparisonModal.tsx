@@ -3,6 +3,12 @@ import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../helpers';
 import RatingStars from '../../components/common/RatingStars';
 import { Link } from 'react-router-dom';
+import {
+  DragDropContext,
+  Droppable,
+  Draggable,
+  DropResult
+} from 'react-beautiful-dnd';
 
 interface IComparisonModal {
   modalState: boolean;
@@ -29,6 +35,17 @@ export const ComparisonModal = ({
     people: people
   } = Object.fromEntries(urlParams.entries());
 
+  const onDragEnd = (result: DropResult) => {
+    if (!result.destination) return;
+
+    const items = Array.from(selectedAcc);
+    const [reorderedItem] = items.splice(result.source.index, 1);
+    console.log(reorderedItem);
+    items.splice(result.destination.index, 0, reorderedItem);
+
+    setSelectedAcc(items);
+  };
+
   return (
     <>
       <input
@@ -39,7 +56,7 @@ export const ComparisonModal = ({
         onChange={() => handleModal(!modalState)}
       />
       <div className="modal">
-        <div className="modal-box">
+        <div className="modal-box overflow-hidden">
           <div>
             <h2 className="mb-3 text-2xl font-semibold text-center">
               한 눈에 비교하기
@@ -59,54 +76,86 @@ export const ComparisonModal = ({
                   );
                 })}
               </div>
-              {selectedAcc.map((el, idx) => {
-                return (
-                  <div
-                    key={idx}
-                    className="flex flex-col gap-y-1 text-center w-2/5 text-xs md:text-base"
-                  >
-                    <figure className="h-32 object-cover mx-1">
-                      <img
-                        src={el.pictureUrlList[0]}
-                        className="w-full h-full rounded-lg"
-                      />
-                    </figure>
-                    <p className="truncate block font-semibold mr-1">
-                      {el.accommodationName}
-                    </p>
-                    <p className="flex justify-center gap-1 bg-gray-300">
-                      {addCommasToPrice(el.price)}원
-                      {el.price === minPrice && (
-                        <img
-                          src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
-                          alt="heart mark"
-                          className="w-4 md:h-5 md:pt-1"
-                        />
-                      )}
-                    </p>
-                    <div className="flex items-center justify-center gap-1 h-4 md:h-6 ">
-                      <RatingStars rate={el.rate} />
-                      {el.rate === highRate && (
-                        <img
-                          src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
-                          alt="heart mark"
-                          className="w-4 h-5 py-[2px]"
-                        />
-                      )}
-                    </div>
-                    <p className="bg-gray-300 truncate">{el.address}</p>
-                    <p>편의시설</p>
-                    <Link
-                      to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
+              <DragDropContext onDragEnd={onDragEnd}>
+                <Droppable
+                  droppableId="selectedAccommodations"
+                  direction="horizontal"
+                >
+                  {(provided) => (
+                    <div
+                      ref={provided.innerRef}
+                      {...provided.droppableProps}
+                      className="flex gap-y-1 text-center w-full text-xs md:text-base"
                     >
-                      <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1 text-xs md:text-base font-normal">
-                        <span className="hidden sm:block">상세페이지 </span>
-                        바로가기
-                      </button>
-                    </Link>
-                  </div>
-                );
-              })}
+                      {selectedAcc.map((el, idx) => (
+                        <Draggable
+                          draggableId={el.id.toString()}
+                          index={idx}
+                          key={el.id}
+                        >
+                          {(provided) => (
+                            <div
+                              {...provided.draggableProps}
+                              {...provided.dragHandleProps}
+                              ref={provided.innerRef}
+                            >
+                              <div
+                                key={idx}
+                                className="flex flex-col gap-y-1 text-center w-full text-xs md:text-base"
+                              >
+                                <figure className="h-32 object-cover mx-1 opa">
+                                  <img
+                                    src={el.pictureUrlList[0]}
+                                    className="w-full h-full rounded-lg"
+                                  />
+                                </figure>
+                                <p className="truncate block font-semibold mr-1">
+                                  {el.accommodationName}
+                                </p>
+                                <p className="flex justify-center gap-1 bg-gray-300">
+                                  {addCommasToPrice(el.price)}원
+                                  {el.price === minPrice && (
+                                    <img
+                                      src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
+                                      alt="heart mark"
+                                      className="w-4 md:h-5 md:pt-1"
+                                    />
+                                  )}
+                                </p>
+                                <div className="flex items-center justify-center gap-1 h-4 md:h-6 ">
+                                  <RatingStars rate={el.rate} />
+                                  {el.rate === highRate && (
+                                    <img
+                                      src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
+                                      alt="heart mark"
+                                      className="w-4 h-5 py-[2px]"
+                                    />
+                                  )}
+                                </div>
+                                <p className="bg-gray-300 truncate">
+                                  {el.address}
+                                </p>
+                                <p>편의시설</p>
+                                <Link
+                                  to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
+                                >
+                                  <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1 text-xs md:text-base font-normal">
+                                    <span className="hidden sm:block">
+                                      상세페이지{' '}
+                                    </span>
+                                    바로가기
+                                  </button>
+                                </Link>
+                              </div>
+                            </div>
+                          )}
+                        </Draggable>
+                      ))}
+                      {provided.placeholder}
+                    </div>
+                  )}
+                </Droppable>
+              </DragDropContext>
             </div>
           </div>
           <div className="modal-action">
@@ -118,10 +167,7 @@ export const ComparisonModal = ({
             </button>
           </div>
         </div>
-        <label
-          className="modal-backdrop"
-          htmlFor="comparisonModal"
-        >
+        <label className="modal-backdrop" htmlFor="comparisonModal">
           Close
         </label>
       </div>
