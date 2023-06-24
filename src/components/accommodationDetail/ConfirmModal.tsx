@@ -1,4 +1,4 @@
-import { IPrice, IRoomResponse } from 'api/accommodationDetail';
+import { addCommasToPrice } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 
 interface IConfirmModal {
@@ -24,6 +24,8 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
       `/payment?accommodation=${data.accommodationName}checkindate=${data.checkInDate}&checkoutdate=${data.checkOutDate}&people=${data.people}&price=${data.price}`,
       {
         state: {
+          accommodationId: data.accommodationId,
+          roomId: data.roomId,
           roomName: data.roomName,
           roomImg: data.roomImg,
           address: data.address,
@@ -70,7 +72,7 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
               className="btn btn-primary modal-action mt-0 w-fit text-white btn-sm text-xs md:btn-md md:text-base"
               onClick={handleClick}
             >
-              {data.price}원 예약하기
+              {addCommasToPrice(data.price)}원 예약하기
             </button>
           </div>
         </div>
