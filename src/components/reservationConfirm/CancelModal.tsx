@@ -66,9 +66,7 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
       });
     };
 
-    setTimeout(() => {
-      fetchReservationCancel();
-    }, 2000);
+    fetchReservationCancel();
   }, [isLoading]);
 
   return (
