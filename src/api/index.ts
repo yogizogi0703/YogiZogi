@@ -3,12 +3,14 @@ import axios from 'axios';
 export const BASE_URL = '/api';
 
 export const fetchData = {
-  get: async (url: string) => {
+  get: async <T>(url: string) => {
     try {
-      const res = await axios(`${BASE_URL}${url}`);
+      const res: T = await axios(`${BASE_URL}${url}`);
       return res;
     } catch (error) {
-      console.log(error);
+      console.error(
+        `GET:// fetchData Error : TIME(${new Date()}) ERRROR(${error})`
+      );
     }
   },
 
@@ -24,7 +26,23 @@ export const fetchData = {
       });
       return res;
     } catch (error) {
-      console.log(error);
+      console.error(
+        `POST:// fetchData Error : TIME(${new Date()}) ERRROR(${error})`
+      );
+    }
+  },
+
+  delete: async (url: string) => {
+    try {
+      const res = await axios({
+        method: 'delete',
+        url: `${BASE_URL}${url}`
+      });
+      return res;
+    } catch (error) {
+      console.error(
+        `DELETE:// fetchData Error : TIME(${new Date()}) ERRROR(${error})`
+      );
     }
   }
 };

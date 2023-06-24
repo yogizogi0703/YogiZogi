@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { error } from 'console';
 
 export interface SignInFormDataProps {
   [key: string]: string;
@@ -10,31 +9,30 @@ export interface SignInFormDataProps {
 export interface SignUpFormDataProps extends SignInFormDataProps {
   nickname: string;
   passwordCheck: string;
-  phone: string;
 }
 
 export const fetchSignIn = async (data: SignInFormDataProps) => {
   const res = await axios({
     method: 'post',
-    url: '/login',
+    url: '/api/user/login',
     headers: {
       'Content-Type': 'application/json'
     },
     data: data
   }).catch((error) => console.log(error));
 
-  return res;
+  return res?.data;
 };
 
 export const fetchSignUp = async (data: SignUpFormDataProps) => {
   const res = await axios({
     method: 'post',
-    url: '/signup',
+    url: '/api/user/sign-up',
     headers: {
       'Content-Type': 'application/json'
     },
     data: data
   }).catch((error) => console.log(error));
 
-  return res;
+  return res?.data;
 };

@@ -1,8 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { SignInFormDataProps, fetchSignIn } from '../api/auth';
 import { useEffect, useState } from 'react';
-import { useRecoilState } from 'recoil';
-import { AUTH_TOKEN_KEY, authUser as authAtom } from '../store/atom/authAtom';
+import useAuth from './useAuth';
 
 export const validateEmail = (email: string) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -15,7 +14,7 @@ export const validatePassword = (password: string) => {
 
 const useSignIn = () => {
   const navigate = useNavigate();
-  const [authUser, setAuthUser] = useRecoilState(authAtom);
+  const { successLogin } = useAuth();
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [signInData, setSignInData] = useState<SignInFormDataProps>({
     email: '',
@@ -45,21 +44,15 @@ const useSignIn = () => {
       return;
     }
 
-    if (res.status === 200) {
-      const token = res.data.X_Auth_Token;
-      localStorage.setItem(AUTH_TOKEN_KEY, token);
-      setAuthUser({ token, isLoggedIn: true });
+    if (res.status === 'OK') {
+      console.log(res);
+      const token = res.data['X-AUTH-TOKEN'];
+      successLogin(token);
       navigate('/');
+    } else {
+      alert(res.data.msg);
+      console.error(res.data.code);
     }
-  };
-
-  const handleLogOut = () => {
-    localStorage.removeItem(AUTH_TOKEN_KEY);
-    setAuthUser({ token: '', isLoggedIn: false });
-  };
-
-  const handleKakaoSignIn = () => {
-    alert('kakao login');
   };
 
   const changeBtnDisabled = () => {
@@ -72,6 +65,8 @@ const useSignIn = () => {
     setIsDisabled(isCheck);
   };
 
+  const handleKakaoSignIn = () => {};
+
   useEffect(() => {
     changeBtnDisabled();
   }, [signInData]);
@@ -79,11 +74,9 @@ const useSignIn = () => {
   return {
     signInData,
     isDisabled,
-    authUser,
     handleChangeInput,
     handleSubmitSignIn,
-    handleKakaoSignIn,
-    handleLogOut
+    handleKakaoSignIn
   };
 };
 

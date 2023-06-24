@@ -1,6 +1,6 @@
 const HomeMarker = () => {
   return (
-    <div className="cursor-pointer p-3 rounded-full text-white bg-red-400 drop-shadow-md">
+    <div className="cursor-pointer p-3 w-12 h-12 rounded-full text-white bg-red-400 drop-shadow-md">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

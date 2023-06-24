@@ -1,11 +1,12 @@
 import useSignIn from '../../hooks/useSignIn';
 import { useEffect, useState } from 'react';
-import { Link, useLocation, useRoutes } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { SearchBar } from '../searchBar/SearchBar';
+import useAuth from '../../hooks/useAuth';
 
 const Nav = () => {
   const location = useLocation();
-  const { authUser, handleLogOut } = useSignIn();
+  const { authUser, handleLogout } = useAuth();
   const [isShow, isSetShow] = useState<boolean>(false);
 
   const handleShowSearchBar = () => {
@@ -15,6 +16,14 @@ const Nav = () => {
   const handleWheelEvent = (e: WheelEvent) => {
     if (isShow && e.deltaY > 5) {
       isSetShow(false);
+    }
+  };
+
+  const handleClick = () => {
+    const elem = document.activeElement;
+    const target = elem as HTMLButtonElement;
+    if (target) {
+      target?.blur();
     }
   };
 
@@ -86,16 +95,19 @@ const Nav = () => {
                   tabIndex={0}
                   className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md"
                 >
-                  <li>
+                  <li onClick={handleClick}>
                     <Link to="/reservationConfirm">예약확인</Link>
                   </li>
-                  <li>
-                    <button onClick={handleLogOut}>로그아웃</button>
+                  <li onClick={handleClick}>
+                    <button onClick={handleLogout}>로그아웃</button>
                   </li>
                 </ul>
               </div>
             ) : (
-              <Link to="/signIn" className="btn btn-error text-white">
+              <Link
+                to="/signIn"
+                className="btn bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 text-white"
+              >
                 로그인
               </Link>
             )}
