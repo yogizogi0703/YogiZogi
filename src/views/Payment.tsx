@@ -9,7 +9,8 @@ const Payment = () => {
     accommodationInfoRef,
     reservationData,
     handleChangeInput,
-    handleChangeChecked
+    handleChangeChecked,
+    handleReservationSubmit
   } = useReservation();
   const location = useLocation();
   const navigate = useNavigate();
@@ -87,17 +88,14 @@ const Payment = () => {
               value={reservationData.name}
               handleChange={handleChangeInput}
             />
-            <InputBox
-              title="이메일"
-              name="email"
-              type="text"
-              placeholder="이메일을 입력해주세요."
-              value={reservationData.email}
-              handleChange={handleChangeInput}
-            />
           </div>
           <div className="text-end pt-5">
-            <button className="btn btn-info text-white">예약하기</button>
+            <button
+              className="btn btn-info text-white"
+              onClick={handleReservationSubmit}
+            >
+              예약하기
+            </button>
           </div>
         </article>
 
