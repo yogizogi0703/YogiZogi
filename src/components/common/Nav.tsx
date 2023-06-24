@@ -19,6 +19,14 @@ const Nav = () => {
     }
   };
 
+  const handleClick = () => {
+    const elem = document.activeElement;
+    const target = elem as HTMLButtonElement;
+    if (target) {
+      target?.blur();
+    }
+  };
+
   useEffect(() => {
     window.addEventListener('wheel', handleWheelEvent);
 
@@ -87,16 +95,19 @@ const Nav = () => {
                   tabIndex={0}
                   className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md"
                 >
-                  <li>
+                  <li onClick={handleClick}>
                     <Link to="/reservationConfirm">예약확인</Link>
                   </li>
-                  <li>
+                  <li onClick={handleClick}>
                     <button onClick={handleLogout}>로그아웃</button>
                   </li>
                 </ul>
               </div>
             ) : (
-              <Link to="/signIn" className="btn btn-error text-white">
+              <Link
+                to="/signIn"
+                className="btn bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 text-white"
+              >
                 로그인
               </Link>
             )}
