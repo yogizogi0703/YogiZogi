@@ -27,22 +27,23 @@ export const AlertModal = ({
         <div className="modal-box">
           <p className="py-4 text-lg">{content}</p>
           <div className="modal-action">
-            <label
-              htmlFor="my_modal_6"
+            <button
               className="btn"
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault();
                 additionalHandler?.();
                 handleModal(false);
               }}
             >
               닫기
-            </label>
+            </button>
           </div>
         </div>
         <label
           className="modal-backdrop"
           htmlFor="alertModal"
-          onClick={() => {
+          onClick={(e) => {
+            e.preventDefault();
             additionalHandler?.();
             handleModal(false);
           }}

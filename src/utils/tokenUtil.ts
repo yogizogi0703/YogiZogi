@@ -17,7 +17,8 @@ export const decoderToken = (token: string) => {
         iss: decodedToken.iss,
         sub: decodedToken.sub
       },
-      expiration: true
+      expiration: true,
+      isLoggedIn: true
     };
   } catch (error) {
     console.error('유효하지 않은 토큰입니다.');
