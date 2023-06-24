@@ -18,12 +18,25 @@ export const AlertModal = ({ content, modalState, handleModal }: IAlertModal) =>
         <div className="modal-box">
           <p className="py-4 text-lg">{content}</p>
           <div className="modal-action">
-            <label htmlFor="my_modal_6" className="btn" onClick={() => handleModal(false)}>
+            <button
+              className="btn"
+              onClick={(e) => {
+                e.preventDefault();
+                handleModal(false);
+              }}
+            >
               닫기
-            </label>
+            </button>
           </div>
         </div>
-        <label className="modal-backdrop" htmlFor="alertModal" onClick={() => handleModal(false)}>
+        <label
+          className="modal-backdrop"
+          htmlFor="alertModal"
+          onClick={(e) => {
+            e.preventDefault();
+            handleModal(false);
+          }}
+        >
           Close
         </label>
       </div>
