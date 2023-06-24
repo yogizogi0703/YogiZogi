@@ -84,11 +84,9 @@ const SearchResult = () => {
   const [observe, unobserve] = useIntersectionObserver(async () => {
     setIsLoading(true);
 
-    setTimeout(async () => {
-      await handleDetailedSearch();
-      searchParams.current.page++;
-      setIsLoading(false);
-    }, 1000);
+    await handleDetailedSearch();
+    searchParams.current.page++;
+    setIsLoading(false);
   });
 
   const getParams = useCallback(() => {
@@ -398,14 +396,15 @@ const SearchResult = () => {
           </div>
         )}
       </section>
-      <div
-        ref={observerTarget}
-        className="w-full h-24 hidden text-center"
-      >
+      <div ref={observerTarget} className="w-full h-24 hidden text-center">
         <span className="loading loading-spinner loading-lg"></span>
       </div>
       <FloatingIcon />
-      <AlertModal content="최대 2개의 상품만 담을 수 있습니다." modalState={modalState} handleModal={setModalState} />
+      <AlertModal
+        content="최대 2개의 상품만 담을 수 있습니다."
+        modalState={modalState}
+        handleModal={setModalState}
+      />
     </div>
   );
 };

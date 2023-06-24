@@ -1,10 +1,16 @@
 interface IAlertModal {
   content: string;
   modalState: boolean;
-  handleModal: React.Dispatch<React.SetStateAction<boolean>>
+  handleModal: React.Dispatch<React.SetStateAction<boolean>>;
+  additionalHandler?: () => void;
 }
 
-export const AlertModal = ({ content, modalState, handleModal }: IAlertModal) => {
+export const AlertModal = ({
+  content,
+  modalState,
+  handleModal,
+  additionalHandler
+}: IAlertModal) => {
   return (
     <>
       <input
@@ -12,7 +18,10 @@ export const AlertModal = ({ content, modalState, handleModal }: IAlertModal) =>
         id="alertModal"
         className="modal-toggle"
         checked={modalState}
-        onChange={() => handleModal(!modalState)}
+        onChange={() => {
+          additionalHandler?.();
+          handleModal(!modalState);
+        }}
       />
       <div className="modal">
         <div className="modal-box">
@@ -22,6 +31,7 @@ export const AlertModal = ({ content, modalState, handleModal }: IAlertModal) =>
               className="btn"
               onClick={(e) => {
                 e.preventDefault();
+                additionalHandler?.();
                 handleModal(false);
               }}
             >
@@ -34,6 +44,7 @@ export const AlertModal = ({ content, modalState, handleModal }: IAlertModal) =>
           htmlFor="alertModal"
           onClick={(e) => {
             e.preventDefault();
+            additionalHandler?.();
             handleModal(false);
           }}
         >

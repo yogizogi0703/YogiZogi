@@ -2,9 +2,12 @@ import { useNavigate } from 'react-router-dom';
 import { IReservationInfoCard } from './types';
 import { getTodayString, getTomorrowString } from '../../utils/handleDate';
 import { addCommasToPrice } from '../../helpers';
+import ModalTriggerButton from './ModalTriggerButton';
+import { ModalText } from './constants';
 
 const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
   const {
+    id,
     accommodationId,
     bookName,
     picUrl,
@@ -24,10 +27,8 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
     );
   };
 
-  console.log(accommodationName, reviewRegistered);
-
   return (
-    <div className="bg-white drop-shadow w-full h-64 md:h-52 rounded flex">
+    <div className="bg-white shadow-md w-full h-64 md:h-52 rounded flex">
       <div
         className={`h-full w-2/5 bg-cover bg-center rounded-l`}
         style={{ backgroundImage: `url('${picUrl}')` }}
@@ -56,19 +57,26 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
           >
             자세히보기
           </button>
-          <button
-            className={`btn text-white text-xs p-0 min-h-0 h-10 w-24 ${
-              reviewRegistered
-                ? 'btn-disabled bg-gray-600'
-                : 'bg-red-500 hover:bg-red-600'
-            }`}
-          >
-            {new Date().getTime() < new Date(startDate).getTime()
-              ? '예약 취소'
-              : reviewRegistered
-              ? '리뷰 작성됨'
-              : '리뷰 작성'}
-          </button>
+          {new Date().getTime() < new Date(startDate).getTime() ? (
+            <ModalTriggerButton
+              disabled={false}
+              text={ModalText.CANCEL}
+              accommodationId={accommodationId}
+              bookId={id}
+            />
+          ) : reviewRegistered ? (
+            <ModalTriggerButton
+              disabled={true}
+              text={ModalText.COMPLETE}
+              accommodationId={accommodationId}
+            />
+          ) : (
+            <ModalTriggerButton
+              disabled={false}
+              text={ModalText.REVIEW}
+              accommodationId={accommodationId}
+            />
+          )}
         </div>
       </div>
     </div>
