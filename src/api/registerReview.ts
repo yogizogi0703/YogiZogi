@@ -1,6 +1,6 @@
 import { fetchData } from '.';
 
-interface IRegisterReviewRequestBody {
+export interface IRegisterReviewRequestBody {
   accommodationId: number;
   rating: number;
   description: string;

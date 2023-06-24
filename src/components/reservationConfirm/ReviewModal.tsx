@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import RatingSetStar from './RatingSetStar';
 import useAuth from '../../hooks/useAuth';
 import { IRateFactor } from './types';
@@ -8,7 +8,11 @@ import {
   ratingFactorsInfo
 } from './constants';
 import { AiOutlineClose } from 'react-icons/ai';
-import { registerReview } from '../../api/registerReview';
+import {
+  IRegisterReviewRequestBody,
+  registerReview
+} from '../../api/registerReview';
+import { AlertModal } from '../../components/common/AlertModal';
 
 interface IReviewModal {
   accommodationId: number;
@@ -20,6 +24,12 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertText, setAlertText] = useState('');
+
+  const [requestBody, setRequestBody] =
+    useState<IRegisterReviewRequestBody | null>(null);
+
   const [reviewText, setReviewText] = useState('');
   const [rating, setRating] = useState(initialRating);
 
@@ -30,8 +40,12 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
 
     setReviewText('');
     setRating(initialRating);
+    setRequestBody(null);
+    setErrorMessage('');
+    setAlertText('');
+    setAlertOpen(false);
     onClose();
-  }, []);
+  }, [isLoading]);
 
   const handleTextChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -76,7 +90,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       (rating.service + rating.price + rating.facilities / 3).toFixed(1)
     );
 
-    const requestBody = {
+    const newRequestBody = {
       description,
       rating: averageRate,
       accommodationId,
@@ -84,21 +98,38 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       //   email: authUser.user.email
     };
 
-    setIsLoading(true);
+    setRequestBody(() => {
+      setIsLoading(true);
+      return newRequestBody;
+    });
+  }, [reviewText, rating, authUser]);
 
-    const {
-      data: { status, msg }
-    } = await registerReview(requestBody);
-
-    if (status === 'OK') {
-      alert('리뷰를 성공적으로 등록했습니다.');
-      location.reload();
+  useEffect(() => {
+    if (!requestBody || !isLoading) {
       return;
     }
 
-    alert(`리뷰 등록 실패: ${msg}`);
-    location.reload();
-  }, [reviewText, rating, authUser]);
+    const fetchReview = async () => {
+      const {
+        data: { status, msg }
+      } = await registerReview(requestBody);
+
+      if (status === 'OK') {
+        setAlertOpen(() => {
+          setAlertText('리뷰를 성공적으로 등록했습니다.');
+          return true;
+        });
+        return;
+      }
+
+      setAlertOpen(() => {
+        setAlertText(`리뷰 등록 실패: ${msg}`);
+        return true;
+      });
+    };
+
+    fetchReview();
+  }, [requestBody]);
 
   return (
     <div className="p-12 h-[37rem] md:h-[36rem]">
@@ -108,6 +139,12 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       >
         <AiOutlineClose />
       </div>
+      <AlertModal
+        content={alertText}
+        modalState={alertOpen}
+        handleModal={setAlertOpen}
+        additionalHandler={() => location.reload()}
+      />
 
       {!isLoading ? (
         <div>

@@ -1,6 +1,7 @@
+import { AlertModal } from '../../components/common/AlertModal';
 import { cancelReservation } from '../../api/cancelReservation';
 import useAuth from '../../hooks/useAuth';
-import { useCallback, useState } from 'react';
+import { useCallback, useState, useEffect } from 'react';
 import { AiOutlineClose } from 'react-icons/ai';
 
 interface ICancelModal {
@@ -13,13 +14,19 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
 
   const [isLoading, setIsLoading] = useState(false);
 
+  const [alertOpen, setAlertOpen] = useState(false);
+  const [alertText, setAlertText] = useState('');
+
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleModalClose = useCallback(() => {
     if (isLoading) return;
 
+    setErrorMessage('');
+    setAlertText('');
+    setAlertOpen(false);
     onClose();
-  }, []);
+  }, [isLoading]);
 
   const handleSubmit = useCallback(async () => {
     // if (!authUser.isLoggedIn || !authUser.user.userId) {
@@ -34,30 +41,50 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
     }
 
     setIsLoading(true);
+  }, [isLoading]);
 
-    const {
-      data: { status, msg }
-      // } = await cancelReservation(authUser.user.userId, bookId);
-    } = await cancelReservation(1, bookId);
+  useEffect(() => {
+    if (!bookId || !isLoading) return;
 
-    if (status === 'OK') {
-      alert('예약을 성공적으로 취소했습니다.');
-      location.reload();
-      return;
-    }
+    const fetchReservationCancel = async () => {
+      const {
+        data: { status, msg }
+        // } = await cancelReservation(authUser.user.userId, bookId);
+      } = await cancelReservation(1, bookId);
 
-    alert(`예약 취소 실패: ${msg}`);
-    location.reload();
-  }, []);
+      if (status === 'OK') {
+        setAlertOpen(() => {
+          setAlertText('예약을 성공적으로 취소했습니다.');
+          return true;
+        });
+        return;
+      }
+
+      setAlertOpen(() => {
+        setAlertText(`예약 취소 실패: ${msg}`);
+        return true;
+      });
+    };
+
+    setTimeout(() => {
+      fetchReservationCancel();
+    }, 2000);
+  }, [isLoading]);
 
   return (
-    <div className="p-12 pb-8 h-[84] md:h-80">
+    <div className="p-12 pb-8 h-[21rem] md:h-80">
       <div
         className="absolute top-0 right-0 w-8 h-8 flex justify-center items-center bg-red-500 cursor-pointer text-white"
         onClick={handleModalClose}
       >
         <AiOutlineClose />
       </div>
+      <AlertModal
+        content={alertText}
+        modalState={alertOpen}
+        handleModal={setAlertOpen}
+        additionalHandler={() => location.reload()}
+      />
 
       {!isLoading ? (
         <div>
