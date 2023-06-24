@@ -4,23 +4,26 @@ import { ISearchResultContent } from 'api/search';
 import { BiShoppingBag } from 'react-icons/bi';
 import { useRecoilState } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
+import { useState } from 'react';
+import { AlertModal } from '../../components/common/AlertModal';
+import { addCommasToPrice } from '../../helpers';
 
 interface IAccommodationPreview {
   data: ISearchResultContent;
 }
 
-const formatPrice = (num: number) =>
-  new Intl.NumberFormat('ko-KR', { maximumSignificantDigits: 3 }).format(num);
-
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { accommodationName, rate, pictureUrlList, address, price } = data;
-  const [, setComparisonItems] = useRecoilState(selectedAccommodation);
+  const [comparisonItems, setComparisonItems] = useRecoilState(selectedAccommodation);
+  const [alertModalState, setAlertModalState] = useState(false);
 
   const addComparisonCart = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    setComparisonItems((prev) => [...prev, data]);
+    
+    if(comparisonItems.some(el => el.accommodationName === data.accommodationName)) setAlertModalState(true)
+    else setComparisonItems((prev) => [...prev, data]);
   };
 
   return (
@@ -41,7 +44,7 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
           </p>
         </div>
         <div className="flex items-center gap-2 row-start-2 row-end-3 col-start-1 col-end-6 text-lg font-bold text-right">
-          <p>{`${formatPrice(price)}원`}</p>
+          <p>{`${addCommasToPrice(price)}원`}</p>
           <button
             onClick={(e) => addComparisonCart(e)}
             className="btn btn-sm btn-circle btn-success"
@@ -57,6 +60,11 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
           <RatingStars rate={rate} />
         </div>
       </div>
+      <AlertModal
+        content="이미 담긴 상품입니다."
+        modalState={alertModalState}
+        handleModal={setAlertModalState}
+      />
     </article>
   );
 };

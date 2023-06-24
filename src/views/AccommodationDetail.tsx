@@ -11,7 +11,10 @@ import {
   IReview,
   IReviewResponse
 } from '../api/accommodationDetail';
-import { CarouselModal, IModalProps } from '../components/accommodationDetail/CarouselModal';
+import {
+  CarouselModal,
+  IModalProps
+} from '../components/accommodationDetail/CarouselModal';
 import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 
 const AccommodationDetail = () => {
@@ -205,13 +208,15 @@ const AccommodationDetail = () => {
               </p>
             </div>
           </div>
-          <LocalMapView
-            address={accommodationData.address}
-            position={{
-              lat: accommodationData.lat,
-              lng: accommodationData.lon
-            }}
-          />
+          {accommodationData.id !== 0 && (
+            <LocalMapView
+              address={accommodationData.address}
+              position={{
+                lat: accommodationData.lat,
+                lng: accommodationData.lon
+              }}
+            />
+          )}
         </div>
         <div className="divider my-0" />
         <div>
@@ -221,7 +226,7 @@ const AccommodationDetail = () => {
           <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
             {accommodationData.room.map((el, idx) => {
               return (
-                <div key={idx} className="flex flex-col sm:flex-row gap-3">
+                <div key={idx} className="flex flex-col items-center sm:flex-row gap-3">
                   <label
                     key={idx}
                     htmlFor="reservationModal"
@@ -241,7 +246,7 @@ const AccommodationDetail = () => {
                       />
                     </figure>
                   </label>
-                  <div className="flex flex-col flex-wrap justify-center ml-2 sm:w-1/3">
+                  <div className="flex flex-col flex-wrap ml-2 w-fit sm:w-1/3">
                     <h3 className="text-base md:text-xl font-semibold md:mb-1">
                       {el.roomName}
                     </h3>
@@ -264,7 +269,7 @@ const AccommodationDetail = () => {
                       </p>
                     </div>
                   </div>
-                  <div className="divider divider-horizontal" />
+                  <div className="divider divider-horizontal mt-[-12px]" />
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
                       <div className="font-semibold text-lg">

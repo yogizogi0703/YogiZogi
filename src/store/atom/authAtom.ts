@@ -3,9 +3,9 @@ import { atom } from 'recoil';
 export const AUTH_TOKEN_KEY = 'authToken';
 
 interface UserProps {
-  jti?: number;
-  iss?: string;
-  sub?: string;
+  id?: number;
+  nickname?: string;
+  email?: string;
 }
 interface AuthUserProps {
   user: UserProps;

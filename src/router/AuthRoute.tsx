@@ -5,7 +5,8 @@ const AuthRoute = () => {
   const { authUser } = useAuth();
 
   if (!authUser.isLoggedIn) {
-    return <Navigate to={'/'} />;
+    alert('로그인이 필요한 페이지입니다.');
+    return <Navigate to={'/signIn'} />;
   }
 
   return (
