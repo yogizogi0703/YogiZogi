@@ -83,10 +83,6 @@ const SearchResult = () => {
 
   const [observe, unobserve] = useIntersectionObserver(async () => {
     setIsLoading(true);
-
-    await handleDetailedSearch();
-    searchParams.current.page++;
-    setIsLoading(false);
   });
 
   const getParams = useCallback(() => {
@@ -274,11 +270,25 @@ const SearchResult = () => {
     }
   }, [selectedAcc]);
 
+  useEffect(() => {
+    if (!isLoading) return;
+
+    const loadData = async () => {
+      await handleDetailedSearch();
+      searchParams.current.page++;
+      setIsLoading(false);
+    };
+    loadData();
+  }, [isLoading]);
+
   return (
     <div
       className="max-w-5xl mx-auto px-4 py-8 bg-white"
       style={{ minWidth: '375px' }}
     >
+      {isLoading && (
+        <div className="w-screen h-screen absolute top-0 left-0 z-[300]"></div>
+      )}
       <section className="bg-slate-100 px-4 py-6 rounded-lg">
         <section className="lg:flex lg:items-center lg:justify-between">
           <section className="flex gap-2">
