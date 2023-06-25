@@ -42,7 +42,7 @@ export interface ISearchResultContent {
   lat: number;
   lon: number;
   category: number;
-  pictureUrlList: string[];
+  picUrl: string;
 }
 
 interface ISearchResultResponse {
