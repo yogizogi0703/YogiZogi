@@ -79,10 +79,10 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       return;
     }
 
-    // if (!authUser.isLoggedIn || !authUser.user.email) {
-    //   setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
-    // return;
-    // }
+    if (!authUser.isLoggedIn || !authUser.user.email) {
+      setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
+      return;
+    }
 
     setErrorMessage('');
 
@@ -94,8 +94,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       description,
       rating: averageRate,
       accommodationId,
-      email: 'test@test.com'
-      //   email: authUser.user.email
+      email: authUser.user.email
     };
 
     setRequestBody(() => {

@@ -19,8 +19,7 @@ const ReservationConfirm = () => {
   const { authUser } = useAuth();
   const navigate = useNavigate();
 
-  // if (!authUser.isLoggedIn || !authUser.user.id) {
-  if (!authUser.isLoggedIn) {
+  if (!authUser.isLoggedIn || !authUser.user.id) {
     navigate('/');
     return;
   }
@@ -106,8 +105,9 @@ const ReservationConfirm = () => {
 
   useEffect(() => {
     const init = async () => {
-      // const content = await getReservationList(authUser.user.id);
-      const content = await getReservationList(authUser.user.jti || 1);
+      if (!authUser.user.id) return;
+
+      const content = await getReservationList(authUser.user.id);
 
       if (!content.length) return;
 

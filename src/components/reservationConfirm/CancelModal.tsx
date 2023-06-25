@@ -29,8 +29,7 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
   }, [isLoading]);
 
   const handleSubmit = useCallback(async () => {
-    // if (!authUser.isLoggedIn || !authUser.user.userId) {
-    if (!authUser.isLoggedIn) {
+    if (!authUser.isLoggedIn || !authUser.user.id) {
       setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
       return;
     }
@@ -47,10 +46,11 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
     if (!bookId || !isLoading) return;
 
     const fetchReservationCancel = async () => {
+      if (!authUser.user.id) return;
+
       const {
         data: { status, msg }
-        // } = await cancelReservation(authUser.user.userId, bookId);
-      } = await cancelReservation(1, bookId);
+      } = await cancelReservation(authUser.user.id, bookId);
 
       if (status === 'OK') {
         setAlertOpen(() => {
