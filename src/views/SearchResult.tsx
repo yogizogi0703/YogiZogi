@@ -103,7 +103,24 @@ const SearchResult = () => {
   }, [searchParams]);
 
   const handleViewToggle = useCallback(() => {
-    setViewType((viewType) => !viewType);
+    setViewType((viewType) => {
+      const nextValue = !viewType;
+      if (!observerTarget.current) {
+        return nextValue;
+      }
+
+      if (nextValue === View.MAP) {
+        stopObserving();
+        observerTarget.current.classList.add('hidden');
+        return nextValue;
+      }
+
+      if (!isDataEnd && nextValue === View.LIST) {
+        startObserving();
+      }
+
+      return nextValue;
+    });
   }, [viewType]);
 
   const handleRangeValueChange = useCallback(
@@ -252,10 +269,19 @@ const SearchResult = () => {
 
     if (isLoading) {
       stopObserving();
+
+      const loadData = async () => {
+        setTimeout(async () => {
+          await handleDetailedSearch();
+          searchParams.current.page++;
+          setIsLoading(false);
+        }, 2000);
+      };
+      loadData();
       return;
     }
 
-    if (!isDataEnd) {
+    if (!isDataEnd && viewType === View.LIST) {
       startObserving();
       return;
     }
@@ -270,24 +296,13 @@ const SearchResult = () => {
     }
   }, [selectedAcc]);
 
-  useEffect(() => {
-    if (!isLoading) return;
-
-    const loadData = async () => {
-      await handleDetailedSearch();
-      searchParams.current.page++;
-      setIsLoading(false);
-    };
-    loadData();
-  }, [isLoading]);
-
   return (
     <div
       className="max-w-5xl mx-auto px-4 py-8 bg-white"
       style={{ minWidth: '375px' }}
     >
       {isLoading && (
-        <div className="w-screen h-screen absolute top-0 left-0 z-[300]"></div>
+        <div className="w-screen h-full absolute top-0 left-0 z-[300]"></div>
       )}
       <section className="bg-slate-100 px-4 py-6 rounded-lg">
         <section className="lg:flex lg:items-center lg:justify-between">
@@ -387,10 +402,8 @@ const SearchResult = () => {
         <hr className="mt-2 mb-8" />
         {!isLoading && !totalElements && isDataEnd ? (
           <p className="text-center p-4">검색 결과가 없습니다.</p>
-        ) : viewType ? (
-          <div>
-            <MapView />
-          </div>
+        ) : viewType === View.MAP ? (
+          <div>{!isLoading && <MapView />}</div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {
