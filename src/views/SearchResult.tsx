@@ -419,8 +419,11 @@ const SearchResult = () => {
           </div>
         )}
       </section>
-      <div ref={observerTarget} className="w-full h-24 hidden text-center">
-        <span className="loading loading-spinner loading-lg"></span>
+      <div
+        ref={observerTarget}
+        className="w-full h-60 hidden flex justify-center items-center"
+      >
+        <p className="loading loading-spinner loading-lg"></p>
       </div>
       <FloatingIcon />
       <AlertModal
