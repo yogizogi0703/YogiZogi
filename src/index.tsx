@@ -18,7 +18,6 @@ root.render(
   <RecoilRoot>
     <KakaoMapScriptLoader>
       <React.Suspense fallback={<div>Loading...</div>}>
-        <Modal />
         <App />
       </React.Suspense>
     </KakaoMapScriptLoader>
