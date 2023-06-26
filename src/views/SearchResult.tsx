@@ -268,8 +268,8 @@ const SearchResult = () => {
   }, [isLoading]);
 
   useEffect(() => {
-    if (selectedAcc.length > 2) {
-      setSelectedAcc(selectedAcc.slice(0, 2));
+    if (selectedAcc.length > 3) {
+      setSelectedAcc(selectedAcc.slice(0, 3));
       setModalState(true);
     }
   }, [selectedAcc]);
@@ -401,7 +401,7 @@ const SearchResult = () => {
       </div>
       <FloatingIcon />
       <AlertModal
-        content="최대 2개의 상품만 담을 수 있습니다."
+        content="최대 3개의 상품만 담을 수 있습니다."
         modalState={modalState}
         handleModal={setModalState}
       />
