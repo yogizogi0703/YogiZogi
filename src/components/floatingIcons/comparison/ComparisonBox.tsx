@@ -88,7 +88,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           );
         })}
         <div onClick={handleComparison} className="flex justify-end items-end">
-          <button className="btn btn-sm bg-red-500 hover:bg-red-600 text-white border-none text-sm font-normal">
+          <button className="btn btn-sm bg-white  border-none text-sm font-normal">
             비교하기
           </button>
         </div>
