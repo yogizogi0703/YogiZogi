@@ -82,7 +82,7 @@ export const DraggableAccommodationList = () => {
                       <p className="truncate block font-semibold mr-1">
                         {el.accommodationName}
                       </p>
-                      <p className="flex justify-center gap-1 bg-gray-300">
+                      <p className="flex justify-center gap-1">
                         {addCommasToPrice(el.price)}원
                         {el.price === minPrice && (
                           <img
@@ -102,7 +102,7 @@ export const DraggableAccommodationList = () => {
                           />
                         )}
                       </div>
-                      <p className="bg-gray-300 truncate">{el.address}</p>
+                      <p className="truncate">{el.address}</p>
                       <p>편의시설</p>
                       <Link
                         to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
