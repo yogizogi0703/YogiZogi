@@ -46,7 +46,7 @@ export const ComparisonModal = ({
           </div>
           <div className="modal-action">
             <button
-              className="btn btn-outline btn-sm text-sm"
+              className="btn btn-outline btn-sm text-sm text-white bg-red-500 hover:bg-red-600 border-none"
               onClick={() => handleModal(false)}
             >
               닫기
