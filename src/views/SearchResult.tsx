@@ -271,11 +271,9 @@ const SearchResult = () => {
       stopObserving();
 
       const loadData = async () => {
-        setTimeout(async () => {
-          await handleDetailedSearch();
-          searchParams.current.page++;
-          setIsLoading(false);
-        }, 2000);
+        await handleDetailedSearch();
+        searchParams.current.page++;
+        setIsLoading(false);
       };
       loadData();
       return;
