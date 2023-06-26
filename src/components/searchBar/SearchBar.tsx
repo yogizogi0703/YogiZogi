@@ -11,6 +11,7 @@ import { getDateFormat, getMonthDayFormat } from '../../utils/handleDate';
 import './SearchBar.css';
 import { useNavigate } from 'react-router-dom';
 import { BsPinMap } from 'react-icons/bs';
+import { AlertModal } from '../../components/common/AlertModal';
 
 export interface SearchProps {
   searchValue: string;
@@ -32,6 +33,8 @@ export const SearchBar = () => {
   const [dateContent, setDateContent] = useState('');
   const [calendarState, setCalendarState] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const [alertModalState, setAlertModalState] = useState(false);
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -76,7 +79,7 @@ export const SearchBar = () => {
       search.searchValue.length === 0 ||
       search.checkOutDate === search.checkInDate
     )
-      return;
+      return setAlertModalState(true)
     else {
       const [lat, lon] = search.userGeoInfo;
       const params = new URLSearchParams();
@@ -226,6 +229,11 @@ export const SearchBar = () => {
           </button>
         </div>
       </div>
+      <AlertModal
+        content="목적지, 기간, 인원 모두를 입력해주세요!"
+        modalState={alertModalState}
+        handleModal={setAlertModalState}
+      />
     </section>
   );
 };
