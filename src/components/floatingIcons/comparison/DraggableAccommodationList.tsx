@@ -52,13 +52,22 @@ export const DraggableAccommodationList = () => {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                     ref={provided.innerRef}
-                    className={`w-1/2 rounded-lg list-none ${
+                    className={`w-44 rounded-lg list-none hover:bg-orange-100 ${
                       snapshot.isDragging ? 'bg-orange-100' : ''
                     }`}
                     style={{
                       ...provided.draggableProps.style,
                       top: snapshot.isDragging ? '4.3rem' : '3rem',
-                      left: idx === 0 ? '7.2rem' : '21.6rem'
+                      left:
+                        idx === 0
+                          ? selectedAcc.length === 3
+                            ? '1.5rem'
+                            : '7rem'
+                          : idx === 1
+                          ? selectedAcc.length === 3
+                            ? '12.5rem'
+                            : '18.2rem'
+                          : '23.5rem'
                     }}
                   >
                     <div
