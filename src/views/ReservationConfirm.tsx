@@ -162,7 +162,7 @@ const ReservationConfirm = () => {
               onEndDateChange={handleEndDateChange}
             />
             <button
-              className="btn btn-active btn-neutral ml-4"
+              className="btn btn-active bg-red-500 hover:bg-red-600 text-white ml-4"
               onClick={filterByDateTerm}
             >
               적용
@@ -186,7 +186,7 @@ const ReservationConfirm = () => {
               return (
                 <input
                   key={`pageButton-${pageIndex}`}
-                  className="join-item btn btn-square"
+                  className="join-item btn btn-square checked:!bg-red-500 checked:hover:!bg-red-600 checked:!border-red-500 checked:!text-white"
                   type="radio"
                   name="pages"
                   aria-label={`${pageIndex}`}

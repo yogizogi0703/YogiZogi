@@ -39,7 +39,7 @@ const ModalTriggerButton = ({
     <div>
       <button
         className={`btn text-white text-xs p-0 min-h-0 h-10 w-24 ${
-          disabled ? 'btn-disabled bg-gray-600' : 'bg-red-500 hover:bg-red-600'
+          disabled ? 'btn-disabled' : 'bg-red-500 hover:bg-red-600'
         }`}
         onClick={openModal}
       >
