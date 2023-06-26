@@ -4,7 +4,6 @@ export interface IRegisterReviewRequestBody {
   accommodationId: number;
   rating: number;
   description: string;
-  email: string;
 }
 
 interface IRegisterReviewResponse {

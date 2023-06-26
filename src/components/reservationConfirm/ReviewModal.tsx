@@ -7,7 +7,6 @@ import {
   initialRating,
   ratingFactorsInfo
 } from './constants';
-import { AiOutlineClose } from 'react-icons/ai';
 import {
   IRegisterReviewRequestBody,
   registerReview
@@ -79,7 +78,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       return;
     }
 
-    if (!authUser.isLoggedIn || !authUser.user.email) {
+    if (!authUser.isLoggedIn) {
       setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
       return;
     }
@@ -93,8 +92,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
     const newRequestBody = {
       description,
       rating: averageRate,
-      accommodationId,
-      email: authUser.user.email
+      accommodationId
     };
 
     setRequestBody(() => {
