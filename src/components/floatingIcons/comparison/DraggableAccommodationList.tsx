@@ -43,7 +43,7 @@ export const DraggableAccommodationList = () => {
           <ul
             ref={provided.innerRef}
             {...provided.droppableProps}
-            className="flex gap-y-1 text-center w-full text-xs md:text-base"
+            className="flex gap-1 text-center w-full justify-center text-xs md:text-base"
           >
             {selectedAcc.map((el, idx) => (
               <Draggable draggableId={el.id.toString()} index={idx} key={el.id}>
