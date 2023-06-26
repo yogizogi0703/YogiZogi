@@ -106,8 +106,8 @@ const ReservationConfirm = () => {
 
   useEffect(() => {
     const init = async () => {
-      // const content = await getReservationList(authUser.user.id);
-      const content = await getReservationList(authUser.user.jti || 1);
+      const content = await getReservationList(authUser.user.id || 1);
+      // const content = await getReservationList(authUser.user.jti || 1);
 
       if (!content.length) return;
 

@@ -79,7 +79,7 @@ export const SearchBar = () => {
     else {
       const [lat, lon] = search.userGeoInfo;
       const params = new URLSearchParams();
-      
+
       params.append('checkindate', getDateFormat(search.checkInDate));
       params.append('checkoutdate', getDateFormat(search.checkOutDate));
       params.append('people', search.people.toString());
