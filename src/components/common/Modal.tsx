@@ -1,8 +1,12 @@
-import { useModal } from '../../hooks/useModal';
-import React from 'react';
+import useModal from '../../hooks/useModal';
 
 const Modal = () => {
   const { modalDataState, closeModal } = useModal();
+
+  const handleBtnOnClick = () => {
+    if (modalDataState.handleBtnClick) modalDataState.handleBtnClick();
+    closeModal();
+  };
 
   return (
     <>
@@ -14,18 +18,27 @@ const Modal = () => {
             onClick={closeModal}
           >
             <div
-              className="absolute top-1/2 left-1/2 p-4 w-auto h-auto bg-white rounded-xl -translate-x-1/2 -translate-y-1/2"
+              className="absolute flex flex-col justify-between gap-6 top-1/2 left-1/2 p-6 w-auto min-w-[464px] h-auto bg-white rounded-2xl -translate-x-1/2 -translate-y-1/2"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between pb-2">
-                <h1 className=" text-lg font-semibold">
-                  {modalDataState.title}
-                </h1>
-                <button className="btn btn-ghost" onClick={closeModal}>
+              {typeof modalDataState.content === 'string' ? (
+                <p className="py-4 text-lg">{modalDataState.content}</p>
+              ) : (
+                modalDataState.content
+              )}
+              <div className="flex items-center justify-end gap-2">
+                {modalDataState.btnTitle && (
+                  <button
+                    className="btn bg-teal-500 hover:bg-teal-600 border-teal-50 hover:border-teal-600 text-white"
+                    onClick={handleBtnOnClick}
+                  >
+                    {modalDataState.btnTitle}
+                  </button>
+                )}
+                <button className="btn" onClick={closeModal}>
                   닫기
                 </button>
               </div>
-              {modalDataState.content}
             </div>
           </div>
         </>

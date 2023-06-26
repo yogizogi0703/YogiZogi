@@ -1,10 +1,9 @@
 import { BiMap } from 'react-icons/bi';
 import LocalMap from './LocalMap';
 import { PositionProps } from '../../api/map';
-import { useLocalMap } from '../../hooks/useLocalMap';
-import { useModal } from '../../hooks/useModal';
+import useLocalMap from '../../hooks/useLocalMap';
+import useModal from '../../hooks/useModal';
 import MapModal from './MapModal';
-import Modal from '../../components/common/Modal';
 
 interface LocalMapViewProp {
   address: string;
@@ -21,7 +20,7 @@ const LocalMapView = ({ address, position }: LocalMapViewProp) => {
         <div
           className="cursor-pointer w-64 max-sm:w-full h-64 max-sm:h-48 min-w-[16rem] rounded-lg overflow-hidden"
           onClick={() =>
-            openModal('주변 시설 정보', <MapModal position={position} />)
+            openModal({ content: <MapModal position={position} /> })
           }
         >
           <LocalMap position={position} localData={localData} type="mini" />
@@ -40,7 +39,6 @@ const LocalMapView = ({ address, position }: LocalMapViewProp) => {
           ))}
         </div>
       </article>
-      <Modal />
     </>
   );
 };

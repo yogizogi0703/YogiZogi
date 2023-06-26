@@ -1,5 +1,5 @@
 import { PositionProps } from 'api/map';
-import { useLocalMap } from '../../hooks/useLocalMap';
+import useLocalMap from '../../hooks/useLocalMap';
 import LocalMap from './LocalMap';
 
 const MapModal = ({ position }: { position: PositionProps }) => {

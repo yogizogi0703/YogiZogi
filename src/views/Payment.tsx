@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import RatingStars from '../components/common/RatingStars';
 import InputBox from '../components/login/InputBox';
-import { useReservation } from '../hooks/useReservation';
+import useReservation from '../hooks/useReservation';
 
 const Payment = () => {
   const {
@@ -75,7 +75,7 @@ const Payment = () => {
             <label className="cursor-pointer label gap-3 w-fit">
               <input
                 type="checkbox"
-                className="checkbox checkbox-info"
+                className="checkbox"
                 onChange={handleChangeChecked}
               />
               <span className="label-text">회원정보와 동일</span>
@@ -91,7 +91,7 @@ const Payment = () => {
           </div>
           <div className="text-end pt-5">
             <button
-              className="btn btn-info text-white"
+              className="btn bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 text-white"
               onClick={handleReservationSubmit}
             >
               예약하기
