@@ -10,6 +10,7 @@ import { GetGeoInfo } from '../../utils/getGeoInfo';
 import { getDateFormat, getMonthDayFormat } from '../../utils/handleDate';
 import './SearchBar.css';
 import { useNavigate } from 'react-router-dom';
+import { BsPinMap } from 'react-icons/bs';
 
 export interface SearchProps {
   searchValue: string;
@@ -79,7 +80,7 @@ export const SearchBar = () => {
     else {
       const [lat, lon] = search.userGeoInfo;
       const params = new URLSearchParams();
-      
+
       params.append('checkindate', getDateFormat(search.checkInDate));
       params.append('checkoutdate', getDateFormat(search.checkOutDate));
       params.append('people', search.people.toString());
@@ -99,7 +100,10 @@ export const SearchBar = () => {
   return (
     <section className="relative flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
       <div className="w-full md:w-1/2 flex flex-col gap-1">
-        <p className="font-semibold text-lg">목적지</p>
+        <p className="flex items-center gap-1 font-semibold text-lg">
+          <BsPinMap />
+          목적지
+        </p>
         <div className="flex items-center justify-between gap-1 shrink bg-slate-200 rounded-md p-1">
           <input
             type="text"
