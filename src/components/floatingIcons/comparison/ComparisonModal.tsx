@@ -9,7 +9,6 @@ export const ComparisonModal = ({
   modalState,
   handleModal
 }: IComparisonModal) => {
-  const criteria = ['가격', '평점', '위치', '편의시설'];
 
   return (
     <>
@@ -27,20 +26,6 @@ export const ComparisonModal = ({
               한 눈에 비교하기
             </h2>
             <div className="flex w-full">
-              <div className="flex flex-col w-1/5 text-center font-semibold gap-y-1 text-xs md:text-base">
-                <p className="h-32"></p>
-                <p className="h-4 md:h-6"></p>
-                {criteria.map((el, idx) => {
-                  return (
-                    <p
-                      key={idx}
-                      className={`px-1 ${idx % 2 === 0 ? 'bg-gray-300' : ''}`}
-                    >
-                      {el}
-                    </p>
-                  );
-                })}
-              </div>
               <DraggableAccommodationList />
             </div>
           </div>
