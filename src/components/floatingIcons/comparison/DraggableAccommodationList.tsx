@@ -120,8 +120,7 @@ export const DraggableAccommodationList = () => {
                         <Link
                           to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
                         >
-                          <button className="btn mt-2 bg-red-500 hover:bg-red-600 text-white btn-sm mx-1 text-xs md:text-base font-normal">
-                            <span className="hidden sm:block">상세페이지 </span>
+                          <button className="btn mx-auto mt-2  btn-sm text-xs md:text-base font-normal">
                             바로가기
                           </button>
                         </Link>
