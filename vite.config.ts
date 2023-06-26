@@ -4,7 +4,7 @@ import { resolve } from 'path';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/FE',
+  base: '/',
   test: {
     globals: true,
     setupFiles: ['./src/mocks/setupTests.ts'],
@@ -16,9 +16,9 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: resolve(__dirname, "index.html"),
-        404: resolve(__dirname, "public/404.html"),
-      },
-    },
-  },
+        main: resolve(__dirname, 'index.html'),
+        404: resolve(__dirname, 'public/404.html')
+      }
+    }
+  }
 });

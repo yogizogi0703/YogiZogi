@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 import { server } from './server';
 
 beforeAll(() => {
-  server.listen(); 
+  server.listen();
 });
 
 afterEach(() => {
