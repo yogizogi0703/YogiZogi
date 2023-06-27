@@ -47,8 +47,16 @@ const Nav = () => {
       >
         <div className="h-16 w-full max-w-5xl px-3">
           <div className="flex-1 pl-2">
-            <Link to="/" className="cursor-pointer text-xl font-bold">
-              YogiZogi
+            <Link
+              to="/"
+              className="cursor-pointer text-xl font-bold flex gap-2"
+            >
+              <img
+                src="/assets/images/logo.png"
+                alt="YogiZogi"
+                className="w-8"
+              />
+              <p>YogiZogi</p>
             </Link>
           </div>
           <div className="flex-none flex items-center gap-4">
