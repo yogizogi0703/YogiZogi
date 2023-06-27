@@ -69,7 +69,7 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
           </div>
           <div className="flex justify-end">
             <button
-              className="btn btn-primary modal-action mt-0 w-fit text-white btn-sm text-xs md:btn-md md:text-base"
+              className="btn modal-action mt-0 w-fit text-white btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600"
               onClick={handleClick}
             >
               {addCommasToPrice(data.price)}원 예약하기
