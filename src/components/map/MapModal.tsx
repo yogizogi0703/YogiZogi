@@ -6,7 +6,7 @@ const MapModal = ({ position }: { position: PositionProps }) => {
   const { localData } = useLocalMap(position);
 
   return (
-    <div className="w-[calc(100vw-80px)] max-w-5xl h-[500px] max-sm:h-80">
+    <div className="w-[calc(100vw-80px)] max-w-5xl h-[500px] max-h-96 max-sm:h-80">
       <LocalMap position={position} type="full" localData={localData} />
     </div>
   );

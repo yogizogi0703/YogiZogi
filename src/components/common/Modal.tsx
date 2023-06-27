@@ -29,14 +29,14 @@ const Modal = () => {
               <div className="flex items-center justify-end gap-2">
                 {modalDataState.btnTitle && (
                   <button
-                    className="btn bg-teal-500 hover:bg-teal-600 border-teal-50 hover:border-teal-600 text-white"
+                    className="btn bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 text-white"
                     onClick={handleBtnOnClick}
                   >
                     {modalDataState.btnTitle}
                   </button>
                 )}
                 <button className="btn" onClick={closeModal}>
-                  닫기
+                  {modalDataState.btnTitle ? '취소' : '닫기'}
                 </button>
               </div>
             </div>
