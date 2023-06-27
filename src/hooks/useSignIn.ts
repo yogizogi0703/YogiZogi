@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
 import { SignInFormDataProps, fetchSignIn } from '../api/auth';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useAuth from './useAuth';
+import useModal from './useModal';
 
 export const validateEmail = (email: string) => {
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -15,6 +16,7 @@ export const validatePassword = (password: string) => {
 const useSignIn = () => {
   const navigate = useNavigate();
   const { successLogin } = useAuth();
+  const { openModal } = useModal();
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [signInData, setSignInData] = useState<SignInFormDataProps>({
     email: '',
@@ -30,27 +32,26 @@ const useSignIn = () => {
 
   const handleSubmitSignIn = async () => {
     if (!validateEmail(signInData.email)) {
-      alert('이메일 형식을 입력해주세요.');
+      openModal({ content: '이메일 형식을 입력해주세요.' });
       return;
     }
     if (!validatePassword(signInData.password)) {
-      alert('비밀번호를 8자리 이상 입력해주세요.');
+      openModal({ content: '비밀번호를 8자리 이상 입력해주세요.' });
       return;
     }
 
     const res = await fetchSignIn(signInData);
     if (!res) {
-      alert('문제가 발생했습니다.');
+      openModal({ content: '문제가 발생했습니다.' });
       return;
     }
 
     if (res.status === 'OK') {
-      console.log(res);
       const token = res.data['X-AUTH-TOKEN'];
       successLogin(token);
       navigate('/');
     } else {
-      alert(res.data.msg);
+      openModal({ content: res.data.msg });
       console.error(res.data.code);
     }
   };
