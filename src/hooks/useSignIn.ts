@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { SignInFormDataProps, fetchSignIn } from '../api/auth';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import useAuth from './useAuth';
 import useModal from './useModal';
 
