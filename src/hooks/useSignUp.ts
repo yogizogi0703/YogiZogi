@@ -2,9 +2,11 @@ import { SignUpFormDataProps, fetchSignUp } from '../api/auth';
 import { useEffect, useState } from 'react';
 import { validateEmail, validatePassword } from './useSignIn';
 import { useNavigate } from 'react-router-dom';
+import useModal from './useModal';
 
 const useSignUp = () => {
   const navigate = useNavigate();
+  const { openModal } = useModal();
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [signUpData, setSignUpData] = useState<SignUpFormDataProps>({
     email: '',
@@ -23,32 +25,32 @@ const useSignUp = () => {
 
   const handleSubmitSignUp = async () => {
     if (!validateEmail(signUpData.email)) {
-      alert('이메일 형식을 입력해주세요.');
+      openModal({ content: '이메일 형식을 입력해주세요.' });
       return;
     }
     if (signUpData.nickname.length < 2) {
-      alert('닉네임을 2자리 이상 입력해주세요.');
+      openModal({ content: '닉네임을 2자리 이상 입력해주세요.' });
       return;
     }
     if (!validatePassword(signUpData.password)) {
-      alert('비밀번호를 8자리 이상 입력해주세요.');
+      openModal({ content: '비밀번호를 8자리 이상 입력해주세요.' });
       return;
     }
     if (signUpData.password !== signUpData.passwordCheck) {
-      alert('비밀번호가 일치하지 않습니다.');
+      openModal({ content: '비밀번호가 일치하지 않습니다.' });
       return;
     }
 
     const res = await fetchSignUp(signUpData);
     if (!res) {
-      alert('문제가 발생했습니다.');
+      openModal({ content: '문제가 발생했습니다.' });
       return;
     }
     if (res.status === 'OK') {
-      alert(res.data.msg);
+      openModal({ content: res.data.msg });
       navigate('/signIn');
     } else {
-      alert(res.msg);
+      openModal({ content: res.msg });
       console.error(res.code);
     }
   };

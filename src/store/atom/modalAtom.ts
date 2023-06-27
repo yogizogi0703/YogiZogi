@@ -1,14 +1,14 @@
 import { atom } from 'recoil';
 
-interface ModalStateProps {
+export interface ModalStateProps {
   isOpen: boolean;
-  title: string;
   content: React.ReactNode | string;
+  btnTitle?: string;
+  handleBtnClick?: () => void;
 }
 
 const initialize: ModalStateProps = {
   isOpen: false,
-  title: '',
   content: ''
 };
 

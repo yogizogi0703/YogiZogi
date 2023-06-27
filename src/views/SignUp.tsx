@@ -1,18 +1,10 @@
 import InputBox from '../components/login/InputBox';
 import useSignUp from '../hooks/useSignUp';
-import { useRecoilValue } from 'recoil';
-import { authUser as authAtom } from '../store/atom/authAtom';
 import SignLayout from '../components/login/SignLayout';
 
 const SignUp = () => {
-  const authUser = useRecoilValue(authAtom);
   const { signUpData, isDisabled, handleChangeInput, handleSubmitSignUp } =
     useSignUp();
-
-  if (authUser.isLoggedIn) {
-    location.href = '/';
-    return <></>;
-  }
 
   return (
     <SignLayout>
