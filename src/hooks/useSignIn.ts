@@ -39,6 +39,7 @@ const useSignIn = () => {
     }
 
     const res = await fetchSignIn(signInData);
+    console.log(res);
     if (!res) {
       alert('문제가 발생했습니다.');
       return;
@@ -49,9 +50,6 @@ const useSignIn = () => {
       const token = res.data['X-AUTH-TOKEN'];
       successLogin(token);
       navigate('/');
-    } else {
-      alert(res.data.msg);
-      console.error(res.data.code);
     }
   };
 
