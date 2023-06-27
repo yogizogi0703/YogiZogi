@@ -46,7 +46,7 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
             </figure>
           </div>
           <div>
-            <div className="flex gap-2 justify-around flex-wrap">
+            <div className="flex gap-2 justify-around flex-wrap sm:text-lg">
               <div>
                 <p>
                   <span className="font-semibold">{data.roomName}</span>
