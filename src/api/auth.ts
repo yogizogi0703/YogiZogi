@@ -1,3 +1,4 @@
+import { fetchData } from '../api';
 import axios from 'axios';
 
 export interface SignInFormDataProps {
@@ -12,15 +13,7 @@ export interface SignUpFormDataProps extends SignInFormDataProps {
 }
 
 export const fetchSignIn = async (data: SignInFormDataProps) => {
-  const res = await axios({
-    method: 'post',
-    url: '/api/user/login',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    data: data
-  }).catch((error) => console.log(error));
-
+  const res = await fetchData.post<SignInFormDataProps>('/user/login', data);
   return res?.data;
 };
 
