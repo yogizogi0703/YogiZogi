@@ -11,8 +11,10 @@ import Layout from './components/common/Layout';
 import AuthCallback from './components/common/AuthCallback';
 import UnAuthRoute from './router/UnAuthRoute';
 import AuthRoute from './router/AuthRoute';
+import useCustomInterceptor from './hooks/useCustomInterceptor';
 
 function App() {
+  useCustomInterceptor();
   return (
     <HashRouter>
       <Layout>

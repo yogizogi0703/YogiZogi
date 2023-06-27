@@ -41,9 +41,7 @@ const useSignIn = () => {
     }
 
     const res = await fetchSignIn(signInData);
-    console.log(res);
     if (!res) {
-      openModal({ content: '문제가 발생했습니다.' });
       return;
     }
 
