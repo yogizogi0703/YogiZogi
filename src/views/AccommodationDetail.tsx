@@ -352,7 +352,7 @@ const AccommodationDetail = () => {
                 <div key={idx} className="join">
                   <input
                     aria-label={idx.toString()}
-                    className="join-item btn btn-square btn-sm mr-1"
+                    className="join-item btn btn-square btn-ghost btn-sm mr-1  checked:bg-red-500 checked:text-white border-none important"
                     type="radio"
                     name="options"
                     checked={page === idx}
