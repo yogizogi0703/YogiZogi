@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import { SignInFormDataProps, fetchSignIn } from '../api/auth';
 import { useEffect, useRef, useState } from 'react';
 import useAuth from './useAuth';
+import { LOGIN_MAINTAIN } from '../store/atom/authAtom';
 
 const useSignIn = () => {
   const navigate = useNavigate();
@@ -11,7 +12,6 @@ const useSignIn = () => {
     email: '',
     password: ''
   });
-  const loginMaintainRef = useRef<boolean>(false);
 
   const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
@@ -28,7 +28,7 @@ const useSignIn = () => {
 
     if (res.status === 'OK') {
       const token = res.data['X-AUTH-TOKEN'];
-      successLogin(token, loginMaintainRef.current);
+      successLogin(token);
       navigate('/');
     }
   };
@@ -46,12 +46,16 @@ const useSignIn = () => {
   const handleChangeMaintain = (e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
     const checked = target.checked;
-    loginMaintainRef.current = checked;
+    if (checked) {
+      localStorage.setItem(LOGIN_MAINTAIN, 'true');
+    } else {
+      localStorage.removeItem(LOGIN_MAINTAIN);
+    }
   };
 
   const handleKakaoSignIn = () => {
     location.href =
-      'https://kauth.kakao.com/oauth/authorize?client_id=32665db00eb9aef9b6b5246fc2a2e8b4&r[…]tps://13.209.131.228:8443/api/user/kakao-login&response_type=code';
+      'https://kauth.kakao.com/oauth/authorize?client_id=32665db00eb9aef9b6b5246fc2a2e8b4&redirect_uri=https://13.209.131.228:8443/api/user/kakao-login&response_type=code';
   };
 
   useEffect(() => {

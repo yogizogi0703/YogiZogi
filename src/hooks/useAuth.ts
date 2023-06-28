@@ -1,18 +1,19 @@
 import { useCallback, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { AUTH_TOKEN_KEY } from '../store/atom/authAtom';
+import { AUTH_TOKEN_KEY, LOGIN_MAINTAIN } from '../store/atom/authAtom';
 import { authLoginState } from '../store/selector/authUserState';
 
 const useAuth = () => {
   const [authUser, setAuthUser] = useRecoilState(authLoginState);
 
-  const successLogin = useCallback((token: string, isMaintain: boolean) => {
-    if (isMaintain) {
+  const successLogin = useCallback((token: string) => {
+    if (!!localStorage.getItem(LOGIN_MAINTAIN)) {
       setLocalStorage(token);
     } else {
       setSessionStorage(token);
     }
     setAuthUser({ ...authUser, isLoggedIn: true, token: token });
+    localStorage.removeItem(LOGIN_MAINTAIN);
   }, []);
 
   /**

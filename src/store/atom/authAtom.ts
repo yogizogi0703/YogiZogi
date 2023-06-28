@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
 
 export const AUTH_TOKEN_KEY = 'authToken';
+export const LOGIN_MAINTAIN = 'loginMaintain';
 
 interface UserProps {
   id?: number;
