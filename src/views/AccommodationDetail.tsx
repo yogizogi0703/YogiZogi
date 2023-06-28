@@ -97,6 +97,22 @@ const AccommodationDetail = () => {
     })();
   }, [page]);
 
+  const [roomData, setRoomData] = useState({
+    accommodationName: accommodationData.accommodationName,
+    accommodationId: accommodationData.id,
+    address: accommodationData.address,
+    rate: accommodationRate,
+    roomId: 0,
+    roomName: '',
+    roomImg: '',
+    price: 0,
+    checkInDate: checkInDate,
+    checkOutDate: checkOutDate,
+    people: people
+  });
+
+  const [modalState, setModalState] = useState(false);
+
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
@@ -261,28 +277,22 @@ const AccommodationDetail = () => {
                       <div className="font-semibold text-lg">
                         {addCommasToPrice(el.price)}원
                       </div>
-                      <label
-                        htmlFor="confirmModal"
+                      <button
                         className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
+                        onClick={() => {
+                          setRoomData((prev) => ({
+                            ...prev,
+                            roomId: el.id,
+                            roomName: el.roomName,
+                            roomImg: el.pictureUrlList[0].url,
+                            price: el.price
+                          }));
+                          setModalState(true);
+                        }}
                       >
                         예약하기
-                      </label>
-                      <ConfirmModal
-                        data={{
-                          accommodationName:
-                            accommodationData.accommodationName,
-                          accommodationId: accommodationData.id,
-                          address: accommodationData.address,
-                          rate: accommodationRate,
-                          roomId: el.id,
-                          roomName: el.roomName,
-                          roomImg: el.pictureUrlList[0].url,
-                          price: el.price,
-                          checkInDate: checkInDate,
-                          checkOutDate: checkOutDate,
-                          people: people
-                        }}
-                      />
+                      </button>
+                      <ConfirmModal data={roomData} modalState={modalState} setModalState={setModalState}/>
                     </div>
                   </div>
                 </div>

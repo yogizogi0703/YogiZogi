@@ -15,10 +15,17 @@ interface IConfirmModal {
     checkOutDate: string;
     people: string;
   };
+  modalState: boolean;
+  setModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const ConfirmModal = ({ data }: IConfirmModal) => {
+export const ConfirmModal = ({
+  data,
+  modalState,
+  setModalState
+}: IConfirmModal) => {
   const navigate = useNavigate();
+
   const handleClick = () => {
     navigate(
       `/payment?accommodation=${data.accommodationName}&checkindate=${data.checkInDate}&checkoutdate=${data.checkOutDate}&people=${data.people}&price=${data.price}`,
@@ -37,8 +44,16 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
 
   return (
     <>
-      <input type="checkbox" id="confirmModal" className="modal-toggle" />
-      <div className="modal">
+      <input
+        type="checkbox"
+        id="confirmModal"
+        className="modal-toggle"
+        checked={modalState}
+      />
+      <div
+        className="modal bg-black bg-opacity-5 !shadow-none"
+        style={{ boxShadow: 'none' }}
+      >
         <div className="flex flex-col gap-5 modal-box w-full max-w-2xl">
           <div className="flex gap-5">
             <figure className="w-full">
@@ -76,7 +91,14 @@ export const ConfirmModal = ({ data }: IConfirmModal) => {
             </button>
           </div>
         </div>
-        <label className="modal-backdrop" htmlFor="confirmModal">
+        <label
+          className="modal-backdrop"
+          htmlFor="confirmModal"
+          onClick={(e) => {
+            e.preventDefault();
+            setModalState(false);
+          }}
+        >
           Close
         </label>
       </div>
