@@ -49,6 +49,7 @@ export const ConfirmModal = ({
         id="confirmModal"
         className="modal-toggle"
         checked={modalState}
+        readOnly
       />
       <div
         className="modal bg-black bg-opacity-5"
