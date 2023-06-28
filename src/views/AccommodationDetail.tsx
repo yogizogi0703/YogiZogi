@@ -226,7 +226,10 @@ const AccommodationDetail = () => {
           <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
             {accommodationData.room.map((el, idx) => {
               return (
-                <div key={idx} className="flex flex-col items-center sm:flex-row gap-3">
+                <div
+                  key={idx}
+                  className="flex flex-col items-center sm:flex-row gap-3"
+                >
                   <label
                     key={idx}
                     htmlFor="reservationModal"
