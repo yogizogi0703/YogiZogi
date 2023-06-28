@@ -19,8 +19,7 @@ const ReservationConfirm = () => {
   const { authUser } = useAuth();
   const navigate = useNavigate();
 
-  // if (!authUser.isLoggedIn || !authUser.user.id) {
-  if (!authUser.isLoggedIn) {
+  if (!authUser.isLoggedIn || !authUser.user.id) {
     navigate('/');
     return;
   }
@@ -106,8 +105,9 @@ const ReservationConfirm = () => {
 
   useEffect(() => {
     const init = async () => {
-      // const content = await getReservationList(authUser.user.id);
-      const content = await getReservationList(authUser.user.jti || 1);
+      if (!authUser.user.id) return;
+
+      const content = await getReservationList(authUser.user.id);
 
       if (!content.length) return;
 
@@ -162,7 +162,7 @@ const ReservationConfirm = () => {
               onEndDateChange={handleEndDateChange}
             />
             <button
-              className="btn btn-active btn-neutral ml-4"
+              className="btn btn-active bg-red-500 hover:bg-red-600 text-white ml-4"
               onClick={filterByDateTerm}
             >
               적용
@@ -186,7 +186,7 @@ const ReservationConfirm = () => {
               return (
                 <input
                   key={`pageButton-${pageIndex}`}
-                  className="join-item btn btn-square"
+                  className="join-item btn btn-sm btn-square checked:!bg-red-500 checked:hover:!bg-red-600 checked:!border-red-500 checked:!text-white"
                   type="radio"
                   name="pages"
                   aria-label={`${pageIndex}`}

@@ -7,7 +7,6 @@ import {
   initialRating,
   ratingFactorsInfo
 } from './constants';
-import { AiOutlineClose } from 'react-icons/ai';
 import {
   IRegisterReviewRequestBody,
   registerReview
@@ -79,10 +78,10 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
       return;
     }
 
-    // if (!authUser.isLoggedIn || !authUser.user.email) {
-    //   setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
-    // return;
-    // }
+    if (!authUser.isLoggedIn) {
+      setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
+      return;
+    }
 
     setErrorMessage('');
 
@@ -93,9 +92,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
     const newRequestBody = {
       description,
       rating: averageRate,
-      accommodationId,
-      email: 'test@test.com'
-      //   email: authUser.user.email
+      accommodationId
     };
 
     setRequestBody(() => {
@@ -133,12 +130,6 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
 
   return (
     <div className="p-12 h-[37rem] md:h-[36rem]">
-      <div
-        className="absolute top-0 right-0 w-8 h-8 flex justify-center items-center bg-red-500 cursor-pointer text-white"
-        onClick={handleModalClose}
-      >
-        <AiOutlineClose />
-      </div>
       <AlertModal
         content={alertText}
         modalState={alertOpen}
@@ -189,12 +180,17 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
             <p className="text-sm font-bold text-red-500 mb-4">
               {errorMessage}
             </p>
-            <button
-              className="btn bg-red-500 hover:bg-red-600 text-white w-32"
-              onClick={handleSubmit}
-            >
-              등록
-            </button>
+            <div className="flex justify-center gap-2">
+              <button
+                className="btn bg-red-500 hover:bg-red-600 text-white w-32"
+                onClick={handleSubmit}
+              >
+                등록
+              </button>
+              <button className="btn w-32" onClick={handleModalClose}>
+                닫기
+              </button>
+            </div>
           </div>
         </div>
       ) : (

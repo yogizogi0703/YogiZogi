@@ -196,6 +196,12 @@ export const handlers = [
         }
 
         return true;
+      })
+      .map((data) => {
+        return {
+          ...data,
+          picUrl: data.pictureUrlList[0]
+        };
       });
 
     const pagedData = filteredData.slice(startIndex, endIndex);
