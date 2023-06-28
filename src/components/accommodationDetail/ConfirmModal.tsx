@@ -51,10 +51,9 @@ export const ConfirmModal = ({
         checked={modalState}
       />
       <div
-        className="modal bg-black bg-opacity-5 !shadow-none"
-        style={{ boxShadow: 'none' }}
+        className="modal bg-black bg-opacity-5"
       >
-        <div className="flex flex-col gap-5 modal-box w-full max-w-2xl">
+        <div className="flex flex-col gap-5 modal-box w-full max-w-2xl shadow-none">
           <div className="flex gap-5">
             <figure className="w-full">
               <img src={data.roomImg} className="w-full" />
