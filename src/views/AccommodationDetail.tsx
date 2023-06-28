@@ -32,7 +32,6 @@ const AccommodationDetail = () => {
     alt: '',
     selectedImg: 0
   });
-  const [totalPrices, setTotalPrices] = useState<number[]>([]);
 
   const rateAdj = [
     'Terrible',
@@ -79,18 +78,6 @@ const AccommodationDetail = () => {
     }
   };
 
-  const getTotalPriceArr = () => {
-    let totalPriceArr: number[] = [];
-    accommodationData.room.map((el) => {
-      let totalPrice = 0;
-      el.price.forEach((item) => {
-        totalPrice += item.price;
-      });
-      totalPriceArr.push(totalPrice);
-    });
-    setTotalPrices(totalPriceArr);
-  };
-
   useEffect(() => {
     (async () => {
       const result: AxiosResponse<any, any> | undefined = await fetchData.get(
@@ -105,10 +92,6 @@ const AccommodationDetail = () => {
   }, [id]);
 
   useEffect(() => {
-    getTotalPriceArr();
-  }, [accommodationData]);
-
-  useEffect(() => {
     (async () => {
       if (!reviewArr[page - 1]) getReview(page);
     })();
@@ -117,7 +100,7 @@ const AccommodationDetail = () => {
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
-        {accommodationData.pictureUrlList.slice(0, 5).map((el, idx) => {
+        {accommodationData.picUrlList.slice(0, 5).map((el, idx) => {
           if (idx === 0)
             return (
               <label
@@ -126,15 +109,15 @@ const AccommodationDetail = () => {
                 className="col-span-2 row-span-2 cursor-pointer"
                 onClick={() =>
                   setModalProps({
-                    imgList: accommodationData.pictureUrlList,
-                    alt: 'accommodation total image',
+                    imgList: accommodationData.picUrlList,
+                    alt: 'accommodation first image',
                     selectedImg: idx
                   })
                 }
               >
                 <figure>
                   <img
-                    src={el}
+                    src={el.url}
                     alt={`${accommodationData.accommodationName}-image-${idx}`}
                     className="w-full h-full object-cover"
                   />
@@ -142,14 +125,14 @@ const AccommodationDetail = () => {
               </label>
             );
           else {
-            if (el.length > 0) {
+            if (el.url.length > 0) {
               return (
                 <label
                   key={idx}
                   htmlFor="reservationModal"
                   onClick={() =>
                     setModalProps({
-                      imgList: accommodationData.pictureUrlList,
+                      imgList: accommodationData.picUrlList,
                       alt: 'accommodation total image',
                       selectedImg: idx
                     })
@@ -157,7 +140,7 @@ const AccommodationDetail = () => {
                 >
                   <figure>
                     <img
-                      src={el}
+                      src={el.url}
                       alt={`${accommodationData.accommodationName}-image-${idx}`}
                       className="w-full h-full object-cover cursor-pointer"
                     />
@@ -224,9 +207,12 @@ const AccommodationDetail = () => {
             객실안내 및 예약
           </h2>
           <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
-            {accommodationData.room.map((el, idx) => {
+            {accommodationData.rooms.map((el, idx) => {
               return (
-                <div key={idx} className="flex flex-col items-center sm:flex-row gap-3">
+                <div
+                  key={idx}
+                  className="flex flex-col items-center sm:flex-row gap-3"
+                >
                   <label
                     key={idx}
                     htmlFor="reservationModal"
@@ -239,9 +225,9 @@ const AccommodationDetail = () => {
                       })
                     }
                   >
-                    <figure className="mx-auto">
+                    <figure className="mx-auto cursor-pointer">
                       <img
-                        src={el.pictureUrlList[0]}
+                        src={el.pictureUrlList[0].url}
                         alt={`${accommodationData.accommodationName}-${el.roomName} image`}
                       />
                     </figure>
@@ -273,7 +259,7 @@ const AccommodationDetail = () => {
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
                       <div className="font-semibold text-lg">
-                        {addCommasToPrice(totalPrices[idx])}원
+                        {addCommasToPrice(el.price)}원
                       </div>
                       <label
                         htmlFor="confirmModal"
@@ -290,8 +276,8 @@ const AccommodationDetail = () => {
                           rate: accommodationRate,
                           roomId: el.id,
                           roomName: el.roomName,
-                          roomImg: el.pictureUrlList[0],
-                          price: totalPrices[idx],
+                          roomImg: el.pictureUrlList[0].url,
+                          price: el.price,
                           checkInDate: checkInDate,
                           checkOutDate: checkOutDate,
                           people: people
@@ -310,14 +296,14 @@ const AccommodationDetail = () => {
           <div className="flex items-center text-xl md:text-3xl text-center">
             <div className="my-5 w-1/3 p-2">
               <span className="font-semibold text-red-500">
-                {accommodationRate}
+                {accommodationData.rate}
               </span>{' '}
               / 10 점
             </div>
             <div className="divider divider-horizontal mx-1" />
             <div className="w-2/3 text-center">
               <p className="mb-3 font-semibold">
-                {rateAdj[Math.trunc(Number(accommodationRate)) - 1]}
+                {rateAdj[Math.trunc(accommodationData.rate) - 1]}
               </p>
               <p className="text-xs md:text-lg">
                 총 {reviewRes.totalElement}개의 확인된 리뷰가 있습니다.
