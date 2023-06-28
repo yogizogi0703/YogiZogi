@@ -20,13 +20,16 @@ import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
     useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
+
   const [page, setPage] = useState(1);
+
   const [reviewRes, setReviewRes] = useState<IReviewResponse>({
     content: [],
     totalElement: 0,
     totalPages: 0
   });
   const [reviewArr, setReviewArr] = useState<IReview[]>([]);
+
   const [modalProps, setModalProps] = useState<IModalProps>({
     imgList: [],
     alt: '',
@@ -59,6 +62,20 @@ const AccommodationDetail = () => {
     people,
     rate: accommodationRate
   } = Object.fromEntries(urlParams.entries());
+
+  const [roomData, setRoomData] = useState({
+    accommodationName: accommodationData.accommodationName,
+    accommodationId: accommodationData.id,
+    address: accommodationData.address,
+    rate: accommodationRate,
+    roomId: 0,
+    roomName: '',
+    roomImg: '',
+    price: 0,
+    checkInDate: checkInDate,
+    checkOutDate: checkOutDate,
+    people: people
+  });
 
   const getReview = async (page: number) => {
     const reviewRes: AxiosResponse<any, any> | undefined = await fetchData.get(
@@ -96,20 +113,6 @@ const AccommodationDetail = () => {
       if (!reviewArr[page - 1]) getReview(page);
     })();
   }, [page]);
-
-  const [roomData, setRoomData] = useState({
-    accommodationName: accommodationData.accommodationName,
-    accommodationId: accommodationData.id,
-    address: accommodationData.address,
-    rate: accommodationRate,
-    roomId: 0,
-    roomName: '',
-    roomImg: '',
-    price: 0,
-    checkInDate: checkInDate,
-    checkOutDate: checkOutDate,
-    people: people
-  });
 
   const [modalState, setModalState] = useState(false);
 
