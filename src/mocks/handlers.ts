@@ -1,5 +1,6 @@
 import { rest } from 'msw';
 import { accommodationData } from './api/data/accommodationData';
+import { accommodationDetailData } from './api/data/accommodationDetailData';
 import { reviewData } from './api/data/reviewData';
 import { Category } from '../components/searchResult/constants';
 
@@ -158,7 +159,7 @@ export const handlers = [
           data.address.includes(keyword)
       )
       .sort((d1, d2) => {
-        if (sort === 'price') {
+        if (sort === 'price' && d1.price && d2.price) {
           if (direction === 'asc') {
             return d1.price - d2.price;
           }
@@ -174,13 +175,12 @@ export const handlers = [
       })
       .filter((data) => {
         if (!minprice) return true;
-
-        return Number(minprice) <= data.price;
+        if (data.price) return Number(minprice) <= data.price;
       })
       .filter((data) => {
         if (!maxprice) return true;
 
-        return data.price <= Number(maxprice);
+        if (data.price) return data.price <= Number(maxprice);
       })
       .filter((data) => {
         if (category === Category.HOTEL) {
@@ -350,10 +350,7 @@ export const handlers = [
     const checkindate = req.url.searchParams.get('checkindate');
     const checkoutdate = req.url.searchParams.get('checkoutdate');
     const people = req.url.searchParams.get('people');
-
-    const data = accommodationData.find(
-      (accommodation) => accommodation.id === Number(accommodationId)
-    );
+    const data = accommodationDetailData.find((data) => data.id == Number(accommodationId));
 
     if (!data) {
       return res(
@@ -371,13 +368,14 @@ export const handlers = [
       id,
       accommodationName,
       category,
+      rate,
       address,
-      location,
+      region,
       lat,
       lon,
       info,
-      pictureUrlList,
-      room
+      picUrlList,
+      rooms
     } = data;
 
     return res(
@@ -394,13 +392,14 @@ export const handlers = [
             id,
             accommodationName,
             category,
+            rate,
             address,
-            location,
+            region,
             lat,
             lon,
             info,
-            pictureUrlList,
-            room
+            picUrlList,
+            rooms
           }
         ]
       })
