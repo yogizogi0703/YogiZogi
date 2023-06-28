@@ -16,8 +16,16 @@ interface AuthUserProps {
 
 const initialize: AuthUserProps = {
   user: {},
-  token: localStorage.getItem(AUTH_TOKEN_KEY) || '',
-  isLoggedIn: !!localStorage.getItem(AUTH_TOKEN_KEY)
+  token: String(
+    localStorage.getItem(AUTH_TOKEN_KEY)
+      ? localStorage.getItem(AUTH_TOKEN_KEY)
+      : sessionStorage.getItem(AUTH_TOKEN_KEY)
+  ),
+  isLoggedIn:
+    localStorage.getItem(AUTH_TOKEN_KEY) ||
+    sessionStorage.getItem(AUTH_TOKEN_KEY)
+      ? true
+      : false
 };
 
 export const authUser = atom({

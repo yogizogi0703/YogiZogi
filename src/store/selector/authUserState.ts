@@ -20,6 +20,7 @@ export const authLoginState = selector({
         };
       } else {
         localStorage.removeItem(AUTH_TOKEN_KEY);
+        sessionStorage.removeItem(AUTH_TOKEN_KEY);
         return { ...value, token: '', user: {}, isLoggedIn: false };
       }
     }
