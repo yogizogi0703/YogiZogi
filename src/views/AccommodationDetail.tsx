@@ -180,7 +180,10 @@ const AccommodationDetail = () => {
       </div>
       <section className="flex flex-col gap-5 md:gap-10">
         <div className="flex gap-5 flex-col md:flex-row">
-          <div className="flex flex-col gap-5">
+          <div
+            className="flex flex-col gap-5"
+            style={{ width: '-webkit-fill-available' }}
+          >
             <h1 className="text-2xl md:text-4xl font-bold">
               {accommodationData.accommodationName}
             </h1>
