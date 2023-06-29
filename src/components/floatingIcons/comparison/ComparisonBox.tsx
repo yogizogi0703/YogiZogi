@@ -37,13 +37,13 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
 
   return (
     <article
-      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-16 md:right-20 w-56 sm:w-72 h-40 sm:h-52 ${
+      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-16 md:right-20 w-80 h-fit ${
         display ? 'block' : 'hidden'
       }`}
     >
-      <div className="chat-bubble chat-bubble-info flex flex-col justify-between w-full h-full">
+      <div className="chat-bubble chat-bubble-info flex flex-col justify-between w-full h-fit">
         {selectedAcc.length === 0 && (
-          <div className="flex items-center justify-center w-full h-1/3 text-sm bg-white rounded-xl">
+          <div className="flex items-center justify-center w-full h-20 mb-2 text-sm bg-white rounded-xl">
             상품을 담아주세요
           </div>
         )}
@@ -51,7 +51,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           return (
             <div
               key={idx}
-              className="flex justify-between gap-1 h-12 sm:h-16 rounded-lg bg-white"
+              className="flex justify-between gap-1 mb-2 h-20 rounded-lg bg-white"
             >
               <figure
                 className="w-5/12 object-cover rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
@@ -68,8 +68,8 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                   className="rounded-s-lg h-full w-full"
                 />
               </figure>
-              <div className="w-5/12 text-[10px] md:text-sm">
-                <p className="truncate font-semibold text-sm sm:text-base">
+              <div className="w-5/12 text-sm">
+                <p className="truncate font-semibold text-base">
                   {el.accommodationName}
                 </p>
                 <p>
@@ -80,7 +80,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
               </div>
               <button
                 onClick={() => deleteSelectedAcc(idx)}
-                className="badge badge-neutral badge-sm w-3 text-white"
+                className="badge badge-neutral badge-sm mt-1 mr-1 w-3 text-white"
               >
                 ✕
               </button>
@@ -88,7 +88,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
           );
         })}
         <div onClick={handleComparison} className="flex justify-end items-end">
-          <button className="btn btn-xs bg-white text-[10px] sm:text-base font-normal">
+          <button className="btn btn-sm bg-white  border-none text-sm font-normal">
             비교하기
           </button>
         </div>
@@ -98,7 +98,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
         handleModal={setComparisonModalState}
       />
       <AlertModal
-        content="2개의 상품을 담아주세요!"
+        content="최소 2개의 상품을 담아주세요!"
         modalState={alertModalState}
         handleModal={setAlertModalState}
       />

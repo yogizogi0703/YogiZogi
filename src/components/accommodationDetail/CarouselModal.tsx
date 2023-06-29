@@ -1,9 +1,10 @@
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { Carousel } from 'react-responsive-carousel';
 import './CarouselModal.css';
+import { IPicUrlList } from 'api/accommodationDetail';
 
 export interface IModalProps {
-  imgList: string[];
+  imgList: IPicUrlList[];
   alt: string;
   selectedImg: number
 }
@@ -18,7 +19,7 @@ export const CarouselModal: React.FC<IModalProps> = ({ imgList, alt, selectedImg
             {imgList.map((el, idx) => {
               return (
                 <figure key={idx}>
-                  <img src={el} alt={`${alt}-${idx}`} />
+                  <img src={el.url} alt={`${alt}-${idx}`} />
                 </figure>
               );
             })}

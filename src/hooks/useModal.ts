@@ -1,16 +1,24 @@
 import { useRecoilState } from 'recoil';
-import { modalState } from '../store/atom/modalAtom';
-import { useCallback, useEffect } from 'react';
+import { ModalStateProps, modalState } from '../store/atom/modalAtom';
+import { useCallback } from 'react';
 
-export const useModal = () => {
-  const [modalDataState, setModalDataState] = useRecoilState(modalState);
+interface OpenModalBtnProps {
+  content: React.ReactNode | string;
+  btnTitle?: string;
+  handle?: () => void;
+}
+
+const useModal = () => {
+  const [modalDataState, setModalDataState] =
+    useRecoilState<ModalStateProps>(modalState);
 
   const openModal = useCallback(
-    (title: string, content: React.ReactNode | string) => {
+    ({ content, btnTitle, handle }: OpenModalBtnProps) => {
       const modalData = {
-        title,
         content,
-        isOpen: true
+        isOpen: true,
+        btnTitle: btnTitle,
+        handleBtnClick: handle
       };
       setModalDataState(modalData);
     },
@@ -23,3 +31,5 @@ export const useModal = () => {
 
   return { modalDataState, openModal, closeModal };
 };
+
+export default useModal;

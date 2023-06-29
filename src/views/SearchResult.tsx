@@ -83,10 +83,6 @@ const SearchResult = () => {
 
   const [observe, unobserve] = useIntersectionObserver(async () => {
     setIsLoading(true);
-
-    await handleDetailedSearch();
-    searchParams.current.page++;
-    setIsLoading(false);
   });
 
   const getParams = useCallback(() => {
@@ -107,7 +103,24 @@ const SearchResult = () => {
   }, [searchParams]);
 
   const handleViewToggle = useCallback(() => {
-    setViewType((viewType) => !viewType);
+    setViewType((viewType) => {
+      const nextValue = !viewType;
+      if (!observerTarget.current) {
+        return nextValue;
+      }
+
+      if (nextValue === View.MAP) {
+        stopObserving();
+        observerTarget.current.classList.add('hidden');
+        return nextValue;
+      }
+
+      if (!isDataEnd && nextValue === View.LIST) {
+        startObserving();
+      }
+
+      return nextValue;
+    });
   }, [viewType]);
 
   const handleRangeValueChange = useCallback(
@@ -256,10 +269,17 @@ const SearchResult = () => {
 
     if (isLoading) {
       stopObserving();
+
+      const loadData = async () => {
+        await handleDetailedSearch();
+        searchParams.current.page++;
+        setIsLoading(false);
+      };
+      loadData();
       return;
     }
 
-    if (!isDataEnd) {
+    if (!isDataEnd && viewType === View.LIST) {
       startObserving();
       return;
     }
@@ -268,8 +288,8 @@ const SearchResult = () => {
   }, [isLoading]);
 
   useEffect(() => {
-    if (selectedAcc.length > 2) {
-      setSelectedAcc(selectedAcc.slice(0, 2));
+    if (selectedAcc.length > 3) {
+      setSelectedAcc(selectedAcc.slice(0, 3));
       setModalState(true);
     }
   }, [selectedAcc]);
@@ -279,6 +299,9 @@ const SearchResult = () => {
       className="max-w-5xl mx-auto px-4 py-8 bg-white"
       style={{ minWidth: '375px' }}
     >
+      {isLoading && (
+        <div className="w-screen h-full absolute top-0 left-0 z-[300]"></div>
+      )}
       <section className="bg-slate-100 px-4 py-6 rounded-lg">
         <section className="lg:flex lg:items-center lg:justify-between">
           <section className="flex gap-2">
@@ -377,17 +400,15 @@ const SearchResult = () => {
         <hr className="mt-2 mb-8" />
         {!isLoading && !totalElements && isDataEnd ? (
           <p className="text-center p-4">검색 결과가 없습니다.</p>
-        ) : viewType ? (
-          <div>
-            <MapView />
-          </div>
+        ) : viewType === View.MAP ? (
+          <div>{!isLoading && <MapView />}</div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {
               return (
                 <Link
                   key={String(accommodation.id) + String(new Date())}
-                  to={`/accommodation/${accommodation.id}?&checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}&rate=${accommodation.rate}`}
+                  to={`/accommodation/${accommodation.id}?&checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}`}
                 >
                   <AccommodationPreview data={accommodation} />
                 </Link>
@@ -396,12 +417,15 @@ const SearchResult = () => {
           </div>
         )}
       </section>
-      <div ref={observerTarget} className="w-full h-24 hidden text-center">
-        <span className="loading loading-spinner loading-lg"></span>
+      <div
+        ref={observerTarget}
+        className="w-full h-60 hidden flex justify-center items-center"
+      >
+        <p className="loading loading-spinner loading-lg"></p>
       </div>
       <FloatingIcon />
       <AlertModal
-        content="최대 2개의 상품만 담을 수 있습니다."
+        content="최대 3개의 상품만 담을 수 있습니다."
         modalState={modalState}
         handleModal={setModalState}
       />

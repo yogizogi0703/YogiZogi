@@ -12,7 +12,6 @@ const useAuth = () => {
   }, []);
 
   const handleLogout = () => {
-    console.log('로그아웃');
     localStorage.removeItem(AUTH_TOKEN_KEY);
     setAuthUser({ user: {}, isLoggedIn: false, token: '' });
   };

@@ -29,7 +29,7 @@ const channels = [
 const Footer = () => {
   return (
     <footer
-      className="absolute bottom-0 flex justify-center items-center w-full min-h-20 h-20 md:h-12 md:min-h-12"
+      className="absolute bottom-0 flex justify-center items-center w-full min-h-20 h-20 md:h-12 md:min-h-12 bg-base-100"
       style={{
         boxShadow:
           '0 -1px 3px 0px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',

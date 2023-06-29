@@ -34,14 +34,14 @@ const SignIn = () => {
             value={signInData.password}
             handleChange={handleChangeInput}
           />
-          <div className="form-control pt-2">
+          {/* <div className="form-control pt-2">
             <label className="label cursor-pointer justify-start gap-2">
               <input type="checkbox" className="toggle" />
               <span className="label-text max-md:text-white">로그인 유지</span>
             </label>
-          </div>
+          </div> */}
         </div>
-        <div className="flex flex-col gap-4 pt-2">
+        <div className="flex flex-col gap-4 pt-8">
           {isDisabled ? (
             <button
               className="btn btn-disabled max-md:text-gray-200"
