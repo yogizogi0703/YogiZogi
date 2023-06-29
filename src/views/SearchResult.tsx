@@ -16,7 +16,8 @@ import {
   categories,
   categoryList,
   sortingFactorList,
-  sortingFactors
+  sortingFactors,
+  SEARCH_START_PAGE
 } from '../components/searchResult/constants';
 import {
   CategoryTypes,
@@ -75,8 +76,8 @@ const SearchResult = () => {
     direction: Direction.DESC,
     minprice: null,
     maxprice: null,
-    category: null,
-    page: 1
+    category: Category.ALL,
+    page: SEARCH_START_PAGE
   });
 
   const observerTarget = useRef<HTMLDivElement>(null);
@@ -151,7 +152,7 @@ const SearchResult = () => {
 
   const handleSelectCategory = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.id as CategoryTypes;
+      const value = parseInt(e.target.id) as CategoryTypes;
 
       if (categoryList.includes(value)) {
         setSelctedCategory(value);
@@ -219,7 +220,7 @@ const SearchResult = () => {
 
   const checkDataEnd = useCallback(
     (prev: number, cur: number, total: number) => {
-      if (prev + cur === total) {
+      if (cur === 0 || prev + cur === total) {
         setIsDataEnd(true);
       }
     },
@@ -239,12 +240,12 @@ const SearchResult = () => {
     if (totalElements === 0) {
       setTotalElements(newTotalElements);
     }
-  }, []);
+  }, [totalElements]);
 
   const handleSearchButtonClick = useCallback(async () => {
     setAccommodationList([]);
     setTotalElements(0);
-    searchParams.current.page = 1;
+    searchParams.current.page = SEARCH_START_PAGE;
 
     startObserving();
   }, []);
@@ -306,18 +307,19 @@ const SearchResult = () => {
         <section className="lg:flex lg:items-center lg:justify-between">
           <section className="flex gap-2">
             {categories.map((category) => {
+              const categoryKey = `${category.id}`;
               return (
-                <div key={category.id}>
+                <div key={categoryKey}>
                   <input
                     type="radio"
                     name="category"
-                    id={category.id}
+                    id={categoryKey}
                     className="hidden peer"
                     onChange={handleSelectCategory}
                     checked={category.id === selectedCategory}
                   />
                   <label
-                    htmlFor={category.id}
+                    htmlFor={categoryKey}
                     className="btn btn-ghost bg-white drop-shadow peer-checked:text-red-500 peer-checked:border-red-500"
                   >
                     {category.text}
