@@ -81,12 +81,18 @@ export const SearchBar = () => {
   }, []);
 
   const handleSearch = () => {
-    if (
+    const getDateGap =
+      (search.checkOutDate.getTime() - search.checkInDate.getTime()) / (1000 * 3600 * 24);
+
+      if (
       search.people === 0 ||
       search.searchValue.length === 0 ||
       search.checkOutDate === search.checkInDate
     ) {
       setModalContent('목적지, 기간, 인원 모두를 입력해주세요!');
+      return setAlertModalState(true);
+    } else if (getDateGap > 7) {
+      setModalContent('기간은 최대 7일을 초과할 수 없습니다.');
       return setAlertModalState(true);
     } else {
       const [lat, lon] = search.userGeoInfo;
