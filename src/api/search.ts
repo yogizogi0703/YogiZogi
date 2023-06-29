@@ -184,8 +184,6 @@ export const getDetailedSearchResult = async (searchParams: ISearchParams) => {
     dynamicParams
   )}&page=${page}&pageSize=${SEARCH_RESULT_PAGE_SIZE}`;
 
-  console.log(url);
-
   const res = await fetchData.get<ISearchResultResponse>(url);
 
   if (!res) {
