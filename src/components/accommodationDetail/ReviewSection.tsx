@@ -96,7 +96,7 @@ export const ReviewSection = ({
           </div>
         </>
       ) : (
-        <div className="p-3 border rounded-lg mb-5 text-xs md:text-base">
+        <div className="p-3 border rounded-lg mb-5">
           <div className="text-center">등록된 리뷰가 없습니다.</div>
         </div>
       )}
