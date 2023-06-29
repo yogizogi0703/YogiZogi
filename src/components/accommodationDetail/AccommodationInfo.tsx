@@ -1,8 +1,12 @@
-import { IAccommodationDetailResponse } from "../../api/accommodationDetail";
-import RatingStars from "../../components/common/RatingStars";
+import { IAccommodationDetailResponse } from '../../api/accommodationDetail';
+import RatingStars from '../../components/common/RatingStars';
 import { BiMap } from 'react-icons/bi';
 
-export const AccommodationInfo = ({accommodationData} : {accommodationData: IAccommodationDetailResponse}) => {
+export const AccommodationInfo = ({
+  accommodationData
+}: {
+  accommodationData: IAccommodationDetailResponse;
+}) => {
   return (
     <>
       {accommodationData && (
