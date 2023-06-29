@@ -22,10 +22,10 @@ const SignUp = () => {
           />
           <InputBox
             title="닉네임"
-            name="nickname"
+            name="nickName"
             type="text"
             placeholder="닉네임을 입력해주세요."
-            value={signUpData.nickname}
+            value={signUpData.nickName}
             handleChange={handleChangeInput}
           />
           <InputBox

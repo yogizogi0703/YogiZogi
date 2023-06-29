@@ -123,7 +123,7 @@ const Nav = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md"
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md z-50"
                 >
                   <li onClick={handleClick}>
                     <Link to="/reservationConfirm">예약확인</Link>

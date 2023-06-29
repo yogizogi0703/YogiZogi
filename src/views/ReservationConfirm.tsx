@@ -74,11 +74,11 @@ const ReservationConfirm = () => {
   const filterByDateTerm = useCallback(() => {
     const filtered = Array.from(totalReservationList).filter((info) => {
       const biggerThanMin =
-        startDate.getTime() <= new Date(info.startDate).getTime() &&
-        new Date(info.startDate).getTime() <= endDate.getTime();
+        startDate.getTime() <= new Date(info.checkInDate).getTime() &&
+        new Date(info.checkInDate).getTime() <= endDate.getTime();
       const smallerThanMax =
-        startDate.getTime() <= new Date(info.endDate).getTime() &&
-        new Date(info.endDate).getTime() <= endDate.getTime();
+        startDate.getTime() <= new Date(info.checkOutDate).getTime() &&
+        new Date(info.checkOutDate).getTime() <= endDate.getTime();
 
       return biggerThanMin || smallerThanMax;
     });
@@ -112,7 +112,7 @@ const ReservationConfirm = () => {
       if (!content.length) return;
 
       setTotalReservationList(() => {
-        const lastEndDate = new Date(content[0].startDate);
+        const lastEndDate = new Date(content[0].checkInDate);
         setEndDate(lastEndDate);
         setStartDate(getYearAgo(new Date(lastEndDate)));
         return content;
@@ -171,14 +171,20 @@ const ReservationConfirm = () => {
         </section>
         <div className="w-full h-px bg-gray-200 my-6"></div>
         <section className="w-full flex flex-col gap-4">
-          {getListOfRenderingPage().map((reservationInfo) => {
-            return (
-              <ReservationInfoCard
-                key={`reservation-${reservationInfo.id}`}
-                data={reservationInfo}
-              />
-            );
-          })}
+          {!reservationList.length ? (
+            <div className="text-center py-20">
+              <p>검색 결과 없음</p>
+            </div>
+          ) : (
+            getListOfRenderingPage().map((reservationInfo) => {
+              return (
+                <ReservationInfoCard
+                  key={`reservation-${reservationInfo.id}`}
+                  data={reservationInfo}
+                />
+              );
+            })
+          )}
         </section>
         <div className="join flex justify-center mt-8">
           {Array.from({ length: totalPages }, (_, index) => index + 1).map(
