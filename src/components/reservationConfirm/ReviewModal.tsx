@@ -15,10 +15,11 @@ import { AlertModal } from '../../components/common/AlertModal';
 
 interface IReviewModal {
   accommodationId: number;
+  bookId: number;
   onClose: () => void;
 }
 
-const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
+const ReviewModal = ({ accommodationId, bookId, onClose }: IReviewModal) => {
   const { authUser } = useAuth();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -86,13 +87,13 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
     setErrorMessage('');
 
     const averageRate = Number(
-      (rating.service + rating.price + rating.facilities / 3).toFixed(1)
+      ((rating.service + rating.price + rating.facilities) / 3).toFixed(1)
     );
 
     const newRequestBody = {
       description,
-      rating: averageRate,
-      accommodationId
+      rate: averageRate,
+      bookId
     };
 
     setRequestBody(() => {
@@ -109,7 +110,7 @@ const ReviewModal = ({ accommodationId, onClose }: IReviewModal) => {
     const fetchReview = async () => {
       const {
         data: { status, msg }
-      } = await registerReview(requestBody);
+      } = await registerReview(accommodationId, requestBody);
 
       if (status === 'OK') {
         setAlertOpen(() => {
