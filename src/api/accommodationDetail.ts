@@ -74,3 +74,11 @@ export interface IReviewResponse {
   totalElements: number;
   totalPages: number;
 }
+
+export const IReviewResponseContentInitData = {
+  id: 0,
+  nickName: '',
+  accommodationId: 0,
+  rating: 10,
+  description: ''
+};
