@@ -10,8 +10,13 @@ export interface IRoomResponse {
   checkOutTime: number;
   defaultPeople: number;
   maxPeople: number;
+  conveniences: string;
   pictureUrlList: IPicUrlList[];
   price: number;
+}
+
+export interface IFacility {
+  facility: '';
 }
 
 export interface IAccommodationDetailResponse {
@@ -22,6 +27,7 @@ export interface IAccommodationDetailResponse {
   address: string;
   region: string;
   picUrlList: IPicUrlList[];
+  convenienceList: {}[];
   info: string;
   lat: number;
   lon: number;
@@ -39,6 +45,7 @@ export const AccommodationDetailInitData = {
   lon: 0,
   region: '',
   picUrlList: [{ id: 0, url: '' }],
+  convenienceList: [{ facility: '' }],
   rooms: [
     {
       id: 0,
@@ -47,6 +54,7 @@ export const AccommodationDetailInitData = {
       checkOutTime: 0,
       defaultPeople: 0,
       maxPeople: 0,
+      conveniences: '',
       pictureUrlList: [{ id: 0, url: '' }],
       price: 0
     }
