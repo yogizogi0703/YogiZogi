@@ -24,8 +24,14 @@ export interface SearchProps {
 export const SearchBar = () => {
   const [search, setSearch] = useState<SearchProps>({
     searchValue: '',
-    checkInDate: new Date(),
-    checkOutDate: new Date(),
+    checkInDate:
+      new Date() > new Date(2023, 5, 30) && new Date() <= new Date(2023, 8, 30)
+        ? new Date()
+        : new Date(2023, 6, 1),
+    checkOutDate:
+      new Date() > new Date(2023, 5, 30) && new Date() <= new Date(2023, 8, 30)
+        ? new Date()
+        : new Date(2023, 6, 1),
     people: 0,
     userGeoInfo: [37.57, 126.9]
   });
@@ -79,7 +85,7 @@ export const SearchBar = () => {
       search.searchValue.length === 0 ||
       search.checkOutDate === search.checkInDate
     )
-      return setAlertModalState(true)
+      return setAlertModalState(true);
     else {
       const [lat, lon] = search.userGeoInfo;
       const params = new URLSearchParams();
@@ -157,7 +163,8 @@ export const SearchBar = () => {
               <DatePicker
                 locale={ko}
                 inline
-                minDate={new Date()}
+                minDate={new Date(2023, 6, 1)}
+                maxDate={new Date(2023, 8, 30)}
                 selected={search.checkInDate}
                 closeOnScroll={true}
                 onChange={(date: Date) => {
@@ -175,6 +182,7 @@ export const SearchBar = () => {
                 locale={ko}
                 inline
                 minDate={new Date(search.checkInDate.getTime() + 86400000)}
+                maxDate={new Date(2023, 8, 30)}
                 selected={search.checkOutDate}
                 closeOnScroll={true}
                 onChange={(date: Date) => {
