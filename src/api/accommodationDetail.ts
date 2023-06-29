@@ -62,15 +62,15 @@ export const AccommodationDetailInitData = {
 };
 
 export interface IReview {
-  accommodationId: number;
-  description: string;
   id: number;
+  nickName: string;
+  accommodationId: number;
   rating: number;
-  userId: number;
+  description: string;
 }
 
 export interface IReviewResponse {
   content: IReview[];
-  totalElement: number;
+  totalElements: number;
   totalPages: number;
 }
