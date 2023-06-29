@@ -56,7 +56,7 @@ export const DraggableAccommodationList = () => {
                       {...provided.draggableProps}
                       {...provided.dragHandleProps}
                       ref={provided.innerRef}
-                      className={`w-44 rounded-lg list-none hover:bg-orange-100 ${
+                      className={`w-44 pb-1 rounded-lg list-none hover:bg-orange-100 ${
                         snapshot.isDragging ? 'bg-orange-100' : ''
                       }`}
                       style={{
