@@ -88,7 +88,7 @@ const AccommodationDetail = () => {
       );
 
       if (result) {
-        setAccommodationData(result.data.data[1]);
+        setAccommodationData(result.data.data);
       }
       getReview(1);
     })();
