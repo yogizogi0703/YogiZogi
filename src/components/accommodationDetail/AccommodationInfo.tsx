@@ -23,7 +23,7 @@ export const AccommodationInfo = ({accommodationData} : {accommodationData: IAcc
             {accommodationData.info && (
               <>
                 <details open className="bg-base-200 p-3 rounded-lg ">
-                  <summary className="text-base md:text-lg  font-semibold">
+                  <summary className="text-base md:text-lg font-semibold cursor-pointer">
                     기본정보
                   </summary>
                   {accommodationData.info && (
@@ -42,7 +42,7 @@ export const AccommodationInfo = ({accommodationData} : {accommodationData: IAcc
                   '<!-- 편의시설 및 서비스 -->'
                 ) && (
                   <details className="bg-base-200 p-3 rounded-lg">
-                    <summary className="text-base md:text-lg  font-semibold">
+                    <summary className="text-base md:text-lg font-semibold cursor-pointer">
                       편의시설 및 서비스
                     </summary>
                     <div
@@ -56,7 +56,7 @@ export const AccommodationInfo = ({accommodationData} : {accommodationData: IAcc
                   </details>
                 )}
                 <details className="bg-base-200 p-3 rounded-lg">
-                  <summary className="text-base md:text-lg  font-semibold">
+                  <summary className="text-base md:text-lg font-semibold cursor-pointer">
                     판매자 정보
                   </summary>
                   <div
