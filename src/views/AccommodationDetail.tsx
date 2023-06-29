@@ -61,15 +61,14 @@ const AccommodationDetail = () => {
   const {
     checkindate: checkInDate,
     checkoutdate: checkOutDate,
-    people,
-    rate: accommodationRate
+    people
   } = Object.fromEntries(urlParams.entries());
 
   const [roomData, setRoomData] = useState({
     accommodationName: accommodationData.accommodationName,
     accommodationId: accommodationData.id,
     address: accommodationData.address,
-    rate: accommodationRate,
+    rate: accommodationData.rate,
     roomId: 0,
     roomName: '',
     roomImg: '',
@@ -193,7 +192,7 @@ const AccommodationDetail = () => {
                 {accommodationData.address}
               </span>
               <div className="flex items-center gap-1">
-                평점 :<RatingStars rate={Number(accommodationRate)} />
+                평점 :<RatingStars rate={accommodationData.rate} />
               </div>
             </div>
             <article className=" flex flex-col gap-2 text-xs sm:text-sm md:text-base w-full">

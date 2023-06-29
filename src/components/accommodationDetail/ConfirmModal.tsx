@@ -6,7 +6,7 @@ interface IConfirmModal {
     accommodationName: string;
     accommodationId: number;
     address: string;
-    rate: string;
+    rate: number;
     roomId: number;
     roomName: string;
     roomImg: string;
