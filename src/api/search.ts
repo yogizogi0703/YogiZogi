@@ -42,7 +42,7 @@ export interface ISearchResultContent {
   lat: number;
   lon: number;
   category: number;
-  pictureUrlList: string[];
+  picUrl: string;
 }
 
 interface ISearchResultResponse {
@@ -52,9 +52,9 @@ interface ISearchResultResponse {
     msg: string;
     data: {
       msg: string;
+      content: ISearchResultContent[];
+      totalElements: number;
     };
-    content: ISearchResultContent[];
-    totalElements: number;
   };
 }
 
@@ -194,8 +194,8 @@ export const getDetailedSearchResult = async (searchParams: ISearchParams) => {
   }
 
   const data = {
-    content: res.data.content,
-    totalElements: res.data.totalElements
+    content: res.data.data.content,
+    totalElements: res.data.data.totalElements
   };
 
   return data;

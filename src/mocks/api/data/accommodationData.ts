@@ -1,976 +1,436 @@
 export const accommodationData = [
   {
-    id: 12,
-    accommodationName: 'ABC 호텔',
-    category: 1,
-    rate: 8.6,
-    price: 200000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 37.50252991,
-    lon: 127.0382753,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-    pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 2,
-    accommodationName: '그랜드 인터컨티넨탈 서울 파르나스',
-    category: 2,
-    rate: 5.5,
-    price: 300000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 35.154396,
-    lon: 129.058168,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 3,
-    accommodationName: '롯데호텔 서울',
-    category: 2,
-    rate: 9.2,
-    price: 180000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 35.167509,
-    lon: 129.16002,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 4,
-    accommodationName: '프레지던트 호텔',
-    category: 2,
-    rate: 9.1,
-    price: 210000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 35.166015,
-    lon: 129.163512,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
     id: 5,
-    accommodationName: '호텔 인터불고 서울코엑스점',
-    category: 2,
-    rate: 8.9,
-    price: 170000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 35.156214,
-    lon: 129.059033,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
+    accommodationName: '역삼 인트로호텔',
+    picUrl:
       '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 6,
-    accommodationName: '그랜드 앰배서더 서울 associated with Pullman',
-    category: 3,
-    rate: 8.5,
-    price: 240000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 35.164327,
-    lon: 129.057272,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 7,
-    accommodationName: '롯데호텔 부산',
-    category: 3,
-    rate: 8.1,
-    price: 215000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 37.555278,
-    lon: 126.981998,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 8,
-    accommodationName: '호텔 리젠시 부산',
-    category: 3,
-    rate: 7.7,
-    price: 290000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 37.513062,
-    lon: 127.058777,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 9,
-    accommodationName: '파라다이스 호텔 부산',
+    address: '서울 강남구 역삼동 677-14',
+    rate: 9.9,
+    price: 30000,
+    lat: 37.502753543996,
+    lon: 127.03992345865,
     category: 1,
-    rate: 8.8,
-    price: 190000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 37.572443,
-    lon: 126.976888,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 10,
-    accommodationName: '그랜드 하얏트 부산',
-    category: 1,
-    rate: 8.6,
-    price: 280000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 37.508535,
-    lon: 127.047883,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
-  },
-  {
-    id: 11,
-    accommodationName: '신라스테이 부산',
-    category: 1,
-    rate: 8.6,
-    price: 220000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
-    lat: 37.565773,
-    lon: 126.981414,
-    info: '혜택안내~~~ 주차장 정보~~ 지하철정보~~ 객체내부시설……',
-        pictureUrlList: [
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
   },
   {
     id: 1,
-    accommodationName: 'BAC 호텔',
-    category: 1,
-    rate: 6.7,
-    price: 230000,
-    address: '서울 중구 쌍림동 155-1',
-    location: '강남구 역삼동',
+    accommodationName: '강남 더 뮤즈',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 678-9',
+    rate: 9.8,
+    price: 40000,
     lat: 37.50252991,
     lon: 127.0382753,
-    info: '<article class="detail_info"> <!-- 기본 정보 --> <h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3> <section class="default_info"> <!-- 사장님 한마디 & 추천이유 --> <div class="comment_mobile"> <h3>사장님 한마디</h3>                     겨울 눈 꽃이 아름다운 산과 청정지역에서만 볼 수 있는 반딧불, 고라니도 가끔 볼수 있고 타인에 침해 받지 않고 편안한 휴식을 보낼 수 있습니다                </div> <h3>주변정보</h3> <ul> <li>두물머리 부근</li></ul> <h3>공지 사항</h3> <ul> <li><b>보증금 제도가 있습니다 (퇴실 시 반환)</b></li><li><b>전 객실 및 바비큐장 포함 금연 (적발 시 퇴실 조치, 환불 불가)</b></li><li><b>객실 및 바비큐장 내 전기그릴, 프라이팬 고기구이 또는 객실 및 바비큐장 내 부탄가스 이용 경우 퇴실 조치 (환불 불가)</b></li><li><b>예약자의 방문 손님은 방문 1시간 이상 시 추가인원으로 간주</b></li><li>준성수기 : 7월 1일~7월 14일 / 8월 22일~9월 3일 </li><li>성수기 : 7월 15일~8월 21일</li></ul> <h3>기본 정보</h3> <ul> <li>입실 : 15:00 | 퇴실 : 11:00</li><li>22시 이후 입실 시 사전문의 (필수)</li><li>무료 Wi-Fi</li><li>전 객실 금연</li><li>주차 가능</li><li>마트 픽업 (농민마트 / 물품 구매 시 / 펜션문의)</li></ul> <h3>객실 정보</h3> <ul> <li>객실 내 블루투스 스피커 구비</li><li>스파 이용시 : A동 30,000원, B동 10,000원, C동 20,000원 (현장결제) / 이용시간 입실~22:00 까지</li><li>객실 내 노래방 가능 (A동, C동만 가능) : ~22:00 / 시간당 10,000원 / 시간엄수 필수</li><li>A동 : 32도 추가 시 온수비 70,000원 / 스파 이용시 30,000원 (현장결제)</li><li>실내수영장 (A동 풀빌라) : 이용시간 15:00~22:00 까지 / 수영복 미착용시 수영장 사용 불가 / 퇴실 당일 온수유지 안됨 / 하절기 (5월3일~10월초) 미온수 31도 요청 시 70,000원 / 동절기 미온수 32도 요청 시 70,000원 (사용 1일전 까지 사전신청 및 현장결제) / 11월~3월까지 온수 미사용 시 수영장 물은 채워져있지 않음</li></ul> <h3>인원 추가 정보</h3> <ul> <li>A동 : 1인 20,000원 (12개월 미만), 40,000원 (12개월 이상)</li><li>B동, C동 : 1인 20,000원 (영유아 포함)</li><li>영유아 인원수 포함 / 최대인원 초과불가</li><li><b>현장 결제</b></li></ul> <h3>펜션 서비스</h3> <ul> <li><b>시설 이용문의 및 비용 별도 펜션문의</b></li><li>야외 수영장 (하절기 운영) : 15:00~20:00 / 크기 4m x 8m / 수영장 운영은 날씨 또는 펜션 상황에 따라 변동될 수 있음</li><li>세미나실 : 유료</li><li>수상레저 40% 할인권 제공</li><li>출장 야외 뷔페 이용가능 (칠순잔치, 돌잔치, 작은모임, 소규모 행사 가능 / 펜션문의)</li><li>탁구대</li></ul> <h3>바비큐 시설</h3> <ul> <li>숯+그릴 : 테이블당 20,000원</li><li>숯불 요청시간 : ~20:00</li><li>실내 바비큐 (겨울 : 바닥 보일러실 설치됨 (추위 걱정 없음) / 여름 : 모기,벌레 걱정없음)</li><li>11월~2월까지 바베큐 이용시간 : 입실~21:00 까지</li><li>3월~10월까지 바베큐 이용시간 : 입실~22:00 까지</li><li>현장결제</li></ul> <h3>취소 및 환불 규정</h3> <ul> <li>숙박일 기준 10일전 : 100% 환불</li><li>숙박일 기준 9일전 : 90% 환불</li><li>숙박일 기준 8일전 : 80% 환불</li><li>숙박일 기준 7일전 : 70% 환불</li><li>숙박일 기준 6일전 : 60% 환불</li><li>숙박일 기준 5일전 : 50% 환불</li><li>숙박일 기준 4일전 : 40% 환불</li><li>숙박일 기준 3일전 : 30% 환불</li><li>숙박일 기준 2일전 : 20% 환불</li><li>숙박일 기준 1일전~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul> <h3>확인사항 및 기타</h3> <ul> <li>최대 인원 초과시 입실이 불가 합니다 (방문객 불가)</li><li>객실 내 육류, 튀김류, 생선류 조리를 할 수 없습니다</li><li>전 객실 애완동물 출입이 불가합니다</li><li>보호자 동반없는 미성년자는 이용하실 수 없습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>이용시설의 분실 및 훼손의 책임은 이용자에게 있으니 주의부탁드립니다</li><li>객실 내에서는 화재위험물질 (화약, 폭죽 등)은 사용 하실 수 없습니다 (화재로 인한 책임은 이용자에게 있습니다)</li><li>쓰레기는 지정된 장소에 분리하여 주시기 바랍니다</li><li>위의 정보는 펜션의 사정에 따라 변경될 수 있습니다</li><li>성수기 기간동안 일부 객실의 경우 요금변동이 있을 수 있습니다</li><li>수영장 운영은 날씨 또는 펜션 상황에 따라 변동 될 수 있습니다</li></ul> <div class="map" id="google_maps"></div> </section> <!-- 편의시설 및 서비스 --> <h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3> <section class="service"> <ul class="theme_wrap"> <li class="theme_56">수영장</li><li class="theme_60">와이파이</li><li class="theme_62">픽업가능</li><li class="theme_143">전기밥솥</li><li class="theme_147">무료주차</li><li class="theme_148">BBQ</li><li class="theme_221">주차장</li><li class="theme_222">취사가능</li><li class="theme_223">TV</li><li class="theme_224">욕실용품</li><li class="theme_227">에어컨</li><li class="theme_229">객실샤워실</li><li class="theme_231">드라이기</li><li class="theme_235">금연</li><li class="theme_237">객실내취사</li><li class="theme_327">전자레인지</li><li class="theme_329">객실스파</li> </ul> </section> <!-- 판매자 정보 --> <h3 class="category" type="h3"><span>판매자 정보</span></h3> <section class="seller_info"> <h3>상호</h3> <ul> <li>팬션ABC풀하우스</li> </ul> <h3>대표자명</h3> <ul> <li>정재훈</li> </ul> <h3>주소</h3> <ul> <li>경기 양평군 서종면 황순원로 532-14</li> </ul> <h3>전화번호</h3> <ul> <li>050440139926</li> </ul> <h3>이메일</h3> <ul> <li>[yss235@naver.com](mailto:yss235@naver.com)</li> </ul> <h3>사업자번호</h3> <ul> <li>797-14-00154</li> </ul> </section> </article>',
-    pictureUrlList: [
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2020/03/24/5e799ea5046b1.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77945bfc5a.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77944c700f.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77949275cc.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f825b6786b.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f826181a17.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f8257f0291.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f82627a513.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce779fa182ac.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce779f48b2c5.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77a9cc2677.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77a99e703a.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77a99651b5.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77a9a6e2e1.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77b6b2c97c.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77b6c33f67.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2021/10/12/616540871d99d.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/07/12/5d2807d109fe3.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/06/11/5cff2f902e336.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/06/11/5cff2f64caf06.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2020/03/24/5e799ea5046b1.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77945bfc5a.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77944c700f.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77949275cc.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f825b6786b.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f826181a17.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f8257f0291.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2018/03/07/5a9f82627a513.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce779fa182ac.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce779f48b2c5.jpg',
-      'https://image.goodchoice.kr/resize_490x348/affiliate/2019/05/24/5ce77a9cc2677.jpg'
-    ],
-    room: [
-      {
-        id: 1,
-        roomName: 'Standard Double',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 1,
-            date: '2023-05-25',
-            price: 58000,
-            roomCnt: 3
-          },
-          {
-            id: 2,
-            date: '2023-05-26',
-            price: 78000,
-            roomCnt: 5
-          }
-        ]
-      },
-      {
-        id: 2,
-        roomName: 'Deluxe',
-        checkInTime: 15,
-        checkOutTime: 13,
-        defaultPeople: 2,
-        maxPeople: 4,
-        pictureUrlList: [
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
-          '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg'
-        ],
-        price: [
-          {
-            id: 3,
-            date: '2023-05-25',
-            price: 68000,
-            roomCnt: 3
-          },
-          {
-            id: 4,
-            date: '2023-05-26',
-            price: 68000,
-            roomCnt: 2
-          }
-        ]
-      }
-    ]
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 13,
+    accommodationName: '역삼 브라운도트',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 677-16',
+    rate: 9.7,
+    price: 35000,
+    lat: 37.50286082,
+    lon: 127.0402795,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 18,
+    accommodationName: '역삼 마리호텔',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 720-14',
+    rate: 9.7,
+    price: 0,
+    lat: 37.501647889504,
+    lon: 127.04208745272,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 31,
+    accommodationName: '역삼 사월호텔',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 720-12',
+    rate: 9.6,
+    price: 0,
+    lat: 37.50169239574,
+    lon: 127.0418435379,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 30,
+    accommodationName: '역삼 벤',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 718-28',
+    rate: 9.6,
+    price: 30000,
+    lat: 37.50072377,
+    lon: 127.0398803,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 89,
+    accommodationName: '강남 타라',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 삼성동 142-19',
+    rate: 9.6,
+    price: 40000,
+    lat: 37.50669097,
+    lon: 127.0518901,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 6,
+    accommodationName: '역삼 PREMIER XYM',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 718-18',
+    rate: 9.5,
+    price: 25000,
+    lat: 37.501041,
+    lon: 127.0396361,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 51,
+    accommodationName: '선릉 그레이호텔',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 대치동 890-28',
+    rate: 9.5,
+    price: 30000,
+    lat: 37.504910134892,
+    lon: 127.05290678749,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 8,
+    accommodationName: '강남 봄',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 서초구 반포동 748',
+    rate: 9.5,
+    price: 40000,
+    lat: 37.505022019763,
+    lon: 127.02339788708,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 32,
+    accommodationName: '역삼 CF호텔',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 720-33',
+    rate: 9.5,
+    price: 30000,
+    lat: 37.501234707,
+    lon: 127.042287167,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 27,
+    accommodationName: '강남 멜리샤호텔',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 825-29',
+    rate: 9.5,
+    price: 30000,
+    lat: 37.49722015035,
+    lon: 127.02931626635,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 25,
+    accommodationName: '역삼 H Avenue-역삼점',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 678-14',
+    rate: 9.4,
+    price: 25000,
+    lat: 37.502493818318,
+    lon: 127.03873810178,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 90,
+    accommodationName: '역삼 아마레',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 776-19',
+    rate: 9.4,
+    price: 30000,
+    lat: 37.494632398244,
+    lon: 127.04023576355,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 88,
+    accommodationName: '삼성 캘리포니아',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 삼성동 142-12',
+    rate: 9.4,
+    price: 35000,
+    lat: 37.50665152,
+    lon: 127.0514422,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 24,
+    accommodationName: '강남 제리스플래닛',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 819-9',
+    rate: 9.4,
+    price: 30000,
+    lat: 37.49904037,
+    lon: 127.0285163,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 2,
+    accommodationName: '역삼 호텔 디 아티스트',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 678-13',
+    rate: 9.3,
+    price: 30000,
+    lat: 37.50241452,
+    lon: 127.0384878,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 19,
+    accommodationName: '삼성 JS',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 삼성동 142-13',
+    rate: 9.3,
+    price: 40000,
+    lat: 37.50643527,
+    lon: 127.0514556,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 3,
+    accommodationName: '역삼 리치웰',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 677-9',
+    rate: 9.3,
+    price: 29800,
+    lat: 37.5029727,
+    lon: 127.0398226,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 21,
+    accommodationName: '대치 컬리넌',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 대치동 891-35',
+    rate: 9.3,
+    price: 30000,
+    lat: 37.50511135,
+    lon: 127.054246,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 4,
+    accommodationName: '강남 캠퍼스',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 825-30',
+    rate: 9.3,
+    price: 40000,
+    lat: 37.49731028,
+    lon: 127.0291896,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 85,
+    accommodationName: '강남 블랑',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 700-27',
+    rate: 9.3,
+    price: 20000,
+    lat: 37.5045104,
+    lon: 127.0432887,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 7,
+    accommodationName: '역삼 컬리넌',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 720-23',
+    rate: 9.3,
+    price: 29800,
+    lat: 37.50138975,
+    lon: 127.0420836,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 12,
+    accommodationName: '강남 녹스 호텔',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 677-13',
+    rate: 9.3,
+    price: 25000,
+    lat: 37.50269882,
+    lon: 127.0397456,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 28,
+    accommodationName: '역삼 스타 프리미어',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 677-19',
+    rate: 9.3,
+    price: 25000,
+    lat: 37.50269861,
+    lon: 127.0403473,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 35,
+    accommodationName: '삼성 라엠-LaM',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 삼성동 100-3',
+    rate: 9.3,
+    price: 30000,
+    lat: 37.516843856778,
+    lon: 127.06579833336,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 33,
+    accommodationName: '선릉 호텔 스타',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 삼성동 141-21',
+    rate: 9.2,
+    price: 30000,
+    lat: 37.5053044951,
+    lon: 127.049391992,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 83,
+    accommodationName: '논현 올인',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 논현동 118-7',
+    rate: 9.2,
+    price: 35000,
+    lat: 37.517259,
+    lon: 127.0399117,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 37,
+    accommodationName: '개포 컬리넌',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 개포동 1229-8',
+    rate: 9.2,
+    price: 35000,
+    lat: 37.4768484765,
+    lon: 127.045922828,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 17,
+    accommodationName: '강남 카파쓰',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 역삼동 719-20',
+    rate: 9.2,
+    price: 48800,
+    lat: 37.50154145,
+    lon: 127.0411247,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
+  },
+  {
+    id: 9,
+    accommodationName: '강남 더 디자이너스 리즈 프리미어',
+    picUrl:
+      '//image.goodchoice.kr/resize_370x220/adimg_new/49914/329560/874943ee5c604e46a4f529d8ecc1558d.jpg',
+    address: '서울 강남구 논현동 201-11',
+    rate: 9.2,
+    price: 35000,
+    lat: 37.50521107,
+    lon: 127.0258586,
+    category: 1,
+    peopleMax: 2,
+    info: '<article class="detail_info">\n<!-- 기본 정보 -->\n<h3 class="category" id="default_info_tab" type="h3"><span>기본 정보</span></h3>\n<section class="default_info">\n<!-- 사장님 한마디 & 추천이유 -->\n<div class="comment_mobile">\n<h3>사장님 한마디</h3>\n                    럭셔리한 스타일을 요구하는 국제적 비즈니스 또는 여행객들을 위해 설계됐으며 다양한 서비스가 갖춰진 호텔입니다<br/>\n감각적이고 럭셔리한 디자인의 외관과 인테리어의 청결하고 쾌적한 객실이 준비되어 있습니다                </div>\n<h3>주변정보</h3>\n<ul>\n<li>봉은사역 도보 3분</li><li>서울선릉과정릉 차량 7분</li><li>국립중앙박물관 차량 23분</li></ul>\n<h3>기본정보</h3>\n<ul>\n<li>체크인 : 15:00 | 체크아웃 : 11:00 </li><li>22시 이후 체크인 시 호텔 프론트 문의</li><li>무료 Wi-Fi</li><li>금연층, 흡연층 구분</li><li>Bath Amenity (치약, 칫솔 유료)</li><li>주차 가능 (1객실 당 1대)</li></ul>\n<h3>인원 추가 정보</h3>\n<ul>\n<li>기준인원 외 추가인원 및 침대 추가 : 사전 예약 시 50% 할인 24,200원 (1인 기준)</li><li>침구 추가 : 1채당 36,300원</li><li>영유아 인원수 포함 / 최대인원 초과 불가</li><li>현장 결제</li></ul>\n<h3>투숙객 혜택</h3>\n<ul>\n<li>기준 인원에 한하여 수영장, 사우나, 피트니스 시설 무료</li><li>엑스트라 베드 사전 예약 시 50% 할인된 금액 (24,200원) 제공</li></ul>\n<h3>부대시설 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 06:30~24:00</li><li>바 / 5층 / 18:00~24:00</li><li>룸서비스 / 06:30~23:30</li><li>비즈니스 센터 / 5층 / 주중 : 08:00~20:00, 주말 및 공휴일 휴무</li><li>놀이방 / 5층 / 주중 : 09:00~18:00, 주말 및 공휴일 휴무 / 투숙객 무료</li><li>피트니스 센터 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>수영장 / 별관 6층 / 06:00~21:30 / 미성년자 입장 가능시간 : 10:00~17:00 / 6세 이상~13세 미만 보호자 동반 필수 (6세 미만 입장 불가)</li><li>사우나 / 별관 6층 / 06:00~22:00 / 만 18세 이상 입장 가능</li><li>골프장 / 별관 6층 / 06:00~21:30 / 만 18세 이상 입장 가능</li><li>- 피트니스 센터, 수영장, 골프장, 사우나 정기 휴관일 : 매월 첫째 주 수요일 / 객실 타입별 무료 입장 인원이 제한되며, 초과 시 입장료 발생 (1베드룸 이하 : 2명, 2베드룸 : 4명, 3~4베드룸 : 6명)</li></ul>\n<h3>조식 정보</h3>\n<ul>\n<li>레스토랑 / 5층 / 평일 : 06:30~10:00, 주말 및 공휴일 : 06:30~10:30 </li><li>1인 38,000원 (만 13세 이상~성인), 19,000원 (만 4세~만 12세 이하), 만 4세 미만 무료</li><li>현장 결제</li></ul>\n<h3>취사 시설</h3>\n<ul>\n<li>전 객실 간단 취사 가능</li><li>객실 내 육류, 튀김류, 생선류 조리 금지</li></ul>\n<h3>애완동물 동반 안내</h3>\n<ul>\n<li>전 객실 애완동물 동반 가능합니다</li><li>개/고양이 : 10kg 이하, 최대 2마리</li><li>보증금 : 숙박 일수에 상관 없이 1회 보증금 (1,000,000원/마리당)</li><li>지불된 보증금은 체크아웃 기준 14일 후에 반환됩니다</li><li>청소 비용 : 77,000원/마리 당 (현장결제)</li><li>재고 가능 시 애완동물 세트 대여 (식기/배변패드/배변패드판)</li><li>호텔 문의</li></ul>\n<h3>취소 및 환불 규정</h3>\n<ul>\n<li>체크인일 기준 3일 전 18시까지 : 100% 환불</li><li>체크인일 기준 3일 전 18시 이후~당일 및 No-show : 환불불가</li><li>취소, 환불 시 수수료가 발생할 수 있습니다</li></ul>\n<h3>확인사항 및 기타</h3>\n<ul>\n<li><b>체크인 시 Deposit(보증금) 요구할 수 있고, 퇴실 시 전액 환불됩니다</b></li><li>(단, 유료서비스 이용 및 기물파손 시 청구될 수 있음)</li><li>미성년자는 보호자 동반없이 이용이 불가합니다</li><li>위의 정보는 호텔의 사정에 따라 변경될 수 있습니다</li><li>해당 이미지는 실제와 상이 할 수 있습니다</li><li>체크인 시 배정 또는 베드 타입 미기재 상품은 특정객실과 베드 타입을 보장하지 않습니다</li><li>해당 객실가는 세금, 봉사료가 포함된 금액입니다</li><li>수영장 운영은 날씨 또는 호텔 상황에 따라 변동될 수 있습니다</li></ul>\n<div class="map" id="google_maps"></div>\n</section>\n<!-- 편의시설 및 서비스 -->\n<h3 class="category" type="h3"><span>편의시설 및 서비스</span></h3>\n<section class="service">\n<ul class="theme_wrap">\n<li class="theme_41">피트니스</li><li class="theme_42">수영장</li><li class="theme_44">사우나</li><li class="theme_45">골프장</li><li class="theme_46">레스토랑</li><li class="theme_47">와이파이</li><li class="theme_49">욕실용품</li><li class="theme_52">객실내흡연</li><li class="theme_54">반려견동반</li><li class="theme_55">객실내취사</li><li class="theme_134">금연</li><li class="theme_136">무료주차</li><li class="theme_195">주차장</li><li class="theme_197">TV</li><li class="theme_200">객실샤워실</li><li class="theme_202">드라이기</li><li class="theme_203">다리미</li><li class="theme_204">전기밥솥</li> </ul>\n</section>\n<!-- 판매자 정보 -->\n<h3 class="category" type="h3"><span>판매자 정보</span></h3>\n<section class="seller_info">\n<h3>상호</h3>\n<ul>\n<li>한무컨벤션주식회사</li>\n</ul>\n<h3>대표자명</h3>\n<ul>\n<li>조윤영</li>\n</ul>\n<h3>주소</h3>\n<ul>\n<li>서울 강남구 영동대로 511 (삼성동)</li>\n</ul>\n<h3>전화번호</h3>\n<ul>\n<li>02-3466-7000</li>\n</ul>\n<h3>사업자번호</h3>\n<ul>\n<li>120-81-09492</li>\n</ul>\n</section>\n</article>'
   }
 ];

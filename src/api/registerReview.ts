@@ -1,10 +1,9 @@
 import { fetchData } from '.';
 
 export interface IRegisterReviewRequestBody {
-  accommodationId: number;
-  rating: number;
+  bookId: number;
+  rate: number;
   description: string;
-  email: string;
 }
 
 interface IRegisterReviewResponse {
@@ -14,8 +13,11 @@ interface IRegisterReviewResponse {
   };
 }
 
-export const registerReview = async (data: IRegisterReviewRequestBody) => {
-  const url = `/accommodation/${data.accommodationId}/review`;
+export const registerReview = async (
+  accommodationId: number,
+  data: IRegisterReviewRequestBody
+) => {
+  const url = `/accommodation/${accommodationId}/review`;
 
   const res = await fetchData.post<IRegisterReviewRequestBody>(url, data);
 

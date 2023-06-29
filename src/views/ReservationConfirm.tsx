@@ -19,8 +19,7 @@ const ReservationConfirm = () => {
   const { authUser } = useAuth();
   const navigate = useNavigate();
 
-  // if (!authUser.isLoggedIn || !authUser.user.id) {
-  if (!authUser.isLoggedIn) {
+  if (!authUser.isLoggedIn || !authUser.user.id) {
     navigate('/');
     return;
   }
@@ -75,11 +74,11 @@ const ReservationConfirm = () => {
   const filterByDateTerm = useCallback(() => {
     const filtered = Array.from(totalReservationList).filter((info) => {
       const biggerThanMin =
-        startDate.getTime() <= new Date(info.startDate).getTime() &&
-        new Date(info.startDate).getTime() <= endDate.getTime();
+        startDate.getTime() <= new Date(info.checkInDate).getTime() &&
+        new Date(info.checkInDate).getTime() <= endDate.getTime();
       const smallerThanMax =
-        startDate.getTime() <= new Date(info.endDate).getTime() &&
-        new Date(info.endDate).getTime() <= endDate.getTime();
+        startDate.getTime() <= new Date(info.checkOutDate).getTime() &&
+        new Date(info.checkOutDate).getTime() <= endDate.getTime();
 
       return biggerThanMin || smallerThanMax;
     });
@@ -106,13 +105,14 @@ const ReservationConfirm = () => {
 
   useEffect(() => {
     const init = async () => {
-      // const content = await getReservationList(authUser.user.id);
-      const content = await getReservationList(authUser.user.jti || 1);
+      if (!authUser.user.id) return;
+
+      const content = await getReservationList(authUser.user.id);
 
       if (!content.length) return;
 
       setTotalReservationList(() => {
-        const lastEndDate = new Date(content[0].startDate);
+        const lastEndDate = new Date(content[0].checkInDate);
         setEndDate(lastEndDate);
         setStartDate(getYearAgo(new Date(lastEndDate)));
         return content;
@@ -162,7 +162,7 @@ const ReservationConfirm = () => {
               onEndDateChange={handleEndDateChange}
             />
             <button
-              className="btn btn-active btn-neutral ml-4"
+              className="btn btn-active bg-red-500 hover:bg-red-600 text-white ml-4"
               onClick={filterByDateTerm}
             >
               적용
@@ -171,14 +171,20 @@ const ReservationConfirm = () => {
         </section>
         <div className="w-full h-px bg-gray-200 my-6"></div>
         <section className="w-full flex flex-col gap-4">
-          {getListOfRenderingPage().map((reservationInfo) => {
-            return (
-              <ReservationInfoCard
-                key={`reservation-${reservationInfo.id}`}
-                data={reservationInfo}
-              />
-            );
-          })}
+          {!reservationList.length ? (
+            <div className="text-center py-20">
+              <p>검색 결과 없음</p>
+            </div>
+          ) : (
+            getListOfRenderingPage().map((reservationInfo) => {
+              return (
+                <ReservationInfoCard
+                  key={`reservation-${reservationInfo.id}`}
+                  data={reservationInfo}
+                />
+              );
+            })
+          )}
         </section>
         <div className="join flex justify-center mt-8">
           {Array.from({ length: totalPages }, (_, index) => index + 1).map(
@@ -186,7 +192,7 @@ const ReservationConfirm = () => {
               return (
                 <input
                   key={`pageButton-${pageIndex}`}
-                  className="join-item btn btn-square"
+                  className="join-item btn btn-sm btn-square checked:!bg-red-500 checked:hover:!bg-red-600 checked:!border-red-500 checked:!text-white"
                   type="radio"
                   name="pages"
                   aria-label={`${pageIndex}`}

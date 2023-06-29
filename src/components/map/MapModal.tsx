@@ -1,19 +1,12 @@
 import { PositionProps } from 'api/map';
-import { useLocalMap } from '../../hooks/useLocalMap';
+import useLocalMap from '../../hooks/useLocalMap';
 import LocalMap from './LocalMap';
 
 const MapModal = ({ position }: { position: PositionProps }) => {
   const { localData } = useLocalMap(position);
 
   return (
-    <div
-      className="max-w-5xl"
-      style={{
-        width: 'calc(100vw - 80px)',
-        height: 'calc(100vh - 500px)',
-        minHeight: '360px'
-      }}
-    >
+    <div className="w-[calc(100vw-80px)] max-w-5xl h-[500px] max-h-96 max-sm:h-80">
       <LocalMap position={position} type="full" localData={localData} />
     </div>
   );

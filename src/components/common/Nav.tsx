@@ -1,5 +1,5 @@
 import useSignIn from '../../hooks/useSignIn';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { SearchBar } from '../searchBar/SearchBar';
 import useAuth from '../../hooks/useAuth';
@@ -7,15 +7,16 @@ import useAuth from '../../hooks/useAuth';
 const Nav = () => {
   const location = useLocation();
   const { authUser, handleLogout } = useAuth();
-  const [isShow, isSetShow] = useState<boolean>(false);
+  const [isShow, setIsShow] = useState<boolean>(false);
+  const touchStartRef = useRef(0);
 
   const handleShowSearchBar = () => {
-    isSetShow((isShow) => !isShow);
+    setIsShow((isShow) => !isShow);
   };
 
   const handleWheelEvent = (e: WheelEvent) => {
     if (isShow && e.deltaY > 5) {
-      isSetShow(false);
+      setIsShow(false);
     }
   };
 
@@ -27,16 +28,37 @@ const Nav = () => {
     }
   };
 
+  const touchStart = (e: TouchEvent) => {
+    if (isShow) {
+      touchStartRef.current = e.touches[0].clientY;
+    }
+  };
+
+  const touchMoveEvent = (e: TouchEvent) => {
+    if (isShow) {
+      const distance = Math.abs(
+        touchStartRef.current - e.changedTouches[0].clientY
+      );
+      if (distance > 30) {
+        setIsShow(false);
+      }
+    }
+  };
+
   useEffect(() => {
+    window.addEventListener('touchstart', touchStart);
+    window.addEventListener('touchmove', touchMoveEvent);
     window.addEventListener('wheel', handleWheelEvent);
 
     return () => {
-      window.addEventListener('wheel', handleWheelEvent);
+      window.removeEventListener('touchstart', touchStart);
+      window.removeEventListener('touchmove', touchMoveEvent);
+      window.removeEventListener('wheel', handleWheelEvent);
     };
   }, [isShow]);
 
   useEffect(() => {
-    isSetShow(false);
+    setIsShow(false);
   }, [location.pathname]);
 
   return (
@@ -47,8 +69,16 @@ const Nav = () => {
       >
         <div className="h-16 w-full max-w-5xl px-3">
           <div className="flex-1 pl-2">
-            <Link to="/" className="cursor-pointer text-xl font-bold">
-              YogiZogi
+            <Link
+              to="/"
+              className="cursor-pointer text-xl font-bold flex gap-2"
+            >
+              <img
+                src="/assets/images/logo.png"
+                alt="YogiZogi"
+                className="w-8"
+              />
+              <p>YogiZogi</p>
             </Link>
           </div>
           <div className="flex-none flex items-center gap-4">
@@ -93,7 +123,7 @@ const Nav = () => {
                 </label>
                 <ul
                   tabIndex={0}
-                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md"
+                  className="dropdown-content menu p-2 shadow bg-base-100 rounded-box text-md z-50"
                 >
                   <li onClick={handleClick}>
                     <Link to="/reservationConfirm">예약확인</Link>

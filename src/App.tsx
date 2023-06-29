@@ -11,8 +11,10 @@ import Layout from './components/common/Layout';
 import AuthCallback from './components/common/AuthCallback';
 import UnAuthRoute from './router/UnAuthRoute';
 import AuthRoute from './router/AuthRoute';
+import useCustomInterceptor from './hooks/useCustomInterceptor';
 
 function App() {
+  useCustomInterceptor();
   return (
     <HashRouter>
       <Layout>
@@ -31,10 +33,7 @@ function App() {
             <Route path="/payment" element={<Payment />} />
           </Route>
           <Route path="/searchResult" element={<SearchResult />} />
-          <Route
-            path="/accommodation/:id"
-            element={<AccommodationDetail />}
-          />
+          <Route path="/accommodation/:id" element={<AccommodationDetail />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Layout>

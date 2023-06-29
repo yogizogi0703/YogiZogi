@@ -5,6 +5,9 @@ import {
 } from '../../store/atom/authAtom';
 import { decoderToken } from '../../utils/tokenUtil';
 
+/**
+ * auth state에 있는 토큰을 decode해서 select
+ */
 export const authLoginState = selector({
   key: 'authentification/id',
   get: ({ get }) => {
@@ -20,6 +23,7 @@ export const authLoginState = selector({
         };
       } else {
         localStorage.removeItem(AUTH_TOKEN_KEY);
+        sessionStorage.removeItem(AUTH_TOKEN_KEY);
         return { ...value, token: '', user: {}, isLoggedIn: false };
       }
     }

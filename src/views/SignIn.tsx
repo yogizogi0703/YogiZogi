@@ -9,7 +9,8 @@ const SignIn = () => {
     isDisabled,
     handleChangeInput,
     handleSubmitSignIn,
-    handleKakaoSignIn
+    handleKakaoSignIn,
+    handleChangeMaintain
   } = useSignIn();
 
   return (
@@ -36,7 +37,11 @@ const SignIn = () => {
           />
           <div className="form-control pt-2">
             <label className="label cursor-pointer justify-start gap-2">
-              <input type="checkbox" className="toggle" />
+              <input
+                type="checkbox"
+                className="toggle"
+                onChange={handleChangeMaintain}
+              />
               <span className="label-text max-md:text-white">로그인 유지</span>
             </label>
           </div>

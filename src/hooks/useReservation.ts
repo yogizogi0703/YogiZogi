@@ -2,15 +2,17 @@ import { useRef, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import useAuth from './useAuth';
 import { ReservationAddProps, fetchReservation } from '../api/reservation';
+import useModal from './useModal';
 
 interface ReservationProps {
   name: string;
 }
 
-export const useReservation = () => {
+const useReservation = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { authUser } = useAuth();
+  const { openModal } = useModal();
   const roomInfoRef = useRef(location.state);
   const params = new URLSearchParams(location.search);
   const accommodationInfoRef = useRef({
@@ -29,7 +31,7 @@ export const useReservation = () => {
     const checked = target.checked;
     if (checked) {
       setReservationData({
-        name: String(authUser.user.nickname),
+        name: String(authUser.user.nickname)
       });
     } else {
       setReservationData({ name: '' });
@@ -59,24 +61,29 @@ export const useReservation = () => {
 
   const handleReservationSubmit = async () => {
     if (!reservationData.name) {
-      alert('예약자명을 입력해주세요.');
+      openModal({ content: '예약자명을 입력해주세요.' });
       return;
     }
+
+    openModal({
+      content: '숙소를 예약합니다.',
+      btnTitle: '예약',
+      handle: submitReservation
+    });
+  };
+
+  const submitReservation = async () => {
     const accommodationId = Number(roomInfoRef.current.accommodationId);
     const data = getReservationFormdata();
     const res = await fetchReservation(accommodationId, data);
 
     if (!res) {
-      alert('문제가 발생했습니다.');
       return;
     }
 
     if (res.status === 'OK') {
-      alert(res.data.msg);
+      openModal({ content: res.data.msg });
       navigate('/reservationConfirm');
-    } else {
-      alert(res.msg);
-      console.error(res.code);
     }
   };
 
@@ -89,3 +96,5 @@ export const useReservation = () => {
     handleReservationSubmit
   };
 };
+
+export default useReservation;
