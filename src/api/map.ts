@@ -52,6 +52,6 @@ export const fetchLocalAPI = async (
 };
 
 export const fetchMapAPI = async (data: MapSearchProps) => {
-  const res = await fetchData.post('/accommodation/amp', data);
+  const res = await fetchData.post('/accommodation/map', data);
   return res?.data;
 };

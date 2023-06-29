@@ -25,7 +25,7 @@ const FacilityMarker = ({
   };
 
   const handleDetailMove = (id: number) => {
-    navigate(`/accommodationDetai/${id}`);
+    navigate(`/accommodation/${id}`);
   };
 
   useEffect(() => {
@@ -35,14 +35,14 @@ const FacilityMarker = ({
   return (
     <>
       <div
-        className="cursor-pointer px-4 py-1 rounded-lg bg-white text-center drop-shadow-md hover:scale-105"
+        className="cursor-pointer px-4 py-1 rounded-lg bg-white text-center drop-shadow-md hover:scale-105 transition-all"
         onClick={handleMarkerClick}
       >
         <span>₩{formatPrice}</span>
       </div>
       {isShow && (
         <FacilityDetailMarker
-          info={{}}
+          info={info}
           handleOnClick={() => handleDetailMove(1)}
         />
       )}
