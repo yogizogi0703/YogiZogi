@@ -51,10 +51,10 @@ const AccommodationDetail = () => {
   } = Object.fromEntries(urlParams.entries());
 
   const [roomData, setRoomData] = useState({
-    accommodationName: accommodationData.accommodationName,
-    accommodationId: accommodationData.id,
-    address: accommodationData.address,
-    rate: accommodationData.rate,
+    accommodationName: '',
+    accommodationId: 0,
+    address: '',
+    rate: 0,
     roomId: 0,
     roomName: '',
     roomImg: '',
@@ -90,6 +90,13 @@ const AccommodationDetail = () => {
 
       if (result) {
         setAccommodationData(result.data.data);
+        setRoomData((prev) => ({
+          ...prev,
+          accommodationName: accommodationData.accommodationName,
+          accommodationId: accommodationData.id,
+          address: accommodationData.address,
+          rate: accommodationData.rate
+        }));
       }
       getReview(1);
     })();
