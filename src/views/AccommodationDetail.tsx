@@ -1,6 +1,3 @@
-import { addCommasToPrice } from '../helpers';
-import RatingStars from '../components/common/RatingStars';
-import { BiMap } from 'react-icons/bi';
 import LocalMapView from '../components/map/LocalMapView';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
@@ -15,7 +12,6 @@ import {
   CarouselModal,
   IModalProps
 } from '../components/accommodationDetail/CarouselModal';
-import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
 import './AccommodationDetail.css';
 import { RoomInfo } from '../components/accommodationDetail/RoomInfo';
 import { ReviewSection } from '../components/accommodationDetail/ReviewSection';
@@ -29,7 +25,7 @@ const AccommodationDetail = () => {
 
   const [reviewRes, setReviewRes] = useState<IReviewResponse>({
     content: [],
-    totalElement: 0,
+    totalElements: 0,
     totalPages: 0
   });
   const [reviewArr, setReviewArr] = useState<IReview[]>([]);
@@ -39,20 +35,6 @@ const AccommodationDetail = () => {
     alt: '',
     selectedImg: 0
   });
-  const [modalState, setModalState] = useState(false);
-
-  const rateAdj = [
-    'Terrible',
-    'Poor',
-    'Bad',
-    'Okay',
-    'Good',
-    'Fine',
-    'Very good',
-    'Excellent',
-    'Outstanding',
-    'Perfect'
-  ];
 
   const accommodationId =
     window.location.hash.match(/\/accommodation\/(\d+)/) || '';
@@ -88,7 +70,7 @@ const AccommodationDetail = () => {
     if (reviewRes && reviewRes.data) {
       setReviewRes({
         content: reviewRes.data.content,
-        totalElement: reviewRes.data.totalElements,
+        totalElements: reviewRes.data.totalElements,
         totalPages: reviewRes.data.totalPages
       });
       setReviewArr((prev) => {
