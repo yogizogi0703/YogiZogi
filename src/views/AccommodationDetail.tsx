@@ -328,7 +328,11 @@ const AccommodationDetail = () => {
                       >
                         예약하기
                       </button>
-                      <ConfirmModal data={roomData} modalState={modalState} setModalState={setModalState}/>
+                      <ConfirmModal
+                        data={roomData}
+                        modalState={modalState}
+                        setModalState={setModalState}
+                      />
                     </div>
                   </div>
                 </div>

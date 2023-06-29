@@ -1,3 +1,4 @@
+import { fetchData } from '../api';
 import axios from 'axios';
 
 export interface PositionProps {
@@ -20,6 +21,15 @@ export interface LocalPlaceProps {
   y: number;
 }
 
+export interface MapSearchProps {
+  checkInDate: string;
+  checkOutDate: string;
+  leftUpLat: number;
+  leftUpLon: number;
+  rightDownLat: number;
+  rightDownLon: number;
+}
+
 export const fetchLocalAPI = async (
   position: PositionProps,
   category: string
@@ -39,4 +49,9 @@ export const fetchLocalAPI = async (
   }).catch((e) => console.log(e));
 
   return res;
+};
+
+export const fetchMapAPI = async (data: MapSearchProps) => {
+  const res = await fetchData.post('/accommodation/amp', data);
+  return res?.data;
 };

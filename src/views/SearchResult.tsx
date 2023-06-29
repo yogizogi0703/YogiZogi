@@ -401,7 +401,7 @@ const SearchResult = () => {
         {!isLoading && !totalElements && isDataEnd ? (
           <p className="text-center p-4">검색 결과가 없습니다.</p>
         ) : viewType === View.MAP ? (
-          <div>{!isLoading && <MapView />}</div>
+          <div>{!isLoading && <MapView searchData={accommodationList} />}</div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {

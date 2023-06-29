@@ -2,13 +2,10 @@ import { useEffect, useState } from 'react';
 import FacilityDetailMarker from './FacilityDetailMarker';
 import { PositionProps } from 'api/map';
 import { useNavigate } from 'react-router-dom';
+import { ISearchResultContent } from '../../../api/search';
 
 interface FacilityMarkerProps {
-  info: {
-    id: number;
-    price: number;
-    position: PositionProps;
-  };
+  info: ISearchResultContent;
   isActive: boolean;
   handleOnClickMove: (arg1: PositionProps, arg2: number) => void;
 }
@@ -20,10 +17,11 @@ const FacilityMarker = ({
 }: FacilityMarkerProps) => {
   const navigate = useNavigate();
   const [isShow, setIsShow] = useState<boolean>(isActive);
-  const formatPrice = info.price.toLocaleString('kr');
+  const { id, price, lat, lon } = info;
+  const formatPrice = price.toLocaleString('kr');
 
   const handleMarkerClick = () => {
-    handleOnClickMove(info.position, info.id);
+    handleOnClickMove({ lat, lng: lon }, id);
   };
 
   const handleDetailMove = (id: number) => {
