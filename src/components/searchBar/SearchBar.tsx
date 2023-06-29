@@ -40,6 +40,7 @@ export const SearchBar = () => {
   const [calendarState, setCalendarState] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
   const [alertModalState, setAlertModalState] = useState(false);
+  const [modalContent, setModalContent] = useState('');
 
   const navigate = useNavigate();
 
@@ -238,7 +239,7 @@ export const SearchBar = () => {
         </div>
       </div>
       <AlertModal
-        content="목적지, 기간, 인원 모두를 입력해주세요!"
+        content={modalContent}
         modalState={alertModalState}
         handleModal={setAlertModalState}
       />
