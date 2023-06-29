@@ -16,6 +16,7 @@ import {
   IModalProps
 } from '../components/accommodationDetail/CarouselModal';
 import { ConfirmModal } from '../components/accommodationDetail/ConfirmModal';
+import './AccommodationDetail.css';
 
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
@@ -192,22 +193,53 @@ const AccommodationDetail = () => {
                 평점 :<RatingStars rate={Number(accommodationRate)} />
               </div>
             </div>
-            <div className="text-xs sm:text-sm md:text-base">
-              <h2 className="text-lg md:text-2xl font-semibold mb-2">
-                숙소 정보
-              </h2>
-              <p className="leading-7">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Enim a
-                praesentium explicabo totam officiis, placeat quis eaque
-                doloribus vero, veniam eius quaerat rem, dolores et eum
-                consectetur non quisquam nostrum!
-                <br />
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia
-                est repellendus impedit ab, et ducimus accusamus delectus atque
-                dolorem hic maxime similique porro cumque mollitia quaerat
-                fugiat? Ratione, quia illum?
-              </p>
-            </div>
+            <article className=" flex flex-col gap-2 text-xs sm:text-sm md:text-base w-full">
+              {accommodationData.info && (
+                <>
+                  <details open className="bg-base-200 p-3 rounded-lg ">
+                    <summary className="text-base md:text-lg  font-semibold">
+                      기본정보
+                    </summary>
+                    {accommodationData.info && (
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: accommodationData.info
+                            .split('<h3>사장님 한마디</h3>')[1]
+                            .split('<!-- 편의시설 및 서비스 -->')[0]
+                        }}
+                        className="mt-2"
+                      />
+                    )}
+                  </details>
+                  <details className="bg-base-200 p-3 rounded-lg">
+                    <summary className="text-base md:text-lg  font-semibold">
+                      편의시설 및 서비스
+                    </summary>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: accommodationData.info
+                          .split('<span>편의시설 및 서비스</span></h3>')[1]
+                          .split('<!-- 판매자 정보 -->')[0]
+                      }}
+                      className="mt-2"
+                    />
+                  </details>
+                  <details className="bg-base-200 p-3 rounded-lg">
+                    <summary className="text-base md:text-lg  font-semibold">
+                      판매자 정보
+                    </summary>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: accommodationData.info
+                          .split('<span>판매자 정보</span></h3>')[1]
+                          .split('</article>')[0]
+                      }}
+                      className="mt-2"
+                    />
+                  </details>
+                </>
+              )}
+            </article>
           </div>
           {accommodationData.id !== 0 && (
             <LocalMapView
