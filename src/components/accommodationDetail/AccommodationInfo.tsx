@@ -67,7 +67,7 @@ export const AccommodationInfo = ({
                     dangerouslySetInnerHTML={{
                       __html: accommodationData.info
                         .split('<section class="seller_info">')[1]
-                        .split('<section>')[0]
+                        .split('</section>')[0]
                     }}
                     className="mt-2"
                   />
