@@ -35,7 +35,7 @@ export const ReviewSection = ({
 
   return (
     <>
-      {reviewRes.content.length > 0 && reviewArr.length > 0 && (
+      {reviewRes.content.length > 0 && reviewArr.length > 0 ? (
         <>
           <div>
             <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
@@ -95,6 +95,10 @@ export const ReviewSection = ({
             </div>
           </div>
         </>
+      ) : (
+        <div className="p-3 border rounded-lg mb-5 text-xs md:text-base">
+          <div className="text-center">등록된 리뷰가 없습니다.</div>
+        </div>
       )}
     </>
   );
