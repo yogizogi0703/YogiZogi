@@ -103,40 +103,18 @@ const AccommodationDetail = () => {
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
       <div className="grid grid-rows-2 grid-cols-4 gap-2">
-        {accommodationData.picUrlList.slice(0, 5).map((el, idx) => {
-          if (idx === 0)
-            return (
-              <label
-                key={idx}
-                htmlFor="reservationModal"
-                className="col-span-2 row-span-2 cursor-pointer"
-                onClick={() =>
-                  setModalProps({
-                    imgList: accommodationData.picUrlList,
-                    alt: 'accommodation first image',
-                    selectedImg: idx
-                  })
-                }
-              >
-                <figure>
-                  <img
-                    src={el.url}
-                    alt={`${accommodationData.accommodationName}-image-${idx}`}
-                    className="w-full h-full object-cover"
-                  />
-                </figure>
-              </label>
-            );
-          else {
-            if (el.url.length > 0) {
+        {accommodationData &&
+          accommodationData.picUrlList.slice(0, 5).map((el, idx) => {
+            if (idx === 0)
               return (
                 <label
                   key={idx}
                   htmlFor="reservationModal"
+                  className="col-span-2 row-span-2 cursor-pointer"
                   onClick={() =>
                     setModalProps({
                       imgList: accommodationData.picUrlList,
-                      alt: 'accommodation total image',
+                      alt: 'accommodation first image',
                       selectedImg: idx
                     })
                   }
@@ -145,22 +123,45 @@ const AccommodationDetail = () => {
                     <img
                       src={el.url}
                       alt={`${accommodationData.accommodationName}-image-${idx}`}
-                      className="w-full h-full object-cover cursor-pointer"
+                      className="w-full h-full object-cover"
                     />
                   </figure>
                 </label>
               );
-            } else {
-              return (
-                <figure key={idx}>
-                  <div className="flex items-center justify-center w-full h-full object-cover bg-gray-300">
-                    No Image
-                  </div>
-                </figure>
-              );
+            else {
+              if (el.url.length > 0) {
+                return (
+                  <label
+                    key={idx}
+                    htmlFor="reservationModal"
+                    onClick={() =>
+                      setModalProps({
+                        imgList: accommodationData.picUrlList,
+                        alt: 'accommodation total image',
+                        selectedImg: idx
+                      })
+                    }
+                  >
+                    <figure>
+                      <img
+                        src={el.url}
+                        alt={`${accommodationData.accommodationName}-image-${idx}`}
+                        className="w-full h-full object-cover cursor-pointer"
+                      />
+                    </figure>
+                  </label>
+                );
+              } else {
+                return (
+                  <figure key={idx}>
+                    <div className="flex items-center justify-center w-full h-full object-cover bg-gray-300">
+                      No Image
+                    </div>
+                  </figure>
+                );
+              }
             }
-          }
-        })}
+          })}
       </div>
       <section className="flex flex-col gap-5 md:gap-10">
         <div className="flex gap-5 flex-col md:flex-row">
