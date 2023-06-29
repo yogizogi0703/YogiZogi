@@ -98,7 +98,7 @@ const AccommodationDetail = () => {
           rate: accommodationData.rate
         }));
       }
-      getReview(1);
+      getReview(0);
     })();
   }, [id]);
 
