@@ -1,8 +1,16 @@
 import { SignUpFormDataProps, fetchSignUp } from '../api/auth';
 import { useEffect, useState } from 'react';
-import { validateEmail, validatePassword } from './useSignIn';
 import { useNavigate } from 'react-router-dom';
 import useModal from './useModal';
+
+export const validateEmail = (email: string) => {
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  return emailRegex.test(email);
+};
+
+export const validatePassword = (password: string) => {
+  return password.length >= 8;
+};
 
 const useSignUp = () => {
   const navigate = useNavigate();
@@ -10,7 +18,7 @@ const useSignUp = () => {
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [signUpData, setSignUpData] = useState<SignUpFormDataProps>({
     email: '',
-    nickname: '',
+    nickName: '',
     password: '',
     passwordCheck: ''
   });
@@ -28,7 +36,7 @@ const useSignUp = () => {
       openModal({ content: '이메일 형식을 입력해주세요.' });
       return;
     }
-    if (signUpData.nickname.length < 2) {
+    if (signUpData.nickName.length < 2) {
       openModal({ content: '닉네임을 2자리 이상 입력해주세요.' });
       return;
     }
@@ -49,9 +57,6 @@ const useSignUp = () => {
     if (res.status === 'OK') {
       openModal({ content: res.data.msg });
       navigate('/signIn');
-    } else {
-      openModal({ content: res.msg });
-      console.error(res.code);
     }
   };
 

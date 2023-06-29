@@ -1,6 +1,7 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import { decoderToken } from '../../utils/tokenUtil';
+import { LOGIN_MAINTAIN } from '../../store/atom/authAtom';
 
 const AuthCallback = () => {
   const { successLogin } = useAuth();

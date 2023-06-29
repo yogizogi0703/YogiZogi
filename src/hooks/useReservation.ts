@@ -78,16 +78,12 @@ const useReservation = () => {
     const res = await fetchReservation(accommodationId, data);
 
     if (!res) {
-      openModal({ content: '문제가 발생했습니다.' });
       return;
     }
 
     if (res.status === 'OK') {
       openModal({ content: res.data.msg });
       navigate('/reservationConfirm');
-    } else {
-      openModal({ content: res.msg });
-      console.error(res.code);
     }
   };
 
