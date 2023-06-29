@@ -154,7 +154,7 @@ export const SearchBar = () => {
           </p>
           <div
             ref={calendarRef}
-            className={`flex px-2 md:p-3 rounded-lg bg-white absolute gap-3 top-32 sm:top-20 sm:right-0 shadow-lg ${
+            className={`flex px-2 md:p-3 rounded-lg bg-white absolute gap-3 top-32 sm:top-20 sm:right-0 shadow-lg z-10 ${
               calendarState ? 'block' : 'hidden'
             }`}
           >
