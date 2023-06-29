@@ -10,6 +10,8 @@ import { GetGeoInfo } from '../../utils/getGeoInfo';
 import { getDateFormat, getMonthDayFormat } from '../../utils/handleDate';
 import './SearchBar.css';
 import { useNavigate } from 'react-router-dom';
+import { BsPinMap } from 'react-icons/bs';
+import { AlertModal } from '../../components/common/AlertModal';
 
 export interface SearchProps {
   searchValue: string;
@@ -22,8 +24,14 @@ export interface SearchProps {
 export const SearchBar = () => {
   const [search, setSearch] = useState<SearchProps>({
     searchValue: '',
-    checkInDate: new Date(),
-    checkOutDate: new Date(),
+    checkInDate:
+      new Date() > new Date(2023, 5, 30) && new Date() <= new Date(2023, 8, 30)
+        ? new Date()
+        : new Date(2023, 6, 1),
+    checkOutDate:
+      new Date() > new Date(2023, 5, 30) && new Date() <= new Date(2023, 8, 30)
+        ? new Date()
+        : new Date(2023, 6, 1),
     people: 0,
     userGeoInfo: [37.57, 126.9]
   });
@@ -31,6 +39,9 @@ export const SearchBar = () => {
   const [dateContent, setDateContent] = useState('');
   const [calendarState, setCalendarState] = useState(false);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const [alertModalState, setAlertModalState] = useState(false);
+  const [modalContent, setModalContent] = useState('');
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -75,11 +86,11 @@ export const SearchBar = () => {
       search.searchValue.length === 0 ||
       search.checkOutDate === search.checkInDate
     )
-      return;
+      return setAlertModalState(true);
     else {
       const [lat, lon] = search.userGeoInfo;
       const params = new URLSearchParams();
-      
+
       params.append('checkindate', getDateFormat(search.checkInDate));
       params.append('checkoutdate', getDateFormat(search.checkOutDate));
       params.append('people', search.people.toString());
@@ -99,7 +110,10 @@ export const SearchBar = () => {
   return (
     <section className="relative flex flex-col sm:flex-row gap-5 md:gap-10 border min-w-fit w-auto max-w-4xl p-3 shadow-md mx-auto rounded-lg bg-white">
       <div className="w-full md:w-1/2 flex flex-col gap-1">
-        <p className="font-semibold text-lg">목적지</p>
+        <p className="flex items-center gap-1 font-semibold text-lg">
+          <BsPinMap />
+          목적지
+        </p>
         <div className="flex items-center justify-between gap-1 shrink bg-slate-200 rounded-md p-1">
           <input
             type="text"
@@ -141,7 +155,7 @@ export const SearchBar = () => {
           </p>
           <div
             ref={calendarRef}
-            className={`flex px-2 md:p-3 rounded-lg bg-stone-200 absolute gap-3 top-32 sm:top-20 sm:right-0 ${
+            className={`flex px-2 md:px-3 pt-3 rounded-lg bg-white absolute gap-3 top-32 sm:top-9 sm:right-0 shadow-lg z-10 ${
               calendarState ? 'block' : 'hidden'
             }`}
           >
@@ -150,7 +164,8 @@ export const SearchBar = () => {
               <DatePicker
                 locale={ko}
                 inline
-                minDate={new Date()}
+                minDate={new Date(2023, 6, 1)}
+                maxDate={new Date(2023, 8, 30)}
                 selected={search.checkInDate}
                 closeOnScroll={true}
                 onChange={(date: Date) => {
@@ -168,6 +183,7 @@ export const SearchBar = () => {
                 locale={ko}
                 inline
                 minDate={new Date(search.checkInDate.getTime() + 86400000)}
+                maxDate={new Date(2023, 8, 30)}
                 selected={search.checkOutDate}
                 closeOnScroll={true}
                 onChange={(date: Date) => {
@@ -222,6 +238,11 @@ export const SearchBar = () => {
           </button>
         </div>
       </div>
+      <AlertModal
+        content={modalContent}
+        modalState={alertModalState}
+        handleModal={setAlertModalState}
+      />
     </section>
   );
 };
