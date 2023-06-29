@@ -1,16 +1,21 @@
-import { useCallback, useRef, useState } from 'react';
-import { CustomOverlayMap, Map, useMap } from 'react-kakao-maps-sdk';
+import { useCallback, useState } from 'react';
+import { CustomOverlayMap, Map } from 'react-kakao-maps-sdk';
 import FacilityMarker from './marker/FacilityMarker';
 import { ISearchResultContent } from 'api/search';
 import useDynamicMap from '../../hooks/useDynamicMap';
-import { MapSearchProps } from 'api/map';
 import { useNavigate } from 'react-router-dom';
 
 interface DynamicMapProps {
   searchData: ISearchResultContent[];
+  param: {
+    people: number;
+    checkindate: string;
+    checkoutdate: string;
+  };
 }
 
-const DynamicMap = ({ searchData }: DynamicMapProps) => {
+const DynamicMap = ({ searchData, param }: DynamicMapProps) => {
+  const navigate = useNavigate();
   const [isMapLoad, setIsMapLoad] = useState<boolean>(false);
   const [isMapMove, setIsMapMove] = useState<boolean>(false);
 
@@ -36,15 +41,22 @@ const DynamicMap = ({ searchData }: DynamicMapProps) => {
     handleCloseInfo();
   }, []);
 
+  const handleMoveDetail = (id: number) => {
+    navigate(
+      `/accommodation/${id}?checkindate=${param.checkindate}&checkoutdate=${param.checkoutdate}&people=${param.people}`
+    );
+  };
+
   return (
     <div
       className="relative mx-auto max-w-5xl"
-      style={{ height: 'calc(100vh - 112px)' }}
+      style={{ height: 'calc(100vh - 200px)' }}
     >
       {isMapMove && <RefreshBtn handleOnClick={handleOnClickSearch} />}
       {activeMarker !== 0 && (
         <FacilityDetailBox
           info={mapData.find(({ id }) => id === activeMarker)}
+          handleOnClick={() => handleMoveDetail(activeMarker)}
         />
       )}
       <Map
@@ -78,6 +90,7 @@ const DynamicMap = ({ searchData }: DynamicMapProps) => {
               info={item}
               isActive={activeMarker === item.id}
               handleOnClickMove={handleOnClickMove}
+              handleOnClick={() => handleMoveDetail(activeMarker)}
             />
           </CustomOverlayMap>
         ))}
@@ -113,23 +126,25 @@ const RefreshBtn = ({ handleOnClick }: { handleOnClick: () => void }) => {
   );
 };
 
-const FacilityDetailBox = ({ info }: { info?: ISearchResultContent }) => {
+const FacilityDetailBox = ({
+  info,
+  handleOnClick
+}: {
+  info?: ISearchResultContent;
+  handleOnClick: () => void;
+}) => {
   if (!info) {
     return <></>;
   }
   const navigate = useNavigate();
   const formatPrice = info.price.toLocaleString('kr');
 
-  const handleOnClick = () => {
-    navigate('/');
-  };
-
   return (
     <div
       className="absolute bottom-8 px-4 w-full h-auto z-10 sm:hidden"
       onClick={handleOnClick}
     >
-      <div className="cursor-pointer flex max-w-[24rem] m-auto w-full h-32 bg-white rounded-lg overflow-hidden">
+      <div className="cursor-pointer flex max-w-[24rem] m-auto w-full h-32 bg-white rounded-lg drop-shadow-md overflow-hidden">
         <div className="min-w-[8rem] w-32 h-32">
           <img
             className="w-full h-full object-cover"

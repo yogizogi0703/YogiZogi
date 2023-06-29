@@ -8,12 +8,14 @@ interface FacilityMarkerProps {
   info: ISearchResultContent;
   isActive: boolean;
   handleOnClickMove: (arg1: PositionProps, arg2: number) => void;
+  handleOnClick: () => void;
 }
 
 const FacilityMarker = ({
   info,
   isActive,
-  handleOnClickMove
+  handleOnClickMove,
+  handleOnClick
 }: FacilityMarkerProps) => {
   const navigate = useNavigate();
   const [isShow, setIsShow] = useState<boolean>(isActive);
@@ -22,10 +24,6 @@ const FacilityMarker = ({
 
   const handleMarkerClick = () => {
     handleOnClickMove({ lat, lng: lon }, id);
-  };
-
-  const handleDetailMove = (id: number) => {
-    navigate(`/accommodation/${id}`);
   };
 
   useEffect(() => {
@@ -41,10 +39,7 @@ const FacilityMarker = ({
         <span>₩{formatPrice}</span>
       </div>
       {isShow && (
-        <FacilityDetailMarker
-          info={info}
-          handleOnClick={() => handleDetailMove(1)}
-        />
+        <FacilityDetailMarker info={info} handleOnClick={handleOnClick} />
       )}
     </>
   );

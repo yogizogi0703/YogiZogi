@@ -99,7 +99,7 @@ const AccommodationDetail = () => {
   useEffect(() => {
     (async () => {
       const result: AxiosResponse<any, any> | undefined = await fetchData.get(
-        `/accommodation/${id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
+        `/accommodation/${id}/?checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
       );
 
       if (result) {
