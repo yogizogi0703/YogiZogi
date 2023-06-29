@@ -81,7 +81,7 @@ export const RoomInfo = ({
                         {addCommasToPrice(el.price)}원
                       </div>
                       <button
-                        className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600 text-white"
+                        className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 disabled:bg-red-800 hover:bg-red-600 text-white"
                         onClick={() => {
                           setRoomData((prev) => ({
                             ...prev,
@@ -92,6 +92,7 @@ export const RoomInfo = ({
                           }));
                           setModalState(true);
                         }}
+                        disabled={el.price === null}
                       >
                         예약하기
                       </button>
