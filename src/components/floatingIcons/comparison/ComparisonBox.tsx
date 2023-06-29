@@ -34,6 +34,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
     const newItems = selectedAcc.filter((_, i) => i !== idx);
     setSelectedAcc(newItems);
   };
+  console.log(selectedAcc)
 
   return (
     <article
@@ -63,7 +64,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                 }
               >
                 <img
-                  src={el.pictureUrlList[0]}
+                  src={el.picUrl}
                   alt={`${el.accommodationName} image`}
                   className="rounded-s-lg h-full w-full"
                 />

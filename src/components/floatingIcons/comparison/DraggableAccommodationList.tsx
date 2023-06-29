@@ -88,7 +88,7 @@ export const DraggableAccommodationList = () => {
                             · · ·
                           </div>
                           <img
-                            src={el.pictureUrlList[0]}
+                            src={el.picUrl}
                             className="w-full h-full rounded-lg"
                           />
                         </figure>
