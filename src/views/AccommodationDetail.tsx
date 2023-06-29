@@ -110,9 +110,9 @@ const AccommodationDetail = () => {
 
   return (
     <div className="flex flex-col gap-10 lg:pt-10 max-w-5xl mx-auto mb-20 p-5 lg:px-0">
-      <div className="grid grid-rows-2 grid-cols-4 gap-2">
+      <div className="grid grid-rows-2 grid-cols-3 gap-2">
         {accommodationData &&
-          accommodationData.picUrlList.slice(0, 5).map((el, idx) => {
+          accommodationData.picUrlList.slice(0, 3).map((el, idx) => {
             if (idx === 0)
               return (
                 <label
