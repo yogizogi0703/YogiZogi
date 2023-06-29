@@ -61,6 +61,20 @@ export const AccommodationDetailInitData = {
   ]
 };
 
+export interface IRoomData {
+  accommodationName: string;
+  accommodationId: number;
+  address: string;
+  rate: number;
+  roomId: number;
+  roomName: string;
+  roomImg: string;
+  price: number;
+  checkInDate: string;
+  checkOutDate: string;
+  people: string;
+}
+
 export interface IReview {
   id: number;
   nickName: string;
