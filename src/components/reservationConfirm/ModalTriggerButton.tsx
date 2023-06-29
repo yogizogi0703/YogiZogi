@@ -8,7 +8,7 @@ interface IModalTriggerButton {
   disabled: boolean;
   text: ModalTextTypes;
   accommodationId: number;
-  bookId?: number;
+  bookId: number;
 }
 
 const ModalTriggerButton = ({
@@ -57,6 +57,7 @@ const ModalTriggerButton = ({
             ) : text === ModalText.REVIEW ? (
               <ReviewModal
                 accommodationId={accommodationId}
+                bookId={bookId}
                 onClose={closeModal}
               />
             ) : (
