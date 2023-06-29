@@ -35,10 +35,10 @@ export const ReviewSection = ({
 
   return (
     <>
+      <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
       {reviewRes.content.length > 0 && reviewArr.length > 0 ? (
         <>
           <div>
-            <h2 className="text-lg md:text-2xl font-semibold mb-4">리뷰</h2>
             <div className="flex items-center text-xl md:text-3xl text-center">
               <div className="my-5 w-1/3 p-2">
                 <span className="font-semibold text-red-500">
