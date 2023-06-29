@@ -85,6 +85,7 @@ const DynamicMap = ({ searchData, param }: DynamicMapProps) => {
             }}
             clickable={true}
             key={item.id}
+            zIndex={activeMarker === item.id ? 99 : -1}
           >
             <FacilityMarker
               info={item}
