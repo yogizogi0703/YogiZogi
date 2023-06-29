@@ -6,7 +6,8 @@ import {
   AccommodationDetailInitData,
   IAccommodationDetailResponse,
   IReview,
-  IReviewResponse
+  IReviewResponse,
+  IReviewResponseContentInitData
 } from '../api/accommodationDetail';
 import {
   CarouselModal,
@@ -24,7 +25,7 @@ const AccommodationDetail = () => {
   const [page, setPage] = useState(1);
 
   const [reviewRes, setReviewRes] = useState<IReviewResponse>({
-    content: [],
+    content: [IReviewResponseContentInitData],
     totalElements: 0,
     totalPages: 0
   });
@@ -69,9 +70,9 @@ const AccommodationDetail = () => {
     );
     if (reviewRes && reviewRes.data) {
       setReviewRes({
-        content: reviewRes.data.content,
-        totalElements: reviewRes.data.totalElements,
-        totalPages: reviewRes.data.totalPages
+        content: reviewRes.data.content || IReviewResponseContentInitData,
+        totalElements: reviewRes.data.totalElements || 0,
+        totalPages: reviewRes.data.totalPages || 0
       });
       setReviewArr((prev) => {
         const newReviewArr: IReview[] = [...prev];
