@@ -74,9 +74,6 @@ export const RoomInfo = ({
                   </div>
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
-                      <div className="font-semibold text-lg">
-                        {addCommasToPrice(el.price)}원
-                      </div>
                       <button
                         className="flex gap-2 btn btn-sm text-xs md:btn-md md:text-base bg-red-500 disabled:bg-red-800 hover:bg-red-600 text-white"
                         onClick={() => {
@@ -91,7 +88,7 @@ export const RoomInfo = ({
                         }}
                         disabled={el.price === null}
                       >
-                        예약하기
+                        {addCommasToPrice(el.price)}원
                       </button>
                       <ConfirmModal
                         data={roomData}
