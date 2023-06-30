@@ -7,7 +7,6 @@ import { IModalProps } from './CarouselModal';
 interface IRoomInfo {
   roomInfo: IRoomResponse[];
   setModalProps: React.Dispatch<React.SetStateAction<IModalProps>>;
-  accommodationName: string;
   setRoomData: React.Dispatch<React.SetStateAction<IRoomData>>;
   roomData: IRoomData;
 }
@@ -15,7 +14,6 @@ interface IRoomInfo {
 export const RoomInfo = ({
   roomInfo,
   setModalProps,
-  accommodationName,
   setRoomData,
   roomData
 }: IRoomInfo) => {
@@ -44,8 +42,8 @@ export const RoomInfo = ({
                     <figure className="mx-auto cursor-pointer w-full">
                       <img
                         src={el.pictureUrlList[0].url}
-                        alt={`${accommodationName}-${el.roomName} image`}
-                        className='w-full h-full'
+                        alt={`${roomData.accommodationName}-${el.roomName} image`}
+                        className="w-full h-full"
                       />
                     </figure>
                   </label>
