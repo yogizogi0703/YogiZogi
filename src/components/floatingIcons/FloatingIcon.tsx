@@ -23,6 +23,9 @@ export const FloatingIcon = () => {
         </span>
         <button
           onClick={() => {
+            if (!roomComparisonState) {
+              setComparisonState(false);
+            }
             setRoomComparisonState(!roomComparisonState);
           }}
           className="btn btn-warning md:w-16 md:h-16 rounded-[50%]"
@@ -37,6 +40,9 @@ export const FloatingIcon = () => {
         </span>
         <button
           onClick={() => {
+            if (!comparisonState) {
+              setRoomComparisonState;
+            }
             setComparisonState(!comparisonState);
           }}
           className="btn btn-info md:w-16 md:h-16 rounded-[50%]"
