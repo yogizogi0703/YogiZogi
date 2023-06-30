@@ -30,7 +30,20 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
       )
     )
       setAlertModalState(true);
-    else setComparisonItems((prev) => [...prev, data]);
+    else {
+      const comparisonData = {
+        accommodationName: data.accommodationName,
+        accommodationId: data.id,
+        address: data.address,
+        roomName: '',
+        rate: data.rate,
+        price: data.price,
+        priceArr: [],
+        imgUrl: data.picUrl,
+        facility: data.info
+      };
+      setComparisonItems((prev) => [...prev, comparisonData]);
+    }
   };
 
   return (
