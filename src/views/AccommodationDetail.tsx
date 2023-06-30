@@ -200,8 +200,6 @@ const AccommodationDetail = () => {
               <RoomInfo
                 roomInfo={accommodationData.rooms}
                 setModalProps={setModalProps}
-                accommodationName={accommodationData.accommodationName}
-                accommodationId={accommodationData.id}
                 setRoomData={setRoomData}
                 roomData={roomData}
               />
