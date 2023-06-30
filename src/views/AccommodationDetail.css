@@ -53,3 +53,11 @@ details div {
   flex-direction: column;
   gap: 1rem;
 }
+
+th {
+  background-color: #e3e1e1;
+}
+
+td {
+  text-align: center
+}

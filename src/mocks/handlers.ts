@@ -200,7 +200,7 @@ export const handlers = [
       .map((data) => {
         return {
           ...data,
-          picUrl: data.pictureUrlList[0]
+          picUrl: data.picUrl
         };
       });
 
