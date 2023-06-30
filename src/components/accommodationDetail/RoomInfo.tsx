@@ -26,10 +26,9 @@ export const RoomInfo = ({
       {roomInfo.length > 0 &&
         roomInfo.map((el, idx) => {
           return (
-            <>
+            <div key={idx}>
               {el.pictureUrlList.length > 0 && (
                 <div
-                  key={idx}
                   className="flex flex-col items-center sm:flex-row gap-3"
                 >
                   <label
@@ -105,7 +104,7 @@ export const RoomInfo = ({
                   </div>
                 </div>
               )}
-            </>
+            </div>
           );
         })}
     </>
