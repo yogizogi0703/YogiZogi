@@ -1,7 +1,7 @@
 import { FiMapPin } from 'react-icons/fi';
 import RatingStars from '../common/RatingStars';
 import { ISearchResultContent } from 'api/search';
-import { BiShoppingBag } from 'react-icons/bi';
+import { BsBuilding } from 'react-icons/bs';
 import { useRecoilState } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { useState } from 'react';
@@ -56,7 +56,7 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
             onClick={(e) => addComparisonCart(e)}
             className="btn btn-sm btn-circle btn-success"
           >
-            <BiShoppingBag className="w-5 h-5" />
+            <BsBuilding className="w-5 h-5" />
           </button>
         </div>
         <div className="flex items-center gap-2 text-sm row-start-3 row-end-4 col-start-1 col-end-4">
