@@ -50,7 +50,8 @@ const useReservation = () => {
 
   const getReservationFormdata = (): ReservationAddProps => {
     return {
-      roomId: Number(roomInfoRef.current.roomId),
+      accommodationId: Number(roomInfoRef.current.accommodationId),
+      roomId: parseInt(roomInfoRef.current.roomId),
       checkInDate: String(accommodationInfoRef.current.checkInDate),
       checkOutDate: String(accommodationInfoRef.current.checkOutDate),
       people: Number(accommodationInfoRef.current.people),

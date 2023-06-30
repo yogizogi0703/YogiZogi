@@ -51,9 +51,7 @@ export const ConfirmModal = ({
         checked={modalState}
         readOnly
       />
-      <div
-        className="modal bg-black bg-opacity-5"
-      >
+      <div className="modal bg-black bg-opacity-5">
         <div className="flex flex-col gap-5 modal-box w-full max-w-2xl shadow-none">
           <div className="flex gap-5">
             <figure className="w-full">
