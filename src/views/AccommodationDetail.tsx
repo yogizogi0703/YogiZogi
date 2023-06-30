@@ -17,6 +17,7 @@ import './AccommodationDetail.css';
 import { RoomInfo } from '../components/accommodationDetail/RoomInfo';
 import { ReviewSection } from '../components/accommodationDetail/ReviewSection';
 import { AccommodationInfo } from '../components/accommodationDetail/AccommodationInfo';
+import { FloatingIcon } from '../components/floatingIcons/FloatingIcon';
 
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
@@ -200,6 +201,7 @@ const AccommodationDetail = () => {
                 roomInfo={accommodationData.rooms}
                 setModalProps={setModalProps}
                 accommodationName={accommodationData.accommodationName}
+                accommodationId={accommodationData.id}
                 setRoomData={setRoomData}
                 roomData={roomData}
               />
@@ -215,6 +217,7 @@ const AccommodationDetail = () => {
           reviewRes={reviewRes}
         />
       </section>
+      <FloatingIcon />
       <CarouselModal
         imgList={modalProps.imgList}
         alt={modalProps.alt}
