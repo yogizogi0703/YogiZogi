@@ -115,7 +115,10 @@ const Range = ({ width, steps, onRangeValueChange }: IRange) => {
   return (
     <div className="slider h-10 relative" style={{ width: `${width}px` }}>
       <div className="track w-full h-2 bg-gray-300 rounded absolute top-4 left-0"></div>
-      <div className="sliderRange absolute z-[2] w-full top-4 bg-emerald-400 h-2"></div>
+      <div
+        className="sliderRange absolute z-[2] top-4 bg-emerald-400 h-2"
+        style={{ width: `${width}px` }}
+      ></div>
       {thumbList.map((thumb, index) => {
         return (
           <div
