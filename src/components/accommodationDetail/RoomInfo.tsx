@@ -50,7 +50,7 @@ export const RoomInfo = ({
                     </figure>
                   </label>
                   <div className="flex flex-col flex-wrap ml-2 w-fit sm:w-1/3">
-                    <h3 className="w-[90%] max-w-72 text-base md:text-xl font-semibold md:mb-1 truncate">
+                    <h3 className="w-[90%] max-w-72 text-base md:text-xl font-semibold mt-0 md:mb-1 truncate">
                       {el.roomName}
                     </h3>
                     <div className="flex sm:flex-col gap-2">
