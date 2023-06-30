@@ -1,5 +1,5 @@
-import { BsChat } from 'react-icons/bs';
-import { BiShoppingBag } from 'react-icons/bi';
+import { MdOutlineBedroomParent } from 'react-icons/md';
+import { BsBuilding } from 'react-icons/bs';
 import { useState } from 'react';
 import { ComparisonBox } from './comparison/ComparisonBox';
 import { useRecoilValue } from 'recoil';
@@ -16,7 +16,7 @@ export const FloatingIcon = () => {
         onClick={() => setChatState(!chatState)}
         className="btn btn-warning md:w-16 md:h-16 rounded-[50%]"
       >
-        <BsChat className="md:w-6 md:h-6" />
+        <MdOutlineBedroomParent className="md:w-6 md:h-6" />
       </div>
       {/* <Chat display={chatState} /> */}
       <div className="indicator">
@@ -27,7 +27,7 @@ export const FloatingIcon = () => {
           onClick={() => setComparisonChatState(!comparisonState)}
           className="btn btn-info md:w-16 md:h-16 rounded-[50%]"
         >
-          <BiShoppingBag className="md:w-6 md:h-6" />
+          <BsBuilding className="md:w-6 md:h-6" />
         </button>
       </div>
       <ComparisonBox display={comparisonState} />
