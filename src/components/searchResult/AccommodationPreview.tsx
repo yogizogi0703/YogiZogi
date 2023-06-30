@@ -14,7 +14,7 @@ interface IAccommodationPreview {
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { accommodationName, rate, picUrl, address, price } = data;
-  const [comparisonItems, setComparisonItems] = useRecoilState(
+  const [comparisonItems, setComparisonItems] = useRecoilState<IComparison[]>(
     selectedAccommodation
   );
   const [alertModalState, setAlertModalState] = useState(false);
