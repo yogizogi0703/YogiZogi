@@ -9,9 +9,11 @@ import {
   Draggable,
   DropResult
 } from 'react-beautiful-dnd';
+import { useEffect, useState } from 'react';
 
 export const DraggableAccommodationList = () => {
   const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
+  const [theNumberOfFacility, setTheNumberOfFacility] = useState<(number | undefined)[]>([]);
 
   const minPrice = Math.min(...selectedAcc.map((el) => el.price));
   const highRate = Math.max(...selectedAcc.map((el) => el.rate));
@@ -35,6 +37,22 @@ export const DraggableAccommodationList = () => {
 
     setSelectedAcc(items);
   };
+
+  useEffect(() => {
+    if (selectedAcc) {
+      const newTheNumberOfFacility = selectedAcc.map((el) => {
+        if (el.info.includes('<section class="service">'))
+          return (
+            el.info
+              .split('<section class="service">')[1]
+              .split('</section>')[0]
+              .split('</li>').length - 1
+          );
+      });
+      if(newTheNumberOfFacility.some((el) => el === undefined)) return setTheNumberOfFacility([])
+      else return setTheNumberOfFacility(newTheNumberOfFacility)
+    }
+  }, [selectedAcc]);
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -116,7 +134,21 @@ export const DraggableAccommodationList = () => {
                           )}
                         </div>
                         <p className="truncate">{el.address}</p>
-                        <p>편의시설</p>
+                        {theNumberOfFacility.length > 0 && (
+                          <details id='comparisonFacility' className="bg-base-200 px-1 rounded-lg" open>
+                            <summary className="cursor-pointer">
+                              {`${theNumberOfFacility[idx]}개의 편의시설`}
+                            </summary>
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: el.info
+                                  .split('<section class="service">')[1]
+                                  .split('</section>')[0]
+                              }}
+                              
+                            />
+                          </details>
+                        )}
                         <Link
                           to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
                         >
