@@ -21,7 +21,9 @@ export const RoomInfo = ({
   setRoomData,
   roomData
 }: IRoomInfo) => {
+  const [modalContent, setModalContent] = useState('');
   const [modalState, setModalState] = useState(false);
+  const [alertModalState, setAlertModalState] = useState(false);
   const [selectedRooms, setSelectedRooms] =
     useRecoilState<IComparison[]>(selectedRoom);
 
@@ -31,18 +33,23 @@ export const RoomInfo = ({
   ) => {
     e.preventDefault();
 
-    const comparisonData = {
-      accommodationName: roomData.accommodationName,
-      accommodationId: roomData.accommodationId,
-      address: roomData.address,
-      roomName: item.roomName,
-      rate: roomData.rate,
-      price: item.price,
-      priceArr: [],
-      imgUrl: item.pictureUrlList[0].url,
-      facility: item.conveniences
-    };
-    setSelectedRooms((prev) => [...prev, comparisonData]);
+    if (selectedRooms.some((el) => el.roomName === item.roomName)) {
+      setModalContent('이미 담긴 상품입니다.');
+      setAlertModalState(true);
+    } else {
+      const comparisonData = {
+        accommodationName: roomData.accommodationName,
+        accommodationId: roomData.accommodationId,
+        address: roomData.address,
+        roomName: item.roomName,
+        rate: roomData.rate,
+        price: item.price,
+        priceArr: [],
+        imgUrl: item.pictureUrlList[0].url,
+        facility: item.conveniences
+      };
+      setSelectedRooms((prev) => [...prev, comparisonData]);
+    }
   };
 
   return (
@@ -137,6 +144,11 @@ export const RoomInfo = ({
           <p>준비된 방이 없습니다.</p>
         </div>
       )}
+      <AlertModal
+        content={modalContent}
+        modalState={alertModalState}
+        handleModal={setAlertModalState}
+      />
     </>
   );
 };
