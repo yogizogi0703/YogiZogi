@@ -52,6 +52,14 @@ export const RoomInfo = ({
     }
   };
 
+  useEffect(() => {
+    if (selectedRooms.length > 3) {
+      setSelectedRooms(selectedRooms.slice(0, 3));
+      setModalContent('최대 3개의 상품만 담을 수 있습니다.');
+      setAlertModalState(true);
+    }
+  }, [selectedRooms]);
+
   return (
     <>
       {roomInfo.length > 0 ? (
