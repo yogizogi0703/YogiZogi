@@ -23,14 +23,12 @@ export const RoomInfo = ({
 
   return (
     <>
-      {roomInfo.length > 0 &&
+      {roomInfo.length > 0 ? (
         roomInfo.map((el, idx) => {
           return (
             <div key={idx}>
               {el.pictureUrlList.length > 0 && (
-                <div
-                  className="flex flex-col items-center sm:flex-row gap-3"
-                >
+                <div className="flex flex-col items-center sm:flex-row gap-3">
                   <label
                     key={idx}
                     htmlFor="reservationModal"
@@ -106,7 +104,12 @@ export const RoomInfo = ({
               )}
             </div>
           );
-        })}
+        })
+      ) : (
+        <div className="flex justify-center items-center h-40 bg-base-200 border rounded-lg">
+          <p>준비된 방이 없습니다.</p>
+        </div>
+      )}
     </>
   );
 };
