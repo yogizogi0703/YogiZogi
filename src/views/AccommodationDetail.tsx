@@ -99,7 +99,7 @@ const AccommodationDetail = () => {
   useEffect(() => {
     (async () => {
       const result: AxiosResponse<any, any> | undefined = await fetchData.get(
-        `/accommodation/${id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
+        `/accommodation/${id}/?checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
       );
 
       if (result) {
@@ -328,7 +328,11 @@ const AccommodationDetail = () => {
                       >
                         예약하기
                       </button>
-                      <ConfirmModal data={roomData} modalState={modalState} setModalState={setModalState}/>
+                      <ConfirmModal
+                        data={roomData}
+                        modalState={modalState}
+                        setModalState={setModalState}
+                      />
                     </div>
                   </div>
                 </div>
