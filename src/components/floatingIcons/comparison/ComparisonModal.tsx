@@ -26,7 +26,7 @@ export const ComparisonModal = ({
               한 눈에 비교하기
             </h2>
             <div className="flex w-full">
-              <DraggableAccommodationList />
+              <DraggableAccommodationList callData={modalState}/>
             </div>
           </div>
           <div className="modal-action">
