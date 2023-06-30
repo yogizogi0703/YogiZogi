@@ -1,8 +1,12 @@
 import { IRoomData, IRoomResponse } from 'api/accommodationDetail';
 import { addCommasToPrice } from '../../helpers';
 import { ConfirmModal } from './ConfirmModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { IModalProps } from './CarouselModal';
+import { MdOutlineBedroomParent } from 'react-icons/md';
+import { useRecoilState } from 'recoil';
+import { selectedRoom } from '../../store/atom/comparisonAtom';
+import { AlertModal } from '../../components/common/AlertModal';
 
 interface IRoomInfo {
   roomInfo: IRoomResponse[];
@@ -18,6 +22,28 @@ export const RoomInfo = ({
   roomData
 }: IRoomInfo) => {
   const [modalState, setModalState] = useState(false);
+  const [selectedRooms, setSelectedRooms] =
+    useRecoilState<IComparison[]>(selectedRoom);
+
+  const addRoomComparisonCart = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    item: IRoomResponse
+  ) => {
+    e.preventDefault();
+
+    const comparisonData = {
+      accommodationName: roomData.accommodationName,
+      accommodationId: roomData.accommodationId,
+      address: roomData.address,
+      roomName: item.roomName,
+      rate: roomData.rate,
+      price: item.price,
+      priceArr: [],
+      imgUrl: item.pictureUrlList[0].url,
+      facility: item.conveniences
+    };
+    setSelectedRooms((prev) => [...prev, comparisonData]);
+  };
 
   return (
     <>
@@ -87,6 +113,12 @@ export const RoomInfo = ({
                         disabled={el.price === null}
                       >
                         {addCommasToPrice(el.price)}원
+                      </button>
+                      <button
+                        onClick={(e) => addRoomComparisonCart(e, el)}
+                        className="flex gap-2 btn btn-sm min-w-[80px] md:min-w-[100px] md:btn-md btn-success text-white"
+                      >
+                        <MdOutlineBedroomParent className="w-5 h-5" />
                       </button>
                       <ConfirmModal
                         data={roomData}
