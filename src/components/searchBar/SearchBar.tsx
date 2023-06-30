@@ -82,9 +82,10 @@ export const SearchBar = () => {
 
   const handleSearch = () => {
     const getDateGap =
-      (search.checkOutDate.getTime() - search.checkInDate.getTime()) / (1000 * 3600 * 24);
+      (search.checkOutDate.getTime() - search.checkInDate.getTime()) /
+      (1000 * 3600 * 24);
 
-      if (
+    if (
       search.people === 0 ||
       search.searchValue.length === 0 ||
       search.checkOutDate === search.checkInDate
@@ -109,8 +110,12 @@ export const SearchBar = () => {
         params.append('keyword', search.searchValue);
       }
 
+      const isInSearchResult = location.hash.includes('searchResult');
+
       const queryString = params.toString();
       navigate(`/searchResult?${queryString}`);
+
+      if (isInSearchResult) location.reload();
     }
   };
 

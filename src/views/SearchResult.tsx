@@ -16,7 +16,8 @@ import {
   categories,
   categoryList,
   sortingFactorList,
-  sortingFactors
+  sortingFactors,
+  SEARCH_START_PAGE
 } from '../components/searchResult/constants';
 import {
   CategoryTypes,
@@ -75,8 +76,8 @@ const SearchResult = () => {
     direction: Direction.DESC,
     minprice: null,
     maxprice: null,
-    category: null,
-    page: 1
+    category: Category.ALL,
+    page: SEARCH_START_PAGE
   });
 
   const observerTarget = useRef<HTMLDivElement>(null);
@@ -151,7 +152,7 @@ const SearchResult = () => {
 
   const handleSelectCategory = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.id as CategoryTypes;
+      const value = parseInt(e.target.id) as CategoryTypes;
 
       if (categoryList.includes(value)) {
         setSelctedCategory(value);
@@ -219,7 +220,7 @@ const SearchResult = () => {
 
   const checkDataEnd = useCallback(
     (prev: number, cur: number, total: number) => {
-      if (prev + cur === total) {
+      if (cur === 0 || prev + cur === total) {
         setIsDataEnd(true);
       }
     },
@@ -239,12 +240,12 @@ const SearchResult = () => {
     if (totalElements === 0) {
       setTotalElements(newTotalElements);
     }
-  }, []);
+  }, [totalElements]);
 
   const handleSearchButtonClick = useCallback(async () => {
     setAccommodationList([]);
     setTotalElements(0);
-    searchParams.current.page = 1;
+    searchParams.current.page = SEARCH_START_PAGE;
 
     startObserving();
   }, []);
@@ -302,84 +303,87 @@ const SearchResult = () => {
       {isLoading && (
         <div className="w-screen h-full absolute top-0 left-0 z-[300]"></div>
       )}
-      <section className="bg-slate-100 px-4 py-6 rounded-lg">
-        <section className="lg:flex lg:items-center lg:justify-between">
-          <section className="flex gap-2">
-            {categories.map((category) => {
-              return (
-                <div key={category.id}>
-                  <input
-                    type="radio"
-                    name="category"
-                    id={category.id}
-                    className="hidden peer"
-                    onChange={handleSelectCategory}
-                    checked={category.id === selectedCategory}
-                  />
-                  <label
-                    htmlFor={category.id}
-                    className="btn btn-ghost bg-white drop-shadow peer-checked:text-red-500 peer-checked:border-red-500"
-                  >
-                    {category.text}
-                  </label>
-                </div>
-              );
-            })}
-          </section>
-          <div className="hidden lg:block h-12 w-0.5 bg-gray-200"></div>
-          <section className="md:flex md:justify-between lg:justify-end lg:gap-4 items-center mt-2 md:mb-0 lg:mt-0 max-w-3xl">
-            <section className="flex flex-wrap md:flex-nowrap gap-2 items-center mt-7 mb-7 md:mt-0 md:mb-0">
-              {sortingFactors.map((factor) => {
+      {viewType !== View.MAP && (
+        <section className="bg-slate-100 px-4 py-6 rounded-lg">
+          <section className="lg:flex lg:items-center lg:justify-between">
+            <section className="flex gap-2">
+              {categories.map((category) => {
+                const categoryKey = `${category.id}`;
                 return (
-                  <div key={factor.id}>
+                  <div key={categoryKey}>
                     <input
                       type="radio"
-                      name="sortBy"
-                      id={factor.id}
+                      name="category"
+                      id={categoryKey}
                       className="hidden peer"
-                      onChange={handleSelectSortingFactor}
-                      checked={factor.id === selectedSortingFactor}
+                      onChange={handleSelectCategory}
+                      checked={category.id === selectedCategory}
                     />
                     <label
-                      htmlFor={factor.id}
-                      className="btn btn-ghost bg-white drop-shadow btn-sm h-10 lg:w-28 w-[104px] peer-checked:text-emerald-500 peer-checked:border-emerald-500"
+                      htmlFor={categoryKey}
+                      className="btn btn-ghost bg-white drop-shadow peer-checked:text-red-500 peer-checked:border-red-500"
                     >
-                      {factor.text}
+                      {category.text}
                     </label>
                   </div>
                 );
               })}
             </section>
-            <section style={{ width: `${248}px` }}>
-              <div className="flex items-center gap-2">
-                <p className="text-sm font-bold">가격 범위</p>
-                <p className="text-xs font-bold text-red-500">
-                  {renderCurrentPriceRange()}
-                </p>
-              </div>
-              <Range
-                width={RANGE_WIDTH}
-                steps={STEPS}
-                onRangeValueChange={handleRangeValueChange}
-              />
-              <div className="text-xs font-bold text-gray-400 flex justify-between">
-                <p>{`${MIN_PRICE}만원`}</p>
-                <p>{`${MAX_PRICE}만원`}</p>
-              </div>
+            <div className="hidden lg:block h-12 w-0.5 bg-gray-200"></div>
+            <section className="md:flex md:justify-between lg:justify-end lg:gap-4 items-center mt-2 md:mb-0 lg:mt-0 max-w-3xl">
+              <section className="flex flex-wrap md:flex-nowrap gap-2 items-center mt-7 mb-7 md:mt-0 md:mb-0">
+                {sortingFactors.map((factor) => {
+                  return (
+                    <div key={factor.id}>
+                      <input
+                        type="radio"
+                        name="sortBy"
+                        id={factor.id}
+                        className="hidden peer"
+                        onChange={handleSelectSortingFactor}
+                        checked={factor.id === selectedSortingFactor}
+                      />
+                      <label
+                        htmlFor={factor.id}
+                        className="btn btn-ghost bg-white drop-shadow btn-sm h-10 lg:w-28 w-[104px] peer-checked:text-emerald-500 peer-checked:border-emerald-500"
+                      >
+                        {factor.text}
+                      </label>
+                    </div>
+                  );
+                })}
+              </section>
+              <section style={{ width: `${248}px` }}>
+                <div className="flex items-center gap-2">
+                  <p className="text-sm font-bold">가격 범위</p>
+                  <p className="text-xs font-bold text-red-500">
+                    {renderCurrentPriceRange()}
+                  </p>
+                </div>
+                <Range
+                  width={RANGE_WIDTH}
+                  steps={STEPS}
+                  onRangeValueChange={handleRangeValueChange}
+                />
+                <div className="text-xs font-bold text-gray-400 flex justify-between">
+                  <p>{`${MIN_PRICE}만원`}</p>
+                  <p>{`${MAX_PRICE}만원`}</p>
+                </div>
+              </section>
             </section>
           </section>
+          <div className="mt-4 flex lg:justify-end">
+            <button
+              type="button"
+              className="btn bg-red-500 text-white drop-shadow btn-sm h-10 w-24 hover:bg-red-600"
+              onClick={handleSearchButtonClick}
+            >
+              검색하기
+            </button>
+          </div>
         </section>
-        <div className="mt-4 flex lg:justify-end">
-          <button
-            type="button"
-            className="btn bg-red-500 text-white drop-shadow btn-sm h-10 w-24 hover:bg-red-600"
-            onClick={handleSearchButtonClick}
-          >
-            검색하기
-          </button>
-        </div>
-      </section>
-      <section className="mt-10">
+      )}
+      <section className={viewType !== View.MAP ? 'mt-10' : ''}>
         <div className="flex justify-between items-center">
           <h3 className="font-bold text-lg">
             {isLoading ? (
@@ -401,14 +405,25 @@ const SearchResult = () => {
         {!isLoading && !totalElements && isDataEnd ? (
           <p className="text-center p-4">검색 결과가 없습니다.</p>
         ) : viewType === View.MAP ? (
-          <div>{!isLoading && <MapView />}</div>
+          <div>
+            {!isLoading && (
+              <MapView
+                searchData={accommodationList}
+                param={{
+                  people: parseInt(searchParams.current.people),
+                  checkindate: searchParams.current.checkindate,
+                  checkoutdate: searchParams.current.checkoutdate
+                }}
+              />
+            )}
+          </div>
         ) : (
           <div className="grid lg:grid-cols-3 auto-rows-fr gap-4 md:grid-cols-2">
             {accommodationList?.map((accommodation) => {
               return (
                 <Link
                   key={String(accommodation.id) + String(new Date())}
-                  to={`/accommodation/${accommodation.id}?&checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}`}
+                  to={`/accommodation/${accommodation.id}?checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}`}
                 >
                   <AccommodationPreview data={accommodation} />
                 </Link>

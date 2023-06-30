@@ -34,6 +34,12 @@ const ReservationDatePicker = ({
     return date;
   }, [startDate]);
 
+  const getMaxEndDate = useCallback(() => {
+    const date = new Date();
+    date.setDate(date.getDate() + 730);
+    return date;
+  }, []);
+
   return (
     <>
       <DatePickInput
@@ -45,6 +51,7 @@ const ReservationDatePicker = ({
       <DatePickInput
         date={endDate}
         minDate={getMinEndDate()}
+        maxDate={getMaxEndDate()}
         onDateChange={handleEndDateChange}
       />
     </>

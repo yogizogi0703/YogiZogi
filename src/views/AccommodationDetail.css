@@ -61,3 +61,10 @@ details div {
   border-radius: 0 0 10px 10px;
   margin-bottom: 3px
 }
+th {
+  background-color: #e3e1e1;
+}
+
+td {
+  text-align: center
+}
