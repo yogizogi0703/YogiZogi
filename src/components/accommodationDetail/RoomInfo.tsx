@@ -32,7 +32,7 @@ export const RoomInfo = ({
                   <label
                     key={idx}
                     htmlFor="reservationModal"
-                    className="flex"
+                    className="flex sm:w-1/3 max-w-sm"
                     onClick={() =>
                       setModalProps({
                         imgList: el.pictureUrlList,
@@ -41,15 +41,16 @@ export const RoomInfo = ({
                       })
                     }
                   >
-                    <figure className="mx-auto cursor-pointer">
+                    <figure className="mx-auto cursor-pointer w-full">
                       <img
                         src={el.pictureUrlList[0].url}
                         alt={`${accommodationName}-${el.roomName} image`}
+                        className='w-full h-full'
                       />
                     </figure>
                   </label>
                   <div className="flex flex-col flex-wrap ml-2 w-fit sm:w-1/3">
-                    <h3 className="text-base md:text-xl font-semibold md:mb-1">
+                    <h3 className="w-[90%] max-w-72 text-base md:text-xl font-semibold md:mb-1 truncate">
                       {el.roomName}
                     </h3>
                     <div className="flex sm:flex-col gap-2">
@@ -71,7 +72,6 @@ export const RoomInfo = ({
                       </p>
                     </div>
                   </div>
-                  <div className="divider divider-horizontal mt-[-12px]" />
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
                       <div className="font-semibold text-lg">
