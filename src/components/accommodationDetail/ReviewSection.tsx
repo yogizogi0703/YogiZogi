@@ -60,7 +60,7 @@ export const ReviewSection = ({
           </div>
           <div className="divider" />
           <div>
-            {Object.values(reviewArr[page - 1]).map((el, idx) => {
+            {Object.values(reviewArr[page]).map((el, idx) => {
               return (
                 <div
                   key={idx}
@@ -78,11 +78,11 @@ export const ReviewSection = ({
             })}
             <div className="flex justify-center">
               {reviewRes &&
-                new Array(reviewRes.totalPages + 1).fill(0).map((_, idx) => {
+                new Array(reviewRes.totalPages).fill(0).map((_, idx) => {
                   return (
                     <div key={idx} className="join">
                       <input
-                        aria-label={idx.toString()}
+                        aria-label={(idx + 1).toString()}
                         className="join-item btn btn-square btn-ghost btn-sm mr-1 checked:bg-red-500 checked:text-white border-none important"
                         type="radio"
                         name="options"

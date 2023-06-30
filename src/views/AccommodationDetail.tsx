@@ -22,7 +22,7 @@ const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
     useState<IAccommodationDetailResponse>(AccommodationDetailInitData);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
 
   const [reviewRes, setReviewRes] = useState<IReviewResponse>({
     content: [IReviewResponseContentInitData],
@@ -76,7 +76,7 @@ const AccommodationDetail = () => {
       });
       setReviewArr((prev) => {
         const newReviewArr: IReview[] = [...prev];
-        newReviewArr[page - 1] = reviewRes.data.content;
+        newReviewArr[page] = reviewRes.data.content;
         return newReviewArr;
       });
     }
@@ -98,13 +98,13 @@ const AccommodationDetail = () => {
           rate: accommodationData.rate
         }));
       }
-      getReview(0);
+      getReview(page);
     })();
   }, [id]);
 
   useEffect(() => {
     (async () => {
-      if (!reviewArr[page - 1]) getReview(page);
+      if (!reviewArr[page]) getReview(page);
     })();
   }, [page]);
 
