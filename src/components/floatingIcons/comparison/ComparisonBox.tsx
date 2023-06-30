@@ -59,12 +59,12 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                 data-tip="자세히보기"
                 onClick={() =>
                   navigate(
-                    `/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`
+                    `/accommodation/${el.accommodationId}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
                   )
                 }
               >
                 <img
-                  src={el.picUrl}
+                  src={el.imgUrl}
                   alt={`${el.accommodationName} image`}
                   className="rounded-s-lg h-full w-full"
                 />
@@ -95,6 +95,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
         </div>
       </div>
       <ComparisonModal
+        source="accommodation"
         modalState={comparisonModalState}
         handleModal={setComparisonModalState}
       />
