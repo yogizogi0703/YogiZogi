@@ -408,7 +408,7 @@ const SearchResult = () => {
               return (
                 <Link
                   key={String(accommodation.id) + String(new Date())}
-                  to={`/accommodation/${accommodation.id}?&checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}`}
+                  to={`/accommodation/${accommodation.id}?checkindate=${searchParams.current.checkindate}&checkoutdate=${searchParams.current.checkoutdate}&people=${searchParams.current.people}`}
                 >
                   <AccommodationPreview data={accommodation} />
                 </Link>
