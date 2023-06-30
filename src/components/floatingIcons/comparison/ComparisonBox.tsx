@@ -30,11 +30,11 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
     if (selectedAcc.length < 2) setAlertModalState(true);
     else setComparisonModalState(true);
   };
+
   const deleteSelectedAcc = (idx: number) => {
     const newItems = selectedAcc.filter((_, i) => i !== idx);
     setSelectedAcc(newItems);
   };
-  console.log(selectedAcc)
 
   return (
     <article
