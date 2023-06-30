@@ -28,12 +28,12 @@ details summary::marker {
   content: '';
 }
 
-details[open] > summary:after {
+details[open] > summary::after {
   transform: rotate(225deg);
   margin-top: 0.3rem;
 }
 
-summary:after {
+summary::after {
   content: '';
   position: absolute;
   bottom: -9px;
