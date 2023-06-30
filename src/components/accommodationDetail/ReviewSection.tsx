@@ -66,7 +66,7 @@ export const ReviewSection = ({
                   key={idx}
                   className="flex flex-col gap-3 p-3 border rounded-lg mb-5 text-xs md:text-base"
                 >
-                  <p className="font-semibold">{el.userId}</p>
+                  <p className="font-semibold">{el.nickName}</p>
                   <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-base font-medium">
                     <div className="flex items-center gap-2 font-semibold">
                       평점 : <RatingStars rate={el.rating} />
