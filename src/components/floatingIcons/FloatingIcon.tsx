@@ -41,7 +41,7 @@ export const FloatingIcon = () => {
         <button
           onClick={() => {
             if (!comparisonState) {
-              setRoomComparisonState;
+              setRoomComparisonState(false);
             }
             setComparisonState(!comparisonState);
           }}
