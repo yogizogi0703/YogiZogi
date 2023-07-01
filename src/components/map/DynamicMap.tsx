@@ -42,9 +42,14 @@ const DynamicMap = ({ searchData, param }: DynamicMapProps) => {
   }, []);
 
   const handleMoveDetail = (id: number) => {
-    navigate(
-      `/accommodation/${id}?checkindate=${param.checkindate}&checkoutdate=${param.checkoutdate}&people=${param.people}`
-    );
+    const url = `/accommodation/${id}?checkindate=${param.checkindate}&checkoutdate=${param.checkoutdate}&people=${param.people}`;
+    if (typeof window !== 'undefined' && typeof window.open === 'function') {
+      // window.open 사용 가능한 경우
+      window.open(`#${url}`, '_blank');
+    } else {
+      // window.open 사용 불가능한 경우
+      navigate(url);
+    }
   };
 
   return (
@@ -137,7 +142,6 @@ const FacilityDetailBox = ({
   if (!info) {
     return <></>;
   }
-  const navigate = useNavigate();
   const formatPrice = info.price.toLocaleString('kr');
 
   return (

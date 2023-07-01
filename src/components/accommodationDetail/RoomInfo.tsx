@@ -20,7 +20,6 @@ export const RoomInfo = ({
   roomData
 }: IRoomInfo) => {
   const [modalState, setModalState] = useState(false);
-
   return (
     <>
       {roomInfo.length > 0 ? (
@@ -45,7 +44,7 @@ export const RoomInfo = ({
                       <img
                         src={el.pictureUrlList[0].url}
                         alt={`${accommodationName}-${el.roomName} image`}
-                        className='w-full h-full'
+                        className="w-full h-full"
                       />
                     </figure>
                   </label>

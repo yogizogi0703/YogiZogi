@@ -89,13 +89,14 @@ const AccommodationDetail = () => {
       );
 
       if (result) {
-        setAccommodationData(result.data.data);
+        const data = result.data.data;
+        setAccommodationData(data);
         setRoomData((prev) => ({
           ...prev,
-          accommodationName: accommodationData.accommodationName,
-          accommodationId: accommodationData.id,
-          address: accommodationData.address,
-          rate: accommodationData.rate
+          accommodationName: data.accommodationName,
+          accommodationId: data.id,
+          address: data.address,
+          rate: data.rate
         }));
       }
       getReview(page);

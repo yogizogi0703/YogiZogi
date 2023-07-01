@@ -1,11 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { SignInFormDataProps, fetchSignIn } from '../api/auth';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import useAuth from './useAuth';
 import { LOGIN_MAINTAIN } from '../store/atom/authAtom';
 
 const useSignIn = () => {
-  const navigate = useNavigate();
   const { successLogin } = useAuth();
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [signInData, setSignInData] = useState<SignInFormDataProps>({
@@ -29,7 +27,7 @@ const useSignIn = () => {
     if (res.status === 'OK') {
       const token = res.data['X-AUTH-TOKEN'];
       successLogin(token);
-      navigate('/');
+      window.location.href = '/';
     }
   };
 
