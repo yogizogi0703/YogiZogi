@@ -7,6 +7,7 @@ import { selectedAccommodation } from '../../store/atom/comparisonAtom';
 import { useState } from 'react';
 import { AlertModal } from '../../components/common/AlertModal';
 import { addCommasToPrice } from '../../helpers';
+import { IComparisonBoxProps } from 'components/floatingIcons/comparison/Comparison';
 
 interface IAccommodationPreview {
   data: ISearchResultContent;
@@ -14,7 +15,7 @@ interface IAccommodationPreview {
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
   const { accommodationName, rate, picUrl, address, price } = data;
-  const [comparisonItems, setComparisonItems] = useRecoilState<IComparison[]>(
+  const [comparisonItems, setComparisonItems] = useRecoilState<IComparisonBoxProps[]>(
     selectedAccommodation
   );
   const [alertModalState, setAlertModalState] = useState(false);
@@ -33,14 +34,10 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
     else {
       const comparisonData = {
         accommodationName: data.accommodationName,
-        accommodationId: data.id,
-        address: data.address,
-        roomName: '',
-        rate: data.rate,
+        accommodationId: data.id.toString(),
+        roomId: 0,
         price: data.price,
-        priceArr: [],
         imgUrl: data.picUrl,
-        facility: data.info
       };
       setComparisonItems((prev) => [...prev, comparisonData]);
     }
