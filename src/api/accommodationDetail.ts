@@ -95,3 +95,17 @@ export const IReviewResponseContentInitData = {
   rating: 10,
   description: ''
 };
+
+export interface IReservationConfirm {
+  accommodationName: string;
+  accommodationId: string;
+  roomName: string;
+  roomId: string;
+  address: string;
+  rate: 0;
+  checkInDate: string;
+  checkOutDate: string;
+  people: string;
+  price: string;
+  imgUrl: string;
+}
