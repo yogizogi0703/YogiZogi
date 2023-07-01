@@ -11,7 +11,7 @@ export interface ISearchParams {
   direction: string;
   minprice: string | null;
   maxprice: string | null;
-  category: string | null;
+  category: number;
   page: number;
 }
 
@@ -29,7 +29,7 @@ interface IStaticSearchParams {
 interface IDynamicSearchParams {
   readonly minprice: string | null;
   readonly maxprice: string | null;
-  readonly category: string | null;
+  readonly category: number;
   readonly page: number;
 }
 
@@ -42,7 +42,7 @@ export interface ISearchResultContent {
   lat: number;
   lon: number;
   category: number;
-  pictureUrlList: string[];
+  picUrl: string;
 }
 
 interface ISearchResultResponse {
@@ -52,13 +52,13 @@ interface ISearchResultResponse {
     msg: string;
     data: {
       msg: string;
+      content: ISearchResultContent[];
+      totalElements: number;
     };
-    content: ISearchResultContent[];
-    totalElements: number;
   };
 }
 
-export const SEARCH_RESULT_PAGE_SIZE = 3;
+export const SEARCH_RESULT_PAGE_SIZE = 20;
 
 const SEARCH_URL = '/accommodation/search?';
 
@@ -117,26 +117,28 @@ const getStaticQueryString = ({
 const getDynamicQueryString = ({
   minprice,
   maxprice,
-  category,
-  page
+  category
 }: IDynamicSearchParams) => {
+  const INFINITE_PRICE = 999999999;
   const params = [
     {
       name: 'minprice',
-      value: minprice
+      value: maxprice && !minprice ? 0 : minprice
     },
     {
       name: 'maxprice',
-      value: maxprice
+      value: minprice && !maxprice ? INFINITE_PRICE : maxprice
     },
     {
       name: 'category',
-      value: category
+      value: category === 0 ? null : category
     }
   ];
 
   const queryString = params
-    .map((param) => (!param.value ? '' : `&${param.name}=${param.value}`))
+    .map((param) =>
+      param.value === null ? '' : `&${param.name}=${param.value}`
+    )
     .join('');
 
   return queryString;
@@ -194,8 +196,8 @@ export const getDetailedSearchResult = async (searchParams: ISearchParams) => {
   }
 
   const data = {
-    content: res.data.content,
-    totalElements: res.data.totalElements
+    content: res.data.data.content,
+    totalElements: res.data.data.totalElements
   };
 
   return data;

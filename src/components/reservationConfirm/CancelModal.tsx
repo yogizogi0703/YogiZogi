@@ -2,7 +2,6 @@ import { AlertModal } from '../../components/common/AlertModal';
 import { cancelReservation } from '../../api/cancelReservation';
 import useAuth from '../../hooks/useAuth';
 import { useCallback, useState, useEffect } from 'react';
-import { AiOutlineClose } from 'react-icons/ai';
 
 interface ICancelModal {
   bookId: number | undefined;
@@ -29,8 +28,7 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
   }, [isLoading]);
 
   const handleSubmit = useCallback(async () => {
-    // if (!authUser.isLoggedIn || !authUser.user.userId) {
-    if (!authUser.isLoggedIn) {
+    if (!authUser.isLoggedIn || !authUser.user.id) {
       setErrorMessage('잘못된 사용자 정보입니다. 다시 로그인 해주세요.');
       return;
     }
@@ -47,10 +45,11 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
     if (!bookId || !isLoading) return;
 
     const fetchReservationCancel = async () => {
+      if (!authUser.user.id) return;
+
       const {
         data: { status, msg }
-        // } = await cancelReservation(authUser.user.userId, bookId);
-      } = await cancelReservation(1, bookId);
+      } = await cancelReservation(authUser.user.id, bookId);
 
       if (status === 'OK') {
         setAlertOpen(() => {
@@ -71,12 +70,6 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
 
   return (
     <div className="p-12 pb-8 h-[21rem] md:h-80">
-      <div
-        className="absolute top-0 right-0 w-8 h-8 flex justify-center items-center bg-red-500 cursor-pointer text-white"
-        onClick={handleModalClose}
-      >
-        <AiOutlineClose />
-      </div>
       <AlertModal
         content={alertText}
         modalState={alertOpen}
@@ -98,12 +91,17 @@ const CancelModal = ({ bookId, onClose }: ICancelModal) => {
             <p className="text-sm font-bold text-red-500 mb-4">
               {errorMessage}
             </p>
-            <button
-              className="btn bg-red-500 hover:bg-red-600 text-white w-32"
-              onClick={handleSubmit}
-            >
-              확인
-            </button>
+            <div className="flex justify-center gap-2">
+              <button
+                className="btn bg-red-500 hover:bg-red-600 text-white w-32"
+                onClick={handleSubmit}
+              >
+                확인
+              </button>
+              <button className="btn w-32" onClick={handleModalClose}>
+                닫기
+              </button>
+            </div>
           </div>
         </div>
       ) : (

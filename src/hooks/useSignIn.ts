@@ -1,19 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { SignInFormDataProps, fetchSignIn } from '../api/auth';
 import { useEffect, useState } from 'react';
 import useAuth from './useAuth';
-
-export const validateEmail = (email: string) => {
-  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  return emailRegex.test(email);
-};
-
-export const validatePassword = (password: string) => {
-  return password.length >= 8;
-};
+import { LOGIN_MAINTAIN } from '../store/atom/authAtom';
 
 const useSignIn = () => {
-  const navigate = useNavigate();
   const { successLogin } = useAuth();
   const [isDisabled, setIsDisabled] = useState<boolean>(true);
   const [signInData, setSignInData] = useState<SignInFormDataProps>({
@@ -29,29 +19,15 @@ const useSignIn = () => {
   };
 
   const handleSubmitSignIn = async () => {
-    if (!validateEmail(signInData.email)) {
-      alert('이메일 형식을 입력해주세요.');
-      return;
-    }
-    if (!validatePassword(signInData.password)) {
-      alert('비밀번호를 8자리 이상 입력해주세요.');
-      return;
-    }
-
     const res = await fetchSignIn(signInData);
     if (!res) {
-      alert('문제가 발생했습니다.');
       return;
     }
 
     if (res.status === 'OK') {
-      console.log(res);
       const token = res.data['X-AUTH-TOKEN'];
       successLogin(token);
-      navigate('/');
-    } else {
-      alert(res.data.msg);
-      console.error(res.data.code);
+      window.location.href = '/';
     }
   };
 
@@ -65,7 +41,20 @@ const useSignIn = () => {
     setIsDisabled(isCheck);
   };
 
-  const handleKakaoSignIn = () => {};
+  const handleChangeMaintain = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const target = e.target;
+    const checked = target.checked;
+    if (checked) {
+      localStorage.setItem(LOGIN_MAINTAIN, 'true');
+    } else {
+      localStorage.removeItem(LOGIN_MAINTAIN);
+    }
+  };
+
+  const handleKakaoSignIn = () => {
+    location.href =
+      'https://kauth.kakao.com/oauth/authorize?client_id=32665db00eb9aef9b6b5246fc2a2e8b4&redirect_uri=https://13.209.131.228:8443/api/user/kakao-login&response_type=code';
+  };
 
   useEffect(() => {
     changeBtnDisabled();
@@ -76,7 +65,8 @@ const useSignIn = () => {
     isDisabled,
     handleChangeInput,
     handleSubmitSignIn,
-    handleKakaoSignIn
+    handleKakaoSignIn,
+    handleChangeMaintain
   };
 };
 

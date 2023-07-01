@@ -1,8 +1,6 @@
-export interface IPrice {
-  date: string;
+export interface IPicUrlList {
   id: number;
-  price: number;
-  roomCnt: number;
+  url: string;
 }
 
 export interface IRoomResponse {
@@ -12,34 +10,43 @@ export interface IRoomResponse {
   checkOutTime: number;
   defaultPeople: number;
   maxPeople: number;
-  pictureUrlList: string[];
-  price: IPrice[]
+  conveniences: string;
+  pictureUrlList: IPicUrlList[];
+  price: number;
+}
+
+export interface IFacility {
+  facility: '';
 }
 
 export interface IAccommodationDetailResponse {
-  accommodationName: string;
-  address: string;
-  category: number;
   id: number;
+  accommodationName: string;
+  category: number;
+  rate: number;
+  address: string;
+  region: string;
+  picUrlList: IPicUrlList[];
+  convenienceList: {}[];
   info: string;
   lat: number;
   lon: number;
-  location: string;
-  pictureUrlList: string[];
-  room: IRoomResponse[];
+  rooms: IRoomResponse[];
 }
 
 export const AccommodationDetailInitData = {
-  accommodationName: '',
-  address: '',
-  category: 0,
   id: 0,
+  accommodationName: '',
+  category: 0,
+  rate: 0,
+  address: '',
   info: '',
   lat: 0,
   lon: 0,
-  location: '',
-  pictureUrlList: [''],
-  room: [
+  region: '',
+  picUrlList: [{ id: 0, url: '' }],
+  convenienceList: [{ facility: '' }],
+  rooms: [
     {
       id: 0,
       roomName: '',
@@ -47,29 +54,45 @@ export const AccommodationDetailInitData = {
       checkOutTime: 0,
       defaultPeople: 0,
       maxPeople: 0,
-      pictureUrlList: [''],
-      price: [
-        {
-          date: '',
-          id: 0,
-          price: 0,
-          roomCnt: 0
-        }
-      ]
+      conveniences: '',
+      pictureUrlList: [{ id: 0, url: '' }],
+      price: 0
     }
   ]
 };
 
-export interface IReview {
+export interface IRoomData {
+  accommodationName: string;
   accommodationId: number;
-  description: string;
+  address: string;
+  rate: number;
+  roomId: number;
+  roomName: string;
+  roomImg: string;
+  price: number;
+  checkInDate: string;
+  checkOutDate: string;
+  people: string;
+}
+
+export interface IReview {
   id: number;
+  nickName: string;
+  accommodationId: number;
   rating: number;
-  userId: number;
+  description: string;
 }
 
 export interface IReviewResponse {
   content: IReview[];
-  totalElement: number;
+  totalElements: number;
   totalPages: number;
 }
+
+export const IReviewResponseContentInitData = {
+  id: 0,
+  nickName: '',
+  accommodationId: 0,
+  rating: 10,
+  description: ''
+};

@@ -3,6 +3,8 @@ export const MAX_PRICE = 30;
 export const RANGE_WIDTH = 248;
 export const STEPS = 30;
 
+export const SEARCH_START_PAGE = 0;
+
 export const DEFAULT_LAT = '126.98';
 export const DEFAULT_LON = '37.56';
 
@@ -55,10 +57,10 @@ export const Direction = {
 // Category
 
 export const Category = {
-  HOTEL: 'hotel',
-  MOTEL: 'motel',
-  PENSION: 'pension',
-  ALL: 'all'
+  HOTEL: 1,
+  MOTEL: 2,
+  PENSION: 3,
+  ALL: 0
 } as const;
 
 export const categoryList = [

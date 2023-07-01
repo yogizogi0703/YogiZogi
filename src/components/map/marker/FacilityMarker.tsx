@@ -1,33 +1,27 @@
 import { useEffect, useState } from 'react';
 import FacilityDetailMarker from './FacilityDetailMarker';
 import { PositionProps } from 'api/map';
-import { useNavigate } from 'react-router-dom';
+import { ISearchResultContent } from '../../../api/search';
 
 interface FacilityMarkerProps {
-  info: {
-    id: number;
-    price: number;
-    position: PositionProps;
-  };
+  info: ISearchResultContent;
   isActive: boolean;
   handleOnClickMove: (arg1: PositionProps, arg2: number) => void;
+  handleOnClick: () => void;
 }
 
 const FacilityMarker = ({
   info,
   isActive,
-  handleOnClickMove
+  handleOnClickMove,
+  handleOnClick
 }: FacilityMarkerProps) => {
-  const navigate = useNavigate();
   const [isShow, setIsShow] = useState<boolean>(isActive);
-  const formatPrice = info.price.toLocaleString('kr');
+  const { id, price, lat, lon } = info;
+  const formatPrice = price.toLocaleString('kr');
 
   const handleMarkerClick = () => {
-    handleOnClickMove(info.position, info.id);
-  };
-
-  const handleDetailMove = (id: number) => {
-    navigate(`/accommodationDetai/${id}`);
+    handleOnClickMove({ lat, lng: lon }, id);
   };
 
   useEffect(() => {
@@ -37,16 +31,13 @@ const FacilityMarker = ({
   return (
     <>
       <div
-        className="cursor-pointer px-4 py-1 rounded-lg bg-white text-center drop-shadow-md hover:scale-105"
+        className="cursor-pointer px-4 py-1 rounded-lg bg-white text-center drop-shadow-md hover:scale-105 transition-all"
         onClick={handleMarkerClick}
       >
         <span>₩{formatPrice}</span>
       </div>
       {isShow && (
-        <FacilityDetailMarker
-          info={{}}
-          handleOnClick={() => handleDetailMove(1)}
-        />
+        <FacilityDetailMarker info={info} handleOnClick={handleOnClick} />
       )}
     </>
   );

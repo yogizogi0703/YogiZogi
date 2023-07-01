@@ -12,8 +12,8 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
     bookName,
     picUrl,
     accommodationName,
-    startDate,
-    endDate,
+    checkInDate,
+    checkOutDate,
     price,
     rate,
     reviewRegistered
@@ -34,7 +34,9 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
         style={{ backgroundImage: `url('${picUrl}')` }}
       ></div>
       <div className="py-4 px-6 w-full flex flex-col justify-between">
-        <p className="font-bold">{accommodationName}</p>
+        <p className="font-bold">
+          {accommodationName || '숙소 정보가 잘못되었습니다.'}
+        </p>
         <div className="w-full h-px bg-gray-200 my-2"></div>
         <div className="flex flex-col gap-2">
           <p>
@@ -43,11 +45,11 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
           </p>
           <p>
             <span className="font-bold">예약일자:&nbsp;</span>
-            <span>{`${startDate} ~ ${endDate}`}</span>
+            <span>{`${checkInDate} ~ ${checkOutDate}`}</span>
           </p>
           <p>
             <span className="font-bold">결제금액:&nbsp;</span>
-            <span>{`${addCommasToPrice(price)}원`}</span>
+            <span>{`${addCommasToPrice(price || 0)}원`}</span>
           </p>
         </div>
         <div className="flex justify-end gap-2 mt-2">
@@ -57,7 +59,7 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
           >
             자세히보기
           </button>
-          {new Date().getTime() < new Date(startDate).getTime() ? (
+          {new Date().getTime() < new Date(checkInDate).getTime() ? (
             <ModalTriggerButton
               disabled={false}
               text={ModalText.CANCEL}
@@ -69,12 +71,14 @@ const ReservationInfoCard = ({ data }: IReservationInfoCard) => {
               disabled={true}
               text={ModalText.COMPLETE}
               accommodationId={accommodationId}
+              bookId={id}
             />
           ) : (
             <ModalTriggerButton
               disabled={false}
               text={ModalText.REVIEW}
               accommodationId={accommodationId}
+              bookId={id}
             />
           )}
         </div>

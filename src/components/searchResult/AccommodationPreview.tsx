@@ -13,16 +13,23 @@ interface IAccommodationPreview {
 }
 
 const AccommodationPreview = ({ data }: IAccommodationPreview) => {
-  const { accommodationName, rate, pictureUrlList, address, price } = data;
-  const [comparisonItems, setComparisonItems] = useRecoilState(selectedAccommodation);
+  const { accommodationName, rate, picUrl, address, price } = data;
+  const [comparisonItems, setComparisonItems] = useRecoilState(
+    selectedAccommodation
+  );
   const [alertModalState, setAlertModalState] = useState(false);
 
   const addComparisonCart = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     e.preventDefault();
-    
-    if(comparisonItems.some(el => el.accommodationName === data.accommodationName)) setAlertModalState(true)
+
+    if (
+      comparisonItems.some(
+        (el) => el.accommodationName === data.accommodationName
+      )
+    )
+      setAlertModalState(true);
     else setComparisonItems((prev) => [...prev, data]);
   };
 
@@ -30,7 +37,7 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
     <article className="card bg-base-100 shadow-xl mb-2">
       <figure
         className="h-60 bg-cover bg-center"
-        style={{ backgroundImage: `url('${pictureUrlList[0]}')` }}
+        style={{ backgroundImage: `url('${picUrl}')` }}
       ></figure>
       <div className="card-body grid gap-0 grid-cols-5 grid-rows-3 py-2 px-4 items-center">
         <div className="row-start-1 row-end-2 col-start-1 col-end-6">
@@ -53,7 +60,7 @@ const AccommodationPreview = ({ data }: IAccommodationPreview) => {
           </button>
         </div>
         <div className="flex items-center gap-2 text-sm row-start-3 row-end-4 col-start-1 col-end-4">
-          <FiMapPin className="text-emerald-400 text-2xl" />
+          <FiMapPin className="text-red-500 text-2xl shrink-0" />
           <p className="truncate">{address}</p>
         </div>
         <div className="row-start-3 row-end-4 col-start-4 col-end-6 flex items-center justify-end">

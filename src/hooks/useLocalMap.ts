@@ -7,7 +7,7 @@ interface LocalCategoryProps {
 }
 const categorys = ['CS2', 'SW8', 'AT4'];
 
-export const useLocalMap = (position: PositionProps) => {
+const useLocalMap = (position: PositionProps) => {
   const [localData, setLocalData] = useState<LocalPlaceProps[]>([]);
   const [localCategory, setLocalCategory] = useState<LocalCategoryProps[]>([]);
 
@@ -37,3 +37,5 @@ export const useLocalMap = (position: PositionProps) => {
 
   return { localData, localCategory };
 };
+
+export default useLocalMap;

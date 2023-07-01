@@ -1,8 +1,12 @@
-import { useModal } from '../../hooks/useModal';
-import React from 'react';
+import useModal from '../../hooks/useModal';
 
 const Modal = () => {
   const { modalDataState, closeModal } = useModal();
+
+  const handleBtnOnClick = () => {
+    if (modalDataState.handleBtnClick) modalDataState.handleBtnClick();
+    closeModal();
+  };
 
   return (
     <>
@@ -14,18 +18,32 @@ const Modal = () => {
             onClick={closeModal}
           >
             <div
-              className="absolute top-1/2 left-1/2 p-4 w-auto h-auto bg-white rounded-xl -translate-x-1/2 -translate-y-1/2"
+              className="absolute flex flex-col justify-between gap-6 top-1/2 left-1/2 p-6 h-auto bg-white rounded-2xl -translate-x-1/2 -translate-y-1/2"
+              style={
+                typeof modalDataState.content === 'string'
+                  ? { maxWidth: '464px', width: 'calc(100vw - 40px)' }
+                  : {}
+              }
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="flex items-center justify-between pb-2">
-                <h1 className=" text-lg font-semibold">
-                  {modalDataState.title}
-                </h1>
-                <button className="btn btn-ghost" onClick={closeModal}>
-                  닫기
+              {typeof modalDataState.content === 'string' ? (
+                <p className="py-4 text-lg w-full">{modalDataState.content}</p>
+              ) : (
+                modalDataState.content
+              )}
+              <div className="flex items-center justify-end gap-2">
+                {modalDataState.btnTitle && (
+                  <button
+                    className="btn bg-red-500 hover:bg-red-600 border-red-500 hover:border-red-600 text-white"
+                    onClick={handleBtnOnClick}
+                  >
+                    {modalDataState.btnTitle}
+                  </button>
+                )}
+                <button className="btn" onClick={closeModal}>
+                  {modalDataState.btnTitle ? '취소' : '닫기'}
                 </button>
               </div>
-              {modalDataState.content}
             </div>
           </div>
         </>

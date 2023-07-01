@@ -1,0 +1,63 @@
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.theme_wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.seller_info h3 {
+  font-size: 16px;
+}
+
+font {
+  font-weight: bold;
+}
+
+details summary {
+  position: relative;
+  background: ;
+}
+
+details summary::marker {
+  display: none;
+  content: '';
+}
+
+details[open] > summary:after {
+  transform: rotate(225deg);
+  margin-top: 0.5rem;
+}
+
+summary:after {
+  content: '';
+  position: absolute;
+  bottom: -9px;
+  top: 0.4rem;
+  left: 95%;
+  width: 10px;
+  height: 10px;
+  border: 1px solid;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg) translateX(-50%);
+  transform-origin: 0.2rem 50%;
+  transition: 0.25s transform ease;
+}
+
+details div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+th {
+  background-color: #e3e1e1;
+}
+
+td {
+  text-align: center
+}
