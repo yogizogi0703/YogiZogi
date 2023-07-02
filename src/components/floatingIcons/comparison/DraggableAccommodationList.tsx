@@ -1,5 +1,3 @@
-import { useRecoilState } from 'recoil';
-import { selectedAccommodation } from '../../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../../helpers';
 import RatingStars from '../../common/RatingStars';
 import { Link } from 'react-router-dom';
@@ -9,50 +7,67 @@ import {
   Draggable,
   DropResult
 } from 'react-beautiful-dnd';
-import { useEffect, useState } from 'react';
+import { IComparisonItem, IComparisonResponse } from './Comparison';
+import { useCallback, useEffect, useState } from 'react';
+import { fetchData } from '../../../api';
 
-export const DraggableAccommodationList = () => {
-  const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
-  const [theNumberOfFacility, setTheNumberOfFacility] = useState<(number | undefined)[]>([]);
+export const DraggableAccommodationList = ({
+  data
+}: {
+  data: IComparisonItem[];
+}) => {
+  const [selectedItemInfo, setSelectedItemInfo] = useState<
+    IComparisonResponse[]
+  >([]);
 
-  const minPrice = Math.min(...selectedAcc.map((el) => el.price));
-  const highRate = Math.max(...selectedAcc.map((el) => el.rate));
+  const fetchDataForItem = (el: any) => {
+    const fetchUrl =
+      el.roomId === '0'
+        ? `/accommodation/compare/accommodation?accommodationid=${el.accommodationId}&checkindate=${el.checkInDate}&checkoutdate=${el.checkOutDate}&people=${el.people}`
+        : `/accommodation/compare/room?roomid=${el.roomId}&checkindate=${el.checkInDate}&checkoutdate=${el.checkOutDate}&people=${el.people}`;
 
-  const urlParams = new URLSearchParams(
-    '?' + window.location.hash.split('?')[1]
-  );
-
-  const {
-    checkindate: checkInDate,
-    checkoutdate: checkOutDate,
-    people: people
-  } = Object.fromEntries(urlParams.entries());
-
-  const onDragEnd = (result: DropResult) => {
-    if (!result.destination) return;
-
-    const items = Array.from(selectedAcc);
-    const [reorderedItem] = items.splice(result.source.index, 1);
-    items.splice(result.destination.index, 0, reorderedItem);
-
-    setSelectedAcc(items);
+    return fetchData.get(fetchUrl).then((res: any) => {
+      return {
+        ...res.data.data,
+        accommodationId: el.accommodationId,
+        checkInDate: el.checkInDate,
+        checkOutDate: el.checkOutDate,
+        people: el.people
+      };
+    });
   };
 
   useEffect(() => {
-    if (selectedAcc) {
-      const newTheNumberOfFacility = selectedAcc.map((el) => {
-        if (el.info.includes('<section class="service">'))
-          return (
-            el.info
-              .split('<section class="service">')[1]
-              .split('</section>')[0]
-              .split('</li>').length - 1
-          );
-      });
-      if(newTheNumberOfFacility.some((el) => el === undefined)) return setTheNumberOfFacility([])
-      else return setTheNumberOfFacility(newTheNumberOfFacility)
-    }
-  }, [selectedAcc]);
+    const fetchDataForAllItems = async () => {
+      const promises = data.map((el) => fetchDataForItem(el));
+      const results = await Promise.all(promises);
+      setSelectedItemInfo(results);
+    };
+
+    fetchDataForAllItems();
+  }, [data]);
+
+  const minPrice = Math.min(...selectedItemInfo.map((el) => el.price));
+  const highRate = Math.max(...selectedItemInfo.map((el) => el.rate));
+
+  const onDragEnd = useCallback(
+    (result: DropResult) => {
+      const { destination, source } = result;
+
+      if (!destination) return;
+      if (
+        destination.droppableId === source.droppableId &&
+        source.index === destination.index
+      )
+        return;
+
+      const updatedData = Array.from(selectedItemInfo);
+      updatedData.splice(source.index, 1);
+      updatedData.splice(destination.index, 0, selectedItemInfo[source.index]);
+      setSelectedItemInfo(updatedData);
+    },
+    [selectedItemInfo, setSelectedItemInfo]
+  );
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
@@ -63,11 +78,15 @@ export const DraggableAccommodationList = () => {
             {...provided.droppableProps}
             className="flex gap-1 text-center w-full justify-center text-xs md:text-base"
           >
-            {selectedAcc.map((el, idx) => (
-              <Draggable draggableId={el.id.toString()} index={idx} key={el.id}>
+            {selectedItemInfo.map((el, idx) => (
+              <Draggable
+                draggableId={el.id.toString() + idx}
+                index={idx}
+                key={el.id.toString() + idx}
+              >
                 {(provided, snapshot) => (
                   <>
-                    {idx === 1 && selectedAcc.length === 3 && (
+                    {idx === 1 && data.length === 3 && (
                       <div className="divider w-1 h-full m-0 bg-gray-300"></div>
                     )}
                     <li
@@ -82,11 +101,11 @@ export const DraggableAccommodationList = () => {
                         top: snapshot.isDragging ? '4.3rem' : '3rem',
                         left:
                           idx === 0
-                            ? selectedAcc.length === 3
+                            ? data.length === 3
                               ? '1.5rem'
                               : '7rem'
                             : idx === 1
-                            ? selectedAcc.length === 3
+                            ? data.length === 3
                               ? '12.5rem'
                               : '18.2rem'
                             : '23.5rem'
@@ -134,23 +153,22 @@ export const DraggableAccommodationList = () => {
                           )}
                         </div>
                         <p className="truncate">{el.address}</p>
-                        {theNumberOfFacility.length > 0 && (
-                          <details id='comparisonFacility' className="bg-base-200 px-1 rounded-lg" open>
+                        {el.convenience.split(',').length > 0 && (
+                          <details
+                            id="comparisonFacility"
+                            className="bg-base-200 px-1 rounded-lg"
+                            open
+                          >
                             <summary className="cursor-pointer">
-                              {`${theNumberOfFacility[idx]}개의 편의시설`}
+                              {`${
+                                el.convenience.split(',').length
+                              }개의 편의시설`}
                             </summary>
-                            <div
-                              dangerouslySetInnerHTML={{
-                                __html: el.info
-                                  .split('<section class="service">')[1]
-                                  .split('</section>')[0]
-                              }}
-                              
-                            />
+                            <div className="text-xs">{el.convenience}</div>
                           </details>
                         )}
                         <Link
-                          to={`/accommodation/${el.id}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}&rate=${el.rate}`}
+                          to={`/accommodation/${el.accommodationId}?&checkindate=${el.checkInDate}&checkoutdate=${el.checkOutDate}&people=${el.people}`}
                         >
                           <button className="btn mx-auto mt-2  btn-sm text-xs md:text-base font-normal">
                             바로가기
