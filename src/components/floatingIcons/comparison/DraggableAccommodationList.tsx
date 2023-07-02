@@ -78,108 +78,111 @@ export const DraggableAccommodationList = ({
             {...provided.droppableProps}
             className="flex gap-1 text-center w-full justify-center text-xs md:text-base"
           >
-            {selectedItemInfo.map((el, idx) => (
-              <Draggable
-                draggableId={el.id.toString() + idx}
-                index={idx}
-                key={el.id.toString() + idx}
-              >
-                {(provided, snapshot) => (
-                  <>
-                    {idx === 1 && data.length === 3 && (
-                      <div className="divider w-1 h-full m-0 bg-gray-300"></div>
-                    )}
-                    <li
-                      {...provided.draggableProps}
-                      {...provided.dragHandleProps}
-                      ref={provided.innerRef}
-                      className={`w-44 pb-1 rounded-lg list-none hover:bg-orange-100 ${
-                        snapshot.isDragging ? 'bg-orange-100' : ''
-                      }`}
-                      style={{
-                        ...provided.draggableProps.style,
-                        top: snapshot.isDragging ? '4.3rem' : '3rem',
-                        left:
-                          idx === 0
-                            ? data.length === 3
-                              ? '1.5rem'
-                              : '7rem'
-                            : idx === 1
-                            ? data.length === 3
-                              ? '12.5rem'
-                              : '18.2rem'
-                            : '23.5rem'
-                      }}
-                    >
-                      <div
-                        key={idx}
-                        className="flex flex-col gap-y-1 text-center w-full text-xs md:text-base"
-                      >
-                        <figure className="relative h-32 object-cover mx-1">
-                          <div
-                            className={`absolute top-[-10px] left-16 badge badge-warning ${
-                              snapshot.isDragging ? 'block' : 'hidden'
-                            }`}
-                          >
-                            {' '}
-                            · · ·
-                          </div>
-                          <img
-                            src={el.picUrl}
-                            className="w-full h-full rounded-lg"
-                          />
-                        </figure>
-                        <p className="truncate block font-semibold mr-1">
-                          {el.accommodationName}
-                        </p>
-                        <p className="flex justify-center gap-1">
-                          {addCommasToPrice(el.price)}원
-                          {el.price === minPrice && (
-                            <img
-                              src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
-                              alt="heart mark"
-                              className="w-4 md:h-5 md:pt-1"
-                            />
-                          )}
-                        </p>
-                        <div className="flex items-center justify-center gap-1 h-4 md:h-6 ">
-                          <RatingStars rate={el.rate} />
-                          {el.rate === highRate && (
-                            <img
-                              src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
-                              alt="heart mark"
-                              className="w-4 h-5 py-[2px]"
-                            />
-                          )}
-                        </div>
-                        <p className="truncate">{el.address}</p>
-                        {el.convenience.split(',').length > 0 && (
-                          <details
-                            id="comparisonFacility"
-                            className="bg-base-200 px-1 rounded-lg"
-                            open
-                          >
-                            <summary className="cursor-pointer">
-                              {`${
-                                el.convenience.split(',').length
-                              }개의 편의시설`}
-                            </summary>
-                            <div className="text-xs">{el.convenience}</div>
-                          </details>
+            {selectedItemInfo.length > 0 &&
+              selectedItemInfo.map((el, idx) => {
+                return (
+                  <Draggable
+                    draggableId={el.id.toString() + idx}
+                    index={idx}
+                    key={el.id.toString() + idx}
+                  >
+                    {(provided, snapshot) => (
+                      <>
+                        {idx === 1 && data.length === 3 && (
+                          <div className="divider w-1 h-full m-0 bg-gray-300"></div>
                         )}
-                        <Link
-                          to={`/accommodation/${el.accommodationId}?&checkindate=${el.checkInDate}&checkoutdate=${el.checkOutDate}&people=${el.people}`}
+                        <li
+                          {...provided.draggableProps}
+                          {...provided.dragHandleProps}
+                          ref={provided.innerRef}
+                          className={`w-44 pb-1 rounded-lg list-none hover:bg-orange-100 ${
+                            snapshot.isDragging ? 'bg-orange-100' : ''
+                          }`}
+                          style={{
+                            ...provided.draggableProps.style,
+                            top: snapshot.isDragging ? '4.3rem' : '3rem',
+                            left:
+                              idx === 0
+                                ? data.length === 3
+                                  ? '1.5rem'
+                                  : '7rem'
+                                : idx === 1
+                                ? data.length === 3
+                                  ? '12.5rem'
+                                  : '18.2rem'
+                                : '23.5rem'
+                          }}
                         >
-                          <button className="btn mx-auto mt-2  btn-sm text-xs md:text-base font-normal">
-                            바로가기
-                          </button>
-                        </Link>
-                      </div>
-                    </li>
-                  </>
-                )}
-              </Draggable>
-            ))}
+                          <div
+                            key={idx}
+                            className="flex flex-col gap-y-1 text-center w-full text-xs md:text-base"
+                          >
+                            <figure className="relative h-32 object-cover mx-1">
+                              <div
+                                className={`absolute top-[-10px] left-16 badge badge-warning ${
+                                  snapshot.isDragging ? 'block' : 'hidden'
+                                }`}
+                              >
+                                {' '}
+                                · · ·
+                              </div>
+                              <img
+                                src={el.picUrl}
+                                className="w-full h-full rounded-lg"
+                              />
+                            </figure>
+                            <p className="truncate block font-semibold mr-1">
+                              {el.accommodationName}
+                            </p>
+                            <p className="flex justify-center gap-1">
+                              {addCommasToPrice(el.price)}원
+                              {el.price === minPrice && (
+                                <img
+                                  src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
+                                  alt="heart mark"
+                                  className="w-4 md:h-5 md:pt-1"
+                                />
+                              )}
+                            </p>
+                            <div className="flex items-center justify-center gap-1 h-4 md:h-6 ">
+                              <RatingStars rate={el.rate} />
+                              {el.rate === highRate && (
+                                <img
+                                  src="https://em-content.zobj.net/thumbs/320/google/350/red-heart_2764-fe0f.png"
+                                  alt="heart mark"
+                                  className="w-4 h-5 py-[2px]"
+                                />
+                              )}
+                            </div>
+                            <p className="truncate">{el.address}</p>
+                            {el.convenience.split(',').length > 0 && (
+                              <details
+                                id="comparisonFacility"
+                                className="bg-base-200 px-1 rounded-lg"
+                                open
+                              >
+                                <summary className="cursor-pointer">
+                                  {`${
+                                    el.convenience.split(',').length
+                                  }개의 편의시설`}
+                                </summary>
+                                <div className="text-xs">{el.convenience}</div>
+                              </details>
+                            )}
+                            <Link
+                              to={`/accommodation/${el.accommodationId}?&checkindate=${el.checkInDate}&checkoutdate=${el.checkOutDate}&people=${el.people}`}
+                            >
+                              <button className="btn mx-auto mt-2  btn-sm text-xs md:text-base font-normal">
+                                바로가기
+                              </button>
+                            </Link>
+                          </div>
+                        </li>
+                      </>
+                    )}
+                  </Draggable>
+                );
+              })}
             {provided.placeholder}
           </ul>
         )}
