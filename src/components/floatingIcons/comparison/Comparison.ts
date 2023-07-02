@@ -1,27 +1,44 @@
-interface IFacility {
+export interface IFacility {
   facility: string;
 }
 
-interface IComparison {
+export interface IComparisonBoxProps {
   accommodationName: string;
-  accommodationId: number;
-  address: string;
-  roomName: string;
-  rate: number;
+  accommodationId: string;
+  roomId: number;
   price: number;
-  priceArr: number[];
   imgUrl: string;
-  facility: string | IFacility;
 }
 
-const comparisonInitData = {
-  accommodationName: '',
-  accommodationId: 0,
-  address: '',
-  roomName: '',
-  rate: 0,
-  price: 0,
-  priceArr: [],
-  imgUrl: '',
-  facility: ''
-};
+export interface IComparisonItem {
+  accommodationId: string;
+  roomId: string;
+  checkInDate: string;
+  checkOutDate: string;
+  people: string;
+}
+
+export interface IComparisonResponse {
+  id: number;
+  accommodationName: string;
+  roomName: string;
+  rate: number;
+  address: string;
+  convenience: string;
+  picUrl: string;
+  price: number;
+  accommodationId: string;
+  checkInDate: string;
+  checkOutDate: string;
+  people: string;
+}
+
+export interface IFetchDataForChart {
+  accommodationName: string;
+  address: string
+  convenience: string
+  id: number;
+  picUrl: string
+  price: number;
+  rate: number;
+}
