@@ -1,13 +1,13 @@
 import LocalMapView from '../components/map/LocalMapView';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
-import { AxiosResponse } from 'axios';
 import {
   AccommodationDetailInitData,
   IAccommodationDetailResponse,
+  IReservationConfirm,
   IReview,
   IReviewResponse,
-  IReviewResponseContentInitData
+  IReviewResponseContentInitData,
 } from '../api/accommodationDetail';
 import {
   CarouselModal,
@@ -51,18 +51,18 @@ const AccommodationDetail = () => {
     people
   } = Object.fromEntries(urlParams.entries());
 
-  const [roomData, setRoomData] = useState({
+  const [roomData, setRoomData] = useState<IReservationConfirm>({
     accommodationName: '',
-    accommodationId: 0,
+    accommodationId: id,
+    roomName: '',
+    roomId: '',
     address: '',
     rate: 0,
-    roomId: 0,
-    roomName: '',
-    roomImg: '',
-    price: 0,
     checkInDate: checkInDate,
     checkOutDate: checkOutDate,
-    people: people
+    people: people,
+    price: '',
+    imgUrl: ''
   });
 
   const getReview = async (page: number) => {
