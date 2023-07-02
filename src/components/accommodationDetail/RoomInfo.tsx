@@ -1,4 +1,4 @@
-import { IRoomData, IRoomResponse } from 'api/accommodationDetail';
+import { IReservationConfirm, IRoomResponse } from 'api/accommodationDetail';
 import { addCommasToPrice } from '../../helpers';
 import { ConfirmModal } from './ConfirmModal';
 import { useEffect, useState } from 'react';
@@ -7,12 +7,13 @@ import { MdOutlineBedroomParent } from 'react-icons/md';
 import { useRecoilState } from 'recoil';
 import { selectedRoom } from '../../store/atom/comparisonAtom';
 import { AlertModal } from '../../components/common/AlertModal';
+import { IComparisonBoxProps } from 'components/floatingIcons/comparison/Comparison';
 
 interface IRoomInfo {
   roomInfo: IRoomResponse[];
   setModalProps: React.Dispatch<React.SetStateAction<IModalProps>>;
-  setRoomData: React.Dispatch<React.SetStateAction<IRoomData>>;
-  roomData: IRoomData;
+  setRoomData: React.Dispatch<React.SetStateAction<IReservationConfirm>>;
+  roomData: IReservationConfirm;
 }
 
 export const RoomInfo = ({
@@ -25,7 +26,7 @@ export const RoomInfo = ({
   const [modalState, setModalState] = useState(false);
   const [alertModalState, setAlertModalState] = useState(false);
   const [selectedRooms, setSelectedRooms] =
-    useRecoilState<IComparison[]>(selectedRoom);
+    useRecoilState<IComparisonBoxProps[]>(selectedRoom);
 
   const addRoomComparisonCart = (
     e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -33,21 +34,18 @@ export const RoomInfo = ({
   ) => {
     e.preventDefault();
 
-    if (selectedRooms.some((el) => el.roomName === item.roomName)) {
+    if (selectedRooms.some((el) => el.roomId === item.id)) {
       setModalContent('이미 담긴 상품입니다.');
       setAlertModalState(true);
     } else {
       const comparisonData = {
         accommodationName: roomData.accommodationName,
         accommodationId: roomData.accommodationId,
-        address: roomData.address,
-        roomName: item.roomName,
-        rate: roomData.rate,
+        roomId: item.id,
         price: item.price,
-        priceArr: [],
-        imgUrl: item.pictureUrlList[0].url,
-        facility: item.conveniences
+        imgUrl: item.pictureUrlList[0].url
       };
+
       setSelectedRooms((prev) => [...prev, comparisonData]);
     }
   };
@@ -62,7 +60,7 @@ export const RoomInfo = ({
 
   return (
     <>
-      {roomInfo.length > 0 ? (
+      {roomInfo.length > 1 ? (
         roomInfo.map((el, idx) => {
           return (
             <div key={idx}>
@@ -118,10 +116,10 @@ export const RoomInfo = ({
                         onClick={() => {
                           setRoomData((prev) => ({
                             ...prev,
-                            roomId: el.id,
+                            roomId: el.id.toString(),
                             roomName: el.roomName,
-                            roomImg: el.pictureUrlList[0].url,
-                            price: el.price
+                            imgUrl: el.pictureUrlList[0].url,
+                            price: el.price.toString()
                           }));
                           setModalState(true);
                         }}
