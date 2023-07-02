@@ -199,7 +199,7 @@ const AccommodationDetail = () => {
             객실안내 및 예약
           </h2>
           <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
-            {accommodationData && accommodationData.rooms && (
+            {accommodationData && (
               <RoomInfo
                 roomInfo={accommodationData.rooms}
                 setModalProps={setModalProps}
