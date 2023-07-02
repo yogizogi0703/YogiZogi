@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertModal } from '../../common/AlertModal';
 import { ComparisonModal } from './ComparisonModal';
-import { convertDateFormat } from '../../../utils/handleDate';
+import { getSlashDateFormat } from '../../../utils/handleDate';
 import {
   IComparisonBoxProps,
   IComparisonItem,
@@ -114,8 +114,8 @@ export const ComparisonBox = ({ display, source }: IComparisonBox) => {
                   {el.accommodationName}
                 </p>
                 <p>
-                  {convertDateFormat(checkInDate)} ~{' '}
-                  {convertDateFormat(checkOutDate)}
+                  {getSlashDateFormat(checkInDate)} ~{' '}
+                  {getSlashDateFormat(checkOutDate)}
                 </p>
                 <p>{addCommasToPrice(el.price)}원</p>
               </div>
