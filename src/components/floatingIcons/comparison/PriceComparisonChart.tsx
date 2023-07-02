@@ -1,6 +1,5 @@
 import { Chart as ChartJS, registerables } from 'chart.js';
 ChartJS.register(...registerables);
-
 import { Line } from 'react-chartjs-2';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../../../api';
@@ -9,6 +8,8 @@ import { getDateFormat } from '../../../utils/handleDate';
 
 export const PriceComparisonChart = ({ data }: { data: IComparisonItem }) => {
   const [chartData, setChartData] = useState<IFetchDataForChart[]>([]);
+  const checkInDate = data.checkInDate.split('-').pop();
+  const checkOutDate = data.checkOutDate.split('-').pop();
 
   const getThreeDates = (date: string) => {
     const startDate = new Date(`2023-07-${date}`);
@@ -23,10 +24,7 @@ export const PriceComparisonChart = ({ data }: { data: IComparisonItem }) => {
     return dates;
   };
 
-  const checkInDate = data.checkInDate.split('-').pop();
   const checkInDays = getThreeDates(checkInDate!);
-
-  const checkOutDate = data.checkOutDate.split('-').pop();
   const checkOutDays = getThreeDates(checkOutDate!);
 
   const fetchDataForItem = () => {

@@ -2,6 +2,10 @@ import LocalMapView from '../components/map/LocalMapView';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
 import {
+  CarouselModal,
+  IModalProps
+} from '../components/accommodationDetail/CarouselModal';
+import {
   AccommodationDetailInitData,
   IAccommodationDetailResponse,
   IReservationConfirm,
@@ -10,10 +14,6 @@ import {
   IReviewResponseContentInitData,
   IRoomResponse
 } from '../api/accommodationDetail';
-import {
-  CarouselModal,
-  IModalProps
-} from '../components/accommodationDetail/CarouselModal';
 import './AccommodationDetail.css';
 import { RoomInfo } from '../components/accommodationDetail/RoomInfo';
 import { ReviewSection } from '../components/accommodationDetail/ReviewSection';

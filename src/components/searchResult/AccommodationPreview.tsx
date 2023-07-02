@@ -1,9 +1,9 @@
+import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 import { FiMapPin } from 'react-icons/fi';
 import RatingStars from '../common/RatingStars';
 import { ISearchResultContent } from 'api/search';
-import { useRecoilState } from 'recoil';
 import { selectedAccommodation } from '../../store/atom/comparisonAtom';
-import { useState } from 'react';
 import { AlertModal } from '../../components/common/AlertModal';
 import { addCommasToPrice } from '../../helpers';
 import { IComparisonBoxProps } from 'components/floatingIcons/comparison/Comparison';

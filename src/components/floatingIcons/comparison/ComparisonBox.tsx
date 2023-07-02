@@ -1,11 +1,11 @@
 import { SetterOrUpdater, useRecoilState } from 'recoil';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import {
   selectedAccommodation,
   selectedRoom
 } from '../../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../../helpers';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import { AlertModal } from '../../common/AlertModal';
 import { ComparisonModal } from './ComparisonModal';
 import { getSlashDateFormat } from '../../../utils/handleDate';
@@ -19,6 +19,9 @@ interface IComparisonBox {
 export const ComparisonBox = ({ display, source }: IComparisonBox) => {
   let data: IComparisonBoxProps[],
     setData: SetterOrUpdater<IComparisonBoxProps[]>;
+  const [alertModalState, setAlertModalState] = useState(false);
+  const [comparisonModalState, setComparisonModalState] = useState(false);
+  const [comparisonItems, setComparisonItems] = useState<IComparisonItem[]>([]);
 
   if (source === 'room') {
     const [selectedRooms, setSelectedRooms] = useRecoilState(selectedRoom);
@@ -29,10 +32,6 @@ export const ComparisonBox = ({ display, source }: IComparisonBox) => {
     data = selectedAcc;
     setData = setSelectedAcc;
   }
-
-  const [alertModalState, setAlertModalState] = useState(false);
-  const [comparisonModalState, setComparisonModalState] = useState(false);
-  const [comparisonItems, setComparisonItems] = useState<IComparisonItem[]>([]);
 
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(

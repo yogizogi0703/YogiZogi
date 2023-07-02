@@ -1,14 +1,14 @@
-import { addCommasToPrice } from '../../../helpers';
-import RatingStars from '../../common/RatingStars';
-import { Link } from 'react-router-dom';
 import {
   DragDropContext,
   Droppable,
   Draggable,
   DropResult
 } from 'react-beautiful-dnd';
-import { IComparisonItem, IComparisonResponse } from './Comparison';
 import { useCallback, useEffect, useState } from 'react';
+import { addCommasToPrice } from '../../../helpers';
+import RatingStars from '../../common/RatingStars';
+import { Link } from 'react-router-dom';
+import { IComparisonItem, IComparisonResponse } from './Comparison';
 import { fetchData } from '../../../api';
 import { PriceComparisonChart } from './PriceComparisonChart';
 
@@ -20,6 +20,11 @@ export const DraggableAccommodationList = ({
   const [selectedItemInfo, setSelectedItemInfo] = useState<
     IComparisonResponse[]
   >([]);
+  
+  const minPrice = Math.min(...selectedItemInfo.map((el) => el.price));
+  const highRate = Math.max(...selectedItemInfo.map((el) => el.rate));
+
+  const hasConveniences = selectedItemInfo.some(el => el.convenience === '')
 
   const fetchDataForItem = (el: any) => {
     const fetchUrl =
@@ -48,9 +53,6 @@ export const DraggableAccommodationList = ({
     fetchDataForAllItems();
   }, [data]);
 
-  const minPrice = Math.min(...selectedItemInfo.map((el) => el.price));
-  const highRate = Math.max(...selectedItemInfo.map((el) => el.rate));
-
   const onDragEnd = useCallback(
     (result: DropResult) => {
       const { destination, source } = result;
@@ -70,7 +72,6 @@ export const DraggableAccommodationList = ({
     [selectedItemInfo, setSelectedItemInfo]
   );
 
-  const hasConveniences = selectedItemInfo.some(el => el.convenience === '')
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="selectedAccommodations" direction="horizontal">
