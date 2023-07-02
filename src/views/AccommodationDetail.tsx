@@ -8,6 +8,7 @@ import {
   IReview,
   IReviewResponse,
   IReviewResponseContentInitData,
+  IRoomResponse
 } from '../api/accommodationDetail';
 import {
   CarouselModal,
@@ -66,42 +67,44 @@ const AccommodationDetail = () => {
   });
 
   const getReview = async (page: number) => {
-    const reviewRes: AxiosResponse<any, any> | undefined = await fetchData.get(
-      `/accommodation/${id}/review?page=${page}&pagesize=5`
-    );
-    if (reviewRes && reviewRes.data) {
-      setReviewRes({
-        content: reviewRes.data.content || IReviewResponseContentInitData,
-        totalElements: reviewRes.data.totalElements || 0,
-        totalPages: reviewRes.data.totalPages || 0
+    fetchData
+      .get(`/accommodation/${id}/review?page=${page}&pagesize=5`)
+      .then((reviewRes: any) => {
+        setReviewRes({
+          content: reviewRes.data.content || IReviewResponseContentInitData,
+          totalElements: reviewRes.data.totalElements || 0,
+          totalPages: reviewRes.data.totalPages || 0
+        });
+        setReviewArr((prev) => {
+          const newReviewArr: IReview[] = [...prev];
+          newReviewArr[page] = reviewRes.data.content;
+          return newReviewArr;
+        });
       });
-      setReviewArr((prev) => {
-        const newReviewArr: IReview[] = [...prev];
-        newReviewArr[page] = reviewRes.data.content;
-        return newReviewArr;
-      });
-    }
   };
 
   useEffect(() => {
-    (async () => {
-      const result: AxiosResponse<any, any> | undefined = await fetchData.get(
+    fetchData
+      .get(
         `/accommodation/${id}?checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
-      );
-
-      if (result) {
-        setAccommodationData(result.data.data);
+      )
+      .then((res: any) => {
+        res.data.data.rooms = res.data.data.rooms.filter(
+          (room: IRoomResponse) => room.pictureUrlList.length > 0
+        );
+        const { accommodationName, rate, address } = res.data.data;
+        setAccommodationData({ ...res.data.data });
         setRoomData((prev) => ({
           ...prev,
-          accommodationName: accommodationData.accommodationName,
-          accommodationId: accommodationData.id,
-          address: accommodationData.address,
-          rate: accommodationData.rate
+          accommodationName,
+          rate,
+          people,
+          address
         }));
-      }
-      getReview(page);
-    })();
-  }, [id]);
+      });
+
+    getReview(page);
+  }, []);
 
   useEffect(() => {
     (async () => {
