@@ -97,11 +97,12 @@ export const ComparisonBox = ({ display, source }: IComparisonBox) => {
               <figure
                 className="w-5/12 object-cover rounded-s-lg cursor-pointer tooltip tooltip-warning tooltip-right"
                 data-tip="자세히보기"
-                onClick={() =>
+                onClick={() => {
                   navigate(
                     `/accommodation/${el.accommodationId}?&checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
-                  )
-                }
+                  );
+                  location.reload();
+                }}
               >
                 <img
                   src={el.imgUrl}
