@@ -111,7 +111,7 @@ export const RoomInfo = ({
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
                       <button
-                        className="flex gap-2 btn btn-sm font-semibold w-full min-w-[80px] md:min-w-[100px] md:btn-md md:text-base bg-red-500 disabled:bg-base-300 hover:bg-red-600 text-white"
+                        className="flex gap-2 btn btn-sm font-semibold w-fit sm:w-full min-w-[80px] md:min-w-[100px] md:btn-md md:text-base bg-red-500 disabled:bg-base-300 hover:bg-red-600 text-white"
                         onClick={() => {
                           setRoomData((prev) => ({
                             ...prev,
