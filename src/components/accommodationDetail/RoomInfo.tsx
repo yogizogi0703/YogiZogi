@@ -3,7 +3,6 @@ import { addCommasToPrice } from '../../helpers';
 import { ConfirmModal } from './ConfirmModal';
 import { useEffect, useState } from 'react';
 import { IModalProps } from './CarouselModal';
-import { MdOutlineBedroomParent } from 'react-icons/md';
 import { useRecoilState } from 'recoil';
 import { selectedRoom } from '../../store/atom/comparisonAtom';
 import { AlertModal } from '../../components/common/AlertModal';
@@ -112,7 +111,7 @@ export const RoomInfo = ({
                   <div className="flex flex-row sm:w-1/3 justify-center">
                     <div className="flex sm:flex-col gap-3 my-auto items-center">
                       <button
-                        className="flex gap-2 btn btn-sm font-semibold md:min-w-[100px] md:btn-md md:text-base bg-red-500 disabled:bg-red-800 hover:bg-red-600 text-white"
+                        className="flex gap-2 btn btn-sm font-semibold w-full min-w-[80px] md:min-w-[100px] md:btn-md md:text-base bg-red-500 disabled:bg-base-300 hover:bg-red-600 text-white"
                         onClick={() => {
                           setRoomData((prev) => ({
                             ...prev,
@@ -125,13 +124,15 @@ export const RoomInfo = ({
                         }}
                         disabled={el.price === null}
                       >
-                        {addCommasToPrice(el.price)}원
+                        {el.price === null
+                          ? '예약 완료'
+                          : addCommasToPrice(el.price) + '원'}
                       </button>
                       <button
                         onClick={(e) => addRoomComparisonCart(e, el)}
-                        className="flex gap-2 btn btn-sm min-w-[80px] md:min-w-[100px] md:btn-md btn-success text-white"
+                        className="flex gap-2 btn btn-sm min-w-[80px] md:min-w-[100px] md:btn-md border-red-500 btn-ghost hover:bg-red-500 hover:text-white"
                       >
-                        <MdOutlineBedroomParent className="w-5 h-5" />
+                        비교함에 담기
                       </button>
                       <ConfirmModal
                         data={roomData}
