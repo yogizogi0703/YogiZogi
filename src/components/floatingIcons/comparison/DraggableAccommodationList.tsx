@@ -96,8 +96,8 @@ export const DraggableAccommodationList = ({
                           {...provided.draggableProps}
                           {...provided.dragHandleProps}
                           ref={provided.innerRef}
-                          className={`w-44 pb-1 rounded-lg list-none hover:bg-orange-100 ${
-                            snapshot.isDragging ? 'bg-orange-100' : ''
+                          className={`w-44 pb-1 rounded-lg list-none bg-white hover:shadow-lg ${
+                            snapshot.isDragging ? 'shadow-lg' : ''
                           }`}
                           style={{
                             ...provided.draggableProps.style,
@@ -116,14 +116,10 @@ export const DraggableAccommodationList = ({
                         >
                           <div
                             key={idx}
-                            className="flex flex-col gap-y-1 text-center w-full text-xs md:text-base"
+                            className="flex flex-col gap-y-1 text-center w-full p-1 text-xs md:text-base rounded-lg"
                           >
                             <figure className="relative h-32 object-cover mx-1">
-                              <div
-                                className={`absolute top-[-10px] left-16 badge badge-warning ${
-                                  snapshot.isDragging ? 'block' : 'hidden'
-                                }`}
-                              >
+                              <div className="absolute top-[-10px] left-16 badge bg-red-500 text-white font-bold">
                                 {' '}
                                 · · ·
                               </div>
