@@ -13,6 +13,7 @@ const AuthCallback = () => {
     const payload = decoderToken(token);
     if (payload) {
       successLogin(token);
+      window.location.href = '/';
     } else {
       return <Navigate to={'/'} />;
     }
