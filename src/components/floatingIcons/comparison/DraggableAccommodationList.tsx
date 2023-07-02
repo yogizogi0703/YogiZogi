@@ -10,6 +10,7 @@ import {
 import { IComparisonItem, IComparisonResponse } from './Comparison';
 import { useCallback, useEffect, useState } from 'react';
 import { fetchData } from '../../../api';
+import { PriceComparisonChart } from './PriceComparisonChart';
 
 export const DraggableAccommodationList = ({
   data
@@ -134,6 +135,7 @@ export const DraggableAccommodationList = ({
                             <p className="truncate block font-semibold mr-1">
                               {el.accommodationName}
                             </p>
+                            <PriceComparisonChart data={data[idx]} />
                             <p className="flex justify-center gap-1">
                               {addCommasToPrice(el.price)}원
                               {el.price === minPrice && (
