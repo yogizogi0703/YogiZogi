@@ -70,6 +70,7 @@ export const DraggableAccommodationList = ({
     [selectedItemInfo, setSelectedItemInfo]
   );
 
+  const hasConveniences = selectedItemInfo.some(el => el.convenience === '')
   return (
     <DragDropContext onDragEnd={onDragEnd}>
       <Droppable droppableId="selectedAccommodations" direction="horizontal">
@@ -153,7 +154,7 @@ export const DraggableAccommodationList = ({
                               )}
                             </div>
                             <p className="truncate">{el.address}</p>
-                            {el.convenience.split(',').length > 0 && (
+                            {!hasConveniences && (
                               <details
                                 id="comparisonFacility"
                                 className="bg-base-200 px-1 rounded-lg"
