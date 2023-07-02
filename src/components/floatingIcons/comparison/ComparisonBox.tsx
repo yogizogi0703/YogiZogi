@@ -1,54 +1,94 @@
-import { useRecoilState } from 'recoil';
-import { selectedAccommodation } from '../../../store/atom/comparisonAtom';
+import { SetterOrUpdater, useRecoilState } from 'recoil';
+import {
+  selectedAccommodation,
+  selectedRoom
+} from '../../../store/atom/comparisonAtom';
 import { addCommasToPrice } from '../../../helpers';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { AlertModal } from '../../common/AlertModal';
 import { ComparisonModal } from './ComparisonModal';
+import { convertDateFormat } from '../../../utils/handleDate';
+import {
+  IComparisonBoxProps,
+  IComparisonItem,
+} from './Comparison';
 
-export const ComparisonBox = ({ display }: { display: boolean }) => {
-  const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
+interface IComparisonBox {
+  display: boolean;
+  source: string;
+}
+
+export const ComparisonBox = ({ display, source }: IComparisonBox) => {
+  let data: IComparisonBoxProps[],
+    setData: SetterOrUpdater<IComparisonBoxProps[]>;
+
+  if (source === 'room') {
+    const [selectedRooms, setSelectedRooms] = useRecoilState(selectedRoom);
+    data = selectedRooms;
+    setData = setSelectedRooms;
+  } else {
+    const [selectedAcc, setSelectedAcc] = useRecoilState(selectedAccommodation);
+    data = selectedAcc;
+    setData = setSelectedAcc;
+  }
+
   const [alertModalState, setAlertModalState] = useState(false);
   const [comparisonModalState, setComparisonModalState] = useState(false);
+  const [comparisonItems, setComparisonItems] = useState<IComparisonItem[]>(
+    []
+  );
 
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(
     '?' + window.location.hash.split('?')[1]
   );
+
   const {
     checkindate: checkInDate,
     checkoutdate: checkOutDate,
     people: people
   } = Object.fromEntries(urlParams.entries());
 
-  const convertDateFormat = (date: string) => {
-    const [, month, day] = date.split('-');
-    return `${month}/${day}`;
-  };
-
   const handleComparison = () => {
-    if (selectedAcc.length < 2) setAlertModalState(true);
-    else setComparisonModalState(true);
+    if (data.length < 2) setAlertModalState(true);
+    else {
+      const comparisonData = data.map((el) => {
+        return {
+          accommodationId: el.accommodationId,
+          roomId: el.roomId.toString(),
+          checkInDate: checkInDate,
+          checkOutDate: checkOutDate,
+          people: people
+        };
+      });
+      setComparisonItems(comparisonData)
+      setComparisonModalState(true);
+    }
   };
 
   const deleteSelectedAcc = (idx: number) => {
-    const newItems = selectedAcc.filter((_, i) => i !== idx);
-    setSelectedAcc(newItems);
+    const newItems = data.filter((_, i) => i !== idx);
+    setData(newItems);
   };
 
   return (
     <article
-      className={`flex flex-col justify-between chat chat-end absolute bottom-6 right-16 md:right-20 w-80 h-fit ${
-        display ? 'block' : 'hidden'
-      }`}
+      className={`flex flex-col justify-between chat chat-end absolute ${
+        source === 'room'
+          ? 'bottom-16 md:bottom-28 right-16 md:right-20'
+          : 'bottom-6 right-16 md:right-20'
+      } w-80 h-fit ${display ? 'block' : 'hidden'}`}
     >
-      <div className="chat-bubble chat-bubble-info flex flex-col justify-between w-full h-fit">
-        {selectedAcc.length === 0 && (
-          <div className="flex items-center justify-center w-full h-20 mb-2 text-sm bg-white rounded-xl">
-            상품을 담아주세요
+      <div className="chat-bubble bg-[#1A1A3D] flex flex-col justify-between w-full h-fit">
+        {data.length === 0 && (
+          <div className="flex items-center justify-center w-full h-20 mb-2 text-sm bg-white rounded-xl text-black">
+            {source === 'room'
+              ? '원하시는 객실을 담아주세요'
+              : '원하시는 숙소를 담아주세요'}
           </div>
         )}
-        {selectedAcc.map((el, idx) => {
+        {data.map((el, idx) => {
           return (
             <div
               key={idx}
@@ -69,7 +109,7 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
                   className="rounded-s-lg h-full w-full"
                 />
               </figure>
-              <div className="w-5/12 text-sm">
+              <div className="w-5/12 text-sm text-black">
                 <p className="truncate font-semibold text-base">
                   {el.accommodationName}
                 </p>
@@ -95,7 +135,8 @@ export const ComparisonBox = ({ display }: { display: boolean }) => {
         </div>
       </div>
       <ComparisonModal
-        source="accommodation"
+        data={comparisonItems}
+        setData={setComparisonItems}
         modalState={comparisonModalState}
         handleModal={setComparisonModalState}
       />
