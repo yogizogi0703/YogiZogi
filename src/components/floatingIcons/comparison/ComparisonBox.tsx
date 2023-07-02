@@ -136,7 +136,6 @@ export const ComparisonBox = ({ display, source }: IComparisonBox) => {
       </div>
       <ComparisonModal
         data={comparisonItems}
-        setData={setComparisonItems}
         modalState={comparisonModalState}
         handleModal={setComparisonModalState}
       />
