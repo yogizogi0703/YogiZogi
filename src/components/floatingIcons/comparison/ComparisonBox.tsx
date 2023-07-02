@@ -9,10 +9,7 @@ import { useState } from 'react';
 import { AlertModal } from '../../common/AlertModal';
 import { ComparisonModal } from './ComparisonModal';
 import { getSlashDateFormat } from '../../../utils/handleDate';
-import {
-  IComparisonBoxProps,
-  IComparisonItem,
-} from './Comparison';
+import { IComparisonBoxProps, IComparisonItem } from './Comparison';
 
 interface IComparisonBox {
   display: boolean;
@@ -35,9 +32,7 @@ export const ComparisonBox = ({ display, source }: IComparisonBox) => {
 
   const [alertModalState, setAlertModalState] = useState(false);
   const [comparisonModalState, setComparisonModalState] = useState(false);
-  const [comparisonItems, setComparisonItems] = useState<IComparisonItem[]>(
-    []
-  );
+  const [comparisonItems, setComparisonItems] = useState<IComparisonItem[]>([]);
 
   const navigate = useNavigate();
   const urlParams = new URLSearchParams(
@@ -62,7 +57,7 @@ export const ComparisonBox = ({ display, source }: IComparisonBox) => {
           people: people
         };
       });
-      setComparisonItems(comparisonData)
+      setComparisonItems(comparisonData);
       setComparisonModalState(true);
     }
   };
