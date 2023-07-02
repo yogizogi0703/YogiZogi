@@ -170,7 +170,7 @@ export const DraggableAccommodationList = ({
                             <Link
                               to={`/accommodation/${el.accommodationId}?&checkindate=${el.checkInDate}&checkoutdate=${el.checkOutDate}&people=${el.people}`}
                             >
-                              <button className="btn mx-auto mt-2  btn-sm text-xs md:text-base font-normal">
+                              <button className="btn mx-auto mt-2  btn-sm text-xs md:text-base font-normal border-red-500 bg-white">
                                 바로가기
                               </button>
                             </Link>
