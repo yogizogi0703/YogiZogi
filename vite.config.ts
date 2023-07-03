@@ -24,7 +24,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://yogizogi.shop/',
+        target: 'https://13.209.131.228:8443',
         changeOrigin: true,
         secure: false
       }

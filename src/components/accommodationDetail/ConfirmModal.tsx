@@ -1,9 +1,20 @@
-import { IReservationConfirm } from 'api/accommodationDetail';
 import { addCommasToPrice } from '../../helpers';
 import { useNavigate } from 'react-router-dom';
 
 interface IConfirmModal {
-  data: IReservationConfirm;
+  data: {
+    accommodationName: string;
+    accommodationId: number;
+    address: string;
+    rate: number;
+    roomId: number;
+    roomName: string;
+    roomImg: string;
+    price: number;
+    checkInDate: string;
+    checkOutDate: string;
+    people: string;
+  };
   modalState: boolean;
   setModalState: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -23,7 +34,7 @@ export const ConfirmModal = ({
           accommodationId: data.accommodationId,
           roomId: data.roomId,
           roomName: data.roomName,
-          roomImg: data.imgUrl,
+          roomImg: data.roomImg,
           address: data.address,
           rate: data.rate
         }
@@ -44,7 +55,7 @@ export const ConfirmModal = ({
         <div className="flex flex-col gap-5 modal-box w-full max-w-2xl shadow-none">
           <div className="flex gap-5">
             <figure className="w-full">
-              <img src={data.imgUrl} className="w-full" />
+              <img src={data.roomImg} className="w-full" />
             </figure>
           </div>
           <div>
@@ -74,7 +85,7 @@ export const ConfirmModal = ({
               className="btn modal-action mt-0 w-fit text-white btn-sm text-xs md:btn-md md:text-base bg-red-500 hover:bg-red-600"
               onClick={handleClick}
             >
-              {addCommasToPrice(Number(data.price))}원 예약하기
+              {addCommasToPrice(data.price)}원 예약하기
             </button>
           </div>
         </div>

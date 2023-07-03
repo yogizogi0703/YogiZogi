@@ -1,24 +1,22 @@
 import LocalMapView from '../components/map/LocalMapView';
 import { useEffect, useState } from 'react';
 import { fetchData } from '../api';
+import { AxiosResponse } from 'axios';
+import {
+  AccommodationDetailInitData,
+  IAccommodationDetailResponse,
+  IReview,
+  IReviewResponse,
+  IReviewResponseContentInitData
+} from '../api/accommodationDetail';
 import {
   CarouselModal,
   IModalProps
 } from '../components/accommodationDetail/CarouselModal';
-import {
-  AccommodationDetailInitData,
-  IAccommodationDetailResponse,
-  IReservationConfirm,
-  IReview,
-  IReviewResponse,
-  IReviewResponseContentInitData,
-  IRoomResponse
-} from '../api/accommodationDetail';
 import './AccommodationDetail.css';
 import { RoomInfo } from '../components/accommodationDetail/RoomInfo';
 import { ReviewSection } from '../components/accommodationDetail/ReviewSection';
 import { AccommodationInfo } from '../components/accommodationDetail/AccommodationInfo';
-import { FloatingIcon } from '../components/floatingIcons/FloatingIcon';
 
 const AccommodationDetail = () => {
   const [accommodationData, setAccommodationData] =
@@ -52,59 +50,58 @@ const AccommodationDetail = () => {
     people
   } = Object.fromEntries(urlParams.entries());
 
-  const [roomData, setRoomData] = useState<IReservationConfirm>({
+  const [roomData, setRoomData] = useState({
     accommodationName: '',
-    accommodationId: id,
-    roomName: '',
-    roomId: '',
+    accommodationId: 0,
     address: '',
     rate: 0,
+    roomId: 0,
+    roomName: '',
+    roomImg: '',
+    price: 0,
     checkInDate: checkInDate,
     checkOutDate: checkOutDate,
-    people: people,
-    price: '',
-    imgUrl: ''
+    people: people
   });
 
   const getReview = async (page: number) => {
-    fetchData
-      .get(`/accommodation/${id}/review?page=${page}&pagesize=5`)
-      .then((reviewRes: any) => {
-        setReviewRes({
-          content: reviewRes.data.content || IReviewResponseContentInitData,
-          totalElements: reviewRes.data.totalElements || 0,
-          totalPages: reviewRes.data.totalPages || 0
-        });
-        setReviewArr((prev) => {
-          const newReviewArr: IReview[] = [...prev];
-          newReviewArr[page] = reviewRes.data.content;
-          return newReviewArr;
-        });
+    const reviewRes: AxiosResponse<any, any> | undefined = await fetchData.get(
+      `/accommodation/${id}/review?page=${page}&pagesize=5`
+    );
+    if (reviewRes && reviewRes.data) {
+      setReviewRes({
+        content: reviewRes.data.content || IReviewResponseContentInitData,
+        totalElements: reviewRes.data.totalElements || 0,
+        totalPages: reviewRes.data.totalPages || 0
       });
+      setReviewArr((prev) => {
+        const newReviewArr: IReview[] = [...prev];
+        newReviewArr[page] = reviewRes.data.content;
+        return newReviewArr;
+      });
+    }
   };
 
   useEffect(() => {
-    fetchData
-      .get(
+    (async () => {
+      const result: AxiosResponse<any, any> | undefined = await fetchData.get(
         `/accommodation/${id}?checkindate=${checkInDate}&checkoutdate=${checkOutDate}&people=${people}`
-      )
-      .then((res: any) => {
-        res.data.data.rooms = res.data.data.rooms.filter(
-          (room: IRoomResponse) => room.pictureUrlList.length > 0
-        );
-        const { accommodationName, rate, address } = res.data.data;
-        setAccommodationData({ ...res.data.data });
+      );
+
+      if (result) {
+        const data = result.data.data;
+        setAccommodationData(data);
         setRoomData((prev) => ({
           ...prev,
-          accommodationName,
-          rate,
-          people,
-          address
+          accommodationName: data.accommodationName,
+          accommodationId: data.id,
+          address: data.address,
+          rate: data.rate
         }));
-      });
-
-    getReview(page);
-  }, []);
+      }
+      getReview(page);
+    })();
+  }, [id]);
 
   useEffect(() => {
     (async () => {
@@ -199,10 +196,11 @@ const AccommodationDetail = () => {
             객실안내 및 예약
           </h2>
           <div className="flex flex-col gap-5 text-xs sm:text-sm md:text-base">
-            {accommodationData && (
+            {accommodationData && accommodationData.rooms && (
               <RoomInfo
                 roomInfo={accommodationData.rooms}
                 setModalProps={setModalProps}
+                accommodationName={accommodationData.accommodationName}
                 setRoomData={setRoomData}
                 roomData={roomData}
               />
@@ -218,7 +216,6 @@ const AccommodationDetail = () => {
           reviewRes={reviewRes}
         />
       </section>
-      <FloatingIcon />
       <CarouselModal
         imgList={modalProps.imgList}
         alt={modalProps.alt}

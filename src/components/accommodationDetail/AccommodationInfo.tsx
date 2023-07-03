@@ -26,7 +26,7 @@ export const AccommodationInfo = ({
           <article className=" flex flex-col gap-2 text-xs sm:text-sm md:text-base w-full">
             {accommodationData.info && (
               <>
-                <details open className="p-3 rounded-lg bg-base-100 shadow-lg">
+                <details open className="bg-base-200 p-3 rounded-lg ">
                   <summary className="text-base md:text-lg font-semibold cursor-pointer">
                     기본정보
                   </summary>
@@ -45,7 +45,7 @@ export const AccommodationInfo = ({
                 {accommodationData.info.includes(
                   '<!-- 편의시설 및 서비스 -->'
                 ) && (
-                  <details className="p-3 rounded-lg bg-base-100 shadow-lg">
+                  <details className="bg-base-200 p-3 rounded-lg">
                     <summary className="text-base md:text-lg font-semibold cursor-pointer">
                       편의시설 및 서비스
                     </summary>
@@ -59,7 +59,7 @@ export const AccommodationInfo = ({
                     />
                   </details>
                 )}
-                <details className="p-3 rounded-lg bg-base-100 shadow-lg">
+                <details className="bg-base-200 p-3 rounded-lg">
                   <summary className="text-base md:text-lg font-semibold cursor-pointer">
                     판매자 정보
                   </summary>
