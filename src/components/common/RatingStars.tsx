@@ -19,8 +19,7 @@ const RatingStars = ({ rate }: IRatingStars) => {
         </div>
         <div
           className="absolute left-0 top-0 z-10 flex overflow-hidden"
-          style={{ width: `${starFill}%` }}
-        >
+          style={{ width: `${starFill}%` }}>
           {Array.from({ length: 5 }, () => null).map((_, index) => (
             <AiFillStar
               key={`star-paint-${index}`}
@@ -29,7 +28,7 @@ const RatingStars = ({ rate }: IRatingStars) => {
           ))}
         </div>
       </div>
-      <p className="text-sm leading-none">{rate}</p>
+      <p className="text-sm leading-none">{rate.toFixed(1)}</p>
     </div>
   );
 };
