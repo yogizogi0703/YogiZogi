@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import {
   IAccommodationDetailResponse,
   IReviewContent,
-  IReviewResponse
+  IReviewResponse,
 } from '../../api/accommodationDetail';
 import RatingStars from '../../components/common/RatingStars';
 import { fetchData } from '../../api';
@@ -13,8 +13,8 @@ interface IReview {
 }
 /**
  * @param id accommodation Id(string),
- * @param accommodationData IAccommodationDetailResponse: 
-*/
+ * @param accommodationData IAccommodationDetailResponse:
+ */
 
 export const Review = ({ id, accommodationData }: IReview) => {
   const [page, setPage] = useState(0);
@@ -30,13 +30,13 @@ export const Review = ({ id, accommodationData }: IReview) => {
     'Very good',
     'Excellent',
     'Outstanding',
-    'Perfect'
+    'Perfect',
   ];
 
   const [reviewRes, setReviewRes] = useState<IReviewResponse>({
     content: [],
     totalElements: 0,
-    totalPages: 0
+    totalPages: 0,
   });
   const [reviewArr, setReviewArr] = useState<IReviewContent[]>([]);
 
@@ -44,10 +44,11 @@ export const Review = ({ id, accommodationData }: IReview) => {
     fetchData
       .get(`/accommodation/${id}/review?page=${page}&pagesize=${PageSize}`)
       .then((res: any) => {
+        console.log(res);
         setReviewRes({
           content: res.data.data.content,
           totalElements: res.data.data.totalElements,
-          totalPages: res.data.data.totalPages
+          totalPages: res.data.data.totalPages,
         });
         setReviewArr((prev) => {
           const newReviewArr: IReviewContent[] = [...prev];
@@ -76,7 +77,7 @@ export const Review = ({ id, accommodationData }: IReview) => {
             <div className="flex items-center text-xl md:text-3xl text-center">
               <div className="my-5 w-1/3 p-2">
                 <span className="font-semibold text-red-500">
-                  {accommodationData && (accommodationData.rate).toFixed(1)}
+                  {accommodationData && accommodationData.rate.toFixed(1)}
                 </span>{' '}
                 / 10 점
               </div>
@@ -96,15 +97,15 @@ export const Review = ({ id, accommodationData }: IReview) => {
           <div>
             {reviewArr[page] &&
               Object.values(reviewArr[page]).map((el, idx) => {
+                console.log(el);
                 return (
                   <div
                     key={idx}
-                    className="flex flex-col gap-3 p-3 border rounded-lg mb-5 text-xs md:text-base"
-                  >
+                    className="flex flex-col gap-3 p-3 border rounded-lg mb-5 text-xs md:text-base">
                     <p className="font-semibold">{el.nickName}</p>
                     <div className="flex flex-col sm:flex-row gap-4 text-xs md:text-base font-medium">
                       <div className="flex items-center gap-2 font-semibold">
-                        평점 : <RatingStars rate={el.rating} />
+                        평점 : <RatingStars rate={el.rate} />
                       </div>
                     </div>
                     <p> {el.description}</p>
