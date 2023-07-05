@@ -54,7 +54,7 @@
       "purpose": "maskable any"
     }
   ],
-  "start_url": "https://yogizogi.vercel.app/",
+  "start_url": "https://www.yogizogi.vercel.app/",
   "scope": ".",
   "display": "standalone",
   "background_color": "#FFFFFF",
