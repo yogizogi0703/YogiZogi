@@ -10,7 +10,7 @@ interface IComparisonModal {
 export const ComparisonModal = ({
   data,
   modalState,
-  handleModal
+  handleModal,
 }: IComparisonModal) => {
   return (
     <>
@@ -22,7 +22,7 @@ export const ComparisonModal = ({
         onChange={() => handleModal(!modalState)}
       />
       <div className="modal">
-        <div className="modal-box md:w-[600px] max-w-full h-fit">
+        <div className="modal-box mt-[62px] md:w-[600px] max-w-full h-fit">
           <div className="overflow-x-auto">
             <h2 className="mb-3 text-2xl font-semibold text-center">
               한 눈에 비교하기
@@ -34,8 +34,7 @@ export const ComparisonModal = ({
           <div className="modal-action">
             <button
               className="btn btn-outline btn-sm text-sm text-white bg-red-500 hover:bg-red-600 border-none"
-              onClick={() => handleModal(false)}
-            >
+              onClick={() => handleModal(false)}>
               닫기
             </button>
           </div>
