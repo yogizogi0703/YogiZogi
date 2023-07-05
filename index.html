@@ -39,11 +39,10 @@
     </script>
     <script>
       if ('serviceWorker' in navigator) {
-        console.log('here');
         // Register a service worker hosted at the root of the
         // site using the default scope.
         navigator.serviceWorker
-          .register('sw.js')
+          .register('https://yogizogi.vercel.app/sw.js')
           .then((registration) => {
             console.log('Service worker registration succeeded:', registration);
           })
