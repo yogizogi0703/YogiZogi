@@ -2,15 +2,22 @@ import { IComparisonItem } from './types';
 import { DraggableAccommodationList } from './DraggableAccommodationList';
 
 interface IComparisonModal {
-  data: IComparisonItem[];
+  data: IComparisonItem[][];
+  source: string;
   modalState: boolean;
   handleModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
+/**
+ * @param data IComparisonItem[]
+ * @param modalState boolean : 모달의 display 여부
+ * @param handleModal React.SetStateAction<boolean>
+ */
 
 export const ComparisonModal = ({
   data,
+  source,
   modalState,
-  handleModal,
+  handleModal
 }: IComparisonModal) => {
   return (
     <>
@@ -22,19 +29,20 @@ export const ComparisonModal = ({
         onChange={() => handleModal(!modalState)}
       />
       <div className="modal">
-        <div className="modal-box mt-[62px] md:w-[600px] max-w-full h-fit">
-          <div className="overflow-x-auto">
+        <div className="modal-box md:w-[600px] max-w-full h-fit">
+          <div>
             <h2 className="mb-3 text-2xl font-semibold text-center">
               한 눈에 비교하기
             </h2>
-            <div className="flex w-full">
-              <DraggableAccommodationList data={data} />
+            <div className="flex justify-center w-full">
+              <DraggableAccommodationList data={data} source={source} />
             </div>
           </div>
           <div className="modal-action">
             <button
               className="btn btn-outline btn-sm text-sm text-white bg-red-500 hover:bg-red-600 border-none"
-              onClick={() => handleModal(false)}>
+              onClick={() => handleModal(false)}
+            >
               닫기
             </button>
           </div>
